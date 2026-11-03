@@ -1,22 +1,22 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Silverbrooks Public Schools</title><link rel="manifest" href="../manifest.json"><link rel="apple-touch-icon" href="../icons/icon-180.png">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#7a1f2b">
+<title>Silverbrooks Public Schools</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Crimson+Text&display=swap" rel="stylesheet"><link rel="manifest" href="../manifest.json"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#1a3363">
 <style>
-:root{--a:#7a1f2b;--b:#f2c14e;--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#5d6470;--line:#e1ded7;--soft:#efece5}
+:root{--a:#1a3363;--b:#890000;--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#5d6470;--line:#e1ded7;--soft:#efece5}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#111418;--card:#1a1f26;--ink:#eef0f3;--mut:#9ca5b0;--line:#2a313b;--soft:#222a33}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif}a{color:inherit}
-header{background:var(--a);color:#fff;position:sticky;top:0;z-index:5}
-.hw{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 16px}
+header{background:#fff;color:var(--ink);position:sticky;top:0;z-index:5}
+.hw{background:#fff;max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 16px}
 .wm{text-decoration:none;display:flex;align-items:center;gap:12px}.wm .m{min-width:44px;padding:0 7px;height:44px;border-radius:10px;background:var(--b);color:var(--a);display:grid;place-items:center;font:800 15px Inter,sans-serif;letter-spacing:.5px}
 .wm b{display:block;font:600 21px/1.1 Georgia,serif}.wm span{font-size:12px;opacity:.8;letter-spacing:1px;text-transform:uppercase}
-nav{background:rgba(0,0,0,.18)}nav .in{max-width:1120px;margin:0 auto;display:flex;overflow-x:auto;padding:0 8px;scrollbar-width:none}
-nav a{color:#fff;text-decoration:none;padding:12px;font-weight:600;font-size:15px;white-space:nowrap;border-bottom:3px solid transparent}nav a.on{border-bottom-color:var(--b)}
-.btn{display:inline-block;background:var(--b);color:var(--a);border:0;border-radius:8px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}
+nav{background:var(--a)}nav .in{max-width:1120px;margin:0 auto;display:flex;overflow-x:auto;padding:0 8px;scrollbar-width:none}
+nav a{color:#fff;text-decoration:none;padding:12px;font-weight:600;font-size:15px;white-space:nowrap;border-bottom:3px solid transparent}nav a.on{border-bottom-color:#fff;background:rgba(255,255,255,.1)}
+.btn{display:inline-block;background:#fff;color:var(--a);border:0;border-radius:8px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}
 .btn.d{background:var(--a);color:#fff}
 main{max-width:1120px;margin:0 auto;padding:24px 16px 60px}section.pg{display:none}section.pg.on{display:block}
 .hero{background:var(--a);color:#fff;border-radius:16px;padding:40px 32px;margin-bottom:24px;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;border:40px solid var(--b);opacity:.18}
-.hero h1{font:600 42px/1.08 Georgia,serif;margin:0 0 8px;max-width:640px}.hero p{margin:0 0 20px;opacity:.9;max-width:600px}
+.hero:after{display:none;content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;border:40px solid var(--b);opacity:.18}
+.hero h1{font:400 48px/1.05 'Crimson Text',Georgia,serif;margin:0 0 8px;max-width:640px}.hero p{margin:0 0 20px;opacity:.9;max-width:600px}
 .srch{display:flex;gap:8px;max-width:600px;position:relative;z-index:1}.srch input{flex:1;border:0;border-radius:8px;padding:12px 14px;font:inherit}
 h2{font-size:24px;margin:28px 0 12px}h3{margin:0 0 6px;font-size:18px}
 .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
@@ -31,11 +31,11 @@ th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}
 .ok{background:#e8f6ee;color:#14532d;border-radius:10px;padding:14px;margin-top:12px}
 @media(max-width:760px){.two{grid-template-columns:1fr}.hero{padding:28px 20px}.hero h1{font-size:32px}}
-footer{background:var(--a);color:#fff;padding:28px 16px;font-size:14px}footer .in{max-width:1120px;margin:0 auto}footer p{opacity:.85}
+footer{background:#14181f;color:#fff;padding:28px 16px;font-size:14px}footer .in{max-width:1120px;margin:0 auto}footer p{opacity:.85}
 </style></head><body>
-<header><div class="hw"><a class="wm" href="#home"><div class="m">SBPS</div><div><b>Silverbrooks Public Schools</b><span>sbps.org</span></div></a></div><nav><div class="in"><a href="#home" data-p="home">Home</a><a href="#schools" data-p="schools">Schools</a><a href="#find" data-p="find">Enroll</a><a href="#calendar" data-p="calendar">Calendar</a><a href="#athletics" data-p="athletics">Athletics</a><a href="#board" data-p="board">School Board</a></div></nav></header>
+<header><div class="hw"><a class="wm lk" href="#home" aria-label="Silverbrooks Public Schools"><img src="sbps-star.svg" alt="" style="height:50px"><div style="font-family:'Crimson Text',Georgia,serif;color:#000;line-height:1.05;font-size:22px;letter-spacing:.5px"><div style="border-bottom:1.5px solid #000;padding-bottom:2px">SILVERBROOKS</div><div style="padding-top:2px">PUBLIC SCHOOLS</div></div></a></div><nav><div class="in"><a href="#home" data-p="home">Home</a><a href="#schools" data-p="schools">Schools</a><a href="#find" data-p="find">Enroll</a><a href="#calendar" data-p="calendar">Calendar</a><a href="#athletics" data-p="athletics">Athletics</a><a href="#board" data-p="board">School Board</a></div></nav></header>
 <main>
-<section class="pg" id="p-home"><div class="hero"><h1>Every student. Every neighborhood.</h1><p>Silverbrooks Public Schools serves the City of Silverbrooks with <b id="cnt"></b> public schools across 14 neighborhoods.</p>
+<section class="pg" id="p-home"><div class="hero" style="border-bottom:8px solid #890000"><h1>Every student. Every neighborhood.</h1><p>Silverbrooks Public Schools serves the City of Silverbrooks with <b id="cnt"></b> public schools across 14 neighborhoods.</p>
 <a class="btn" href="#find">Find your school</a></div>
 <div class="note"><b>No school Wed, Nov 11</b> for Veterans Day. Conferences for grades K–8 run Nov 23–25 (half days).</div>
 <div class="g" style="margin-top:16px"><a class="c" href="#schools"><h3>School directory</h3><p>Every SBPS school by level and neighborhood</p></a>
