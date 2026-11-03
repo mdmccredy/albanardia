@@ -7,6 +7,7 @@
   var head=document.head||document.getElementsByTagName('head')[0];
   function meta(sel,tag,attrs){if(document.querySelector(sel))return;var e=document.createElement(tag);for(var k in attrs)e.setAttribute(k,attrs[k]);head.appendChild(e)}
   meta('link[rel=manifest]','link',{rel:'manifest',href:root+'manifest.json'});
+  meta('link[rel~=icon]','link',{rel:'icon',type:'image/png',href:root+'icons/favicon.png'});
   meta('link[rel=apple-touch-icon]','link',{rel:'apple-touch-icon',href:root+'icons/icon-180.png'});
   meta('meta[name=apple-mobile-web-app-capable]','meta',{name:'apple-mobile-web-app-capable',content:'yes'});
   meta('meta[name=mobile-web-app-capable]','meta',{name:'mobile-web-app-capable',content:'yes'});
