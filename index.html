@@ -1,62 +1,256 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Albanardia</title>
-<meta name="description" content="Albanardia, the Windward State: maps, transit, city sites and news.">
+<title>Albanardia · The Windward State</title>
+<meta name="description" content="Albanardia, the Windward State: maps, transit, Silverbrooks city services and news.">
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-180.png"><link rel="icon" type="image/png" href="icons/favicon.png">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Albanardia"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#11161b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#22498a">
 <style>
-:root{--bg:#f6f4ef;--ink:#16202a;--mut:#5b6670;--card:#fff;--line:#e3dfd6;--acc:#1d5fa8;--ic:#eef0f2}
-@media (prefers-color-scheme:dark){:root{--bg:#11161b;--ink:#eef1f4;--mut:#9aa6b1;--card:#1a2129;--line:#2a333d;--acc:#6fa8e8;--ic:#232c36}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Inter,sans-serif;-webkit-tap-highlight-color:transparent}
-main{max-width:980px;margin:0 auto;padding:max(28px,calc(env(safe-area-inset-top) + 16px)) max(16px,env(safe-area-inset-right)) max(40px,calc(env(safe-area-inset-bottom) + 24px)) max(16px,env(safe-area-inset-left))}
-header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
-header img{width:56px;height:56px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-h1{font-size:34px;margin:0;letter-spacing:-.8px;line-height:1.05}
-.sub{color:var(--mut);margin:2px 0 0;font-size:15px}
-h2{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);margin:28px 0 10px;font-weight:700}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-@media (max-width:520px){.g{grid-template-columns:1fr 1fr}h1{font-size:30px}}
-a.c{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;color:inherit;text-decoration:none;min-height:118px;transition:transform .12s}
-a.c:hover{border-color:var(--acc)}a.c:active{transform:scale(.97)}
-a.c:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.i{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font:800 20px/1 system-ui,sans-serif;color:#fff;flex:none;overflow:hidden}
-.i img{width:100%;height:100%;object-fit:contain}
-.i.w{background:#fff;border:1px solid var(--line)}
-a.c b{display:block;font-size:16px;line-height:1.2}
-a.c span{color:var(--mut);font-size:13px;line-height:1.3}
-.tip{margin-top:28px;padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--mut);font-size:14px}
-.tip b{color:var(--ink)}
-.app-standalone .tip{display:none}
-</style></head><body><main>
-<header><img src="icons/icon-180.png" alt=""><div><h1>Albanardia</h1><p class="sub">The Windward State · Silverbrooks, SB</p></div></header>
+:root{--bg:#f5f3ee;--card:#fff;--ink:#14202c;--mut:#5a6672;--line:#e2ddd2;--navy:#22498a;--orange:#fd9e02;--green:#04934b;--acc:#22498a;--chip:#eef1f6;--shadow:0 1px 2px rgba(20,32,44,.06),0 4px 14px rgba(20,32,44,.06)}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141a;--card:#18202a;--ink:#edf1f5;--mut:#9ba7b3;--line:#27313d;--acc:#7ea6ea;--chip:#1f2935;--shadow:none}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Inter,sans-serif;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+.in{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.util{background:var(--navy);color:#dfe7f5;font-size:12.5px;padding-top:env(safe-area-inset-top)}
+.util .in{display:flex;gap:14px;align-items:center;min-height:30px}
+.util a{text-decoration:none;opacity:.9}
+.flagbar{height:4px;background:linear-gradient(90deg,var(--navy) 0 33%,var(--orange) 33% 66%,var(--green) 66%)}
+header.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+header.top .in{display:flex;align-items:center;gap:14px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:38px;height:38px;border-radius:50%}
+.brand b{display:block;font-size:20px;letter-spacing:-.3px;line-height:1}
+.brand small{display:block;font-size:11.5px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+nav.main{display:flex;gap:2px;margin-left:12px}
+nav.main a{text-decoration:none;font-weight:600;font-size:15px;padding:9px 12px;border-radius:9px}
+nav.main a:hover{background:var(--chip)}
+.sp{flex:1}
+.sbox{position:relative;width:260px}
+.sbox input{width:100%;font:inherit;font-size:16px;padding:9px 12px 9px 36px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.sbox svg{position:absolute;left:12px;top:21px;transform:translateY(-50%);width:16px;height:16px;color:var(--mut)}
+.sres{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.14);margin:0;padding:6px;display:none;max-height:60vh;overflow:auto;z-index:30}
+.sres.on{display:block}.sres a{display:block;padding:9px 10px;border-radius:8px;text-decoration:none;font-size:14.5px}.sres a small{display:block;color:var(--mut);font-size:12.5px}.sres a:hover,.sres a:focus{background:var(--chip);outline:none}
+.menu{display:none;width:44px;height:44px;border:0;background:transparent;color:var(--ink);border-radius:10px;cursor:pointer}
+.menu svg{width:24px;height:24px}
+#drawer{display:none}
+.hero{position:relative;color:#fff;background:#0b2240 url(visit/img/harbor_sat.jpg) center/cover;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,22,44,.92) 0%,rgba(8,22,44,.72) 50%,rgba(8,22,44,.3) 100%)}
+.hero .in{position:relative;padding-top:64px;padding-bottom:76px}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.14);padding:6px 11px;border-radius:999px}
+.kick i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.hero h1{font:700 clamp(38px,6vw,64px)/1.02 Georgia,"Times New Roman",serif;letter-spacing:-1px;margin:16px 0 12px;max-width:14ch}
+.hero p{font-size:clamp(16px,2vw,19px);max-width:52ch;margin:0 0 24px;color:#dbe4f0}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:12px 18px;border-radius:12px;min-height:46px}
+.btn.p{background:#fff;color:#0b2240}.btn.s{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn:active{transform:scale(.97)}
+.rail{margin-top:-36px;position:relative;z-index:2}
+.rail .row{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.sc{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 8px;box-shadow:var(--shadow);text-align:center;font-weight:600;font-size:13.5px;line-height:1.2}
+.sc:hover{border-color:var(--acc)}.sc:active{transform:scale(.97)}
+.ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;overflow:hidden;background:#fff;border:1px solid var(--line);font-size:22px;color:#fff;flex:none}
+.ic img{width:100%;height:100%;object-fit:contain}
+.ic.f{border:0}
+section.blk{padding:36px 0 4px}
+.hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.hd h2{font-size:22px;margin:0;letter-spacing:-.3px}
+.hd a{font-size:14px;font-weight:600;color:var(--acc);text-decoration:none;white-space:nowrap}
+.cols{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.lead{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;text-decoration:none}
+.lead .ph{min-height:220px;background:#ccc url(visit/img/sbx.jpg) center/cover}
+.lead .tx{padding:20px}
+.sect{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#a12222}
+@media (prefers-color-scheme:dark){.sect{color:#ff8a7a}}
+.lead h3{font:700 24px/1.15 Georgia,serif;margin:8px 0}
+.lead p{color:var(--mut);margin:0;font-size:15px}
+.src{margin-top:12px;font-size:13px;color:var(--mut)}
+.list{margin-top:12px}
+.list a{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:13px 16px;text-decoration:none;border-top:1px solid var(--line)}
+.list a:first-child{border-top:0}
+.list h4{font:700 17px/1.25 Georgia,serif;margin:3px 0 0}
+.chev{color:var(--mut);font-size:22px}
+.status{padding:4px 0}
+.status h3{font-size:15px;margin:10px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+.status h3 small{font-weight:500;color:var(--mut);font-size:12.5px}
+.al{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:11px 16px;border-top:1px solid var(--line);text-decoration:none}
+.al .dot{width:10px;height:10px;border-radius:50%;margin-top:6px}
+.al b{font-size:14.5px}.al span{display:block;color:var(--mut);font-size:13.5px;line-height:1.4}
+.ok{background:#1f9d55}.warn{background:#e0a400}
+.ex{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ph-card{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:4/5;text-decoration:none;color:#fff;background:#223 center/cover}
+.ph-card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.8))}
+.ph-card div{position:absolute;left:14px;right:14px;bottom:14px;z-index:1}
+.ph-card b{display:block;font-size:18px;line-height:1.15}.ph-card span{font-size:13px;opacity:.9}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px;background:var(--navy);color:#fff;border-radius:18px;overflow:hidden}
+.facts div{padding:20px;border-left:1px solid rgba(255,255,255,.14)}.facts div:first-child{border-left:0}
+.facts b{display:block;font:700 30px/1 Georgia,serif}.facts span{font-size:13.5px;color:#c9d6ea}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.svc a,.med a{display:flex;gap:12px;align-items:center;padding:14px;text-decoration:none}
+.svc b,.med b{display:block;font-size:15.5px}.svc span,.med span{font-size:13px;color:var(--mut);line-height:1.3;display:block}
+.med{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+footer{margin-top:44px;background:#0d1b2e;color:#c3cfdf;padding:36px 0 calc(28px + env(safe-area-inset-bottom));font-size:14px}
+footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+footer h5{color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+footer a{display:block;text-decoration:none;padding:4px 0;color:#c3cfdf}footer a:hover{color:#fff}
+.fb{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:18px;margin-bottom:8px}.fb img{width:34px;height:34px;border-radius:50%}
+.install{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.07);font-size:13.5px;line-height:1.45}
+.app-standalone .install{display:none}
+.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:16px;font-size:12.5px;color:#8fa0b6}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+@media (max-width:980px){nav.main,header.top .sbox{display:none}.menu{display:grid;place-items:center}.cols{grid-template-columns:1fr}.ex{grid-template-columns:repeat(2,1fr)}.svc{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(3){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}footer .g{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+ .util .hide-s{display:none}
+ header.top .in{min-height:56px}.brand img{width:34px;height:34px}.brand b{font-size:18px}
+ .hero .in{padding-top:36px;padding-bottom:64px}
+ .rail .row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:2px 16px 8px;margin:0 -16px;scrollbar-width:none}
+ .rail .row::-webkit-scrollbar{display:none}
+ .sc{flex:0 0 88px;scroll-snap-align:start}
+ .lead{grid-template-columns:1fr}.lead .ph{min-height:170px}
+ .ex{gap:10px}.ph-card{aspect-ratio:3/4}.ph-card b{font-size:16px}
+ .svc,.med{grid-template-columns:1fr}
+ footer .g{grid-template-columns:1fr}
+}
+#drawer.on{display:block;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.4)}
+#drawer .pn{position:absolute;top:0;right:0;bottom:0;width:min(330px,86vw);background:var(--card);padding:calc(14px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom));overflow:auto;box-shadow:-8px 0 24px rgba(0,0,0,.2)}
+#drawer .x{float:right;width:44px;height:44px;border:0;background:var(--chip);color:var(--ink);border-radius:12px;font-size:24px;cursor:pointer}
+#drawer h6{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:20px 0 4px}
+#drawer .pn>a{display:block;text-decoration:none;padding:12px 4px;font-weight:600;border-bottom:1px solid var(--line)}
+#drawer .sbox{width:100%;margin-top:56px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active,.sc:active{transform:none}}
+</style></head><body>
 
-<h2>Maps</h2><div class="g">
-<a class="c" href="map/"><span class="i" style="background:#0b2a5b"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span><div><b>Albanardia Map</b><span>State map, directions, transit planner</span></div></a>
-<a class="c" href="transit/sbtrain.html"><span class="i w"><img src="brand/ads/train.png" alt=""></span><div><b>SBTrain</b><span>Subway map</span></div></a>
-<a class="c" href="transit/sbmetro.html"><span class="i w"><img src="brand/ads/metro.png" alt=""></span><div><b>SBMetro</b><span>Bus network</span></div></a>
-<a class="c" href="transit/sbexpress.html"><span class="i w"><img src="brand/ads/albx.png" alt=""></span><div><b>ALBExpress</b><span>Statewide rail</span></div></a>
-<a class="c" href="transit/sbferry.html"><span class="i w"><img src="brand/ads/ferry.png" alt=""></span><div><b>SBFerry</b><span>Ferry routes</span></div></a>
-<a class="c" href="airport/"><span class="i" style="background:#121417">✈</span><div><b>SBX Airport</b><span>Gates, runways, taxiways</span></div></a>
-<a class="c" href="transit/liveries/"><span class="i w"><img src="brand/ads/transit.png" alt=""></span><div><b>Liveries</b><span>SBTransit train, bus, rail, ferry paint</span></div></a>
+<div class="util"><div class="in"><span>An official site of the <b>State of Albanardia</b> <span style="opacity:.7">(fictional)</span></span><span class="sp"></span><span class="hide-s" id="today"></span><a class="hide-s" href="gov/">Silverbrooks 311</a></div></div>
+<div class="flagbar"></div>
+
+<header class="top"><div class="in">
+ <a class="brand" href="./" aria-label="Albanardia home"><img src="icons/favicon.png" alt=""><span><b>Albanardia</b><small>The Windward State</small></span></a>
+ <nav class="main" aria-label="Main"><a href="map/">Map</a><a href="#transit">Transit</a><a href="#news">News</a><a href="#explore">Explore</a><a href="#services">Services</a></nav>
+ <span class="sp"></span>
+ <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search Albanardia" aria-label="Search Albanardia" autocomplete="off"><div class="sres"></div></div>
+ <button class="menu" id="mbtn" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>
+
+<div id="drawer" aria-hidden="true"><div class="pn" role="dialog" aria-label="Menu">
+ <button class="x" id="mx" aria-label="Close menu">×</button>
+ <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search Albanardia" aria-label="Search Albanardia" autocomplete="off"><div class="sres"></div></div>
+ <h6>Maps &amp; transit</h6><a href="map/">Albanardia Map</a><a href="transit/sbtrain.html">SBTrain subway</a><a href="transit/sbmetro.html">SBMetro buses</a><a href="transit/sbexpress.html">ALBExpress rail</a><a href="transit/sbferry.html">SBFerry</a><a href="airport/">SBX Airport</a><a href="transit/liveries/">Liveries</a>
+ <h6>Silverbrooks</h6><a href="gov/">City of Silverbrooks</a><a href="visit/">Visit Silverbrooks</a><a href="sbpl/">Public Library</a><a href="sbps/">Public Schools</a>
+ <h6>News</h6><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a>
+</div></div>
+
+<main>
+<section class="hero"><div class="in">
+ <span class="kick"><i></i>Silverbrooks · Capital of the Windward State</span>
+ <h1>Welcome to Albanardia</h1>
+ <p>A harbor state with a million-person capital, five subway lines, statewide rail and ferries across the bays. Find your way around, catch a train, or see what's happening this week.</p>
+ <div class="cta"><a class="btn p" href="map/">Open the map <span aria-hidden="true">→</span></a><a class="btn s" href="transit/sbtrain.html">Ride SBTrain</a><a class="btn s" href="visit/">Visit Silverbrooks</a></div>
+</div></section>
+
+<div class="rail" id="transit"><div class="in"><div class="row">
+ <a class="sc" href="map/"><span class="ic f" style="background:#22498a"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span>Map</a>
+ <a class="sc" href="transit/sbtrain.html"><span class="ic"><img src="brand/ads/train.png" alt=""></span>SBTrain</a>
+ <a class="sc" href="transit/sbmetro.html"><span class="ic"><img src="brand/ads/metro.png" alt=""></span>SBMetro</a>
+ <a class="sc" href="transit/sbexpress.html"><span class="ic"><img src="brand/ads/albx.png" alt=""></span>ALBExpress</a>
+ <a class="sc" href="transit/sbferry.html"><span class="ic"><img src="brand/ads/ferry.png" alt=""></span>SBFerry</a>
+ <a class="sc" href="airport/"><span class="ic f" style="background:#121417">✈</span>SBX Airport</a>
+ <a class="sc" href="gov/#report"><span class="ic f" style="background:#b5121b;font-weight:800;font-size:15px">311</span>Report it</a>
+</div></div></div>
+
+<div class="in">
+<section class="blk" id="news"><div class="cols">
+ <div>
+  <div class="hd"><h2>Top stories</h2><a href="media/times/">The Times →</a></div>
+  <a class="card lead" href="media/times/"><div class="ph" role="img" aria-label="Map of SBX Airport"></div><div class="tx"><span class="sect">Transportation</span><h3>The D Line Now Ends Under the Terminal as SBX Rebuilds Its Front Door</h3><p>A new transit center, a free shuttle to every concourse and a one-way Terminal Drive change how Silverbrooks gets to its airport.</p><div class="src">The Silverbrooks Times</div></div></a>
+  <div class="card list">
+   <a href="media/university-news/"><div><span class="sect">Rivalry Week</span><h4>Brady the Bruin Brings the Purple and Gold to Silverbrooks</h4></div><span class="chev">›</span></a>
+   <a href="media/times/"><div><span class="sect">Business &amp; the Port</span><h4>Larssen Sailing Bets on Juniors With a Second Build Shed</h4></div><span class="chev">›</span></a>
+   <a href="media/times/"><div><span class="sect">On the Water</span><h4>Frostbite Season Starts Sunday on Silverbrooks Harbor</h4></div><span class="chev">›</span></a>
+   <a href="media/times/"><div><span class="sect">Arts</span><h4>Silverbrooks Ballet Returns to Alexandria Hall With Three New Works</h4></div><span class="chev">›</span></a>
+  </div>
+ </div>
+ <div>
+  <div class="hd"><h2>Service status</h2><a href="gov/#transportation">All alerts →</a></div>
+  <div class="card status">
+   <h3>Transit &amp; streets <small id="upd"></small></h3>
+   <a class="al" href="transit/sbtrain.html"><i class="dot warn"></i><div><b>SBTrain · A Line</b><span>Weekend single-tracking between Linnea Avenue and Elliot Square. Trains every 12 min.</span></div></a>
+   <a class="al" href="transit/sbmetro.html"><i class="dot warn"></i><div><b>SBMetro · R Line</b><span>Detour on Lindgren Ave near McKay University for water main work.</span></div></a>
+   <a class="al" href="transit/sbferry.html"><i class="dot ok"></i><div><b>SBFerry · Harbor</b><span>All ferries on schedule.</span></div></a>
+   <a class="al" href="transit/sbexpress.html"><i class="dot ok"></i><div><b>ALBExpress</b><span>Good service. The X4 is the train for Saturday's Bruins at Mets game.</span></div></a>
+   <a class="al" href="gov/#transportation"><i class="dot warn"></i><div><b>SB Streets · Snow</b><span>First frost expected. Snow route signs going up this week.</span></div></a>
+  </div>
+ </div>
+</div></section>
+
+<section class="blk" id="explore">
+ <div class="hd"><h2>Explore Silverbrooks</h2><a href="visit/">Visitor guide →</a></div>
+ <div class="ex">
+  <a class="ph-card" href="visit/" style="background-image:url(visit/img/city_sat.jpg)"><div><b>The city from above</b><span>Neighborhoods, harbor and bays</span></div></a>
+  <a class="ph-card" href="visit/" style="background-image:url(visit/img/elliot.jpg)"><div><b>Elliot Square</b><span>The city's front yard and transit hub</span></div></a>
+  <a class="ph-card" href="visit/" style="background-image:url(visit/img/pearls.jpg)"><div><b>Pearl's End</b><span>Waterfront, piers, the Oyster Opening</span></div></a>
+  <a class="ph-card" href="visit/" style="background-image:url(visit/img/stbruno.jpg)"><div><b>Saint-Bruno</b><span>Old streets on the north side</span></div></a>
+ </div>
+ <div class="facts">
+  <div><b>1M</b><span>people in Silverbrooks</span></div>
+  <div><b>14</b><span>city neighborhoods</span></div>
+  <div><b>5</b><span>SBTrain lines plus the G streetcar</span></div>
+  <div><b>4</b><span>runways at SBX</span></div>
+ </div>
+</section>
+
+<section class="blk" id="services">
+ <div class="hd"><h2>City services</h2><a href="gov/">silverbrooks.gov →</a></div>
+ <div class="svc">
+  <a class="card" href="gov/"><span class="ic f" style="background:#0b2a5b;font-weight:800;font-size:16px">SB</span><div><b>City of Silverbrooks</b><span>311, council, trash days, permits</span></div></a>
+  <a class="card" href="sbpl/"><span class="ic"><img src="brand/logos/sbpl-mark-web.png" alt=""></span><div><b>Public Library</b><span>14 locations, one card</span></div></a>
+  <a class="card" href="sbps/"><span class="ic"><img src="brand/logos/sbps-star-web.png" alt=""></span><div><b>Public Schools</b><span>Find your school, calendar</span></div></a>
+  <a class="card" href="visit/"><span class="ic f" style="background:#0f7a6b">✦</span><div><b>Visit Silverbrooks</b><span>Top 10, food, events</span></div></a>
+ </div>
+</section>
+
+<section class="blk">
+ <div class="hd"><h2>Watch &amp; browse</h2></div>
+ <div class="med">
+  <a class="card" href="media/reels/"><span class="ic f" style="background:#7a2bd1">▶</span><div><b>Reels</b><span>A day in SB · What makes a Brooker?</span></div></a>
+  <a class="card" href="transit/liveries/"><span class="ic"><img src="brand/ads/transit.png" alt=""></span><div><b>SBTransit liveries</b><span>Train, bus, rail and ferry paint</span></div></a>
+  <a class="card" href="media/university-news/"><span class="ic f" style="background:#c11111;font:700 22px Georgia,serif">U</span><div><b>University News</b><span>Colleges, mascots and scores</span></div></a>
+ </div>
+</section>
 </div>
-
-<h2>City</h2><div class="g">
-<a class="c" href="gov/"><span class="i" style="background:#1d4e89">SB</span><div><b>silverbrooks.gov</b><span>311, council, trash days, alerts</span></div></a>
-<a class="c" href="visit/"><span class="i" style="background:#0f7a6b">✦</span><div><b>Visit Silverbrooks</b><span>Top 10, food, events, itineraries</span></div></a>
-<a class="c" href="sbpl/"><span class="i w"><img src="brand/logos/sbpl-mark-web.png" alt=""></span><div><b>sbpl.org</b><span>Public Library</span></div></a>
-<a class="c" href="sbps/"><span class="i w"><img src="brand/logos/sbps-star-web.png" alt=""></span><div><b>sbps.org</b><span>Public Schools</span></div></a>
-</div>
-
-<h2>Media</h2><div class="g">
-<a class="c" href="media/times/"><span class="i" style="background:#141414;font-family:Georgia,serif">T</span><div><b>The Silverbrooks Times</b><span>Front, Metro, Business, Sports</span></div></a>
-<a class="c" href="media/university-news/"><span class="i" style="background:#c11111;font-family:Georgia,serif">U</span><div><b>University News</b><span>Colleges and mascots</span></div></a>
-<a class="c" href="media/reels/"><span class="i" style="background:#7a2bd1">▶</span><div><b>Reels</b><span>A day in SB · What makes a Brooker?</span></div></a>
-</div>
-
-<p class="tip"><b>Use it like an app:</b> on iPhone tap Share, then Add to Home Screen. On Android tap the menu, then Install app. Every page has a Home button to get back here.</p>
 </main>
+
+<footer><div class="in">
+ <div class="g">
+  <div><div class="fb"><img src="icons/favicon.png" alt="">Albanardia</div><div>The Windward State. Capital: Silverbrooks.</div>
+   <div class="install"><b style="color:#fff">Get the app:</b> on iPhone tap Share, then Add to Home Screen. On Android tap the menu, then Install app.</div></div>
+  <div><h5>Maps &amp; transit</h5><a href="map/">Albanardia Map</a><a href="transit/sbtrain.html">SBTrain</a><a href="transit/sbmetro.html">SBMetro</a><a href="transit/sbexpress.html">ALBExpress</a><a href="transit/sbferry.html">SBFerry</a><a href="airport/">SBX Airport</a></div>
+  <div><h5>Silverbrooks</h5><a href="gov/">City Hall</a><a href="visit/">Visit</a><a href="sbpl/">Library</a><a href="sbps/">Schools</a></div>
+  <div><h5>News</h5><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a></div>
+ </div>
+ <div class="legal">Albanardia is a fictional state and worldbuilding project by Max McCredy. Not a real government website.</div>
+</div></footer>
+
+<script>
+(function(){
+ var d=new Date();
+ var t=document.getElementById('today');if(t)t.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+ var u=document.getElementById('upd');if(u)u.textContent='Updated '+d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+ var IDX=[["Albanardia Map","Interactive state map, directions, transit planner","map/"],["SBTrain","Subway map · A, B, C, D, E lines and G streetcar","transit/sbtrain.html"],["SBMetro","Bus network map","transit/sbmetro.html"],["ALBExpress","Statewide rail map","transit/sbexpress.html"],["SBFerry","Ferry routes","transit/sbferry.html"],["SBX Airport","Silverbrooks Thompson International · gates, runways","airport/"],["SBTransit liveries","Train, bus, rail, ferry paint","transit/liveries/"],["City of Silverbrooks","silverbrooks.gov · 311, council, trash days","gov/"],["Report a problem (311)","Potholes, streetlights, missed pickup","gov/#report"],["Trash day lookup","Pickup by neighborhood","gov/#neighborhoods"],["Mayor & City Council","Districts and meetings","gov/#council"],["Visit Silverbrooks","Top 10, food, events, itineraries","visit/"],["Silverbrooks Public Library","sbpl.org","sbpl/"],["Silverbrooks Public Schools","sbps.org","sbps/"],["The Silverbrooks Times","News, Metro, Business, Sports, Arts, Water","media/times/"],["University News","Colleges, mascots, scores","media/university-news/"],["Reels","A day in SB · What makes a Brooker?","media/reels/"]];
+ function esc(s){return s.replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]})}
+ document.querySelectorAll('.sbox').forEach(function(b){var i=b.querySelector('input'),r=b.querySelector('.sres');
+  function run(){var q=i.value.trim().toLowerCase();if(!q){r.classList.remove('on');r.innerHTML='';return}
+   var m=IDX.filter(function(x){return (x[0]+' '+x[1]).toLowerCase().indexOf(q)>-1});
+   r.innerHTML=m.length?m.map(function(x){return '<a href="'+x[2]+'">'+esc(x[0])+'<small>'+esc(x[1])+'</small></a>'}).join(''):'<a href="map/">Search the map for “'+esc(i.value)+'”<small>Places, streets, addresses</small></a>';r.classList.add('on')}
+  i.addEventListener('input',run);i.addEventListener('focus',run);
+  i.addEventListener('keydown',function(e){if(e.key==='Enter'){var a=r.querySelector('a');if(a)location.href=a.getAttribute('href')}if(e.key==='Escape'){i.value='';run()}});
+  document.addEventListener('click',function(e){if(!b.contains(e.target))r.classList.remove('on')});});
+ var dr=document.getElementById('drawer'),mb=document.getElementById('mbtn');
+ function tog(on){dr.classList.toggle('on',on);dr.setAttribute('aria-hidden',String(!on));mb.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':''}
+ mb.onclick=function(){tog(true)};document.getElementById('mx').onclick=function(){tog(false)};
+ dr.addEventListener('click',function(e){if(e.target===dr||e.target.closest('.pn>a'))tog(false)});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
+})();
+</script>
 <script src="app/app.js"></script>
 </body></html>
