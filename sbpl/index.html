@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Silverbrooks Public Library</title><link rel="manifest" href="../manifest.json"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#14453d">
+<style>
+:root{--a:#14453d;--b:#e3b23c;--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#5d6470;--line:#e1ded7;--soft:#efece5}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#111418;--card:#1a1f26;--ink:#eef0f3;--mut:#9ca5b0;--line:#2a313b;--soft:#222a33}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif}a{color:inherit}
+header{background:var(--a);color:#fff;position:sticky;top:0;z-index:5}
+.hw{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 16px}
+.wm{text-decoration:none;display:flex;align-items:center;gap:12px}.wm .m{min-width:44px;padding:0 7px;height:44px;border-radius:10px;background:var(--b);color:var(--a);display:grid;place-items:center;font:800 15px Inter,sans-serif;letter-spacing:.5px}
+.wm b{display:block;font:600 21px/1.1 Georgia,serif}.wm span{font-size:12px;opacity:.8;letter-spacing:1px;text-transform:uppercase}
+nav{background:rgba(0,0,0,.18)}nav .in{max-width:1120px;margin:0 auto;display:flex;overflow-x:auto;padding:0 8px;scrollbar-width:none}
+nav a{color:#fff;text-decoration:none;padding:12px;font-weight:600;font-size:15px;white-space:nowrap;border-bottom:3px solid transparent}nav a.on{border-bottom-color:var(--b)}
+.btn{display:inline-block;background:var(--b);color:var(--a);border:0;border-radius:8px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}
+.btn.d{background:var(--a);color:#fff}
+main{max-width:1120px;margin:0 auto;padding:24px 16px 60px}section.pg{display:none}section.pg.on{display:block}
+.hero{background:var(--a);color:#fff;border-radius:16px;padding:40px 32px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;border:40px solid var(--b);opacity:.18}
+.hero h1{font:600 42px/1.08 Georgia,serif;margin:0 0 8px;max-width:640px}.hero p{margin:0 0 20px;opacity:.9;max-width:600px}
+.srch{display:flex;gap:8px;max-width:600px;position:relative;z-index:1}.srch input{flex:1;border:0;border-radius:8px;padding:12px 14px;font:inherit}
+h2{font-size:24px;margin:28px 0 12px}h3{margin:0 0 6px;font-size:18px}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}a.c{display:block;text-decoration:none}a.c:hover{border-color:var(--a)}
+.c p{margin:0;color:var(--mut);font-size:14px}.d{font-size:13px;color:var(--mut)}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--soft);margin:0 6px 6px 0}
+.note{border-left:5px solid var(--b);background:var(--card);border-radius:8px;padding:12px 16px;margin:8px 0;border:1px solid var(--line);border-left-width:5px}
+label{display:block;font-weight:600;margin:12px 0 4px;font-size:14px}
+select,input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}th{background:var(--soft)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}
+.ok{background:#e8f6ee;color:#14532d;border-radius:10px;padding:14px;margin-top:12px}
+@media(max-width:760px){.two{grid-template-columns:1fr}.hero{padding:28px 20px}.hero h1{font-size:32px}}
+footer{background:var(--a);color:#fff;padding:28px 16px;font-size:14px}footer .in{max-width:1120px;margin:0 auto}footer p{opacity:.85}
+</style></head><body>
+<header><div class="hw"><a class="wm" href="#home"><div class="m">SBPL</div><div><b>Silverbrooks Public Library</b><span>sbpl.org · since 1796</span></div></a></div><nav><div class="in"><a href="#home" data-p="home">Home</a><a href="#catalog" data-p="catalog">Catalog</a><a href="#locations" data-p="locations">Locations</a><a href="#events" data-p="events">Events</a><a href="#card" data-p="card">Get a Card</a><a href="#digital" data-p="digital">eBooks</a><a href="#about" data-p="about">About</a></div></nav></header>
+<main>
+<section class="pg" id="p-home"><div class="hero"><h1>Your library since 1796.</h1><p>The third-oldest library system in the United States. 14 locations across Silverbrooks, one card for all of metro Thompson County.</p>
+<form class="srch" onsubmit="event.preventDefault();q.value=this.s.value;location.hash='catalog';cat()"><input name="s" placeholder="Search books, movies, history"><button class="btn">Search</button></form></div>
+<div class="g"><a class="c" href="#card"><h3>Get a library card</h3><p>Free for anyone who lives, works or goes to school in Thompson County</p></a>
+<a class="c" href="#locations"><h3>Locations &amp; hours</h3><p>Central Library plus 13 neighborhood branches</p></a>
+<a class="c" href="#events"><h3>Events</h3><p>Story times, workshops, tours</p></a>
+<a class="c" href="#digital"><h3>eBooks &amp; streaming</h3><p>Libby, Kanopy, newspapers</p></a></div>
+<h2>This week</h2><div class="g" id="hev"></div></section>
+<section class="pg" id="p-catalog"><h2>Catalog</h2><div class="c"><label for="q">Search the catalog</label><input id="q" oninput="cat()" placeholder="Title, author or subject"><div id="cres" style="margin-top:12px"></div></div></section>
+<section class="pg" id="p-locations"><h2>Locations &amp; hours</h2><div class="g" id="locs"></div></section>
+<section class="pg" id="p-events"><h2>Events</h2><table><thead><tr><th>Date</th><th>Event</th><th>Where</th><th>For</th></tr></thead><tbody id="evt"></tbody></table></section>
+<section class="pg" id="p-card"><h2>Get a library card</h2><div class="two"><div class="c">
+<label>Full name</label><input id="cn"><label>Home branch</label><select id="cb"></select>
+<p class="d" style="margin-top:12px">Fictional demo. Nothing is sent anywhere.</p><button class="btn d" style="margin-top:8px" onclick="card()">Get my card</button><div id="cok"></div></div>
+<div class="c"><h3>Who can get a card</h3><p>Anyone who lives, works or studies in Thompson County, including Marisfield, Whilliker, Evansville and the northwest suburbs. Your SBPL card works at all 14 locations. The Thompson County Library is a separate system.</p></div></div></section>
+<section class="pg" id="p-digital"><h2>eBooks &amp; streaming</h2><div class="g">
+<div class="c"><h3>Libby</h3><p>eBooks and audiobooks on your phone.</p></div><div class="c"><h3>Kanopy</h3><p>Films and documentaries.</p></div>
+<div class="c"><h3>The Silverbrooks Times archive</h3><p>Every issue, searchable, back to the first edition.</p></div><div class="c"><h3>Albanardia Digital Collection</h3><p>Maps, photos and letters from the colonial era to today.</p></div></div></section>
+<section class="pg" id="p-about"><h2>About SBPL</h2><div class="c"><p style="color:var(--ink);font-size:16px">Silverbrooks Public Library opened in 1796, making it the third-oldest library system in the United States and one of the biggest. It serves metro Thompson County from the Central Library downtown and 13 neighborhood branches. Its local history room holds the records of the Swedish and French settlers who built the city.</p></div></section></main>
+<footer><div class="in"><b>Silverbrooks Public Library</b><p>Part of the <a href="../">Albanardia</a> worldbuilding project. A fictional organization in the fictional city of Silverbrooks, AB. See also <a href="../gov/">silverbrooks.gov</a>.</p></div></footer>
+<script>const DATA={"br": [{"n": "Central Library", "h": "Downtown", "a": "Downtown, near Elliot Square", "hrs": "Mon–Thu 9–9 · Fri–Sat 9–6 · Sun 12–6", "x": "Rare books, Albanardia history room, maker lab"}, {"n": "East Harbor Branch", "h": "East Harbor", "a": "East Harbor", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": "Opens onto the East Harbor Center promenade"}, {"n": "Pearl's End Branch", "h": "Pearl's End", "a": "Pearl's End", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": "Maritime and sailing collection"}, {"n": "Jude-Mayhen Branch", "h": "Jude-Mayhen", "a": "Jude-Mayhen", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": ""}, {"n": "Ulvaeus Branch", "h": "Ulvaeus", "a": "Ulvaeus", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": ""}, {"n": "Saint-Bruno Branch", "h": "Saint-Bruno", "a": "Saint-Bruno", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": "French-language collection"}, {"n": "Château-du-Pierre Branch", "h": "Château-du-Pierre", "a": "Château-du-Pierre", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": ""}, {"n": "Saint-Paris Branch", "h": "Saint-Paris", "a": "Saint-Paris", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": ""}, {"n": "Farsgod Branch", "h": "Farsgod", "a": "Farsgod", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": ""}, {"n": "Westbrook Branch", "h": "Westbrook", "a": "Westbrook", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": ""}, {"n": "Lindgren Heights Branch", "h": "Lindgren Heights", "a": "Lindgren Heights", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": "Health sciences, next to the medical district"}, {"n": "Beaulieu Branch", "h": "Beaulieu", "a": "Beaulieu", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": ""}, {"n": "Old Mill Branch", "h": "Old Mill", "a": "Old Mill", "hrs": "Tue–Thu 11–8 · Fri–Sat 10–6 · Sun 1–5", "x": "In a converted 1840s mill office"}, {"n": "Nygård Branch", "h": "Nygård", "a": "Nygård", "hrs": "Mon–Wed 10–8 · Thu–Sat 10–6 · Sun closed", "x": ""}], "bk": [["Moby-Dick", "Herman Melville", "Fiction", "Available"], ["Pride and Prejudice", "Jane Austen", "Fiction", "Checked out"], ["The Count of Monte Cristo", "Alexandre Dumas", "Fiction", "Available"], ["Treasure Island", "Robert Louis Stevenson", "Fiction", "Available"], ["Les Misérables", "Victor Hugo", "Fiction", "On hold shelf"], ["The Swedish Settlers of the Wellington", "SBPL Local History", "Albanardia History", "Library use only"], ["Windward: A History of Albanardia", "SBPL Local History", "Albanardia History", "Available"], ["Learn to Sail on Silverbrooks Harbor", "City of Silverbrooks Parks", "Sports", "Available"], ["The Elliot McKay Years", "SBPL Local History", "Albanardia History", "Checked out"], ["Harbor Chowder and Other Recipes", "Foundry Hall Cooks", "Cooking", "Available"], ["Frankenstein", "Mary Shelley", "Fiction", "Available"], ["Twenty Thousand Leagues Under the Seas", "Jules Verne", "Fiction", "Available"], ["Knots for Sailors", "Albanardia Department of Marine", "Sports", "Available"], ["The Subway at 1897", "NETA Archives", "Albanardia History", "Library use only"]], "ev": [["Sat, Nov 7", "Central Library", "SBPL 230th birthday open house", "All ages"], ["Tue, Nov 10", "Saint-Bruno Branch", "Story time en français", "Kids 0–5"], ["Wed, Nov 11", "Pearl's End Branch", "Sailing knots workshop", "Teens & adults"], ["Thu, Nov 12", "Central Library", "Maker lab: 3D printing basics", "Teens"], ["Sat, Nov 14", "Old Mill Branch", "Mill Night lantern-making", "Families"], ["Mon, Nov 16", "Lindgren Heights Branch", "Homework help", "Grades 6–12"], ["Sat, Nov 21", "Central Library", "Albanardia history room tour", "Adults"]]};const PAGES=["home", "catalog", "locations", "events", "card", "digital", "about"];
+function route(){const h=(location.hash||'#home').slice(1),id=PAGES.includes(h)?h:'home';document.querySelectorAll('.pg').forEach(s=>s.classList.toggle('on',s.id=='p-'+id));document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p==id));scrollTo(0,0)}
+addEventListener('hashchange',route);
+const ev=e=>`<div class="c"><div class="d">${e[0]} · ${e[1]}</div><h3 style="margin-top:4px">${e[2]}</h3><span class="tag">${e[3]}</span></div>`;
+hev.innerHTML=DATA.ev.slice(0,3).map(ev).join('');evt.innerHTML=DATA.ev.map(e=>`<tr><td>${e[0]}</td><td><b>${e[2]}</b></td><td>${e[1]}</td><td>${e[3]}</td></tr>`).join('');
+locs.innerHTML=DATA.br.map(b=>`<div class="c"><h3>${b.n}</h3><p>${b.a}</p><p style="margin-top:6px">${b.hrs}</p>${b.x?`<span class="tag" style="margin-top:8px">${b.x}</span>`:''}</div>`).join('');
+cb.innerHTML=DATA.br.map(b=>`<option>${b.n}</option>`).join('');
+function cat(){const s=q.value.toLowerCase().trim();const r=DATA.bk.filter(b=>!s||b.join(' ').toLowerCase().includes(s));
+cres.innerHTML=r.length?`<table><tr><th>Title</th><th>Author</th><th>Subject</th><th>Status</th></tr>${r.map(b=>`<tr><td><b>${b[0]}</b></td><td>${b[1]}</td><td>${b[2]}</td><td>${b[3]}</td></tr>`).join('')}</table>`:'<p>No results.</p>'}cat();
+function card(){cok.innerHTML=`<div class="ok">Welcome, ${cn.value||'reader'}! Your card number is <b>2 1796 ${Math.floor(1e7+Math.random()*9e7)}</b>. Pick it up at ${cb.value}.</div>`}
+route();</script></body></html>
