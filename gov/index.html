@@ -1,0 +1,175 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>City of Silverbrooks</title>
+<link rel="manifest" href="../manifest.json"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#0b2a5b">
+<style>
+:root{--navy:#0b2a5b;--red:#b5121b;--bg:#f5f6f8;--card:#fff;--ink:#14181f;--mut:#5a6472;--line:#dfe3ea;--soft:#eaf0f8}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f141b;--card:#171e28;--ink:#eef2f6;--mut:#9aa6b4;--line:#283241;--soft:#1b2534}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif}
+a{color:inherit}
+.gb{background:#e9edf3;color:#333;font-size:13px;padding:6px 16px;border-bottom:1px solid #d5dbe4}
+.gb b{color:var(--navy)}
+header{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-index:5}
+.hw{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:12px 16px}
+.hw img{height:46px}.sp{flex:1}
+nav{background:var(--navy)}nav .in{max-width:1120px;margin:0 auto;display:flex;overflow-x:auto;padding:0 8px;scrollbar-width:none}
+nav a{color:#fff;text-decoration:none;padding:13px 12px;font-weight:600;font-size:15px;white-space:nowrap;border-bottom:3px solid transparent}
+nav a.on{border-bottom-color:#fff;background:rgba(255,255,255,.08)}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;border:0;border-radius:8px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer}
+.btn.o{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+main{max-width:1120px;margin:0 auto;padding:24px 16px 60px}
+section.pg{display:none}section.pg.on{display:block}
+.hero{background:linear-gradient(120deg,var(--navy),#16407f);color:#fff;border-radius:16px;padding:40px 32px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero h1{font:600 44px/1.05 Georgia,"GFS Baskerville",serif;margin:0 0 8px}.hero p{margin:0 0 20px;opacity:.9;max-width:560px}
+.hero .star{position:absolute;right:-40px;top:-40px;width:300px;opacity:.12}
+.srch{display:flex;gap:8px;max-width:560px}.srch input{flex:1;border:0;border-radius:8px;padding:12px 14px;font:inherit}
+h2{font-size:24px;margin:28px 0 12px}h3{margin:0 0 6px;font-size:18px}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+a.c{display:block;text-decoration:none}a.c:hover{border-color:var(--navy)}
+.c p{margin:0;color:var(--mut);font-size:14px}
+.ic{width:38px;height:38px;border-radius:10px;background:var(--soft);display:grid;place-items:center;margin-bottom:10px;font-size:20px}
+.alert{border-left:5px solid #e0a400;background:var(--card);border-radius:8px;padding:12px 16px;margin:8px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.alert.r{border-left-color:var(--red)}.alert.gr{border-left-color:#1f8a4c}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--soft);margin-right:6px}
+.news .d{font-size:13px;color:var(--mut)}
+label{display:block;font-weight:600;margin:12px 0 4px;font-size:14px}
+select,input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px}th{background:var(--soft)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:760px){.two{grid-template-columns:1fr}.hero{padding:28px 20px}.hero h1{font-size:34px}.hw img{height:38px}}
+svg text{font:600 11px Inter,sans-serif;fill:var(--ink)}
+.res{margin-top:14px}
+footer{background:var(--navy);color:#cfd8e6;padding:28px 16px;font-size:14px}footer .in{max-width:1120px;margin:0 auto}
+.ok{background:#e8f6ee;color:#14532d;border-radius:10px;padding:14px;margin-top:12px}
+</style></head><body>
+<div class="gb">🇺🇸 An official website of the <b>City of Silverbrooks</b>, Albanardia <span style="opacity:.6">(fictional)</span></div>
+<header><div class="hw"><a href="#home"><img src="img/city_sb.png" alt="City of Silverbrooks"></a><div class="sp"></div><a class="btn" href="#report">Report a problem</a></div>
+<nav><div class="in" id="nav"></div></nav></header>
+<main>
+
+<section class="pg" id="p-home">
+<div class="hero"><img class="star" src="img/city_sb.png" style="object-fit:cover;object-position:left;width:300px;height:300px" alt="">
+<h1>Welcome to Silverbrooks</h1><p>Capital of the Windward State. 1,000,000 neighbors, 14 neighborhoods, one harbor.</p>
+<form class="srch" onsubmit="event.preventDefault();go('neighborhoods')"><input placeholder="Search services, e.g. trash day, permits, parking"><button class="btn">Search</button></form></div>
+<div class="g">
+<a class="c" href="#report"><div class="ic">📍</div><h3>Report a problem (311)</h3><p>Potholes, streetlights, graffiti, missed pickup</p></a>
+<a class="c" href="#pay"><div class="ic">💳</div><h3>Pay &amp; Apply</h3><p>Utility bills, parking tickets, permits, licenses</p></a>
+<a class="c" href="#neighborhoods"><div class="ic">🗑️</div><h3>Trash &amp; snow routes</h3><p>Look up pickup days for your neighborhood</p></a>
+<a class="c" href="#transportation"><div class="ic">🚇</div><h3>Transit &amp; streets</h3><p>SBTrain, SBMetro, SBFerry alerts and road work</p></a>
+</div>
+<h2>Service alerts</h2><div id="homealerts"></div>
+<h2>City news</h2><div class="g news" id="homenews"></div>
+</section>
+
+<section class="pg" id="p-pay"><h2>Pay &amp; Apply</h2>
+<div class="g">
+<div class="c"><div class="ic">💧</div><h3>Silverbrooks Water &amp; Power</h3><p>Pay your utility bill or set up autopay.</p></div>
+<div class="c"><div class="ic">🅿️</div><h3>Parking tickets</h3><p>Pay or contest a citation from SB Parking.</p></div>
+<div class="c"><div class="ic">🏗️</div><h3>Building permits</h3><p>Apply for residential and commercial permits.</p></div>
+<div class="c"><div class="ic">⛵</div><h3>Mooring &amp; slip permits</h3><p>City moorings in Hanson Bay and the inner harbor. Boating licenses come from the Albanardia Department of Marine.</p></div>
+<div class="c"><div class="ic">🐕</div><h3>Pet licenses</h3><p>Dogs and cats over 8 weeks old.</p></div>
+<div class="c"><div class="ic">💼</div><h3>Business license</h3><p>Register a business in the City of Silverbrooks.</p></div>
+</div>
+<h2>Permit search</h2>
+<div class="c"><label for="pq">Address or permit number</label><input id="pq" placeholder="e.g. Elliot Square or SB-2026-0412" oninput="permits()"><div class="res" id="pres"></div></div>
+</section>
+
+<section class="pg" id="p-report"><h2>Report a problem (311)</h2>
+<div class="two"><div class="c">
+<label>What's the problem?</label><select id="rt"><option>Pothole</option><option>Streetlight out</option><option>Graffiti</option><option>Missed trash pickup</option><option>Blocked bike lane</option><option>Fallen tree</option><option>Noise</option></select>
+<label>Location</label><input id="rl" placeholder="e.g. Lindgren Ave &amp; 15th St">
+<label>Details</label><textarea id="rd" rows="3" placeholder="Anything that helps the crew find it"></textarea>
+<p style="font-size:13px;color:var(--mut)">This is a fictional demo. Nothing is sent anywhere.</p>
+<button class="btn" onclick="file311()">Submit report</button><div id="rok"></div></div>
+<div><h3>Recent reports near you</h3><table><thead><tr><th>Type</th><th>Location</th><th>Status</th></tr></thead><tbody id="r311"></tbody></table></div></div>
+</section>
+
+<section class="pg" id="p-neighborhoods"><h2>Neighborhoods</h2>
+<div class="two"><div class="c"><label for="hs">Pick your neighborhood</label><select id="hs" onchange="lookup()"></select><div class="res" id="hres"></div></div>
+<div class="c"><h3>Council districts</h3><svg id="dmap" viewBox="0 0 440 300" style="width:100%"></svg></div></div>
+</section>
+
+<section class="pg" id="p-council"><h2>Mayor &amp; City Council</h2>
+<div class="c" style="display:flex;gap:16px;align-items:center;margin-bottom:16px"><div class="ic" style="width:64px;height:64px;font-size:30px">🏛️</div><div><h3>Mayor Camille Rosenberg</h3><p>Office of the Mayor · City Hall, Elliot Square · Silverbrooks, AB</p></div></div>
+<div class="g" id="cgrid"></div>
+<h2>Upcoming meetings</h2><table><thead><tr><th>Date</th><th>Meeting</th><th>Topic</th></tr></thead><tbody>
+<tr><td>Tue, Nov 10</td><td>Full Council</td><td>2027 budget hearing</td></tr>
+<tr><td>Thu, Nov 12</td><td>Transportation Committee</td><td>SBMetro R Line bus lanes on Lindgren Ave</td></tr>
+<tr><td>Mon, Nov 16</td><td>Housing Committee</td><td>Rents in Old Ballard and New Stockholm</td></tr>
+<tr><td>Tue, Nov 24</td><td>Full Council</td><td>Harbor Week 2027 permits</td></tr></tbody></table>
+</section>
+
+<section class="pg" id="p-transportation"><h2>Transportation</h2>
+<p>Transit is run by the <b>Northeastern Transit Authority (NETA)</b>. City streets, bike lanes and parking are run by SB Streets.</p>
+<div id="talerts"></div>
+<div class="g" style="margin-top:12px">
+<a class="c" href="../map/"><div class="ic">🗺️</div><h3>Trip planner</h3><p>Directions by car, transit or on foot</p></a>
+<a class="c" href="../transit/sbtrain.html"><div class="ic">🚇</div><h3>SBTrain map</h3><p>Subway lines and stations</p></a>
+<a class="c" href="../transit/sbmetro.html"><div class="ic">🚌</div><h3>SBMetro map</h3><p>Bus network</p></a>
+<a class="c" href="../transit/sbferry.html"><div class="ic">⛴️</div><h3>SBFerry map</h3><p>Harbor and bay ferries</p></a>
+</div>
+<h2>Snow routes</h2><p>When the city declares a snow emergency, cars must be moved off marked snow routes within 2 hours. Main arterials like Lindgren Ave and Carscaddon Avenue are always snow routes. Check your street on the Neighborhoods page.</p>
+</section>
+
+<section class="pg" id="p-parks"><h2>Parks &amp; Recreation</h2>
+<div class="g">
+<div class="c"><div class="ic">🌊</div><h3>Harbor Waterfront</h3><p>The promenade from Pearl's End to East Harbor. Busiest during Harbor Week.</p></div>
+<div class="c"><div class="ic">⛲</div><h3>Elliot Square</h3><p>The city's front yard, outside City Hall. Holiday lights from Lucia to New Year's.</p></div>
+<div class="c"><div class="ic">⛵</div><h3>Learn to Sail</h3><p>City-run youth and adult sailing lessons on the harbor, May to September.</p></div>
+<div class="c"><div class="ic">⛸️</div><h3>Rinks &amp; pools</h3><p>Public skate and lap swim schedules at city recreation centers.</p></div>
+</div></section>
+
+<section class="pg" id="p-news"><h2>News</h2><div class="g news" id="allnews"></div></section>
+</main>
+<footer><div class="in"><img src="img/city_sb.png" alt="" style="height:40px;background:#fff;border-radius:6px;padding:4px 8px"><p>City Hall · Elliot Square · Silverbrooks, AB · Call 311</p>
+<p style="opacity:.7">A fictional city government, part of the <a href="../">Albanardia</a> worldbuilding project. Not a real government website.</p></div></footer>
+<script>
+const DATA={"D": [{"n": 1, "hoods": ["Downtown", "Jude-Mayhen"], "cm": "Ana Sjöberg", "pres": false, "trash": "Monday", "recy": "A"}, {"n": 2, "hoods": ["East Harbor", "Farsgod"], "cm": "Marcus Delacroix", "pres": false, "trash": "Tuesday", "recy": "B"}, {"n": 3, "hoods": ["Pearl's End", "Saint-Paris"], "cm": "Hannah Okafor", "pres": true, "trash": "Wednesday", "recy": "A"}, {"n": 4, "hoods": ["Ulvaeus", "Westbrook"], "cm": "Julien Martel", "pres": false, "trash": "Thursday", "recy": "B"}, {"n": 5, "hoods": ["Saint-Bruno", "Nygård"], "cm": "Erik Nyström", "pres": false, "trash": "Friday", "recy": "A"}, {"n": 6, "hoods": ["Château-du-Pierre", "Lindgren Heights"], "cm": "Rosa Whitfield", "pres": false, "trash": "Monday", "recy": "B"}, {"n": 7, "hoods": ["Beaulieu", "Old Mill"], "cm": "Devon Park", "pres": false, "trash": "Tuesday", "recy": "A"}], "pos": {"Downtown": [1090, 677], "East Harbor": [1114, 708], "Pearl's End": [1082, 726], "Jude-Mayhen": [1068, 659], "Ulvaeus": [1022, 706], "Saint-Bruno": [1102, 650], "Château-du-Pierre": [1042, 670], "Saint-Paris": [1062, 710], "Farsgod": [1124, 738], "Westbrook": [1008, 678], "Lindgren Heights": [1030, 650], "Beaulieu": [1004, 658], "Old Mill": [1040, 733], "Nygård": [1062, 644]}};
+const PAGES=[["home","Home"],["pay","Pay & Apply"],["report","311"],["neighborhoods","Neighborhoods"],["council","Council"],["transportation","Transportation"],["parks","Parks"],["news","News"]];
+document.getElementById('nav').innerHTML=PAGES.map(p=>`<a href="#${p[0]}" data-p="${p[0]}">${p[1]}</a>`).join('');
+function go(p){location.hash=p}
+function route(){const h=(location.hash||'#home').slice(1);const id=PAGES.some(p=>p[0]==h)?h:'home';
+document.querySelectorAll('.pg').forEach(s=>s.classList.toggle('on',s.id=='p-'+id));
+document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p==id));window.scrollTo(0,0)}
+addEventListener('hashchange',route);
+const ALERTS=[["r","SBTrain","A Line","Weekend single-tracking between Linnea Avenue and Elliot Square. Trains every 12 min."],
+["","SBMetro","R Line","Detour on Lindgren Ave near McKay University for water main work."],
+["gr","SBFerry","Harbor","All ferries on schedule. Midnight horns resume Friday."],
+["","SB Streets","Snow","First frost expected. Snow route signs going up this week."]];
+const al=a=>`<div class="alert ${a[0]}"><span class="tag">${a[1]}</span><b>${a[2]}</b> · ${a[3]}</div>`;
+document.getElementById('homealerts').innerHTML=ALERTS.slice(0,3).map(al).join('');
+document.getElementById('talerts').innerHTML=ALERTS.map(al).join('');
+const NEWS=[["Nov 2","Mayor proposes 2027 budget with more harbor ferry service","City Hall"],
+["Oct 30","Lantern Night draws record crowds to Elliot Square","Events"],
+["Oct 28","Oyster Opening returns to Pearl's End this weekend","Events"],
+["Oct 21","SBPL turns 230: the library's birthday week","Library"],
+["Oct 15","New protected bike lanes on Lindgren Ave","Streets"],
+["Oct 9","Council hearing on rents set for November 16","Council"]];
+const nc=n=>`<div class="c"><div class="d">${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></div>`;
+document.getElementById('homenews').innerHTML=NEWS.slice(0,3).map(nc).join('');document.getElementById('allnews').innerHTML=NEWS.map(nc).join('');
+const R311=[["Pothole","Old Taylor St & 9th Ave","In progress"],["Streetlight out","Westbrook Ave","Fixed"],["Graffiti","Pearl's End pier","Open"],["Missed trash pickup","Saint-Bruno","Fixed"]];
+const r311=()=>document.getElementById('r311').innerHTML=R311.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');r311();
+function file311(){const t=rt.value,l=rl.value||'Location not given';R311.unshift([t,l,'Open']);r311();
+document.getElementById('rok').innerHTML=`<div class="ok">Thanks. Your report is <b>SR-${Math.floor(100000+Math.random()*900000)}</b>. A crew usually responds within 3 business days.</div>`;rl.value='';rd.value=''}
+const PERMITS=[["SB-2026-0412","Elliot Square","Holiday market","Approved"],["SB-2026-0388","156 S Endicott St","Deck rebuild","Under review"],["SB-2026-0451","Pearl's End pier","Harbor Week stage","Approved"],["SB-2026-0467","Lindgren Ave & 15th St","Sidewalk cafe","Under review"],["SB-2026-0473","East Harbor Center","Skybridge repair","Issued"]];
+function permits(){const q=pq.value.toLowerCase().trim();const r=q?PERMITS.filter(p=>p.join(' ').toLowerCase().includes(q)):[];
+pres.innerHTML=!q?'':r.length?`<table><tr><th>Permit</th><th>Address</th><th>Work</th><th>Status</th></tr>${r.map(p=>`<tr>${p.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</table>`:'<p>No permits found.</p>'}
+const H2D={};DATA.D.forEach(d=>d.hoods.forEach(h=>H2D[h]=d));
+const hs=document.getElementById('hs');hs.innerHTML=Object.keys(H2D).sort().map(h=>`<option>${h}</option>`).join('');
+function lookup(){const h=hs.value,d=H2D[h];hres.innerHTML=`<table>
+<tr><th>Trash &amp; compost</th><td>Every ${d.trash}</td></tr><tr><th>Recycling</th><td>${d.trash}, Week ${d.recy}</td></tr>
+<tr><th>Council district</th><td>District ${d.n} · ${d.cm}</td></tr><tr><th>Snow routes</th><td>Main arterials through ${h}</td></tr></table>`;drawMap(d.n)}
+const COL=['#0b2a5b','#b5121b','#1f8a4c','#c77800','#6b3fa0','#0f7c8c','#7a5230'];
+function drawMap(sel){const P=DATA.pos,xs=Object.values(P).map(p=>p[0]),ys=Object.values(P).map(p=>p[1]);
+const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+const X=x=>30+(x-x0)/(x1-x0)*300,Y=y=>30+(y-y0)/(y1-y0)*240;let s='';
+DATA.D.forEach((d,i)=>{const [a,b]=d.hoods.map(h=>P[h]);s+=`<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${COL[i]}" stroke-width="${sel==d.n?6:3}" stroke-opacity=".5"/>`});
+DATA.D.forEach((d,i)=>d.hoods.forEach(h=>{const p=P[h];s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${sel==d.n?10:7}" fill="${COL[i]}"/><text x="${X(p[0])+12}" y="${Y(p[1])+4}">${h} (${d.n})</text>`}));
+dmap.innerHTML=s}
+document.getElementById('cgrid').innerHTML=DATA.D.map((d,i)=>`<div class="c"><span class="tag" style="background:${COL[i]};color:#fff">District ${d.n}</span><h3 style="margin-top:8px">${d.cm}${d.pres?' · Council President':''}</h3><p>${d.hoods.join(' · ')}</p></div>`).join('');
+hs.value='Downtown';lookup();route();
+</script></body></html>
