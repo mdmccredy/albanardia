@@ -1,0 +1,272 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Larssen Sailcraft | Sailboats for every sailor</title>
+<meta name="description" content="Larssen Sailcraft North America builds the SK400, Pulse XL and Bauer in Foxford, Albanardia.">
+<link rel="manifest" href="../manifest.json"><link rel="icon" href="img/logo.png"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#0e2a66">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e2a66;--navy2:#0a1f4d;--red:#c8102e;--ink:#111418;--mut:#5d6672;--line:#e3e6ea;--bg:#fff;--soft:#f3f5f8;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#eef1f5;--mut:#9aa4b1;--line:#2a323d;--bg:#0d1117;--soft:#151b23;--card:#151b23}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+a{color:inherit}img{max-width:100%}
+.in{max-width:1240px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
+h1,h2,h3,.cond{font-family:"Barlow Condensed",Barlow,sans-serif;text-transform:uppercase;letter-spacing:.3px;line-height:1}
+/* top bar */
+.tb{background:var(--navy2);color:#c9d3e6;font-size:13px;padding-top:env(safe-area-inset-top)}.tb .in{display:flex;gap:16px;align-items:center;min-height:34px}
+.tb a{text-decoration:none}.tb .sp{flex:1}.tb b{color:#fff}
+/* header */
+header{position:sticky;top:0;z-index:30;background:var(--card);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;gap:22px;min-height:70px}
+.logo{display:block;height:34px}.logo img{height:100%;width:auto}
+@media (prefers-color-scheme:dark){.logo img{filter:invert(1) hue-rotate(180deg) brightness(1.15)}}
+nav.mn{display:flex;gap:2px;flex:1}
+nav.mn>div{position:relative}
+nav.mn>div>a{display:block;padding:24px 12px;font-weight:700;text-decoration:none;font-size:15px;border-bottom:3px solid transparent}
+nav.mn>div:hover>a,nav.mn>div>a.on{border-bottom-color:var(--red)}
+.mega{display:none;position:absolute;left:0;top:100%;background:var(--card);border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.14);padding:14px;min-width:220px;border-radius:0 0 10px 10px}
+nav.mn>div:hover .mega{display:block}.mega a{display:block;padding:8px 10px;text-decoration:none;border-radius:6px;font-weight:500}.mega a:hover{background:var(--soft);color:var(--red)}
+.hbtn{display:flex;gap:8px;align-items:center;margin-left:auto}
+.ib{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;text-decoration:none}
+.ib svg{width:20px;height:20px}
+.mbtn{display:none}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px;border:0;font:700 15px Barlow,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.5px}
+.btn.o{background:transparent;border:2px solid currentColor;color:inherit}.btn.n{background:var(--navy)}
+.btn:active{transform:scale(.97)}
+/* drawer */
+#dr{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);display:none}#dr.on{display:block}
+#dr .p{position:absolute;right:0;top:0;bottom:0;width:min(88vw,360px);background:var(--card);overflow:auto;padding:calc(18px + env(safe-area-inset-top)) 20px 40px}
+#dr h6{margin:18px 0 4px;font:800 13px "Barlow Condensed";letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+#dr a{display:block;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+/* hero */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero .stripes{position:absolute;right:-120px;top:-160px;width:620px;height:620px;border-radius:50%;border:56px solid var(--red);opacity:.9}
+.hero .stripes::before{content:"";position:absolute;inset:-112px;border-radius:50%;border:56px solid #2a55b8}
+.hero .in{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:center;padding-top:56px;padding-bottom:0}
+.kick{font:700 14px Barlow;letter-spacing:2px;text-transform:uppercase;color:#ffb3bf}
+.hero h1{font-size:clamp(48px,7.4vw,96px);margin:12px 0 16px}.hero h1 em{font-style:normal;color:#ff4d68}
+.hero p{font-size:19px;color:#d4dcec;max-width:44ch;margin:0 0 26px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;padding-bottom:56px}
+.hero .boats{display:flex;align-items:flex-end;justify-content:center;gap:0;position:relative;align-self:end}
+.hero .boats img{height:clamp(220px,30vw,380px);width:auto;filter:drop-shadow(0 12px 18px rgba(0,0,0,.35));margin-left:-34px}
+.hero .boats img:first-child{margin-left:0}
+.water{height:46px;background:linear-gradient(#123a8a,#0b2459);position:relative}
+.water::before{content:"";position:absolute;left:0;right:0;top:-1px;height:12px;background:radial-gradient(14px 8px at 50% 0,var(--navy) 98%,transparent) 0 0/28px 12px repeat-x}
+/* sections */
+section{padding:64px 0}section.alt{background:var(--soft)}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.sh h2{font-size:clamp(34px,4.6vw,52px);margin:0}.sh p{margin:6px 0 0;color:var(--mut);max-width:60ch}
+.sh .lnk{font-weight:700;color:var(--red);text-decoration:none;text-transform:uppercase;font-size:14px;letter-spacing:.8px}
+/* range tiles */
+.rng{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rt{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff;padding:20px;isolation:isolate}
+.rt img{position:absolute;right:-10px;top:14px;height:72%;width:auto;z-index:-1;opacity:.95}
+.rt::after{content:"";position:absolute;inset:0;z-index:-2}
+.rt.race::after{background:linear-gradient(160deg,#c8102e,#7d0a1c)}.rt.train::after{background:linear-gradient(160deg,#2a55b8,#0e2a66)}
+.rt.adv::after{background:linear-gradient(160deg,#0f7c86,#084950)}.rt.beach::after{background:linear-gradient(160deg,#e98a14,#a65703)}
+.rt h3{font-size:40px;margin:0}.rt span{font-size:14px;opacity:.9}.rt:hover img{transform:translateY(-6px);transition:.3s}
+/* boat cards */
+.bc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.boat{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column}
+.boat .ph{background:linear-gradient(#eef2f8,#dfe6f1);height:300px;display:grid;place-items:end center;padding-top:14px;position:relative}
+@media (prefers-color-scheme:dark){.boat .ph{background:linear-gradient(#1c2532,#141b25)}}
+.boat .ph img{height:96%;width:auto}
+.tagz{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}.tg{font:700 11.5px Barlow;letter-spacing:1px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:999px;padding:3px 10px}.tg.r{background:var(--red)}
+.boat .tx{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+.boat h3{font-size:34px;margin:0}.boat p{color:var(--mut);margin:6px 0 14px;flex:1}
+.boat .row{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.boat .row small{color:var(--mut);font-weight:500;display:block}
+/* strip */
+.strip{background:var(--navy);color:#fff}.strip .in{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.strip div{padding:26px 18px;border-left:1px solid rgba(255,255,255,.14)}.strip div:first-child{border-left:0}
+.strip b{display:block;font:800 30px "Barlow Condensed"}.strip span{color:#c9d3e6;font-size:14px}
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.story .art{background:var(--navy);border-radius:18px;aspect-ratio:4/3;display:grid;place-items:center;position:relative;overflow:hidden}
+.story .art img{width:72%;filter:brightness(0) invert(1)}
+.story .art::before{content:"";position:absolute;width:140%;height:140%;left:-20%;top:40%;border-radius:50%;border:30px solid var(--red);opacity:.85}
+.story h2{font-size:clamp(34px,4.6vw,52px);margin:0 0 14px}.story p{color:var(--mut);font-size:17px}
+/* departments (WCS style) */
+.dep{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.dp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 12px;text-align:center;text-decoration:none;font-weight:700}
+.dp:hover{border-color:var(--red);color:var(--red)}.dp i{display:grid;place-items:center;width:52px;height:52px;margin:0 auto 10px;border-radius:50%;background:var(--soft);font-style:normal;font-size:24px}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.vals div{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.vals b{display:block}.vals span{color:var(--mut);font-size:14px}.vals i{font-style:normal;font-size:24px}
+/* products */
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pr{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.pr .pi{height:150px;background:var(--soft);display:grid;place-items:center;font-size:46px}
+.pr .pt{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}.pr .pt small{color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11.5px;letter-spacing:.8px}
+.pr .pt b{display:block;margin:2px 0 8px;line-height:1.25;flex:1}.pr .pt .pp{display:flex;justify-content:space-between;align-items:center}
+.pr .pt .pp span{font:800 20px "Barlow Condensed"}.add{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 12px;font:700 13px Barlow;cursor:pointer}.add:hover{border-color:var(--red);color:var(--red)}
+.fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.fbar button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:600 14px Barlow;cursor:pointer}.fbar button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* boat page */
+.bp-hero{background:var(--soft);border-bottom:1px solid var(--line)}.bp-hero .in{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding-top:30px;padding-bottom:30px}
+.bp-hero .art{display:grid;place-items:center;min-height:380px}.bp-hero .art img{max-height:460px;width:auto}
+.crumb{font-size:14px;color:var(--mut);margin-bottom:10px}.crumb a{color:var(--mut)}
+.bp-hero h1{font-size:clamp(56px,8vw,110px);margin:4px 0 10px}.bp-hero p.lead{font-size:19px;color:var(--mut);max-width:46ch}
+.price{display:flex;align-items:baseline;gap:10px;margin:18px 0}.price b{font:800 38px "Barlow Condensed"}.price span{color:var(--mut)}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.st{width:100%;border-collapse:collapse}.st td{padding:11px 0;border-bottom:1px solid var(--line)}.st td:last-child{text-align:right;font-weight:700}
+.feat{display:grid;gap:12px}.feat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}.feat b{display:block;margin-bottom:2px}.feat span{color:var(--mut)}
+.pkg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.pk{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--card)}.pk.hot{border:2px solid var(--red)}
+.pk h3{font-size:28px;margin:0 0 4px}.pk .pz{font:800 30px "Barlow Condensed";margin:8px 0}.pk ul{padding-left:18px;color:var(--mut);margin:10px 0 0}
+/* text pages */
+.tp{max-width:860px}.tp h1{font-size:clamp(44px,6vw,72px);margin:0 0 16px}.tp p{font-size:17px;color:var(--mut)}
+.dl{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.dl div{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--card)}.dl b{display:block;font-size:18px}.dl span{color:var(--mut);display:block}
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.nw{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.nw .ni{height:170px;background:var(--navy);display:grid;place-items:center;overflow:hidden}.nw .ni img{height:92%;width:auto}
+.nw .nt{padding:16px}.nw small{color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:12px}.nw h3{font-size:26px;margin:6px 0 8px}.nw p{color:var(--mut);margin:0}
+form.ct{display:grid;gap:12px;max-width:620px}form.ct input,form.ct select,form.ct textarea{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:80}.toast.on{opacity:1}
+/* footer */
+footer{background:var(--navy2);color:#c9d3e6;padding:48px 0 calc(90px + env(safe-area-inset-bottom))}
+footer .g{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:24px}footer .g>*{min-width:0}footer h5{color:#fff;font:800 16px "Barlow Condensed";letter-spacing:1px;text-transform:uppercase;margin:0 0 10px}
+footer a{display:block;text-decoration:none;padding:3px 0;color:#c9d3e6}footer a:hover{color:#fff}
+footer .fl img{height:30px;filter:brightness(0) invert(1)}footer .lg{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:16px;font-size:13px;display:flex;gap:16px;flex-wrap:wrap}
+.news-in{display:flex;gap:8px;margin-top:12px}.news-in input{flex:1;min-width:0;font:inherit;padding:10px 12px;border-radius:999px;border:0}
+.view{display:none}.view.on{display:block}
+@media (max-width:1000px){nav.mn{display:none}.mbtn{display:grid}.rng{grid-template-columns:1fr 1fr}.bc{grid-template-columns:1fr 1fr}.dep{grid-template-columns:repeat(3,1fr)}.pg{grid-template-columns:repeat(2,1fr)}.news{grid-template-columns:1fr 1fr}footer .g{grid-template-columns:1fr 1fr}.pkg{grid-template-columns:1fr}}
+@media (max-width:720px){.hero .in,.story,.bp-hero .in,.specs{grid-template-columns:1fr}.hero .in{padding-top:36px}.hero .cta{padding-bottom:10px}.hero .stripes{width:420px;height:420px;right:-200px;top:-120px}
+ .bc,.news,.vals,.dl{grid-template-columns:1fr}.strip .in{grid-template-columns:1fr 1fr}.strip div:nth-child(3){border-left:0}.strip div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
+ .rt{min-height:200px;padding:14px}.rt h3{font-size:26px}footer .g{grid-template-columns:1fr 1fr}footer .g .fl{grid-column:1/-1}.tb .in span:first-child{font-size:12px}section{padding:44px 0}.tb .hide{display:none}.hide-s{display:none!important}.bp-hero .art{min-height:280px}.bp-hero .art img{max-height:320px}.hero .boats img{height:210px;margin-left:-26px}}
+</style></head><body>
+
+<div class="tb"><div class="in"><span><b>Larssen Sailcraft North America</b> · Foxford, Albanardia</span><span class="sp"></span><a class="hide" href="#/dealers">Find a dealer</a><a class="hide" href="#/contact">(302) 555-0144</a><a href="#/parts">Parts &amp; Spares</a></div></div>
+
+<header><div class="in">
+ <a class="logo" href="#/" aria-label="Larssen home"><img src="img/logo.png" alt="Larssen"></a>
+ <nav class="mn" aria-label="Main">
+  <div><a href="#/range">Boats</a><div class="mega"><a href="#/range/race">Race</a><a href="#/range/training">Training</a><a href="#/range/adventure">Adventure</a><a href="#/range/beach">Beach</a><a href="#/range">All Boats</a></div></div>
+  <div><a href="#/pricing">Pricing</a><div class="mega"><a href="#/pricing">Boat Pricing</a><a href="#/used">Used Boats</a><a href="#/pricing">Club &amp; Fleet Orders</a></div></div>
+  <div><a href="#/parts">Parts &amp; Spares</a><div class="mega"><a href="#/parts/sails">Sails</a><a href="#/parts/spars">Spars</a><a href="#/parts/foils">Foils</a><a href="#/parts/hardware">Hardware &amp; Line</a><a href="#/parts/covers">Covers &amp; Trolleys</a><a href="#/parts/apparel">Apparel</a></div></div>
+  <div><a href="#/about">About Us</a><div class="mega"><a href="#/about">Our Story</a><a href="#/dealers">Worldwide Dealers</a><a href="#/classes">Class Associations</a><a href="#/about">Sustainability</a></div></div>
+  <div><a href="#/support">Support</a><div class="mega"><a href="#/support">Customer Care</a><a href="#/support">Manuals &amp; Rigging Guides</a><a href="#/support">Warranty</a></div></div>
+  <div><a href="#/news">Stories</a></div>
+ </nav>
+ <div class="hbtn"><a class="ib" href="#/parts" aria-label="Shop parts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 9H8z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg></a>
+ <a class="btn hide-s" href="#/contact" style="padding:10px 18px">Get in touch</a>
+ <button class="ib mbtn" id="mb" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+</div></header>
+
+<div id="dr"><div class="p">
+ <h6>Boats</h6><a href="#/range/race">Race</a><a href="#/range/training">Training</a><a href="#/range/adventure">Adventure</a><a href="#/range/beach">Beach</a><a href="#/range">All boats</a>
+ <h6>Buy</h6><a href="#/pricing">Boat pricing</a><a href="#/used">Used boats</a><a href="#/parts">Parts &amp; spares</a><a href="#/dealers">Find a dealer</a>
+ <h6>Larssen</h6><a href="#/about">Our story</a><a href="#/classes">Class associations</a><a href="#/news">Stories</a><a href="#/support">Support</a><a href="#/contact">Get in touch</a>
+ <h6>Albanardia</h6><a href="../">Albanardia.gov home</a>
+</div></div>
+
+<main id="app"></main>
+
+<footer><div class="in">
+ <div class="g">
+  <div class="fl"><img src="img/logo.png" alt="Larssen"><p style="margin:12px 0 0">Sailboats for every sailor. Designed and built at 320 SE Marlin St, Foxford, AB 19926.</p>
+   <div class="news-in"><input type="email" placeholder="Email for class news" aria-label="Email"><button class="btn" style="padding:10px 16px" onclick="toast('Thanks! You\'re on the list.')">Join</button></div></div>
+  <div><h5>Boats</h5><a href="#/boat/sk400">SK400</a><a href="#/boat/pulse-xl">Pulse XL</a><a href="#/boat/bauer">Bauer</a><a href="#/range">The range</a><a href="#/used">Used boats</a></div>
+  <div><h5>Shop</h5><a href="#/parts/sails">Sails</a><a href="#/parts/spars">Spars</a><a href="#/parts/foils">Foils</a><a href="#/parts/hardware">Hardware &amp; line</a><a href="#/parts/apparel">Apparel</a></div>
+  <div><h5>Company</h5><a href="#/about">Our story</a><a href="#/dealers">Dealers</a><a href="#/classes">Class associations</a><a href="#/support">Support</a><a href="#/contact">Contact</a></div>
+ </div>
+ <div class="lg"><span>© 2026 Larssen Sailcraft North America, Inc.</span><a href="#/support">Terms</a><a href="#/support">Privacy</a><a href="#/support">Warranty</a><a href="../">Albanardia.gov</a></div>
+</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const BOATS=[
+ {id:'sk400',name:'SK400',img:'img/sk400.png',cats:['race'],tag:'High-performance skiff',crew:'2',
+  blurb:'A two-person trapeze skiff. Big gennaker, flat-out planing, and the boat Larssen racers graduate to.',
+  price:18950,specs:{'Hull length':'4.40 m (14 ft 5 in)','Beam':'1.85 m with racks','Hull weight':'82 kg','Mainsail + jib':'14.5 m²','Gennaker':'18.0 m²','Crew':'2, trapeze','Ideal crew weight':'125–155 kg','Portsmouth (PN)':'870'},
+  feat:[['Grey Mylar race sails','Laminate main and jib with full-length battens, cut for flat water and breeze.'],['Self-launching gennaker','Chute launch and retrieve from one line, so the helm never leaves the tiller in a hoist.'],['Carbon two-piece mast','Stiff top section that keeps the leech honest when the wire\'s loaded.'],['Open transom','Water out in seconds after a capsize.']]},
+ {id:'pulse-xl',name:'Pulse XL',img:'img/pulse.png',cats:['training','adventure','race'],tag:'Club racer & trainer',crew:'2–3',
+  blurb:'The orange-chute double-hander clubs buy by the dozen. Stable enough for a first sail, quick enough for a Wednesday night race.',
+  price:12400,specs:{'Hull length':'4.60 m (15 ft 1 in)','Beam':'1.90 m','Hull weight':'110 kg','Mainsail + jib':'12.8 m²','Gennaker':'13.0 m²','Crew':'2 to 3','Ideal crew weight':'110–200 kg','Portsmouth (PN)':'1040'},
+  feat:[['Roomy, dry cockpit','Space for an instructor plus two students without anyone sitting on a block.'],['Reefing main','Slab reef point so programs can keep sailing when the breeze builds.'],['Tough rotomolded option','A polyethylene club hull for fleets that take a beating at the dock.'],['XL gennaker kit','Orange asymmetric with a bowsprit, standard on the race package.']]},
+ {id:'bauer',name:'Bauer',img:'img/bauer.png',cats:['race','training'],tag:'Singlehanded dinghy',crew:'1',
+  blurb:'One sailor, one sail, no excuses. A light singlehander with three rig sizes so juniors, women and heavier adults all race the same hull.',
+  price:9850,specs:{'Hull length':'4.20 m (13 ft 9 in)','Beam':'1.39 m','Hull weight':'58 kg','Sail (Bauer 5 / 6 / 7)':'5.1 / 6.2 / 7.1 m²','Crew':'1','Ideal weight (7 rig)':'75–90 kg','Mast':'Carbon top, alloy bottom','Portsmouth (PN)':'1095'},
+  feat:[['Three rigs, one hull','Swap the bottom mast and sail to move from the Bauer 5 to the 7 as you grow.'],['Easy to rig','Up and on the water in about ten minutes, solo, from a dolly.'],['Light enough to lift','58 kg hull you can roll up a ramp alone.'],['Strict one-design','Sealed sails and spars, so the sailor wins, not the wallet.']]}
+];
+const RANGES={race:['Race','Planing skiffs and strict one-design singlehanders.'],training:['Training','Forgiving, tough boats for programs and first sails.'],adventure:['Adventure','Room for friends, a picnic and a long reach.'],beach:['Beach','Launch off the sand. Coming soon to the Larssen range.']};
+const PARTS=[
+ ['sails','Sails','⛵',[['SK400 race mainsail, grey Mylar','sk400',1450],['SK400 gennaker, 18 m²','sk400',1120],['Pulse XL training main with reef','pulse-xl',720],['Pulse XL orange gennaker','pulse-xl',690],['Bauer 7 sail','bauer',640],['Bauer 5 junior sail','bauer',520]]],
+ ['spars','Spars','📏',[['SK400 carbon top mast','sk400',1880],['Pulse XL alloy mast, complete','pulse-xl',940],['Bauer carbon top section','bauer',610],['Bauer 5 bottom section','bauer',260]]],
+ ['foils','Foils','🗡️',[['SK400 carbon daggerboard','sk400',980],['Pulse XL centerboard','pulse-xl',420],['Bauer rudder blade','bauer',310],['Foil bag set','all',95]]],
+ ['hardware','Hardware & Line','🔗',[['SK400 complete line kit','sk400',380],['Mainsheet, 8 mm, 14 m','all',58],['Ratchet block, 57 mm','all',96],['Hiking strap, padded','all',44],['Trapeze harness','sk400',189]]],
+ ['covers','Covers & Trolleys','🛞',[['Pulse XL top cover','pulse-xl',310],['Bauer flat cover','bauer',240],['Launching dolly, beach wheels','all',465],['Road trailer, single','all',1650]]],
+ ['apparel','Apparel','🧢',[['Larssen team hoodie, navy','all',68],['Larssen cap, red stripe','all',28],['Spray top','all',145],['Larssen PFD, 50N','all',119]]]
+];
+const NEWS=[
+ ['Racing','Foxford Frostbite opens with a 22-boat Bauer fleet','The Sunday series off Foxford Yacht Club drew its biggest Bauer turnout yet, with three rigs on one start line.','img/bauer.png'],
+ ['Clubs','Twelve Pulse XLs head to the Killalea Sailing Center','Silverbrooks\' public sailing center on Hanson Bay replaces its training fleet with Pulse XLs for the 2027 season.','img/pulse.png'],
+ ['Product','SK400 goes grey for 2027','New grey Mylar race sails and a stiffer carbon top mast are standard on every SK400 built from January.','img/sk400.png']
+];
+const $=s=>document.querySelector(s);
+const money=n=>'$'+n.toLocaleString('en-US');
+const app=$('#app');
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2200)}
+window.toast=toast;
+function boatCard(b){return `<a class="boat" href="#/boat/${b.id}"><div class="ph"><div class="tagz">${b.cats.map((c,i)=>`<span class="tg${i?'':' r'}">${RANGES[c][0]}</span>`).join('')}</div><img src="${b.img}" alt="${b.name}"></div><div class="tx"><h3>${b.name}</h3><p>${b.blurb}</p><div class="row"><div><small>From</small>${money(b.price)}</div><span class="btn o" style="padding:8px 14px;font-size:13px">Explore</span></div></div></a>`}
+function prodCard(p,dep){const b=BOATS.find(x=>x.id===p[1]);return `<div class="pr"><div class="pi">${dep[2]}</div><div class="pt"><small>${b?b.name:'Fits all Larssen boats'}</small><b>${p[0]}</b><div class="pp"><span>${money(p[2])}</span><button class="add" onclick="toast('Added: ${p[0].replace(/'/g,'')}')">Add to cart</button></div></div></div>`}
+function home(){return `
+<section class="hero" style="padding:0"><div class="stripes"></div><div class="in">
+ <div><div class="kick">Built in Foxford, Albanardia</div><h1>Sailboats for <em>every</em> sailor</h1><p>Three boats, one idea: get more people racing. From a first sail in a Pulse XL to a gennaker run on an SK400, Larssen builds the boat for the next step.</p>
+ <div class="cta"><a class="btn" href="#/range">Explore the range</a><a class="btn o" href="#/dealers">Find a dealer</a></div></div>
+ <div class="boats"><img src="img/bauer.png" alt="Bauer"><img src="img/sk400.png" alt="SK400"><img src="img/pulse.png" alt="Pulse XL"></div>
+</div><div class="water"></div></section>
+<section><div class="in"><div class="sh"><div><h2>Find your boat</h2><p>The Larssen range, sorted by how you sail.</p></div><a class="lnk" href="#/range">All boats →</a></div>
+<div class="rng"><a class="rt race" href="#/range/race"><img src="img/sk400.png" alt=""><h3>Race</h3><span>SK400 · Bauer · Pulse XL</span></a><a class="rt train" href="#/range/training"><img src="img/pulse.png" alt=""><h3>Training</h3><span>Pulse XL · Bauer</span></a><a class="rt adv" href="#/range/adventure"><img src="img/pulse.png" alt="" style="transform:scaleX(-1)"><h3>Adventure</h3><span>Pulse XL</span></a><a class="rt beach" href="#/range/beach"><img src="img/bauer.png" alt="" style="opacity:.45"><h3>Beach</h3><span>Coming soon</span></a></div></div></section>
+<div class="strip"><div class="in"><div><b>2018</b><span>First Larssen hull, Foxford</span></div><div><b>3</b><span>boats in the range</span></div><div><b>22</b><span>Albanardia clubs sail Larssens</span></div><div><b>5 yr</b><span>hull warranty</span></div></div></div>
+<section class="alt"><div class="in"><div class="sh"><div><h2>The range</h2><p>Every boat ships race-ready from the Foxford boat works.</p></div><a class="lnk" href="#/pricing">Pricing →</a></div><div class="bc">${BOATS.map(boatCard).join('')}</div></div></section>
+<section><div class="in story"><div class="art"><img src="img/logo.png" alt=""></div><div><div class="kick" style="color:var(--red)">Our story</div><h2>A boat house on Marlin Street</h2><p>Larssen started as a few sailors building the boats they wanted to race on Albanardia Sound. Today the Foxford boat works designs, lays up and rigs every Larssen hull a short sail from the Sound's island fleets.</p><p>We build for clubs first: tough decks, simple rigs and strict one-design rules, so programs can buy once and race for years.</p><a class="btn n" href="#/about">Learn more</a></div></div></section>
+<section class="alt"><div class="in"><div class="sh"><div><h2>Parts &amp; spares</h2><p>Genuine Larssen parts, shipped from Foxford.</p></div><a class="lnk" href="#/parts">Shop all →</a></div>
+<div class="dep">${PARTS.map(d=>`<a class="dp" href="#/parts/${d[0]}"><i>${d[2]}</i>${d[1]}</a>`).join('')}</div>
+<div class="vals"><div><i>🚚</i><div><b>Free shipping over $150</b><span>Anywhere in Albanardia, two days to most clubs.</span></div></div><div><i>↩️</i><div><b>Easy returns</b><span>30 days on unused parts.</span></div></div><div><i>🧭</i><div><b>Expert support</b><span>Talk rigging with sailors who race these boats.</span></div></div></div></div></section>
+<section><div class="in"><div class="sh"><div><h2>Stories</h2></div><a class="lnk" href="#/news">All stories →</a></div><div class="news">${NEWS.map(n=>`<div class="nw"><div class="ni"><img src="${n[3]}" alt=""></div><div class="nt"><small>${n[0]}</small><h3>${n[1]}</h3><p>${n[2]}</p></div></div>`).join('')}</div></div></section>`}
+function range(cat){const list=cat?BOATS.filter(b=>b.cats.includes(cat)):BOATS;const t=cat?RANGES[cat]:['All boats','The full Larssen range.'];
+ return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › <a href="#/range">Boats</a>${cat?' › '+t[0]:''}</div><div class="sh"><div><h2>${t[0]}</h2><p>${t[1]}</p></div></div>
+ <div class="fbar">${[['','All'],['race','Race'],['training','Training'],['adventure','Adventure'],['beach','Beach']].map(([k,l])=>`<button class="${(cat||'')===k?'on':''}" onclick="location.hash='#/range${k?'/'+k:''}'">${l}</button>`).join('')}</div>
+ ${list.length?`<div class="bc">${list.map(boatCard).join('')}</div>`:`<p style="color:var(--mut)">Nothing here yet. A Larssen beach cat is on the drawing board.</p>`}</div></section>`}
+function boat(id){const b=BOATS.find(x=>x.id===id);if(!b)return range();
+ return `<div class="bp-hero"><div class="in"><div><div class="crumb"><a href="#/">Home</a> › <a href="#/range">Boats</a> › ${b.name}</div><div class="kick" style="color:var(--red)">${b.tag}</div><h1>${b.name}</h1><p class="lead">${b.blurb}</p>
+ <div class="price"><b>${money(b.price)}</b><span>sail-away, race package</span></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#/contact?boat=${b.id}">Request a quote</a><a class="btn o" href="#/dealers">Find a dealer</a></div></div>
+ <div class="art"><img src="${b.img}" alt="${b.name}"></div></div></div>
+ <section><div class="in specs"><div><h2 style="font-size:40px;margin:0 0 12px">Specifications</h2><table class="st">${Object.entries(b.specs).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table></div>
+ <div><h2 style="font-size:40px;margin:0 0 12px">Why sail it</h2><div class="feat">${b.feat.map(f=>`<div><b>${f[0]}</b><span>${f[1]}</span></div>`).join('')}</div></div></div></section>
+ <section class="alt"><div class="in"><div class="sh"><div><h2>Packages</h2></div></div><div class="pkg">
+ <div class="pk"><h3>Club</h3><p style="color:var(--mut);margin:0">For sailing programs and fleets of 6+.</p><div class="pz">${money(Math.round(b.price*.86/10)*10)}</div><ul><li>Training sails</li><li>Dolly</li><li>Fleet discount</li></ul></div>
+ <div class="pk hot"><h3>Race</h3><p style="color:var(--mut);margin:0">Everything to win a regatta.</p><div class="pz">${money(b.price)}</div><ul><li>Race sails</li><li>Full line kit</li><li>Dolly and top cover</li></ul></div>
+ <div class="pk"><h3>Championship</h3><p style="color:var(--mut);margin:0">Race package plus spares.</p><div class="pz">${money(Math.round(b.price*1.18/10)*10)}</div><ul><li>Second set of sails</li><li>Road trailer</li><li>Foil bags and under cover</li></ul></div>
+ </div></div></section>
+ <section><div class="in"><div class="sh"><div><h2>${b.name} parts</h2></div><a class="lnk" href="#/parts">All parts →</a></div><div class="pg">${PARTS.flatMap(d=>d[3].filter(p=>p[1]===b.id).map(p=>prodCard(p,d))).slice(0,8).join('')}</div></div></section>`}
+function parts(dep){const ds=dep?PARTS.filter(d=>d[0]===dep):PARTS;
+ return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › <a href="#/parts">Parts &amp; Spares</a>${dep?' › '+ds[0][1]:''}</div><div class="sh"><div><h2>${dep?ds[0][1]:'Parts &amp; Spares'}</h2><p>Genuine Larssen parts. Free shipping in Albanardia over $150.</p></div></div>
+ <div class="fbar"><button class="${dep?'':'on'}" onclick="location.hash='#/parts'">All</button>${PARTS.map(d=>`<button class="${dep===d[0]?'on':''}" onclick="location.hash='#/parts/${d[0]}'">${d[1]}</button>`).join('')}</div>
+ ${ds.map(d=>`<h3 style="font-size:30px;margin:26px 0 12px">${d[1]}</h3><div class="pg">${d[3].map(p=>prodCard(p,d)).join('')}</div>`).join('')}</div></section>`}
+function pricing(){return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › Pricing</div><div class="sh"><div><h2>Boat pricing</h2><p>Sail-away prices from the Foxford boat works, before tax and delivery. Club orders of six or more get the club package price.</p></div></div>
+ <table class="st" style="max-width:820px"><tr><td><b>Boat</b></td><td><b>Club</b></td><td><b>Race</b></td><td><b>Championship</b></td></tr>${BOATS.map(b=>`<tr><td><a href="#/boat/${b.id}">${b.name}</a></td><td>${money(Math.round(b.price*.86/10)*10)}</td><td>${money(b.price)}</td><td>${money(Math.round(b.price*1.18/10)*10)}</td></tr>`).join('')}</table>
+ <p style="margin-top:24px"><a class="btn" href="#/contact">Request a quote</a></p></div></section>`}
+function used(){return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › Used boats</div><div class="sh"><div><h2>Used boats</h2><p>Ex-charter and trade-in boats checked over by the Foxford boat works.</p></div></div>
+ <div class="dl"><div><b>Pulse XL #214 · 2023</b><span>Ex-Killalea Sailing Center fleet. Training sails, dolly.</span><span style="font-weight:700;color:var(--ink);margin-top:6px">$7,900</span></div><div><b>Bauer #1188 · 2024</b><span>Bauer 7 and Bauer 6 rigs, cover, dolly.</span><span style="font-weight:700;color:var(--ink);margin-top:6px">$6,750</span></div><div><b>SK400 #61 · 2022</b><span>Two sets of sails, road trailer. Raced at the AYRC circuit.</span><span style="font-weight:700;color:var(--ink);margin-top:6px">$11,400</span></div><div><b>Pulse XL #188 · 2022</b><span>Rotomolded club hull, reefing main.</span><span style="font-weight:700;color:var(--ink);margin-top:6px">$6,200</span></div></div></div></section>`}
+function about(){return `<section><div class="in tp"><div class="crumb"><a href="#/">Home</a> › About us</div><h1>Our story</h1>
+ <p>Larssen Sailcraft North America, Inc. designs and builds sailing dinghies at its boat works at 320 SE Marlin St in Foxford, on Albanardia Sound. The range is three boats: the SK400 skiff, the Pulse XL double-hander and the Bauer singlehander.</p>
+ <p>We build for clubs first. That means decks that survive a summer of junior programs, rigs a ten-year-old can step, and one-design rules strict enough that the best sailor wins.</p>
+ <h2 style="font-size:36px;margin:30px 0 10px">Sustainability</h2><p>Offcuts from the layup floor are ground and reused in trolley parts, old sails go to Foxford sail lofts for bags, and every boat ships in a reusable cradle that comes back to Marlin Street.</p></div></section>`}
+function dealers(){return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › Dealers</div><div class="sh"><div><h2>Find a dealer</h2><p>Test sail, buy or service a Larssen near you.</p></div></div>
+ <div class="dl"><div><b>Larssen Boat Works (factory)</b><span>320 SE Marlin St, Foxford, AB 19926</span><span>Demo fleet, parts counter, service</span></div><div><b>Larssen Silverbrooks</b><span>Hanson Bay Marina, Silverbrooks</span><span>Showroom and parts</span></div><div><b>Killalea Sailing Center</b><span>Hanson Bay, Silverbrooks</span><span>Pulse XL training fleet, try-a-boat days</span></div><div><b>Hamilton Island Sailing</b><span>Hamilton Island</span><span>Bauer demo boats, summer only</span></div></div></div></section>`}
+function classes(){return `<section><div class="in tp"><div class="crumb"><a href="#/">Home</a> › Class associations</div><h1>Class associations</h1>
+ <p><b>SK400 Class</b> runs the Albanardia Skiff Series and the SK400 North Americans. <b>Pulse XL Class</b> keeps club and race rules side by side, so training boats can race. <b>Bauer Class</b> runs separate Bauer 5, 6 and 7 fleets at every regatta.</p>
+ <p>All three classes race on the AYRC circuit. Measurement and sail sealing happen at the factory, so a boat is legal the day it ships.</p></div></section>`}
+function support(){return `<section><div class="in tp"><div class="crumb"><a href="#/">Home</a> › Support</div><h1>Customer care</h1>
+ <p><b>Manuals and rigging guides:</b> every boat ships with a printed rigging guide; ask us for a replacement.</p><p><b>Warranty:</b> five years on the hull and deck, two years on spars and fittings.</p><p><b>Parts help:</b> call (302) 555-0144 or send us your sail number and we'll match the right part.</p><p><a class="btn" href="#/contact">Contact customer care</a></p></div></section>`}
+function newsPage(){return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › Stories</div><div class="sh"><div><h2>Stories</h2></div></div><div class="news">${NEWS.map(n=>`<div class="nw"><div class="ni"><img src="${n[3]}" alt=""></div><div class="nt"><small>${n[0]}</small><h3>${n[1]}</h3><p>${n[2]}</p></div></div>`).join('')}</div></div></section>`}
+function contact(q){const pick=(q.match(/boat=([\w-]+)/)||[])[1]||'';return `<section><div class="in"><div class="crumb"><a href="#/">Home</a> › Get in touch</div><div class="sh"><div><h2>Get in touch</h2><p>Larssen Sailcraft North America, Inc. · 320 SE Marlin St, Foxford, AB 19926 · (302) 555-0144</p></div></div>
+ <form class="ct" onsubmit="event.preventDefault();toast('Message sent. We\\'ll be in touch.');this.reset()"><input required placeholder="Name"><input required type="email" placeholder="Email"><select>${['General question',...BOATS.map(b=>'Quote: '+b.name),'Parts help','Club & fleet orders'].map(o=>`<option ${pick&&o.includes(BOATS.find(b=>b.id===pick)?.name)?'selected':''}>${o}</option>`).join('')}</select><textarea rows="5" placeholder="Message"></textarea><button class="btn" style="justify-self:start">Send</button></form></div></section>`}
+function route(){const h=(location.hash||'#/').slice(1);const [path,q='']=h.split('?');const p=path.split('/').filter(Boolean);
+ let html;switch(p[0]){case 'range':html=range(p[1]);break;case 'boat':html=boat(p[1]);break;case 'parts':html=parts(p[1]);break;case 'pricing':html=pricing();break;case 'used':html=used();break;case 'about':html=about();break;case 'dealers':html=dealers();break;case 'classes':html=classes();break;case 'support':html=support();break;case 'news':html=newsPage();break;case 'contact':html=contact(q);break;default:html=home()}
+ app.innerHTML=html;document.querySelectorAll('nav.mn>div>a').forEach(a=>a.classList.toggle('on',a.getAttribute('href').split('/')[1]===p[0]));
+ $('#dr').classList.remove('on');window.scrollTo(0,0);
+ const b=p[0]==='boat'&&BOATS.find(x=>x.id===p[1]);document.title=(b?b.name+' | ':'')+'Larssen Sailcraft | Sailboats for every sailor';}
+addEventListener('hashchange',route);route();
+$('#mb').onclick=()=>$('#dr').classList.add('on');$('#dr').onclick=e=>{if(e.target.id==='dr')$('#dr').classList.remove('on')};
+</script>
+<script src="../app/app.js" data-home="float"></script>
+</body></html>
