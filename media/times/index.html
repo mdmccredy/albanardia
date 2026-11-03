@@ -1,0 +1,505 @@
+<title>The Silverbrooks Times</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@400;600;800&display=swap">
+<style>
+/* Layout: a broadsheet front page. Masthead, folio line, a 6-column grid that collapses to one column on phones. */
+:root{
+  --paper:#fbfaf7; --ink:#141414; --ink2:#3d3d3d; --rule:#1a1a1a; --hair:#c9c6bf; --muted:#6c6a66; --kicker:#8a1c1c; --wash:#efede7;
+  --mast-filter:none;
+  --display:"Libre Caslon Display","Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --body:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"Libre Franklin","Franklin Gothic Medium","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#151514;--ink:#ecebe7;--ink2:#c9c7c1;--rule:#e2e0da;--hair:#3b3a37;--muted:#9a978f;--kicker:#e08a7d;--wash:#1f1f1d;--mast-filter:invert(1);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#151514;--ink:#ecebe7;--ink2:#c9c7c1;--rule:#e2e0da;--hair:#3b3a37;--muted:#9a978f;--kicker:#e08a7d;--wash:#1f1f1d;--mast-filter:invert(1);color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.page{max-width:1180px;margin:0 auto}
+a{color:inherit}
+.ear{display:flex;justify-content:space-between;gap:16px;font-family:var(--sans);font-size:11px;color:var(--muted);align-items:flex-end}
+.ear b{color:var(--ink);font-weight:600}
+.ear .box{border:1px solid var(--hair);padding:6px 10px;max-width:220px;line-height:1.35}
+.mast{display:block;width:100%;max-width:900px;height:auto;margin:14px auto 10px;filter:var(--mast-filter)}
+.folio{border-top:3px double var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 0;font-variant-numeric:tabular-nums}
+.index{display:flex;flex-wrap:wrap;gap:4px 18px;font-family:var(--sans);font-size:12px;padding:8px 0;border-bottom:1px solid var(--hair);color:var(--ink2)}
+.index a{text-decoration:none;padding:2px 0;border-bottom:2px solid transparent}.index a b{font-weight:800;color:var(--ink)}
+.index a:hover,.index a.on{border-bottom-color:var(--kicker);color:var(--ink)}
+.index a:focus-visible,.pager a:focus-visible{outline:2px solid var(--kicker);outline-offset:2px}
+.pg[hidden]{display:none}
+.sechead{display:flex;align-items:baseline;gap:14px;border-bottom:3px double var(--rule);padding:14px 0 8px;margin-bottom:16px}
+.sechead .L{font-family:var(--display);font-size:56px;line-height:.9}
+.sechead h2{font-size:30px}
+.sechead span:last-child{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;font-family:var(--sans);font-size:13px}
+.pager a{text-decoration:none;border:1px solid var(--rule);padding:8px 14px;font-weight:600}
+.pager a:hover{background:var(--wash)}
+.pager span{color:var(--muted)}
+table.tt{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:12.5px;font-variant-numeric:tabular-nums;margin:8px 0 12px}
+.tt th{text-align:left;font-weight:800;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:5px 6px 5px 0}
+.tt td{border-bottom:1px dotted var(--hair);padding:5px 6px 5px 0;vertical-align:top}
+.tt td.n{text-align:right}
+.tblwrap{overflow-x:auto}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.g3>.col{padding:0 18px}
+.g2{display:grid;grid-template-columns:2fr 1fr}
+.pq{font-family:var(--display);font-size:24px;line-height:1.2;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;margin:12px 0;text-wrap:balance}
+.adbox{border:1px solid var(--rule);background:#fff;color:#141414;margin-top:16px}
+.adbox .tag{font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#6c6a66;padding:4px 8px;border-bottom:1px solid #d9d6cf;background:#fbfaf7}
+.adbox .in{padding:14px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;font-family:var(--sans)}
+.adbox .in img{max-width:100%;height:auto}
+.adbox .in b{font-size:15px}
+.adbox .in small{font-size:11px;color:#6c6a66}
+.score{display:flex;justify-content:space-between;font-family:var(--sans);font-size:13px;padding:4px 0;border-bottom:1px dotted var(--hair);font-variant-numeric:tabular-nums}
+.score b{font-weight:800}
+@media (max-width:860px){.g3,.g2{grid-template-columns:minmax(0,1fr)}.g3>.col,.g2>.col{border-left:0;padding:0;border-top:1px solid var(--hair);padding-top:16px;margin-top:16px}.g3>.col:first-child,.g2>.col:first-child{border-top:0;margin-top:0;padding-top:0}.sechead .L{font-size:40px}.sechead span:last-child{display:none}}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin-top:18px}
+.col{padding:0 18px;border-left:1px solid var(--hair);min-width:0}
+.col:first-child{border-left:0;padding-left:0}.col:last-child{padding-right:0}
+.lead{grid-column:span 4}.side{grid-column:span 2}
+.kicker{font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--kicker);margin:0 0 6px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.08}
+h1{font-size:clamp(30px,4.4vw,50px);letter-spacing:-.01em}
+h2{font-size:26px}
+h3{font-size:20px;line-height:1.15}
+.deck{font-family:var(--body);font-style:italic;font-size:18px;color:var(--ink2);margin:10px 0 12px;text-wrap:balance}
+.by{font-family:var(--sans);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.cols2{columns:2 260px;column-gap:28px;column-rule:1px solid var(--hair)}
+.cols2 p,.story p{margin:0 0 .8em;hyphens:auto}
+.cols2 p:first-child::first-letter{font-family:var(--display);float:left;font-size:3.6em;line-height:.82;padding:4px 6px 0 0}
+.story{padding:14px 0;border-top:1px solid var(--hair)}
+.story:first-child{border-top:0;padding-top:0}
+.story p{font-size:15px}
+.jump{font-family:var(--sans);font-size:11px;color:var(--muted);font-style:normal}
+figure{margin:0 0 14px}
+figcaption{font-family:var(--sans);font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:6px}
+.diagram{background:var(--wash);border:1px solid var(--hair);overflow-x:auto}
+.diagram svg{display:block;width:100%;height:auto;min-width:420px}
+.d-road{fill:none;stroke:var(--ink);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.d-road2{fill:none;stroke:var(--paper);stroke-width:4.4;stroke-linecap:round;stroke-linejoin:round}
+.d-txt{font-family:var(--sans);font-size:11px;fill:var(--ink)}
+.d-small{font-family:var(--sans);font-size:9.5px;fill:var(--muted)}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:3px double var(--rule);margin-top:26px;padding-top:16px}
+.row .col{padding:0 18px}
+.facts{list-style:none;padding:0;margin:10px 0 0;font-family:var(--sans);font-size:12.5px}
+.facts li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dotted var(--hair);padding:5px 0;font-variant-numeric:tabular-nums}
+.facts li b{font-weight:600}
+.wx{border:1px solid var(--rule);padding:12px;margin-top:4px}
+.wx .t{font-family:var(--display);font-size:44px;line-height:1}
+.wx p{font-size:14px;margin:6px 0 0}
+.ad{border:1px solid var(--rule);margin-top:16px;padding:0;overflow:hidden;background:#fff;color:#141414}
+.ad .tag{font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#6c6a66;padding:4px 8px;border-bottom:1px solid #d9d6cf;background:#fbfaf7}
+.ad-k{position:relative;background:#1e6b4f;display:grid;grid-template-columns:1fr 1.1fr}
+.ad-k .l{padding:14px;color:#fff;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.ad-k .l img{width:100%;max-width:200px;filter:brightness(0) invert(1)}
+.ad-k .l b{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.05}
+.ad-k .l span{font-family:var(--sans);font-size:11px;opacity:.85}
+.ad-k .r{background:url(img/kwaani_welcome.png) 82% 50%/auto 120% no-repeat;min-height:150px}
+.ad-l{padding:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+.ad-l .logo{width:150px;max-width:100%}
+.ad-l b{display:block;font-family:var(--sans);font-weight:800;font-size:17px;line-height:1.15;margin-top:8px}
+.ad-l b i{font-style:normal;color:#c8102e}
+.ad-l .boats{display:flex;align-items:flex-end;gap:2px}
+.ad-l .boats img{height:96px;width:auto}
+.ad-l small{font-family:var(--sans);font-size:10.5px;color:#6c6a66;grid-column:1/-1}
+.arts{display:flex;gap:12px;align-items:flex-start}
+.arts img{width:72px;height:72px;flex:none}
+.brief{border-top:1px solid var(--hair);padding:10px 0}
+.brief:first-of-type{border-top:0}
+.brief h3{font-size:17px}
+.brief p{font-size:14px;margin:4px 0 0}
+.bullets{display:flex;gap:6px;align-items:center;margin:4px 0 8px}
+.bullets img{width:18px;height:18px}
+.vote{background:var(--wash);border:1px solid var(--hair);padding:12px;margin-top:14px}
+.vote h3{font-size:19px}
+.vote p{font-size:14px;margin:6px 0 0}
+footer{border-top:1px solid var(--rule);margin-top:28px;padding-top:8px;font-family:var(--sans);font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}
+@media (max-width:860px){
+  .grid,.row{grid-template-columns:minmax(0,1fr)}
+  .lead,.side{grid-column:auto}
+  .col,.row .col{border-left:0;padding:0;border-top:1px solid var(--hair);padding-top:16px;margin-top:16px}
+  .col:first-child{border-top:0;margin-top:0;padding-top:0}
+  .ear .box{display:none}
+}
+</style>
+
+<div class="page">
+  <div class="ear">
+    <span>“All the News of the Windward State”</span>
+    <span class="box"><b>Late Edition</b><br>Today, wind off Elliott Bay, high 54. Tonight, clearing, low 41. Weather, A12.</span>
+  </div>
+
+  <img class="mast" src="img/masthead.png" alt="The Silverbrooks Times" width="2400" height="207">
+
+  <div class="folio">
+    <span>Vol. CXLVIII · No. 51,206</span>
+    <span>Silverbrooks, Albanardia · Tuesday, November 3, 2026</span>
+    <span>$3.00</span>
+  </div>
+  <nav class="index" aria-label="Sections">
+    <a href="#front" data-p="front"><b>A</b> News</a><a href="#metro" data-p="metro"><b>B</b> Metro &amp; Transit</a><a href="#business" data-p="business"><b>C</b> Business &amp; the Port</a><a href="#sports" data-p="sports"><b>D</b> Sports</a><a href="#arts" data-p="arts"><b>E</b> Arts</a><a href="#water" data-p="water"><b>F</b> On the Water</a>
+  </nav>
+
+  <section class="pg" id="front" aria-label="Section A, News">
+  <div class="grid">
+    <article class="col lead">
+      <p class="kicker">Transportation</p>
+      <h1>The D Line Now Ends Under the Terminal as SBX Rebuilds Its Front Door</h1>
+      <p class="deck">A new transit center, a free shuttle to every concourse and a one-way Terminal Drive change how Silverbrooks gets to its airport.</p>
+      <p class="by">By the Times Transit Desk</p>
+
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Diagram of Silverbrooks Thompson International landside: Airport Pkwy, the only road in and out, meets the counterclockwise one-way Terminal Drive; Transit Center Way leads to the SBX Transit Center.">
+            <path class="d-road" d="M10 70 L120 52 L168 50"/><path class="d-road2" d="M10 70 L120 52 L168 50"/>
+            <path class="d-road" d="M168 50 L220 60 L262 84 L286 120 L300 168 L292 205 L268 226 L220 234 L192 220 L184 150 L178 86 Z"/>
+            <path class="d-road2" d="M168 50 L220 60 L262 84 L286 120 L300 168 L292 205 L268 226 L220 234 L192 220 L184 150 L178 86 Z"/>
+            <path class="d-road" d="M184 150 L246 150"/><path class="d-road2" d="M184 150 L246 150"/>
+            <g fill="var(--ink)"><path d="M232 66 l9 3 -8 5z"/><path d="M291 140 l-1 10 -6 -8z"/><path d="M246 230 l-9 -2 8 -5z"/><path d="M181 112 l1 -10 6 8z" transform="rotate(180 182 107)"/></g>
+            <circle cx="252" cy="150" r="9" fill="var(--kicker)"/><text x="252" y="154" text-anchor="middle" font-family="Libre Franklin,Arial" font-size="10" font-weight="800" fill="#fff">TC</text>
+            <text class="d-txt" x="14" y="62">Airport Pkwy</text>
+            <text class="d-txt" x="306" y="120">Terminal Drive</text><text class="d-small" x="306" y="133">one-way, counterclockwise</text>
+            <text class="d-txt" x="266" y="172">SBX Transit Center</text>
+            <text class="d-small" x="266" y="184">D Line · R Line · X4 · 81 · 110 · Shuttle</text>
+            <text class="d-small" x="14" y="76">only way in and out · to US 53</text>
+          </svg>
+        </div>
+        <figcaption>The rebuilt landside at Silverbrooks Thompson International. Arrows show the new one-way direction of Terminal Drive. Diagram not to scale.</figcaption>
+      </figure>
+
+      <div class="cols2">
+        <p>For years, riders bound for Silverbrooks Thompson International stepped off the SBTrain D Line short of the terminal and wondered where the rest of the airport had gone. Starting this week, the D Line runs its last stretch under the garages and ends at the new SBX Transit Center, one escalator ride from check-in.</p>
+        <p>The center is now the single ground stop for the airport. The D Line, the SBMetro R Line, ALBExpress X4 to New Brolin, the 81 to Rutherford and the 110 SBX Flyer from Elliot Square all meet there. So does the AirLink people mover.</p>
+        <p>The SBX Airport Authority, which runs the airport separately from SBTransit, has launched the free SBX Terminal Shuttle. Buses leave the Transit Center every five minutes and circle to Concourse X (International), then A, B, C and D. “Nobody should walk a mile with a suitcase to find their gate,” an authority spokesperson said.</p>
+        <p>Drivers will notice the biggest change. Terminal Drive, the loop that wraps the terminal core, is now strictly one-way counterclockwise. Airport Pkwy is still the only road in and out: cars turn right onto the loop, keep right down the west side for the Transit Center and garages, and circle back to the parkway to leave.</p>
+        <p>The R Line and the 81 to Rutherford now follow the same loop and leave by Airport Pkwy. The R Line's old busway, which crossed the airfield, is closed for good.</p>
+        <p class="jump"><a href="#metro">Continued on B1</a></p>
+      </div>
+    </article>
+
+    <aside class="col side">
+      <div class="story">
+        <p class="kicker">Statewide Rail</p>
+        <h3>ALBExpress X8 Puts Albanardia City Two Stops From New Brolin</h3>
+        <div class="bullets"><img src="img/albx.png" alt=""><img src="img/neta_full.png" alt="NETA" style="width:auto;height:16px"></div>
+        <p>The Northeastern Transit Authority's newest line links Albanardia City, Ashton and New Brolin with trains every two hours. It is the first ALBExpress service since the system's rebrand from SBExpress.</p>
+        <p class="jump"><a href="#metro">B3</a></p>
+      </div>
+      <div class="story">
+        <p class="kicker">City Buses</p>
+        <h3>SBMetro Letters Its Fastest Routes, From F to S</h3>
+        <div class="bullets"><img src="img/metro.png" alt=""></div>
+        <p>Eight lettered rapid lines now run on Silverbrooks' busiest streets, with all-door boarding and stops about every half mile. The R Line serves the airport.</p>
+        <p class="jump"><a href="#metro">B2</a></p>
+      </div>
+      <div class="vote">
+        <p class="kicker">Election Day</p>
+        <h3>Polls Are Open Until 8 p.m.</h3>
+        <p>Voters in line by 8 p.m. may still cast a ballot. Polling places and sample ballots for every Albanardia county are listed on A6. Results will appear online tonight and in Wednesday's paper.</p>
+      </div>
+      <div class="ad" aria-label="Advertisement">
+        <div class="tag">Advertisement</div>
+        <div class="ad-k">
+          <div class="l">
+            <img src="img/kwaani_logo.png" alt="Kwáani Airlines">
+            <b>Nonstop from SBX.</b>
+            <span>Spirit of the Kwáani Islands</span>
+          </div>
+          <div class="r" role="img" aria-label="Palm trees and turquoise water at Kainua-Hilo Beach"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="row">
+    <section class="col">
+      <p class="kicker">Business &amp; the Port</p>
+      <div class="brief">
+        <h3>Larssen Sailing Expands Its Silverbrooks Yard</h3>
+        <p>The dinghy and sailmaker will add a second build shed for its SK400 skiff, Pulse XL and Bauer singlehander as junior racing programs across the state grow their fleets.</p>
+      </div>
+      <div class="brief">
+        <h3>Port of Silverbrooks Posts a Record October</h3>
+        <p>Container moves at the Samolette terminal topped 41,000 boxes, the port's best month since the harbor deepening.</p>
+      </div>
+      <div class="ad" aria-label="Advertisement">
+        <div class="tag">Advertisement</div>
+        <div class="ad-l">
+          <div>
+            <img class="logo" src="img/larssen.png" alt="Larssen">
+            <b>Sailboats for<br><i>every sailor.</i></b>
+          </div>
+          <div class="boats"><img src="img/larssen_sk400.png" alt="SK400"><img src="img/larssen_pulse.png" alt="Pulse XL"><img src="img/larssen_bauer.png" alt="Bauer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col">
+      <p class="kicker">Arts</p>
+      <div class="arts">
+        <img src="img/ballet.png" alt="Silverbrooks Ballet">
+        <div>
+          <h3>Silverbrooks Ballet Opens Its Winter Season at Alexandria Hall</h3>
+          <p style="font-size:14px;margin:6px 0 0">The company returns to Garnett Center’s Alexandria Hall on Friday with a mixed bill of three new works. Tickets start at $28.</p>
+        </div>
+      </div>
+      <div class="brief" style="border-top:1px solid var(--hair);margin-top:12px">
+        <h3>Rutherford Public Library Extends Weekend Hours</h3>
+        <p>All branches now stay open until 8 p.m. on Saturdays. Card sign-ups are free for Albanardia residents.</p>
+      </div>
+      <div class="brief">
+        <h3>On the Water</h3>
+        <p>Frostbite racing begins Sunday on Silverbrooks Harbor. First warning signal is 11 a.m.; the SBFerry F1 to Villas runs on its normal schedule.</p>
+      </div>
+    </section>
+
+    <section class="col">
+      <p class="kicker">Weather</p>
+      <div class="wx">
+        <div class="t">54°</div>
+        <p>Breezy, with a southwest wind of 12 to 18 mph off Elliott Bay. Clearing tonight, low 41.</p>
+      </div>
+      <p class="kicker" style="margin-top:16px">SBTransit Today</p>
+      <ul class="facts">
+        <li><span><img src="img/train.png" alt="" style="width:14px;vertical-align:-2px"> SBTrain A–E</span><b>Good service</b></li>
+        <li><span><img src="img/metro.png" alt="" style="width:14px;vertical-align:-2px"> SBMetro</span><b>Good service</b></li>
+        <li><span>SBX Terminal Shuttle</span><b>Every 5 min</b></li>
+        <li><span><img src="img/albx.png" alt="" style="width:14px;vertical-align:-2px"> ALBExpress X4</span><b>Every 20 min</b></li>
+        <li><span>SBFerry F1 to Villas</span><b>On time</b></li>
+      </ul>
+    </section>
+  </div>
+
+  </section>
+  <!-- ============ B: METRO & TRANSIT ============ -->
+  <section class="pg" id="metro" aria-label="Section B, Metro and Transit" hidden>
+    <div class="sechead"><span class="L">B</span><h2>Metro &amp; Transit</h2><span>Section B · Pages 1–8</span></div>
+    <div class="g2">
+      <article class="col">
+        <p class="kicker">Continued from A1</p>
+        <h1 style="font-size:clamp(28px,3.6vw,40px)">At SBX, a Transit Center Built for People With Suitcases</h1>
+        <p class="by">By the Times Transit Desk</p>
+        <div class="cols2">
+          <p>The SBX Transit Center sits inside Terminal Drive, between the short-term garages, and every train and bus that serves the airport now stops at its doors. Riders coming off the D Line climb one escalator to a single hall with ticket machines, an SBTransit service desk and the boarding area for the SBX Terminal Shuttle.</p>
+          <p>The shuttle is free and run by the SBX Airport Authority, not SBMetro, so it does not need a fare card. It circles the terminal counterclockwise with Terminal Drive traffic and stops at every concourse.</p>
+          <p>Airport officials said the loop takes about 13 minutes end to end at midday. Travelers headed to Concourse X for international flights reach it first, about five minutes after leaving the Transit Center.</p>
+          <p>Taxis and ride-hail pickups have moved to the outer curb on the east side of Terminal Drive, just past Concourse B. Drop-offs stay at the curb in front of each concourse.</p>
+          <p>Drivers leaving the airport now follow the loop all the way around before rejoining Airport Pkwy, the only road in and out. Officials asked first-time visitors to follow the overhead signs rather than their phones while the change settles in.</p>
+        </div>
+        <div class="pq">“Nobody should walk a mile with a suitcase to find their gate.”</div>
+        <h3>SBX Terminal Shuttle stops</h3>
+        <div class="tblwrap"><table class="tt">
+          <thead><tr><th>Stop</th><th>Serves</th><th class="n">From Transit Center</th></tr></thead>
+          <tbody>
+            <tr><td>SBX Transit Center</td><td>D Line, R Line, X4, 81, 110, AirLink</td><td class="n">0 min</td></tr>
+            <tr><td>Concourse X</td><td>International arrivals and departures</td><td class="n">5 min</td></tr>
+            <tr><td>Concourse A</td><td>Gates A1–A22</td><td class="n">7 min</td></tr>
+            <tr><td>Concourse B</td><td>Gates B1–B24, taxis</td><td class="n">9 min</td></tr>
+            <tr><td>Concourse C</td><td>Gates C1–C18</td><td class="n">11 min</td></tr>
+            <tr><td>Concourse D</td><td>Gates D1–D16</td><td class="n">13 min</td></tr>
+          </tbody>
+        </table></div>
+      </article>
+      <aside class="col">
+        <div class="story">
+          <p class="kicker">Statewide Rail · B3</p>
+          <h3>X8 Brings ALBExpress to Ashton</h3>
+          <div class="bullets"><img src="img/albx.png" alt=""><img src="img/neta_full.png" alt="NETA" style="width:auto;height:16px"></div>
+          <p>Ashton gets its first passenger train in decades. NETA's X8 runs between Albanardia City and New Brolin every two hours, with a stop in Ashton both ways.</p>
+          <div class="tblwrap"><table class="tt">
+            <thead><tr><th>Line</th><th>Route</th><th class="n">Every</th></tr></thead>
+            <tbody>
+              <tr><td>X1</td><td>Silverbrooks corridor</td><td class="n">30 min</td></tr>
+              <tr><td>X2</td><td>Downstate</td><td class="n">60 min</td></tr>
+              <tr><td>X3</td><td>Silverbrooks – Albanardia City</td><td class="n">30 min</td></tr>
+              <tr><td>X4</td><td>Elliot Square – SBX – New Brolin</td><td class="n">20 min</td></tr>
+              <tr><td>X8</td><td>Albanardia City – Ashton – New Brolin</td><td class="n">2 hr</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="story">
+          <p class="kicker">City Buses · B2</p>
+          <h3>Eight Lettered Lines, One Rule: Show Up Often</h3>
+          <div class="bullets"><img src="img/metro.png" alt=""></div>
+          <p>SBMetro's F, H, J, K, L, P, R and S lines run at least every 10 minutes from 6 a.m. to 9 p.m. Riders can board at any door and tap a card on the platform validator.</p>
+        </div>
+        <div class="story">
+          <p class="kicker">SBTrain</p>
+          <h3>A Line Weekend Work in Old Ballard</h3>
+          <div class="bullets"><img src="img/train.png" alt=""></div>
+          <p>A Line trains will single-track between Linnea Avenue and Elliot Square this Saturday and Sunday for rail replacement. Expect trains every 12 minutes instead of every 6.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ C: BUSINESS & THE PORT ============ -->
+  <section class="pg" id="business" aria-label="Section C, Business and the Port" hidden>
+    <div class="sechead"><span class="L">C</span><h2>Business &amp; the Port</h2><span>Section C · Pages 1–6</span></div>
+    <div class="g3">
+      <article class="col" style="grid-column:span 2">
+        <p class="kicker">Manufacturing</p>
+        <h1 style="font-size:clamp(28px,3.6vw,40px)">Larssen Sailing Bets on Juniors With a Second Build Shed</h1>
+        <p class="by">By the Times Business Desk</p>
+        <figure>
+          <div style="background:#fff;border:1px solid var(--hair);display:flex;justify-content:center;gap:8px;padding:14px;flex-wrap:wrap">
+            <img src="img/larssen_sk400.png" alt="Larssen SK400 skiff" style="height:150px;width:auto">
+            <img src="img/larssen_pulse.png" alt="Larssen Pulse XL" style="height:150px;width:auto">
+            <img src="img/larssen_bauer.png" alt="Larssen Bauer singlehander" style="height:150px;width:auto">
+          </div>
+          <figcaption>From left: the SK400 skiff, the Pulse XL and the Bauer singlehander, the three boats Larssen will build in the new shed.</figcaption>
+        </figure>
+        <div class="cols2">
+          <p>Larssen Sailing will open a second build shed at its Silverbrooks yard next spring, roughly doubling how many boats the company can turn out each year. The firm makes both hulls and sails; its “Sails by Larssen” tag appears on boats across the harbor.</p>
+          <p>Company officials said demand comes mostly from junior and high school programs, which have added fleets as more schools join interscholastic racing. The Bauer, a singlehander built for teenagers, has a waiting list into next summer.</p>
+          <p>The expansion adds about 40 jobs, most of them in lamination and rigging. Larssen also plans an apprenticeship with the Silverbrooks Public Schools career program.</p>
+        </div>
+      </article>
+      <aside class="col">
+        <p class="kicker">The Port</p>
+        <h3>A Record October at Samolette</h3>
+        <img src="img/port_sb.png" alt="Port of Silverbrooks" style="width:100%;max-width:240px;margin:8px 0;filter:var(--mast-filter)">
+        <div class="tblwrap"><table class="tt">
+          <thead><tr><th>Month</th><th class="n">Containers</th></tr></thead>
+          <tbody>
+            <tr><td>July</td><td class="n">36,880</td></tr>
+            <tr><td>August</td><td class="n">38,215</td></tr>
+            <tr><td>September</td><td class="n">39,402</td></tr>
+            <tr><td><b>October</b></td><td class="n"><b>41,067</b></td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:14px">Port officials credit the deeper channel and a new weekend gate shift.</p>
+        <div class="adbox" aria-label="Advertisement"><div class="tag">Advertisement</div><div class="in"><img src="img/apa_plane.png" alt="Asia Pacific Airlines 787"><b>Asia Pacific Airlines</b><small>Across the Pacific, now boarding at SBX Concourse X</small></div></div>
+      </aside>
+    </div>
+    <div class="row">
+      <div class="col"><div class="brief"><h3>Kwáani Adds a Second Daily Nonstop</h3><p>Kwáani Airlines will fly twice a day from SBX starting in December, with the evening departure timed for connections across the islands.</p></div></div>
+      <div class="col"><div class="brief"><h3>MC Performance Yachts Launches the MC42</h3><p>The Silverbrooks builder showed its new 42-foot racer at the boat show. The first hull goes to a buyer racing the Atlan Cup.</p></div><img src="img/mc_yachts.png" alt="MC Performance Yachts" style="width:180px;max-width:100%;margin-top:6px"></div>
+      <div class="col"><div class="brief"><h3>Nysel Boatworks Hiring Riggers</h3><p>The boatyard is adding a night shift to keep up with fall haul-outs. Applications are open through November 20.</p></div><img src="img/nysel.png" alt="Nysel Boatworks" style="width:150px;max-width:100%;margin-top:6px"></div>
+    </div>
+  </section>
+
+  <!-- ============ D: SPORTS ============ -->
+  <section class="pg" id="sports" aria-label="Section D, Sports" hidden>
+    <div class="sechead"><span class="L">D</span><h2>Sports</h2><span>Section D · Pages 1–8</span></div>
+    <div class="g3">
+      <article class="col" style="grid-column:span 2">
+        <p class="kicker">Hockey</p>
+        <h1 style="font-size:clamp(28px,3.6vw,40px)">Voyageurs Win a Shootout at AmEx Garden</h1>
+        <p class="by">By the Times Sports Desk</p>
+        <div class="cols2">
+          <p>The SB Voyageurs needed six shooters to finish off a 3–2 win Sunday night at AmEx Garden, their fourth straight home win. The building, which the Voyageurs share with the SB Gales, was sold out for the second weekend in a row.</p>
+          <p>The Voyageurs play two more at home this week before a four-game road trip. Fans coming from the suburbs can take SBTrain to Elliot Square; the arena is a short walk from the station.</p>
+          <p>The SB Gales open their basketball home schedule at AmEx Garden on Thursday, so crews will flip the floor from ice to hardwood for the second time this month.</p>
+        </div>
+        <div class="pq">Fourth straight home win for the Voyageurs.</div>
+        <div class="brief" style="border-top:1px solid var(--hair);margin-top:12px"><h3>Admirals Hold On at BECU Stadium</h3><p>The SB Admirals beat their division rival 24–20 on Sunday after a goal-line stand in the final minute. Étoile SB plays its playoff opener at the same stadium on Saturday.</p></div>
+        <div class="brief"><h3>Dockers Name a New Manager</h3><p>The SB Dockers will introduce their new manager at jetBlue Park on Thursday. Spring training tickets go on sale in January.</p></div>
+      </article>
+      <aside class="col">
+        <p class="kicker">Scoreboard</p>
+        <h3>Pros</h3>
+        <div class="score"><span>SB Voyageurs (SO)</span><b>3</b></div><div class="score"><span>Visitors</span><b>2</b></div>
+        <div class="score" style="margin-top:8px"><span>SB Admirals</span><b>24</b></div><div class="score"><span>Visitors</span><b>20</b></div>
+        <h3 style="margin-top:14px">College</h3>
+        <div class="score"><span>Aldense Bruins</span><b>28</b></div><div class="score"><span>UA Albanardia City Ravens</span><b>21</b></div>
+        <div class="score" style="margin-top:8px"><span>UA Waterloo Sharks</span><b>17</b></div><div class="score"><span>UA Foxford Eagles</span><b>10</b></div>
+        <h3 style="margin-top:14px">This week</h3>
+        <ul class="facts">
+          <li><span>Gales home opener</span><b>Thu · AmEx Garden</b></li>
+          <li><span>Étoile SB playoff</span><b>Sat · BECU Stadium</b></li>
+          <li><span>Bruins at Mets</span><b>Sat · 1 p.m.</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ E: ARTS ============ -->
+  <section class="pg" id="arts" aria-label="Section E, Arts" hidden>
+    <div class="sechead"><span class="L">E</span><h2>Arts</h2><span>Section E · Pages 1–6</span></div>
+    <div class="g3">
+      <article class="col" style="grid-column:span 2">
+        <p class="kicker">Dance</p>
+        <h1 style="font-size:clamp(28px,3.6vw,40px)">Silverbrooks Ballet Returns to Alexandria Hall With Three New Works</h1>
+        <p class="by">By the Times Arts Desk</p>
+        <figure><div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--wash);border:1px solid var(--hair);padding:14px">
+          <img src="img/ballet.png" alt="Silverbrooks Ballet" style="width:120px;height:120px">
+          <img src="img/alexandria_hall.png" alt="Garnett Center's Alexandria Hall" style="width:260px;max-width:100%;filter:var(--mast-filter)">
+        </div><figcaption>The company opens Friday at Garnett Center's Alexandria Hall.</figcaption></figure>
+        <div class="cols2">
+          <p>Silverbrooks Ballet opens its winter season Friday at Garnett Center's Alexandria Hall with a mixed bill: two premieres by company dancers and a revival of a harbor-themed piece first danced in the hall's opening year.</p>
+          <p>The hall's two smaller rooms, the Pacific Airways Entrium and the Kramig Entrium, will host free pre-show talks an hour before each performance.</p>
+          <p>Tickets start at $28. Students with a school ID get rush seats for $12 on the day of the show.</p>
+        </div>
+      </article>
+      <aside class="col">
+        <p class="kicker">This Week</p>
+        <div class="tblwrap"><table class="tt">
+          <thead><tr><th>When</th><th>What</th></tr></thead>
+          <tbody>
+            <tr><td>Fri 7:30</td><td>Silverbrooks Ballet, opening night · Alexandria Hall</td></tr>
+            <tr><td>Sat 2:00</td><td>Ballet matinee · Alexandria Hall</td></tr>
+            <tr><td>Sat 11:00</td><td>Story time and maker lab · Rutherford Public Library</td></tr>
+            <tr><td>Sun 4:00</td><td>Pre-show talk · Kramig Entrium</td></tr>
+          </tbody>
+        </table></div>
+        <div class="adbox" aria-label="Advertisement"><div class="tag">Advertisement</div><div class="in"><img src="img/rutherford_lib.png" alt="Rutherford Public Library" style="width:220px"><b>Open until 8 p.m. on Saturdays</b><small>Free cards for Albanardia residents</small></div></div>
+      </aside>
+    </div>
+    <div class="row">
+      <div class="col" style="grid-column:span 3"><div class="brief"><h3>City Hall Funds Murals for Three SBTrain Stations</h3><p>The City of Silverbrooks arts fund will pay local artists to paint the mezzanines at Elliot Square, Ferry Terminal and the new SBX Airport station. Proposals are due January 15.</p><img src="img/city_sb.png" alt="City of Silverbrooks" style="width:220px;max-width:100%;margin-top:8px"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ F: ON THE WATER ============ -->
+  <section class="pg" id="water" aria-label="Section F, On the Water" hidden>
+    <div class="sechead"><span class="L">F</span><h2>On the Water</h2><span>Section F · Pages 1–4</span></div>
+    <div class="g3">
+      <article class="col" style="grid-column:span 2">
+        <p class="kicker">Racing</p>
+        <h1 style="font-size:clamp(28px,3.6vw,40px)">Frostbite Season Starts Sunday on Silverbrooks Harbor</h1>
+        <p class="by">By the Times Waterfront Desk</p>
+        <div class="cols2">
+          <p>The winter frostbite series begins Sunday, with the first warning signal at 11 a.m. off the harbor breakwater. Race officials expect ILCAs, Club 420s and a growing fleet of Larssen Bauers on the line.</p>
+          <p>Racers should expect a southwest breeze of 12 to 18 knots and water near 52 degrees. Organizers require drysuits or wetsuits for every sailor through March.</p>
+          <p>SBFerry boats keep their normal schedule during racing. Race committee boats will hold starts while a ferry crosses the course, and skippers must give ferries right of way in the channel.</p>
+        </div>
+      </article>
+      <aside class="col">
+        <p class="kicker">Tides · Silverbrooks Harbor</p>
+        <div class="tblwrap"><table class="tt">
+          <thead><tr><th>Tuesday</th><th class="n">Time</th><th class="n">Feet</th></tr></thead>
+          <tbody>
+            <tr><td>High</td><td class="n">5:12 a.m.</td><td class="n">5.4</td></tr>
+            <tr><td>Low</td><td class="n">11:31 a.m.</td><td class="n">0.3</td></tr>
+            <tr><td>High</td><td class="n">5:38 p.m.</td><td class="n">5.0</td></tr>
+            <tr><td>Low</td><td class="n">11:49 p.m.</td><td class="n">0.6</td></tr>
+          </tbody>
+        </table></div>
+        <p class="kicker" style="margin-top:14px">SBFerry</p>
+        <div class="bullets"><img src="img/ferry.png" alt=""></div>
+        <ul class="facts">
+          <li><span>F1 Ferry Terminal – Villas, NJ</span><b>On time</b></li>
+          <li><span>Cape May – New Brolin</span><b>On time</b></li>
+          <li><span>Rutherford – Fort Norris</span><b>On time</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+<script>
+(()=>{const P=['front','metro','business','sports','arts','water'];
+ const show=()=>{let id=(location.hash||'#front').slice(1);if(!P.includes(id))id='front';
+  P.forEach(p=>{const s=document.getElementById(p);if(s)s.hidden=p!==id;});
+  document.querySelectorAll('.index a').forEach(a=>a.classList.toggle('on',a.dataset.p===id));
+  const i=P.indexOf(id),pv=document.getElementById('prevp'),nx=document.getElementById('nextp');
+  pv.href='#'+P[Math.max(0,i-1)];pv.style.visibility=i?'visible':'hidden';nx.href='#'+P[Math.min(P.length-1,i+1)];nx.style.visibility=i<P.length-1?'visible':'hidden';
+  document.getElementById('pnum').textContent='Section '+'ABCDEF'[i]+' · '+(i+1)+' of '+P.length;};
+ addEventListener('hashchange',()=>{show();scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});if(document.readyState==='loading')addEventListener('DOMContentLoaded',show);else show();})();
+</script>
+
+  <nav class="pager" aria-label="Page turn"><a id="prevp" href="#front">‹ Previous section</a><span id="pnum">Page 1 of 6</span><a id="nextp" href="#metro">Next section ›</a></nav>
+  <footer>
+    <span>© 2026 The Silverbrooks Times Company · 1 Times Square, Silverbrooks, AB</span>
+    <span>Home delivery: call (302) 555-0142</span>
+  </footer>
+</div>

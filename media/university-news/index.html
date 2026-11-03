@@ -1,0 +1,157 @@
+<title>University News</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Graduate&family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: a statewide college newsletter. Red collegiate masthead, a lead feature, a mascot roll call grid, scores and campus briefs. */
+:root{
+  --bg:#f6f4f0; --card:#ffffff; --ink:#18181b; --ink2:#46464d; --muted:#75737a; --rule:#dcd8d0; --red:#c11111; --redwash:#fbe9e7;
+  --mast-filter:none; --logo-bg:#ffffff;
+  --display:"Graduate","Rockwell","Georgia",serif;
+  --label:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141316;--card:#1d1c20;--ink:#efedf0;--ink2:#cbc8cf;--muted:#99969f;--rule:#34323a;--red:#ff5a4f;--redwash:#2c1715;--mast-filter:brightness(1.35);--logo-bg:#f4f2ee;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141316;--card:#1d1c20;--ink:#efedf0;--ink2:#cbc8cf;--muted:#99969f;--rule:#34323a;--red:#ff5a4f;--redwash:#2c1715;--mast-filter:brightness(1.35);--logo-bg:#f4f2ee;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+.mast{width:100%;max-width:640px;height:auto;filter:var(--mast-filter)}
+.issue{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;border-top:4px solid var(--red);border-bottom:1px solid var(--rule);padding:7px 0;
+  font-family:var(--label);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.issue span:nth-child(2){color:var(--red)}
+.label{font-family:var(--label);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.08;text-wrap:balance;text-transform:uppercase}
+h1{font-size:clamp(28px,4.2vw,44px)}
+h2{font-size:24px}
+h3{font-size:17px;line-height:1.2}
+p{margin:0}
+.lead{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:start}
+.lead .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
+.deck{font-style:italic;font-size:19px;color:var(--ink2);text-wrap:balance}
+.by{font-family:var(--label);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lead .txt p.b{max-width:62ch}
+.hero{background:var(--logo-bg);border:1px solid var(--rule);border-radius:4px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero .bear{width:72%;max-width:260px;height:auto}
+.hero .marks{display:flex;gap:16px;align-items:center}
+.hero .marks img{height:56px;width:auto}
+.hero figcaption{font-family:var(--label);font-size:13px;color:#6a676f;text-align:center;letter-spacing:.03em}
+.sec{display:flex;flex-direction:column;gap:14px}
+.sec>header{flex-direction:row;justify-content:space-between;align-items:baseline;text-align:left;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec>header p{font-family:var(--label);font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.roll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}@media (max-width:820px){.roll{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.team{background:var(--card);border:1px solid var(--rule);border-radius:4px;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.team .logo{background:var(--logo-bg);height:96px;display:flex;align-items:center;justify-content:center;padding:12px;border-bottom:1px solid var(--rule)}
+.team .logo img{max-height:64px;max-width:100%;width:auto;height:auto}
+.team .info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.team .mascot{font-family:var(--display);font-size:20px;text-transform:uppercase;line-height:1.1}
+.team .school{font-size:14px;color:var(--ink2)}
+.team .meta{font-family:var(--label);font-size:12.5px;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+.team .sw{height:5px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px}
+table{width:100%;border-collapse:collapse;font-family:var(--label);font-size:16px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink);padding:6px 8px 6px 0}
+td{border-bottom:1px solid var(--rule);padding:7px 8px 7px 0;font-weight:500;vertical-align:middle}
+td.n{text-align:right;font-weight:700}
+td .w{font-weight:700}
+td.sport{color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.tblwrap{overflow-x:auto}
+.briefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px}
+.brief{display:flex;gap:12px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--rule);min-width:0}
+.brief .lg{flex:none;width:74px;height:46px;background:var(--logo-bg);border:1px solid var(--rule);border-radius:3px;display:flex;align-items:center;justify-content:center;padding:4px}
+.brief .lg img{max-width:100%;max-height:100%;width:auto;height:auto}
+.brief div p{font-size:14.5px;color:var(--ink2);margin-top:4px}
+.cal{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.cal li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--rule)}
+.cal li b{font-family:var(--label);font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--red)}
+.cal li span{font-size:15px}
+.cal li small{display:block;font-family:var(--label);font-size:13px;color:var(--muted);letter-spacing:.03em}
+.note{background:var(--redwash);border-left:4px solid var(--red);padding:12px 14px;font-size:15px}
+footer{border-top:4px solid var(--red);padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;font-family:var(--label);font-size:13px;color:var(--muted);letter-spacing:.04em}
+@media (max-width:820px){.lead,.two{grid-template-columns:minmax(0,1fr)}.briefs{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <img class="mast" src="img/masthead.png" alt="University News" width="1400" height="406">
+    <div class="issue"><span>Albanardia colleges &amp; universities</span><span>Week of November 2, 2026</span><span>Issue 9 · Fall term</span></div>
+  </header>
+
+  <section class="lead" aria-label="Lead story">
+    <div class="txt">
+      <p class="label">Rivalry Week</p>
+      <h1>Brady the Bruin Brings the Purple and Gold to Silverbrooks</h1>
+      <p class="deck">Aldense travels from New Brolin for its annual game against UA Silverbrooks, and its mascot is coming along on ALBExpress.</p>
+      <p class="by">University News staff</p>
+      <p class="b">Aldense University's Bruins play the UA Silverbrooks Mets this Saturday in the oldest rivalry in the state. The game sells out every year, and Aldense says about 3,000 students and alumni will make the trip from New Brolin, most of them on the ALBExpress X4.</p>
+      <p class="b">Brady the Bruin, the purple bear in gold trim who has led Aldense's teams since the 1950s, will ride the 10:05 a.m. train and greet fans at the SBX Airport station on the way in. The Aldense Student Athletic Association asks riders to wear purple and gold, and to leave the cowbells at home.</p>
+      <p class="b">Kickoff is at 1 p.m. Fans without tickets can watch at the Center for Student Leadership &amp; Connection on either campus.</p>
+    </div>
+    <figure class="hero">
+      <img class="bear" src="img/m_aldense_bear.png" alt="Brady the Bruin, Aldense University's purple bear mascot">
+      <div class="marks"><img src="img/a_aldense.png" alt="Aldense A"><img src="img/a_ua_silverbrooks.png" alt="Silverbrooks athletic wordmark"></div>
+      <figcaption>Brady the Bruin and the Aldense A, against the UA Silverbrooks arch wordmark.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" aria-label="Mascot roll call">
+    <header><h2>Mascot Roll Call</h2><p>Who you’re cheering for</p></header>
+    <div class="roll">
+      <article class="team"><div class="sw" style="background:#4b2c86"></div><div class="logo"><img src="img/a_aldense.png" alt="Aldense A"></div><div class="info"><span class="mascot">Bruins</span><span class="school">Aldense University</span><span class="meta">New Brolin · aldense.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#3cb043"></div><div class="logo"><img src="img/a_albtech.png" alt="AlbTech script"></div><div class="info"><span class="mascot">Beavers</span><span class="school">Albanardia Institute of Technology</span><span class="meta">Silverbrooks · albtech.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#0f8a43"></div><div class="logo"><img src="img/a_ua_silverbrooks.png" alt="Silverbrooks"></div><div class="info"><span class="mascot">Mets</span><span class="school">University of Albanardia: Silverbrooks</span><span class="meta">Silverbrooks · silverbrooks.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#2a62c4"></div><div class="logo"><img src="img/a_ua_waterloo.png" alt="Waterloo"></div><div class="info"><span class="mascot">Sharks</span><span class="school">University of Albanardia: Waterloo</span><span class="meta">Waterloo · waterloo.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#d42c2c"></div><div class="logo"><img src="img/a_ua_albcity.png" alt="Alb-City"></div><div class="info"><span class="mascot">Ravens</span><span class="school">University of Albanardia: Albanardia City</span><span class="meta">Albanardia City · albcity.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#ea7a2a"></div><div class="logo"><img src="img/a_ua_foxford.png" alt="Foxford"></div><div class="info"><span class="mascot">Eagles</span><span class="school">University of Albanardia: Foxford</span><span class="meta">Foxford · foxford.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#d63ab0"></div><div class="logo"><img src="img/a_ua_moiyane.png" alt="Moïyane"></div><div class="info"><span class="mascot">Royals</span><span class="school">University of Albanardia: Moïyane</span><span class="meta">Moïyane · moiyane.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#1f7a3f"></div><div class="logo"><img src="img/w_smithsonian.png" alt="Smithsonian College"></div><div class="info"><span class="mascot">Stingers</span><span class="school">Smithsonian College</span><span class="meta">Belwether · smithsonian.edu</span></div></article>
+      <article class="team"><div class="sw" style="background:#c41e1e"></div><div class="logo"><img src="img/a_sbu.png" alt="SBU"></div><div class="info"><span class="mascot">SBU</span><span class="school">Silverbrooks University</span><span class="meta">Silverbrooks · sbu.edu</span></div></article>
+    </div>
+  </section>
+
+  <section class="two" aria-label="Scores and calendar">
+    <div class="sec">
+      <header><h2>Scoreboard</h2><p>Last weekend</p></header>
+      <div class="tblwrap"><table>
+        <thead><tr><th>Sport</th><th>Matchup</th><th class="n">Final</th></tr></thead>
+        <tbody>
+          <tr><td class="sport">Football</td><td><span class="w">Bruins</span> at Ravens</td><td class="n">28–21</td></tr>
+          <tr><td class="sport">Football</td><td><span class="w">Sharks</span> vs Eagles</td><td class="n">17–10</td></tr>
+          <tr><td class="sport">Hockey</td><td><span class="w">Beavers</span> vs Royals</td><td class="n">4–2</td></tr>
+          <tr><td class="sport">Hockey</td><td>Mets at <span class="w">Bruins</span></td><td class="n">3–3 OT</td></tr>
+          <tr><td class="sport">Volleyball</td><td><span class="w">SBU</span> vs Mets</td><td class="n">3–1</td></tr>
+          <tr><td class="sport">Sailing</td><td><span class="w">Aldense</span> wins the Gore Trophy · AlbTech 2nd</td><td class="n">32 pts</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="sec">
+      <header><h2>This Week</h2><p>Games, talks and deadlines</p></header>
+      <ul class="cal">
+        <li><b>Tue 11/3</b><span>Election Day: campus polling places open 7 a.m. to 8 p.m.<small>All campuses</small></span></li>
+        <li><b>Wed 11/4</b><span>Startup demo night at AlbTech<small>4012 Commerce St, Silverbrooks</small></span></li>
+        <li><b>Thu 11/5</b><span>McKay public telescope night<small>McKay University, 1732 15th St</small></span></li>
+        <li><b>Fri 11/6</b><span>Hockey: Sharks at Beavers, 7 p.m.<small>AlbTech arena</small></span></li>
+        <li><b>Sat 11/7</b><span>Football: Bruins at Mets, 1 p.m.<small>Rivalry game · ALBExpress X4 recommended</small></span></li>
+        <li><b>Sun 11/8</b><span>Frostbite sailing, Aldense and AlbTech teams<small>James L. Gore Sailing Pavilion</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Campus briefs">
+    <header><h2>Around the Campuses</h2><p>Briefs from every school</p></header>
+    <div class="briefs">
+      <div class="brief"><div class="lg"><img src="img/w_mckay.png" alt="McKay University"></div><div><h3>McKay Launches a Space Sciences Minor</h3><p>The physics department will offer the minor next fall, with a rooftop observatory class open to every major.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_sbu.png" alt="Silverbrooks University"></div><div><h3>SBU Breaks Ground on Its AI Hall</h3><p>The new building on Old Nyberg Ave will house the engineering and medical AI labs, opening in 2028.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_albtech.png" alt="AlbTech"></div><div><h3>Ten AlbTech Startups Reach the State Finals</h3><p>Student teams pitch to investors at Wednesday's demo night. Last year's winner now has 40 employees.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_aldense.png" alt="Aldense University"></div><div><h3>Aldense Law Clinic Opens in New Brolin</h3><p>Third-year law students will offer free help with leases and small claims, funded by the Meyer J. Aldense Foundation.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_ua.png" alt="University of Albanardia"></div><div><h3>UA Medical Center Adds a Night Clinic</h3><p>The Silverbrooks campus clinic now stays open until 11 p.m. for students on all five UA campuses.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_smithsonian.png" alt="Smithsonian College"></div><div><h3>Smithsonian Opens Its History Archive</h3><p>The Stingers’ Belwether campus's collection of state maps and records is now open to visiting researchers on weekdays.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_saintmarse.png" alt="Université Saint-Marsé"></div><div><h3>Saint-Marsé Hosts a European Film Week</h3><p>Free screenings in French with English subtitles run every evening next week.</p></div></div>
+      <div class="brief"><div class="lg"><img src="img/w_ua_foxford.png" alt="UA Foxford"></div><div><h3>Foxford Eagles Get a New Rink</h3><p>The Foxford campus will open a hockey rink in January, the first on any UA campus outside Silverbrooks.</p></div></div>
+    </div>
+  </section>
+
+  <p class="note">Getting to games: most campuses sit on an SBTrain, SBMetro or ALBExpress line. Students ride SBTransit for free with a valid school ID.</p>
+
+  <footer><span>University News · A newsletter for Albanardia’s colleges and universities</span><span>Published every Monday during the academic year</span></footer>
+</div>

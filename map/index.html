@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Albanardia Map</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage"><svg id="map" viewBox="0 0 1640 2360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of Albanardia"></svg></div>
+<div class="card" id="dir" hidden>
+  <div class="dh"><b>Directions</b><span style="flex:1"></span><button id="dmin" type="button" aria-label="Minimize directions" aria-expanded="true">⌄</button><button id="dirx" type="button" aria-label="Hide directions">✕</button></div><button type="button" id="dsum" aria-label="Show directions"></button>
+  <div class="dmode" role="radiogroup" aria-label="Travel mode"><button type="button" data-m="drive" class="on" role="radio" aria-checked="true">🚗 Drive</button><button type="button" data-m="walk" role="radio" aria-checked="false">🚶 Walk</button><button type="button" data-m="transit" role="radio" aria-checked="false"><i class="lg lg-t"></i>Transit</button></div>
+  <div class="dr"><span class="dot a">A</span><div class="dw"><input id="dfrom" type="search" placeholder="Choose start" autocomplete="off" aria-label="Start"><ul class="dres" id="dfromr"></ul></div></div>
+  <div class="dr"><span class="dot b">B</span><div class="dw"><input id="dto" type="search" placeholder="Choose destination" autocomplete="off" aria-label="Destination"><ul class="dres" id="dtor"></ul></div><button id="dswap" type="button" aria-label="Swap start and destination">⇅</button></div>
+  <label class="dloop"><input type="checkbox" id="dloop"> Round trip (come back to start)</label>
+  <div id="dout"></div>
+</div>
+<div class="card" id="title"><b>Albanardia</b><span>The Windward State</span>
+  <div id="sbox"><button id="dirbtn" type="button" aria-label="Directions" title="Directions">🚗</button><input id="q" type="search" placeholder="Search places, addresses, streets" autocomplete="off" aria-label="Search the map"><ul id="res" role="listbox"></ul></div></div>
+<details class="card" id="panel" open>
+  <summary>Map layers <span aria-hidden="true">⌄</span></summary>
+  <button type="button" id="allbtn" class="allbtn">Deselect all</button><div id="layers"></div>
+  <hr>
+  <details><summary>Club burgees</summary><div id="flags"></div></details>
+</details>
+<div class="card" id="mode" role="radiogroup" aria-label="Map style"><button type="button" id="mStd" role="radio" aria-checked="true" class="on">Map</button><button type="button" id="mSat" role="radio" aria-checked="false">Satellite</button></div><div class="card" id="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div>
+<div id="scale" aria-live="polite"><div class="row"><span>0</span><span id="sd"></span></div><div class="bar" id="sb"></div><div class="row"><span></span><span id="sk"></span></div></div>
+<div id="tip" role="status"></div><div id="place" role="dialog" aria-label="Place details"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
