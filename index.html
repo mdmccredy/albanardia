@@ -1,40 +1,62 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Albanardia</title>
+<meta name="description" content="Albanardia, the Windward State: maps, transit, city sites and news.">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-180.png"><link rel="icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Albanardia"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#11161b" media="(prefers-color-scheme: dark)">
 <style>
-:root{--bg:#f6f4ef;--ink:#16202a;--mut:#5b6670;--card:#fff;--line:#e3dfd6;--acc:#1d5fa8}
-@media (prefers-color-scheme:dark){:root{--bg:#11161b;--ink:#eef1f4;--mut:#9aa6b1;--card:#1a2129;--line:#2a333d;--acc:#6fa8e8}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}
-main{max-width:980px;margin:0 auto;padding:48px 16px}
-h1{font-size:44px;margin:0;letter-spacing:-1px}.sub{color:var(--mut);margin:4px 0 36px}
-h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mut);margin:32px 0 12px}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-a.c{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:inherit;text-decoration:none}
-a.c:hover{border-color:var(--acc)}a.c b{display:block;font-size:17px}a.c span{color:var(--mut);font-size:14px}
-img.lv{width:100%;border-radius:8px;margin-top:10px;background:#fff}
-</style><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Albanardia"><meta name="theme-color" content="#0b2a5b"></head><body><main>
-<h1>Albanardia</h1><p class="sub">The Windward State · Silverbrooks, SB</p>
-<h2>City</h2><div class="g">
-<a class="c" href="gov/"><b>silverbrooks.gov</b><span>City of Silverbrooks: 311, council, trash days, alerts</span></a>
-<a class="c" href="visit/"><b>Visit Silverbrooks</b><span>Tourism guide: top 10, food, events, itineraries</span></a>
-<a class="c" href="sbpl/"><b>sbpl.org</b><span>Silverbrooks Public Library</span></a>
-<a class="c" href="sbps/"><b>sbps.org</b><span>Silverbrooks Public Schools</span></a></div>
+:root{--bg:#f6f4ef;--ink:#16202a;--mut:#5b6670;--card:#fff;--line:#e3dfd6;--acc:#1d5fa8;--ic:#eef0f2}
+@media (prefers-color-scheme:dark){:root{--bg:#11161b;--ink:#eef1f4;--mut:#9aa6b1;--card:#1a2129;--line:#2a333d;--acc:#6fa8e8;--ic:#232c36}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Inter,sans-serif;-webkit-tap-highlight-color:transparent}
+main{max-width:980px;margin:0 auto;padding:max(28px,calc(env(safe-area-inset-top) + 16px)) max(16px,env(safe-area-inset-right)) max(40px,calc(env(safe-area-inset-bottom) + 24px)) max(16px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+header img{width:56px;height:56px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+h1{font-size:34px;margin:0;letter-spacing:-.8px;line-height:1.05}
+.sub{color:var(--mut);margin:2px 0 0;font-size:15px}
+h2{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);margin:28px 0 10px;font-weight:700}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+@media (max-width:520px){.g{grid-template-columns:1fr 1fr}h1{font-size:30px}}
+a.c{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;color:inherit;text-decoration:none;min-height:118px;transition:transform .12s}
+a.c:hover{border-color:var(--acc)}a.c:active{transform:scale(.97)}
+a.c:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.i{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font:800 20px/1 system-ui,sans-serif;color:#fff;flex:none;overflow:hidden}
+.i img{width:100%;height:100%;object-fit:contain}
+.i.w{background:#fff;border:1px solid var(--line)}
+a.c b{display:block;font-size:16px;line-height:1.2}
+a.c span{color:var(--mut);font-size:13px;line-height:1.3}
+.tip{margin-top:28px;padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--mut);font-size:14px}
+.tip b{color:var(--ink)}
+.app-standalone .tip{display:none}
+</style></head><body><main>
+<header><img src="icons/icon-180.png" alt=""><div><h1>Albanardia</h1><p class="sub">The Windward State · Silverbrooks, SB</p></div></header>
+
 <h2>Maps</h2><div class="g">
-<a class="c" href="map/"><b>Albanardia Map</b><span>Interactive state map, directions and transit planner</span></a>
-<a class="c" href="transit/sbtrain.html"><b>SBTrain</b><span>Subway map</span></a>
-<a class="c" href="transit/sbmetro.html"><b>SBMetro</b><span>Bus network map</span></a>
-<a class="c" href="transit/sbexpress.html"><b>ALBExpress</b><span>Regional express map</span></a>
-<a class="c" href="transit/sbferry.html"><b>SBFerry</b><span>Ferry routes</span></a>
-<a class="c" href="airport/"><b>SBX Airport</b><span>Silverbrooks Thompson International: gates, runways, taxiways</span></a>
+<a class="c" href="map/"><span class="i" style="background:#0b2a5b"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span><div><b>Albanardia Map</b><span>State map, directions, transit planner</span></div></a>
+<a class="c" href="transit/sbtrain.html"><span class="i w"><img src="brand/ads/train.png" alt=""></span><div><b>SBTrain</b><span>Subway map</span></div></a>
+<a class="c" href="transit/sbmetro.html"><span class="i w"><img src="brand/ads/metro.png" alt=""></span><div><b>SBMetro</b><span>Bus network</span></div></a>
+<a class="c" href="transit/sbexpress.html"><span class="i w"><img src="brand/ads/albx.png" alt=""></span><div><b>ALBExpress</b><span>Statewide rail</span></div></a>
+<a class="c" href="transit/sbferry.html"><span class="i w"><img src="brand/ads/ferry.png" alt=""></span><div><b>SBFerry</b><span>Ferry routes</span></div></a>
+<a class="c" href="airport/"><span class="i" style="background:#121417">✈</span><div><b>SBX Airport</b><span>Gates, runways, taxiways</span></div></a>
+<a class="c" href="transit/liveries/"><span class="i w"><img src="brand/ads/transit.png" alt=""></span><div><b>Liveries</b><span>SBTransit train, bus, rail, ferry paint</span></div></a>
 </div>
+
+<h2>City</h2><div class="g">
+<a class="c" href="gov/"><span class="i" style="background:#1d4e89">SB</span><div><b>silverbrooks.gov</b><span>311, council, trash days, alerts</span></div></a>
+<a class="c" href="visit/"><span class="i" style="background:#0f7a6b">✦</span><div><b>Visit Silverbrooks</b><span>Top 10, food, events, itineraries</span></div></a>
+<a class="c" href="sbpl/"><span class="i w"><img src="brand/logos/sbpl-mark-web.png" alt=""></span><div><b>sbpl.org</b><span>Public Library</span></div></a>
+<a class="c" href="sbps/"><span class="i w"><img src="brand/logos/sbps-star-web.png" alt=""></span><div><b>sbps.org</b><span>Public Schools</span></div></a>
+</div>
+
 <h2>Media</h2><div class="g">
-<a class="c" href="media/times/"><b>The Silverbrooks Times</b><span>Front, Metro, Business, Sports, Arts, Water</span></a>
-<a class="c" href="media/university-news/"><b>University News</b><span>The state's colleges and their mascots</span></a>
-<a class="c" href="media/reels/a-day-in-sb-reel.mp4"><b>A day in SB</b><span>Reel · 36s</span></a>
-<a class="c" href="media/reels/times-video-what-makes-a-brooker.mp4"><b>What makes a Brooker?</b><span>Times Video · 47s</span></a>
+<a class="c" href="media/times/"><span class="i" style="background:#141414;font-family:Georgia,serif">T</span><div><b>The Silverbrooks Times</b><span>Front, Metro, Business, Sports</span></div></a>
+<a class="c" href="media/university-news/"><span class="i" style="background:#c11111;font-family:Georgia,serif">U</span><div><b>University News</b><span>Colleges and mascots</span></div></a>
+<a class="c" href="media/reels/"><span class="i" style="background:#7a2bd1">▶</span><div><b>Reels</b><span>A day in SB · What makes a Brooker?</span></div></a>
 </div>
-<h2>Transit liveries</h2><div class="g">
-<a class="c" href="transit/liveries/main.png"><b>SBTrain</b><img class="lv" src="transit/liveries/main.png" alt=""></a>
-<a class="c" href="transit/liveries/metro.png"><b>SBMetro</b><img class="lv" src="transit/liveries/metro.png" alt=""></a>
-<a class="c" href="transit/liveries/express.png"><b>ALBExpress</b><img class="lv" src="transit/liveries/express.png" alt=""></a>
-<a class="c" href="transit/liveries/ferry.png"><b>SBFerry</b><img class="lv" src="transit/liveries/ferry.png" alt=""></a>
-</div></main></body></html>
+
+<p class="tip"><b>Use it like an app:</b> on iPhone tap Share, then Add to Home Screen. On Android tap the menu, then Install app. Every page has a Home button to get back here.</p>
+</main>
+<script src="app/app.js"></script>
+</body></html>

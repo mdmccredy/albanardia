@@ -64,4 +64,5 @@ cb.innerHTML=DATA.br.map(b=>`<option>${b.n}</option>`).join('');
 function cat(){const s=q.value.toLowerCase().trim();const r=DATA.bk.filter(b=>!s||b.join(' ').toLowerCase().includes(s));
 cres.innerHTML=r.length?`<table><tr><th>Title</th><th>Author</th><th>Subject</th><th>Status</th></tr>${r.map(b=>`<tr><td><b>${b[0]}</b></td><td>${b[1]}</td><td>${b[2]}</td><td>${b[3]}</td></tr>`).join('')}</table>`:'<p>No results.</p>'}cat();
 function card(){cok.innerHTML=`<div class="ok">Welcome, ${cn.value||'reader'}! Your card number is <b>2 1796 ${Math.floor(1e7+Math.random()*9e7)}</b>. Pick it up at ${cb.value}.</div>`}
-route();</script></body></html>
+route();</script><!--app-shell--><script src="../app/app.js" data-home="float"></script><!--/app-shell-->
+</body></html>

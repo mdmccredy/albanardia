@@ -64,4 +64,5 @@ const tbl=r=>`<table><tr><th>School</th><th>Level</th><th>Neighborhood</th></tr>
 function dir(){const q=fq.value.toLowerCase();const r=S.filter(s=>(!fl.value||s[1]==fl.value)&&(!fh.value||s[2]==fh.value)&&(!q||s[0].toLowerCase().includes(q)));dres.innerHTML=`<p class="d">${r.length} schools</p>`+tbl(r)}dir();
 function fnd(){fres.innerHTML=tbl(S.filter(s=>s[2]==nh.value))}fnd();
 brd.innerHTML=DATA.b.map((b,i)=>`<div class="c"><span class="tag">Director, District ${i+1}</span><h3>${b}${i==0?' · President':''}</h3></div>`).join('');
-route();</script></body></html>
+route();</script><!--app-shell--><script src="../app/app.js" data-home="float"></script><!--/app-shell-->
+</body></html>

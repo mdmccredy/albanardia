@@ -172,4 +172,5 @@ DATA.D.forEach((d,i)=>d.hoods.forEach(h=>{const p=P[h];s+=`<circle cx="${X(p[0])
 dmap.innerHTML=s}
 document.getElementById('cgrid').innerHTML=DATA.D.map((d,i)=>`<div class="c"><span class="tag" style="background:${COL[i]};color:#fff">District ${d.n}</span><h3 style="margin-top:8px">${d.cm}${d.pres?' · Council President':''}</h3><p>${d.hoods.join(' · ')}</p></div>`).join('');
 hs.value='Downtown';lookup();route();
-</script></body></html>
+</script><!--app-shell--><script src="../app/app.js" data-home="float"></script><!--/app-shell-->
+</body></html>
