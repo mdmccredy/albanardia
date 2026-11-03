@@ -7,6 +7,7 @@ Max McCredy's fictional US state, the Windward State, and its capital Silverbroo
 | Folder | What's in it |
 |---|---|
 | `map/` | Interactive map: `index.html`, `style.css`, `data.js` (all map data), `app.js` (code) |
+| `airport/` | Interactive airport map of Silverbrooks Thompson International (SBX/KSBX) |
 | `transit/` | SBTrain, SBMetro, ALBExpress and SBFerry maps, plus livery images |
 | `media/` | The Silverbrooks Times, University News, reels |
 | `brand/ads/` | Logos and ad art used on the liveries |
