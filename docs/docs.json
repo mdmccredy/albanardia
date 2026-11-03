@@ -1,0 +1,22 @@
+[
+ {
+  "slug": "world-bible",
+  "title": "Albanardia World Bible",
+  "desc": "The settled canon: state, counties, cities, transit, colleges, sailing and open questions."
+ },
+ {
+  "slug": "update-log",
+  "title": "Albanardia Update Log",
+  "desc": "Every numbered change to Albanardia, v1 onward, newest first."
+ },
+ {
+  "slug": "stats",
+  "title": "Albanardia Stats & Comparisons",
+  "desc": "Populations, counties, colleges, companies and transit, compared to real US places."
+ },
+ {
+  "slug": "people",
+  "title": "The People of Silverbrooks",
+  "desc": "Culture, slang, food, the year's traditions, fan culture and unwritten rules."
+ }
+]

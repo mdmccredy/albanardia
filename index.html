@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Albanardia · The Windward State</title>
+<title>Albanardia.gov | Official Website of the State of Albanardia</title>
 <meta name="description" content="Albanardia, the Windward State: maps, transit, Silverbrooks city services and news.">
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-180.png"><link rel="icon" type="image/png" href="icons/favicon.png">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Albanardia"><meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -91,7 +91,7 @@ section.blk{padding:36px 0 4px}
 .svc b,.med b{display:block;font-size:15.5px}.svc span,.med span{font-size:13px;color:var(--mut);line-height:1.3;display:block}
 .med{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 footer{margin-top:44px;background:#0d1b2e;color:#c3cfdf;padding:36px 0 calc(28px + env(safe-area-inset-bottom));font-size:14px}
-footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+footer .g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:24px}
 footer h5{color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
 footer a{display:block;text-decoration:none;padding:4px 0;color:#c3cfdf}footer a:hover{color:#fff}
 .fb{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:18px;margin-bottom:8px}.fb img{width:34px;height:34px;border-radius:50%}
@@ -119,14 +119,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 #drawer .pn>a{display:block;text-decoration:none;padding:12px 4px;font-weight:600;border-bottom:1px solid var(--line)}
 #drawer .sbox{width:100%;margin-top:56px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active,.sc:active{transform:none}}
+#gov .svc{grid-template-columns:repeat(3,1fr)}@media (max-width:860px){#gov .svc{grid-template-columns:1fr 1fr}}@media (max-width:520px){#gov .svc{grid-template-columns:1fr}}
 </style></head><body>
 
-<div class="util"><div class="in"><span>An official site of the <b>State of Albanardia</b> <span style="opacity:.7">(fictional)</span></span><span class="sp"></span><span class="hide-s" id="today"></span><a class="hide-s" href="gov/">Silverbrooks 311</a></div></div>
+<div class="util"><div class="in"><span><img src="icons/favicon.png" alt="" style="width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:6px">An official website of the <b>State of Albanardia</b></span><span class="sp"></span><span class="hide-s" id="today"></span><a class="hide-s" href="#gov">State agencies</a><a class="hide-s" href="docs/">Documents</a></div></div>
 <div class="flagbar"></div>
 
 <header class="top"><div class="in">
- <a class="brand" href="./" aria-label="Albanardia home"><img src="icons/favicon.png" alt=""><span><b>Albanardia</b><small>The Windward State</small></span></a>
- <nav class="main" aria-label="Main"><a href="map/">Map</a><a href="#transit">Transit</a><a href="#news">News</a><a href="#explore">Explore</a><a href="#services">Services</a></nav>
+ <a class="brand" href="./" aria-label="Albanardia home"><img src="icons/favicon.png" alt=""><span><b>Albanardia.gov</b><small>Official State Website</small></span></a>
+ <nav class="main" aria-label="Main"><a href="#gov">Government</a><a href="map/">Map</a><a href="#transit">Transit</a><a href="#news">News</a><a href="colleges/">Education</a><a href="docs/">Documents</a></nav>
  <span class="sp"></span>
  <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search Albanardia" aria-label="Search Albanardia" autocomplete="off"><div class="sres"></div></div>
  <button class="menu" id="mbtn" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -137,15 +138,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
  <div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search Albanardia" aria-label="Search Albanardia" autocomplete="off"><div class="sres"></div></div>
  <h6>Maps &amp; transit</h6><a href="map/">Albanardia Map</a><a href="transit/sbtrain.html">SBTrain subway</a><a href="transit/sbmetro.html">SBMetro buses</a><a href="transit/sbexpress.html">ALBExpress rail</a><a href="transit/sbferry.html">SBFerry</a><a href="airport/">SBX Airport</a><a href="transit/liveries/">Liveries</a>
  <h6>Silverbrooks</h6><a href="gov/">City of Silverbrooks</a><a href="visit/">Visit Silverbrooks</a><a href="sbpl/">Public Library</a><a href="sbps/">Public Schools</a>
+ <h6>State</h6><a href="#gov">State agencies</a><a href="colleges/">Colleges &amp; universities</a><a href="larssen/">Larssen Sailcraft</a>
  <h6>News</h6><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a>
+ <h6>More</h6><a href="docs/world-bible/">World Bible</a><a href="docs/update-log/">Update Log</a><a href="docs/stats/">Stats &amp; Comparisons</a><a href="docs/people/">The People of Silverbrooks</a><a href="updates/">Site Updates</a><a href="docs/">All documents</a>
 </div></div>
 
 <main>
 <section class="hero"><div class="in">
- <span class="kick"><i></i>Silverbrooks · Capital of the Windward State</span>
- <h1>Welcome to Albanardia</h1>
- <p>A harbor state with a million-person capital, five subway lines, statewide rail and ferries across the bays. Find your way around, catch a train, or see what's happening this week.</p>
- <div class="cta"><a class="btn p" href="map/">Open the map <span aria-hidden="true">→</span></a><a class="btn s" href="transit/sbtrain.html">Ride SBTrain</a><a class="btn s" href="visit/">Visit Silverbrooks</a></div>
+ <span class="kick"><i></i>State of Albanardia · The Windward State</span>
+ <h1>Welcome to Albanardia.gov</h1>
+ <p>Your front door to the State of Albanardia: maps and directions, statewide rail and ferries, state agencies, universities, records and news from the capital, Silverbrooks.</p>
+ <div class="cta"><a class="btn p" href="map/">Open the state map <span aria-hidden="true">→</span></a><a class="btn s" href="#gov">State agencies</a><a class="btn s" href="docs/">Documents &amp; records</a></div>
 </div></section>
 
 <div class="rail" id="transit"><div class="in"><div class="row">
@@ -159,6 +162,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 </div></div></div>
 
 <div class="in">
+<section class="blk" id="gov">
+ <div class="hd"><h2>State government</h2><a href="docs/world-bible/#the-state">About the state →</a></div>
+ <div class="svc">
+  <a class="card" href="map/"><span class="ic f" style="background:#22498a"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M12 3 4 8h16z"/></svg></span><div><b>State Capitol</b><span>1 Capitol Square, Silverbrooks</span></div></a>
+  <a class="card" href="transit/sbexpress.html"><span class="ic"><img src="brand/ads/albx.png" alt=""></span><div><b>NETA</b><span>Northeastern Transit Authority · ALBExpress rail</span></div></a>
+  <a class="card" href="transit/sbferry.html"><span class="ic"><img src="brand/ads/ferry.png" alt=""></span><div><b>River &amp; Bay Authority</b><span>Cross-bay ferries and SBFerry</span></div></a>
+  <a class="card" href="airport/"><span class="ic f" style="background:#0f3d6e"><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><div><b>SBX Airport Authority</b><span>Silverbrooks Thompson International</span></div></a>
+  <a class="card" href="colleges/"><span class="ic f" style="background:#7a1f2b"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span><div><b>Higher Education</b><span>13 colleges and universities</span></div></a>
+  <a class="card" href="docs/"><span class="ic f" style="background:#3b4a5e"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/></svg></span><div><b>Documents &amp; Records</b><span>World Bible, stats, update log</span></div></a>
+ </div>
+ <div class="facts">
+  <div><b>3.54M</b><span>Albanardians</span></div>
+  <div><b>13</b><span>counties</span></div>
+  <div><b>6,550</b><span>square miles</span></div>
+  <div><b>8</b><span>ALBExpress rail lines</span></div>
+ </div>
+</section>
+
 <section class="blk" id="news"><div class="cols">
  <div>
   <div class="hd"><h2>Top stories</h2><a href="media/times/">The Times →</a></div>
@@ -173,7 +194,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
  <div>
   <div class="hd"><h2>Service status</h2><a href="gov/#transportation">All alerts →</a></div>
   <div class="card status">
-   <h3>Transit &amp; streets <small id="upd"></small></h3>
+   <h3>Transit &amp; streets <a href="updates/" style="font-size:12px;font-weight:600;color:var(--acc);text-decoration:none;margin-left:6px">Site updates</a></h3>
    <a class="al" href="transit/sbtrain.html"><i class="dot warn"></i><div><b>SBTrain · A Line</b><span>Weekend single-tracking between Linnea Avenue and Elliot Square. Trains every 12 min.</span></div></a>
    <a class="al" href="transit/sbmetro.html"><i class="dot warn"></i><div><b>SBMetro · R Line</b><span>Detour on Lindgren Ave near McKay University for water main work.</span></div></a>
    <a class="al" href="transit/sbferry.html"><i class="dot ok"></i><div><b>SBFerry · Harbor</b><span>All ferries on schedule.</span></div></a>
@@ -226,17 +247,18 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
    <div class="install"><b style="color:#fff">Get the app:</b> on iPhone tap Share, then Add to Home Screen. On Android tap the menu, then Install app.</div></div>
   <div><h5>Maps &amp; transit</h5><a href="map/">Albanardia Map</a><a href="transit/sbtrain.html">SBTrain</a><a href="transit/sbmetro.html">SBMetro</a><a href="transit/sbexpress.html">ALBExpress</a><a href="transit/sbferry.html">SBFerry</a><a href="airport/">SBX Airport</a></div>
   <div><h5>Silverbrooks</h5><a href="gov/">City Hall</a><a href="visit/">Visit</a><a href="sbpl/">Library</a><a href="sbps/">Schools</a></div>
-  <div><h5>News</h5><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a><a href="updates/">Site Updates</a></div>
+  <div><h5>News</h5><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a></div>
+  <div><h5>Documents</h5><a href="docs/world-bible/">World Bible</a><a href="docs/update-log/">Update Log</a><a href="docs/stats/">Stats &amp; Comparisons</a><a href="docs/people/">People of Silverbrooks</a><a href="updates/">Site Updates</a></div>
  </div>
- <div class="legal">Albanardia is a fictional state and worldbuilding project by Max McCredy. Not a real government website.</div>
+ <div class="legal">© State of Albanardia. Albanardia is a fictional state and worldbuilding project by Max McCredy, not a real government website.</div>
 </div></footer>
 
 <script>
 (function(){
  var d=new Date();
  var t=document.getElementById('today');if(t)t.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
- var u=document.getElementById('upd');if(u)u.textContent='Updated '+d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
- var IDX=[["Albanardia Map","Interactive state map, directions, transit planner","map/"],["SBTrain","Subway map · A, B, C, D, E lines and G streetcar","transit/sbtrain.html"],["SBMetro","Bus network map","transit/sbmetro.html"],["ALBExpress","Statewide rail map","transit/sbexpress.html"],["SBFerry","Ferry routes","transit/sbferry.html"],["Site Updates","What changed on the site, newest first","updates/"],["SBX Airport","Silverbrooks Thompson International · gates, runways","airport/"],["SBTransit liveries","Train, bus, rail, ferry paint","transit/liveries/"],["City of Silverbrooks","silverbrooks.gov · 311, council, trash days","gov/"],["Report a problem (311)","Potholes, streetlights, missed pickup","gov/#report"],["Trash day lookup","Pickup by neighborhood","gov/#neighborhoods"],["Mayor & City Council","Districts and meetings","gov/#council"],["Visit Silverbrooks","Top 10, food, events, itineraries","visit/"],["Silverbrooks Public Library","sbpl.org","sbpl/"],["Silverbrooks Public Schools","sbps.org","sbps/"],["The Silverbrooks Times","News, Metro, Business, Sports, Arts, Water","media/times/"],["University News","Colleges, mascots, scores","media/university-news/"],["Reels","A day in SB · What makes a Brooker?","media/reels/"]];
+ 
+ var IDX=[["Albanardia Map","Interactive state map, directions, transit planner","map/"],["SBTrain","Subway map · A, B, C, D, E lines and G streetcar","transit/sbtrain.html"],["SBMetro","Bus network map","transit/sbmetro.html"],["ALBExpress","Statewide rail map","transit/sbexpress.html"],["SBFerry","Ferry routes","transit/sbferry.html"],["Site Updates","What changed on the site, newest first","updates/"],["World Bible","Albanardia canon: state, counties, transit, colleges","docs/world-bible/"],["Update Log","Every numbered Albanardia change","docs/update-log/"],["Stats & Comparisons","Populations and real-world comparisons","docs/stats/"],["The People of Silverbrooks","Culture, slang, food and traditions","docs/people/"],["Documents & Records","All Albanardia documents","docs/"],["Colleges & Universities","ASU, UA, SBU, Aldense, AlbTech, Smithsonian and more","colleges/"],["Larssen Sailcraft","Sailboats for every sailor · Foxford","larssen/"],["SBX Airport","Silverbrooks Thompson International · gates, runways","airport/"],["SBTransit liveries","Train, bus, rail, ferry paint","transit/liveries/"],["City of Silverbrooks","silverbrooks.gov · 311, council, trash days","gov/"],["Report a problem (311)","Potholes, streetlights, missed pickup","gov/#report"],["Trash day lookup","Pickup by neighborhood","gov/#neighborhoods"],["Mayor & City Council","Districts and meetings","gov/#council"],["Visit Silverbrooks","Top 10, food, events, itineraries","visit/"],["Silverbrooks Public Library","sbpl.org","sbpl/"],["Silverbrooks Public Schools","sbps.org","sbps/"],["The Silverbrooks Times","News, Metro, Business, Sports, Arts, Water","media/times/"],["University News","Colleges, mascots, scores","media/university-news/"],["Reels","A day in SB · What makes a Brooker?","media/reels/"]];
  function esc(s){return s.replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]})}
  document.querySelectorAll('.sbox').forEach(function(b){var i=b.querySelector('input'),r=b.querySelector('.sres');
   function run(){var q=i.value.trim().toLowerCase();if(!q){r.classList.remove('on');r.innerHTML='';return}
