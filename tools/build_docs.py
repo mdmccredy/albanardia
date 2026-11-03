@@ -5,7 +5,7 @@ The markdown files are exported from Max's Claude Docs (World Bible, Update Log,
 Stats & Comparisons, People of Silverbrooks). Re-export them, drop them in
 docs/src/ with the same file names, and run:  python3 tools/build_docs.py
 """
-import html, json, re, pathlib, datetime
+import html, json, re, pathlib, datetime, hashlib
 import markdown
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -72,6 +72,10 @@ def slugify(t):
 
 def build_doc(slug, title, desc, link):
     md = (SRC / f"{slug}.md").read_text(encoding="utf-8")
+    h = hashlib.sha1(md.encode()).hexdigest()
+    if SYNC.get(slug, {}).get("hash") != h:
+        SYNC[slug] = {"hash": h, "date": f"{datetime.date.today():%b %-d, %Y}"}
+    synced = SYNC[slug]["date"]
     md = md.replace("\\~", "~")
     lines = md.split("\n")
     # first line is "# Title", second non-empty is "date · @author" byline
@@ -89,7 +93,7 @@ def build_doc(slug, title, desc, link):
     body = body.replace("[ ]", "☐").replace("[x]", "☑")
     toc = "".join(f'<a href="#{t["id"]}">{html.escape(t["name"])}</a>' for t in conv.toc_tokens)
     date = byline.split("·")[0].strip() if byline else ""
-    meta = f'<div class="meta">{"<span>Started " + html.escape(date) + "</span>" if date else ""}<span>Synced from Claude Docs</span><span>Last synced {datetime.date.today():%b %-d, %Y}</span></div>'
+    meta = f'<div class="meta">{"<span>Started " + html.escape(date) + "</span>" if date else ""}<span>Synced from Claude Docs</span><span>Last changed {synced}</span></div>'
     page = f"""<div class="crumb"><a href="../../">Home</a> › <a href="../">Documents</a> › {html.escape(title)}</div>
 <div class="wrap"><nav class="toc" aria-label="On this page"><h2>On this page</h2>{toc}</nav>
 <article><h1>{html.escape(title)}</h1>{meta}{body}</article></div>"""
@@ -105,8 +109,12 @@ def build_index():
     (OUT / "index.html").write_text(shell("Documents & Records", page, 1), encoding="utf-8")
     (OUT / "docs.json").write_text(json.dumps([{"slug": s, "title": t, "desc": d} for s, t, d, _ in DOCS], indent=1))
 
+SYNC_FILE = SRC / "synced.json"
+SYNC = json.loads(SYNC_FILE.read_text()) if SYNC_FILE.exists() else {}
+
 if __name__ == "__main__":
     for s, t, d, l in DOCS:
         build_doc(s, t, d, l)
     build_index()
+    SYNC_FILE.write_text(json.dumps(SYNC, indent=1))
     print("built", len(DOCS), "docs")
