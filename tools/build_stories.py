@@ -90,9 +90,9 @@ inject('index.html', [
 gv = ROOT/'gov/index.html'; s = gv.read_text()
 MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 G = sorted([x for x in ST if x['site'] == 'gov'], key=lambda x: x['date'], reverse=True)
-arr = 'const NEWS=[' + ',\n'.join(json.dumps(['%s %d' % (MON[int(x['date'][5:7]) - 1], int(x['date'][8:])), x['title'], x['cat'], x['slug']], ensure_ascii=False) for x in G) + '];\n'
+arr = 'const NEWS=[' + ',\n'.join(json.dumps(['%s %d, %s' % (MON[int(x['date'][5:7]) - 1], int(x['date'][8:]), x['date'][:4]), x['title'], x['cat'], x['slug']], ensure_ascii=False) for x in G) + '];\n'
 i = s.index('const NEWS='); j = s.index('const nc=', i); s = s[:i] + arr + s[j:]
-s = re.sub(r'const nc=n=>`.*?`;', 'const nc=n=>`<a class="c" href="stories/#${n[3]}" style="display:block;color:inherit;text-decoration:none"><div class="d">${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></a>`;', s, count=1)
+s = re.sub(r'const nc=n=>`.*?`;', 'const nc=n=>`<a class="c" href="stories/#${n[3]}" style="display:block;color:inherit;text-decoration:none"><div class="d">Published ${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></a>`;', s, count=1)
 s = re.sub(r'<h2[^>]*>City news.*?</h2>', '<h2 style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">City news <a href="stories/" style="font-size:15px;font-weight:700">All stories →</a></h2>', s, count=1)
 s = re.sub(r'<h2>News</h2><div class="g news" id="allnews"></div>(<p>.*?</p>)?', '<h2>News</h2><div class="g news" id="allnews"></div><p><a href="stories/" style="font-weight:700">All stories, with full articles →</a></p>', s, count=1)
 gv.write_text(s)
@@ -121,6 +121,55 @@ inject('media/university-news/index.html', [('<section class="sec" aria-label="C
 v = re.sub(r'<!--alb-stories-->.*?<!--/alb-stories-->', '', (ROOT/'visit/index.html').read_text(), flags=re.S)
 k = v.index('<section class="pg" id="p-todo">'); k = v.rindex('</section>', 0, k)
 inject('visit/index.html', [(v[k - 80:k], embed('visit', 'Latest from Visit Silverbrooks', 3, 'display:block;margin:28px 0 8px'), False)])
+
+# ---- PUBLISH DATES: every story shows when it was published ----
+MONL = ['January','February','March','April','May','June','July','August','September','October','November','December']
+DAYN = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+import datetime as _dt
+def pub_short(d): return '%s %d, %s' % (MON[int(d[5:7]) - 1], int(d[8:]), d[:4])
+def pub_long(d): x = _dt.date.fromisoformat(d); return '%s, %s %d, %d' % (DAYN[x.weekday()], MONL[x.month - 1], x.day, x.year)
+PUBTAG = re.compile(r'<!--alb-pub-->.*?<!--/alb-pub-->', re.S)
+def pubmark(path, site, style):
+    p = ROOT/path; s = PUBTAG.sub('', p.read_text())
+    for x in ST:
+        if x['site'] != site: continue
+        t = html.escape(x['title'], quote=False)
+        m = re.search(re.escape(t) + r'\s*</h[1-4]>', s)
+        if m: s = s[:m.end()] + f'<!--alb-pub--><p class="alb-pub" style="{style}">Published {pub_long(x["date"])}<' + '/p><!--/alb-pub-->' + s[m.end():]
+    p.write_text(s)
+pubmark('media/times/index.html', 'times', 'font:600 11.5px/1.4 Inter,system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#6b6b70;margin:4px 0 8px')
+pubmark('media/university-news/index.html', 'uninews', 'font:700 11.5px/1.4 system-ui,sans-serif;letter-spacing:.6px;text-transform:uppercase;color:#7a6b6b;margin:4px 0 8px')
+# homepage top stories (they come from the Times and University News)
+p = ROOT/'index.html'; s = PUBTAG.sub('', p.read_text())
+for x in ST:
+    if x['site'] not in ('times', 'uninews'): continue
+    t = html.escape(x['title'], quote=False)
+    for m in reversed(list(re.finditer(re.escape(t) + r'</h[34]>', s))):
+        s = s[:m.end()] + f'<!--alb-pub--><span class="alb-pub" style="display:block;font-size:12.5px;color:var(--mut,#667);margin-top:3px">Published {pub_short(x["date"])}</span><!--/alb-pub-->' + s[m.end():]
+p.write_text(s)
+# Library and Schools: a published date on every article card and article page
+for site in ('sbpl', 'sbps'):
+    p = ROOT/f'{site}/index.html'; s = p.read_text()
+    i = s.index('const DATA=') + 11; D, end = json.JSONDecoder().raw_decode(s, i)
+    pubs = {x['slug']: x['date'] for x in ST if x['site'] == site}
+    for a_ in D['arts']:
+        if a_['slug'] in pubs: a_['pub'] = pub_short(pubs[a_['slug']])
+    s = s[:i] + json.dumps(D, ensure_ascii=False) + s[end:]
+    old = '<div class="d">${a.date} · ${a.kind}</div>'
+    new = old + '${a.pub?`<div class="d" style="margin-top:2px;opacity:.8">Published ${a.pub}</div>`:\'\'}'
+    if new not in s: s = s.replace(old, new)
+    p.write_text(s)
+# Larssen Sailing: every NEWS item carries its date, shown on the cards
+p = ROOT/'larssensailing/index.html'; s = p.read_text()
+m = re.search(r'const NEWS=(\[.*?\]);', s); N = json.loads(m.group(1))
+dates = {x['slug']: x['date'] for x in ST if x['site'] == 'larssen'}
+for n in N:
+    while len(n) < 8: n.append([] if len(n) == 6 else '')
+    if n[4] in dates: n[7] = '%s %d, %s' % (MONL[int(dates[n[4]][5:7]) - 1], int(dates[n[4]][8:]), dates[n[4]][:4])
+s = s[:m.start(1)] + json.dumps(N, ensure_ascii=False) + s[m.end(1):]
+s = s.replace("${n[0]} · ${n[7]||'November 2026'}", "${n[0]} · Published ${n[7]||'November 2026'}")
+s = s.replace('<small>${n[0]}</small><h3>${n[1]}</h3>', '<small>${n[0]}${n[7]?\' · Published \'+n[7]:\'\'}</small><h3>${n[1]}</h3>')
+p.write_text(s)
 
 # clubs and colleges: generators render the news sections from the database
 subprocess.run(['python3', str(ROOT/'tools/build_clubs.py')], check=True, stdout=subprocess.DEVNULL)

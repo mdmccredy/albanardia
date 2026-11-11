@@ -16,7 +16,7 @@
   }
   function card(s, showSite) {
     const si = siteOf(s), ext = !!s.link;
-    return `<a class="as-c" href="${href(s, PAGE)}"${s.img ? '' : ' data-noimg'}>${s.img ? `<span class="as-ph" style="background-image:url('${esc(url(s.img))}')"></span>` : ''}<span class="as-tx"><span class="as-k">${showSite ? `<b style="color:${si.c1}">${esc(si.name)}</b> · ` : ''}${esc(s.cat)} · ${fd(s.date)}${s.added && s.added !== 'original' ? ' <i class="as-new">New</i>' : ''}</span><span class="as-t">${esc(s.title)}</span>${s.dek ? `<span class="as-d">${esc(s.dek)}</span>` : ''}${ext ? `<span class="as-x">Read on ${esc(si.name)} →</span>` : ''}</span></a>`;
+    return `<a class="as-c" href="${href(s, PAGE)}"${s.img ? '' : ' data-noimg'}>${s.img ? `<span class="as-ph" style="background-image:url('${esc(url(s.img))}')"></span>` : ''}<span class="as-tx"><span class="as-k">${showSite ? `<b style="color:${si.c1}">${esc(si.name)}</b> · ` : ''}${esc(s.cat)} · Published ${fd(s.date)}${s.added && s.added !== 'original' ? ' <i class="as-new">New</i>' : ''}</span><span class="as-t">${esc(s.title)}</span>${s.dek ? `<span class="as-d">${esc(s.dek)}</span>` : ''}${ext ? `<span class="as-x">Read on ${esc(si.name)} →</span>` : ''}</span></a>`;
   }
   /* ---------- full page ---------- */
   const PAGE = (() => { const el = document.getElementById('alb-stories'); return el ? { el, site: el.dataset.site || '' } : null })();
@@ -45,7 +45,7 @@
       const s = mine.find(x => x.slug === slug && (!x.link)) || (master && ALL.find(x => (x.site + '/' + x.slug) === slug));
       if (!s) { A.hidden = true; L.hidden = false; PAGE.el.querySelector('.as-tools').hidden = false; return false }
       const sx = siteOf(s);
-      A.innerHTML = `<a class="as-bk" href="#">← All stories</a><div class="as-ak">${master ? `<b style="color:${sx.c1}">${esc(sx.name)}</b> · ` : ''}${esc(s.cat)} · ${fd(s.date)}</div><h1>${esc(s.title)}</h1>${s.dek ? `<p class="as-dk">${esc(s.dek)}</p>` : ''}${s.img ? `<img class="as-im" src="${esc(url(s.img))}" alt="">` : ''}${(s.body && s.body.length ? s.body : [s.dek]).map(p => `<p>${p}</p>`).join('')}
+      A.innerHTML = `<a class="as-bk" href="#">← All stories</a><div class="as-ak">${master ? `<b style="color:${sx.c1}">${esc(sx.name)}</b> · ` : ''}${esc(s.cat)} · Published ${fd(s.date)}</div><h1>${esc(s.title)}</h1>${s.dek ? `<p class="as-dk">${esc(s.dek)}</p>` : ''}${s.img ? `<img class="as-im" src="${esc(url(s.img))}" alt="">` : ''}${(s.body && s.body.length ? s.body : [s.dek]).map(p => `<p>${p}</p>`).join('')}
       <p class="as-from">From <a href="${url(sx.home)}" style="color:${sx.c1}">${esc(sx.name)}</a></p><h2 class="as-m">More stories</h2><div class="as-more">${mine.filter(x => x !== s && x.site === s.site).slice(0, 3).map(x => card(x, false)).join('')}</div>`;
       A.hidden = false; L.hidden = true; PAGE.el.querySelector('.as-tools').hidden = true; scrollTo(0, 0); document.title = s.title + ' | ' + sx.name; return true;
     }

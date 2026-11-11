@@ -10,7 +10,7 @@ A scheduled task runs once a day. Each run writes new stories for every Albanard
    - `site`, `slug` (unique for that site, lowercase-with-dashes), `date` (today, YYYY-MM-DD, Pacific time), `cat`, `title`, `dek` (one or two sentences), `body` (2 to 4 short paragraphs), `img` (null unless you reuse an image already on that site), `link` (null), `added` (today's date).
    - Library (`sbpl`) and Schools (`sbps`): also set `link` to `sbpl/#a/<slug>` or `sbps/#a/<slug>` and add `native` in that site's article format (copy the shape of an existing article in its `const DATA` arts list: slug, date like "Nov 12", kind, title, lede, img (reuse an Unsplash id already used on that site), body, and meta for Schools).
    - Larssen Sailing (`larssen`): set `link` to `larssensailing/#/news/<slug>` and add `native` as `[category, title, dek, image, slug, [paragraphs], [product names that exist in the shop], "Month D, YYYY"]`. Only mention boats and products that exist on the site. Never mention sail colors.
-5. Run `python3 tools/build_stories.py`. It must finish without errors. Open `stories/data.js` count or the build summary to confirm the new total.
+5. Run `python3 tools/build_stories.py`. It must finish without errors. Every story must have a `date`: the build shows it as "Published <date>" on every site (cards, article pages, the Times and University News headlines, the homepage). Open `stories/data.js` count or the build summary to confirm the new total.
 6. Commit as Max McCredy <mdmccredy@hotmail.com> with a message like `Stories: N new for <sites> (<date>)` and the session's attribution trailer, then push to `main`. If the push is rejected, `git pull --rebase` and push again.
 7. End with a short summary: which sites got stories, and their titles.
 

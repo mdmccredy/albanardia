@@ -143,16 +143,16 @@ const ALERTS=[["r","SBTrain","A Line","Weekend single-tracking between Linnea Av
 const al=a=>`<div class="alert ${a[0]}"><span class="tag">${a[1]}</span><b>${a[2]}</b> · ${a[3]}</div>`;
 document.getElementById('homealerts').innerHTML=ALERTS.slice(0,3).map(al).join('');
 document.getElementById('talerts').innerHTML=ALERTS.map(al).join('');
-const NEWS=[["Nov 10", "Veterans Day: what's open and closed", "City Hall", "veterans-day-what-s-open-and-closed"],
-["Nov 8", "Leaf pickup starts in every neighborhood", "Streets", "leaf-pickup-starts-in-every-neighborhood"],
-["Nov 5", "Lantern Night tickets go on sale", "Events", "lantern-night-tickets-go-on-sale"],
-["Nov 2", "Mayor proposes 2027 budget with more harbor ferry service", "City Hall", "mayor-proposes-2027-budget-with-more-harbor-ferry-service"],
-["Oct 30", "Lantern Garden setup begins for December's Lantern Night", "Events", "lantern-garden-setup-begins-for-december-s-lantern-night"],
-["Oct 28", "Oyster Opening returns to Pearl's End this weekend", "Events", "oyster-opening-returns-to-pearl-s-end-this-weekend"],
-["Oct 21", "SBPL turns 230: the library's birthday week", "Library", "sbpl-turns-230-the-library-s-birthday-week"],
-["Oct 15", "New protected bike lanes on Lindgren Ave", "Streets", "new-protected-bike-lanes-on-lindgren-ave"],
-["Oct 9", "Council hearing on rents set for November 16", "Council", "council-hearing-on-rents-set-for-november-16"]];
-const nc=n=>`<a class="c" href="stories/#${n[3]}" style="display:block;color:inherit;text-decoration:none"><div class="d">${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></a>`;
+const NEWS=[["Nov 10, 2026", "Veterans Day: what's open and closed", "City Hall", "veterans-day-what-s-open-and-closed"],
+["Nov 8, 2026", "Leaf pickup starts in every neighborhood", "Streets", "leaf-pickup-starts-in-every-neighborhood"],
+["Nov 5, 2026", "Lantern Night tickets go on sale", "Events", "lantern-night-tickets-go-on-sale"],
+["Nov 2, 2026", "Mayor proposes 2027 budget with more harbor ferry service", "City Hall", "mayor-proposes-2027-budget-with-more-harbor-ferry-service"],
+["Oct 30, 2026", "Lantern Garden setup begins for December's Lantern Night", "Events", "lantern-garden-setup-begins-for-december-s-lantern-night"],
+["Oct 28, 2026", "Oyster Opening returns to Pearl's End this weekend", "Events", "oyster-opening-returns-to-pearl-s-end-this-weekend"],
+["Oct 21, 2026", "SBPL turns 230: the library's birthday week", "Library", "sbpl-turns-230-the-library-s-birthday-week"],
+["Oct 15, 2026", "New protected bike lanes on Lindgren Ave", "Streets", "new-protected-bike-lanes-on-lindgren-ave"],
+["Oct 9, 2026", "Council hearing on rents set for November 16", "Council", "council-hearing-on-rents-set-for-november-16"]];
+const nc=n=>`<a class="c" href="stories/#${n[3]}" style="display:block;color:inherit;text-decoration:none"><div class="d">Published ${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></a>`;
 document.getElementById('homenews').innerHTML=NEWS.slice(0,3).map(nc).join('');document.getElementById('allnews').innerHTML=NEWS.map(nc).join('');
 const R311=[["Pothole","Old Taylor St & 9th Ave","In progress"],["Streetlight out","Westbrook Ave","Fixed"],["Graffiti","Pearl's End pier","Open"],["Missed trash pickup","Saint-Bruno","Fixed"]];
 const r311=()=>document.getElementById('r311').innerHTML=R311.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');r311();
