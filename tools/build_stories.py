@@ -107,6 +107,14 @@ for site in ('sbpl', 'sbps'):
     s = s[:i] + json.dumps(D, ensure_ascii=False) + s[end:]
     p.write_text(s)
 
+# Larssen Sailing: native NEWS list (stories with a "native" entry in Larssen's format:
+# [category, title, dek, image, slug, [paragraphs], [product names], "Month D, YYYY"])
+p = ROOT/'larssensailing/index.html'; s = p.read_text()
+m = re.search(r'const NEWS=(\[.*?\]);', s); N = json.loads(m.group(1)); have = {n[4] for n in N}
+for x in sorted([x for x in ST if x['site'] == 'larssen' and x.get('native') and x['slug'] not in have], key=lambda x: x['date']):
+    N.insert(0, x['native'])
+s = s[:m.start(1)] + json.dumps(N, ensure_ascii=False) + s[m.end(1):]; p.write_text(s)
+
 # The Times, University News, Visit Silverbrooks: latest stories boxes
 inject('media/times/index.html', [('<section class="pg" id="front" aria-label="Section A, News">', embed('times', 'Latest from the Times', 3, 'display:block;max-width:1200px;margin:16px auto 6px;padding:0 16px'), True)])
 inject('media/university-news/index.html', [('<section class="sec" aria-label="Campus briefs">', embed('uninews', 'Latest stories', 3, 'display:block;margin:10px 0 26px'), True)])

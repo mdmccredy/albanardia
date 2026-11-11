@@ -1,0 +1,13 @@
+{
+ "_how": "How often each website gets new stories. every_days = days between new stories, per_run = how many stories each time it is due. Edit freely; the daily scheduled task reads this file. Keys are site keys from stories/data.js, or a group: 'colleges' or 'clubs' apply to every college or club (each one is checked on its own, so they stay staggered).",
+ "times":   {"every_days": 1,  "per_run": 2, "why": "Daily newspaper: new stories every day"},
+ "uninews": {"every_days": 3,  "per_run": 2, "why": "Campus paper: a couple of times a week"},
+ "gov":     {"every_days": 2,  "per_run": 1, "why": "City news and notices"},
+ "state":   {"every_days": 3,  "per_run": 1, "why": "State government news"},
+ "sbpl":    {"every_days": 7,  "per_run": 1, "why": "Library: weekly news or event"},
+ "sbps":    {"every_days": 7,  "per_run": 1, "why": "School district: weekly"},
+ "visit":   {"every_days": 7,  "per_run": 1, "why": "Tourism: weekly things to do"},
+ "larssen": {"every_days": 10, "per_run": 1, "why": "Boat builder: new products, class rule changes, like West Coast Sailing's news"},
+ "colleges":{"every_days": 10, "per_run": 1, "why": "Each college: about every week and a half"},
+ "clubs":   {"every_days": 14, "per_run": 1, "why": "Each club or sailing center: every two weeks"}
+}

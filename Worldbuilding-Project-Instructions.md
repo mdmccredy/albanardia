@@ -217,4 +217,5 @@ Rules:
 ## Stories (news on every website)
 - Every story from every Albanardia website lives in one database: `stories/stories.json`. Never delete stories; every one ever made stays there.
 - To add stories: append them to `stories/stories.json` (site, slug, date YYYY-MM-DD, cat, title, dek, body paragraphs, optional img and link), then run `python3 tools/build_stories.py`. It rebuilds `stories/data.js`, every site's "All stories" page, the master page at `stories/`, the news boxes on each site, and re-runs the club and college generators.
+- New stories are added automatically by a daily scheduled task that follows `stories/AUTOMATION.md`; how often each site gets stories is set in `stories/cadence.json`.
 - The master "All stories" page is `stories/` (linked from the homepage). Each site has its own at `<site>/stories/`, except the Library and Schools (native `#news` pages) and Larssen Sailing (`#/news`, built from its own NEWS list).
