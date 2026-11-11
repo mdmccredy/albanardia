@@ -2936,6 +2936,40 @@
    "img": "larssensailing/img/catalog/ilca-7.png",
    "link": "larssensailing/#/news/approved-ilca-builder",
    "added": "original"
+  },
+  {
+   "site": "times",
+   "date": "2026-11-11",
+   "cat": "This Week",
+   "title": "What's open and closed in Silverbrooks on Veterans Day",
+   "dek": "Schools, library branches and city offices are closed Wednesday. SBTransit is running its regular weekday schedule.",
+   "body": [
+    "Silverbrooks Public Schools and every Silverbrooks Public Library branch are closed Wednesday for Veterans Day. City offices and state offices are closed too. Classes and normal hours resume Thursday.",
+    "SBMetro buses and SBTrain are running a regular weekday schedule. Parking meters on city streets are free for the day, and garbage and recycling pickup will run one day late through Saturday.",
+    "Federal offices, banks and post offices are closed. Most grocery stores, pharmacies and shops in Elliot Square are open normal hours.",
+    "A wreath ceremony starts at 11 a.m. in front of City Hall. The city asks people coming downtown to take SBTrain to Elliot Square, since street parking near the ceremony will be limited."
+   ],
+   "slug": "whats-open-and-closed-in-silverbrooks-on-veterans-day",
+   "img": null,
+   "link": null,
+   "added": "2026-11-11"
+  },
+  {
+   "site": "times",
+   "date": "2026-11-11",
+   "cat": "Racing",
+   "title": "Bauers fill the line as frostbite season opens on Silverbrooks Harbor",
+   "dek": "Forty-one boats raced Sunday in the first frostbite day of the winter, and the Larssen Bauer fleet was the biggest on the water.",
+   "body": [
+    "Forty-one boats started the opening day of the winter frostbite series on Sunday off the harbor breakwater. The race committee ran five races in a southwest breeze that held between 12 and 16 knots.",
+    "The Larssen Bauer fleet had 17 boats, its largest turnout since the class started frostbiting here. ILCAs had 14 boats and Club 420s had 10. No boats capsized and no sailors needed help from the safety boats.",
+    "Starts were held twice for SBFerry crossings, as planned. Race officials said the delays added about 15 minutes to the day.",
+    "Racing continues every Sunday through March, with the first warning signal at 11 a.m. Drysuits or wetsuits are still required for every sailor."
+   ],
+   "slug": "bauers-fill-the-line-as-frostbite-season-opens-on-silverbrooks-harbor",
+   "img": null,
+   "link": null,
+   "added": "2026-11-11"
   }
  ]
 }
