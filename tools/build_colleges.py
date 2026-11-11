@@ -6,6 +6,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "colleges"
 E = html.escape
 
+import json as _json
+_DB = _json.loads((ROOT/"stories/stories.json").read_text())["stories"]
+_MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+def latest(site, n=3):
+    """Newest stories for a site from the shared database (tools/build_stories.py)."""
+    return sorted([x for x in _DB if x["site"] == site], key=lambda x: x["date"], reverse=True)[:n]
+def fdate(d): return "%s %d, %s" % (_MON[int(d[5:7]) - 1], int(d[8:]), d[:4])
+
 S = [
  dict(slug="ua-silverbrooks", name="University of Albanardia: Silverbrooks", short="UA Silverbrooks", c1="#0b7a3e", c2="#0d1f17", acc="#f2c230",
       logo="w_ua_silverbrooks.png", ath="a_ua_silverbrooks.png", seal=None, town="Silverbrooks (Lindgren Heights)", kind="Flagship urban public university",
@@ -111,9 +119,7 @@ footer .wm{background:#fff;display:inline-block;padding:10px 14px;border-radius:
 """
 
 def page(s):
-    news = [("Campus","%s opens the 2026 fall term" % s["short"],"Classes are under way, with the largest first-year class in school history moving in this fall."),
-            ("Athletics", ("%s face the %s this weekend" % (s["mascot"], s["rival"])) if s.get("rival") and s.get("mascot") else "Fall sports schedules are out", "Get tickets and the full schedule on the athletics page."),
-            ("Admissions","Applications for fall 2027 are open","Early action closes November 15. Campus tours run every weekday.")]
+    news = latest("college:" + s["slug"], 3)
     seal = s.get("seal") or s.get("ath") or s["logo"]
     mark = s.get("mark") or s.get("ath")
     stats = [(s.get("founded") or s["students"], "Founded" if s.get("founded") else "Students"),
@@ -134,10 +140,10 @@ def page(s):
 <section class="alt" id="academics"><div class="in"><h2>Academics</h2><p class="sub">Schools and areas of study.</p><div class="grid">{''.join(f'<div class="card"><b>{E(p)}</b><span>Undergraduate and graduate programs</span></div>' for p in s['programs'])}</div></div></section>
 <section id="athletics"><div class="in ath"><div class="mk"><img src="../img/{mark or s['logo']}" alt=""></div><div><h2>{E(s['short'])} {E(s['mascot'] or 'Athletics')}</h2><p class="sub">{'Rivalry: '+E(s['rival'])+'.' if s.get('rival') else 'Home venues and teams.'}</p>
 <table><tr><th>Venue</th><th>Sports</th><th>Address</th></tr>{venues}</table></div></div></section>
-<section class="alt" id="news"><div class="in"><h2>News</h2><p class="sub">From around campus. <a href="../../media/university-news/">University News →</a></p><div class="news">{''.join(f'<div class="nw"><small>{E(a)}</small><h3>{E(b)}</h3><p>{E(c)}</p></div>' for a,b,c in news)}</div></div></section>
+<section class="alt" id="news"><div class="in"><h2>News</h2><p class="sub">From around campus. <a href="stories/">All stories →</a> · <a href="../../media/university-news/">University News →</a></p><div class="news">{''.join(f'<a class="nw" href="stories/#{n["slug"]}" style="display:block;color:inherit;text-decoration:none"><small>{E(n["cat"])} · {fdate(n["date"])}</small><h3>{E(n["title"])}</h3><p>{E(n["dek"])}</p></a>' for n in news)}</div></div></section>
 <section id="apply"><div class="in"><div class="visit" id="visit"><div><h2 style="color:#fff">Apply or visit</h2><p>Tours every weekday. Applications for fall 2027 are open at {E(s['domain'])}.</p></div><a class="btn" href="../../map/">Find us on the map</a></div></div></section>
 <footer><div class="in g"><div><span class="wm"><img src="../img/{s['logo']}" alt=""></span><p>{E(s['town'])}, Albanardia</p></div>
-<div><h5>Explore</h5><a href="#academics">Academics</a><a href="#athletics">Athletics</a><a href="#news">News</a></div><div><h5>Albanardia</h5><a href="../">All colleges</a><a href="../../">Albanardia.gov</a><a href="../../map/">State map</a></div></div></footer>"""
+<div><h5>Explore</h5><a href="#academics">Academics</a><a href="#athletics">Athletics</a><a href="#news">News</a><a href="stories/">All stories</a></div><div><h5>Albanardia</h5><a href="../">All colleges</a><a href="../../">Albanardia.gov</a><a href="../../map/">State map</a></div></div></footer>"""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(s['name'])}</title><link rel="manifest" href="../../manifest.json"><link rel="icon" href="../img/{s.get('ath') or s['logo']}"><link rel="apple-touch-icon" href="../../icons/icon-180.png">
 <meta name="theme-color" content="{s['c1']}"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">

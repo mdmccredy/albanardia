@@ -62,7 +62,7 @@ footer{background:var(--navy);color:#cfd8e6;padding:28px 16px;font-size:14px}foo
 <a class="c" href="#transportation"><div class="ic">🚇</div><h3>Transit &amp; streets</h3><p>SBTrain, SBMetro, SBFerry alerts and road work</p></a>
 </div>
 <h2>Service alerts</h2><div id="homealerts"></div>
-<h2>City news</h2><div class="g news" id="homenews"></div>
+<h2 style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">City news <a href="stories/" style="font-size:15px;font-weight:700">All stories →</a></h2><div class="g news" id="homenews"></div>
 </section>
 
 <section class="pg" id="p-pay"><h2>Pay &amp; Apply</h2>
@@ -123,7 +123,7 @@ footer{background:var(--navy);color:#cfd8e6;padding:28px 16px;font-size:14px}foo
 <div class="c"><div class="ic">⛸️</div><h3>Rinks &amp; pools</h3><p>Public skate and lap swim schedules at city recreation centers.</p></div>
 </div></section>
 
-<section class="pg" id="p-news"><h2>News</h2><div class="g news" id="allnews"></div></section>
+<section class="pg" id="p-news"><h2>News</h2><div class="g news" id="allnews"></div><p><a href="stories/" style="font-weight:700">All stories, with full articles →</a></p></section>
 </main>
 <footer><div class="in"><img src="img/city_sb.png" alt="" style="height:40px;background:#fff;border-radius:6px;padding:4px 8px"><p>City Hall · Elliot Square · Silverbrooks, AB · Call 311</p>
 <p style="opacity:.7">A fictional city government, part of the <a href="../">Albanardia</a> worldbuilding project. Not a real government website.</p></div></footer>
@@ -143,13 +143,16 @@ const ALERTS=[["r","SBTrain","A Line","Weekend single-tracking between Linnea Av
 const al=a=>`<div class="alert ${a[0]}"><span class="tag">${a[1]}</span><b>${a[2]}</b> · ${a[3]}</div>`;
 document.getElementById('homealerts').innerHTML=ALERTS.slice(0,3).map(al).join('');
 document.getElementById('talerts').innerHTML=ALERTS.map(al).join('');
-const NEWS=[["Nov 2","Mayor proposes 2027 budget with more harbor ferry service","City Hall"],
-["Oct 30","Lantern Garden setup begins for December's Lantern Night","Events"],
-["Oct 28","Oyster Opening returns to Pearl's End this weekend","Events"],
-["Oct 21","SBPL turns 230: the library's birthday week","Library"],
-["Oct 15","New protected bike lanes on Lindgren Ave","Streets"],
-["Oct 9","Council hearing on rents set for November 16","Council"]];
-const nc=n=>`<div class="c"><div class="d">${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></div>`;
+const NEWS=[["Nov 10", "Veterans Day: what's open and closed", "City Hall", "veterans-day-what-s-open-and-closed"],
+["Nov 8", "Leaf pickup starts in every neighborhood", "Streets", "leaf-pickup-starts-in-every-neighborhood"],
+["Nov 5", "Lantern Night tickets go on sale", "Events", "lantern-night-tickets-go-on-sale"],
+["Nov 2", "Mayor proposes 2027 budget with more harbor ferry service", "City Hall", "mayor-proposes-2027-budget-with-more-harbor-ferry-service"],
+["Oct 30", "Lantern Garden setup begins for December's Lantern Night", "Events", "lantern-garden-setup-begins-for-december-s-lantern-night"],
+["Oct 28", "Oyster Opening returns to Pearl's End this weekend", "Events", "oyster-opening-returns-to-pearl-s-end-this-weekend"],
+["Oct 21", "SBPL turns 230: the library's birthday week", "Library", "sbpl-turns-230-the-library-s-birthday-week"],
+["Oct 15", "New protected bike lanes on Lindgren Ave", "Streets", "new-protected-bike-lanes-on-lindgren-ave"],
+["Oct 9", "Council hearing on rents set for November 16", "Council", "council-hearing-on-rents-set-for-november-16"]];
+const nc=n=>`<a class="c" href="stories/#${n[3]}" style="display:block;color:inherit;text-decoration:none"><div class="d">${n[0]} · ${n[2]}</div><h3 style="margin-top:4px">${n[1]}</h3></a>`;
 document.getElementById('homenews').innerHTML=NEWS.slice(0,3).map(nc).join('');document.getElementById('allnews').innerHTML=NEWS.map(nc).join('');
 const R311=[["Pothole","Old Taylor St & 9th Ave","In progress"],["Streetlight out","Westbrook Ave","Fixed"],["Graffiti","Pearl's End pier","Open"],["Missed trash pickup","Saint-Bruno","Fixed"]];
 const r311=()=>document.getElementById('r311').innerHTML=R311.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');r311();

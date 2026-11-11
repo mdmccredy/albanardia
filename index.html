@@ -120,7 +120,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 #drawer .sbox{width:100%;margin-top:56px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active,.sc:active{transform:none}}
 #gov .svc{grid-template-columns:repeat(3,1fr)}@media (max-width:860px){#gov .svc{grid-template-columns:1fr 1fr}}@media (max-width:520px){#gov .svc{grid-template-columns:1fr}}
-</style></head><body>
+</style><!--alb-stories--><link rel="stylesheet" href="app/stories.css"><!--/alb-stories--></head><body>
 
 <div class="util"><div class="in"><span><img src="icons/favicon.png" alt="" style="width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:6px">An official website of the <b>State of Albanardia</b></span><span class="sp"></span><span class="hide-s" id="today"></span><a class="hide-s" href="#gov">State agencies</a><a class="hide-s" href="docs/">Documents</a></div></div>
 <div class="flagbar"></div>
@@ -139,7 +139,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
  <h6>Maps &amp; transit</h6><a href="map/">Albanardia Map</a><a href="transit/sbtrain.html">SBTrain subway</a><a href="transit/sbmetro.html">SBMetro buses</a><a href="transit/sbexpress.html">ALBExpress rail</a><a href="transit/sbferry.html">SBFerry</a><a href="airport/">SBX Airport</a><a href="transit/liveries/">Liveries</a>
  <h6>Silverbrooks</h6><a href="gov/">City of Silverbrooks</a><a href="visit/">Visit Silverbrooks</a><a href="sbpl/">Public Library</a><a href="sbps/">Public Schools</a>
  <h6>State</h6><a href="#gov">State agencies</a><a href="colleges/">Colleges &amp; universities</a><a href="clubs/">Yacht clubs &amp; sailing</a><a href="larssensailing/">Larssen Sailing</a>
- <h6>News</h6><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><a href="media/reels/">Reels</a>
+ <h6>News</h6><a href="media/times/">The Silverbrooks Times</a><a href="media/university-news/">University News</a><!--alb-stories--><a href="stories/">All stories</a><!--/alb-stories--><a href="media/reels/">Reels</a>
  <h6>More</h6><a href="docs/world-bible/">World Bible</a><a href="docs/update-log/">Update Log</a><a href="docs/stats/">Stats &amp; Comparisons</a><a href="docs/people/">The People of Silverbrooks</a><a href="updates/">Site Updates</a><a href="docs/">All documents</a>
 </div></div>
 
@@ -182,9 +182,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
  </div>
 </section>
 
-<section class="blk" id="news"><div class="cols">
+<!--alb-stories--><section class="blk" style="padding-bottom:0"><div style="--as1:#22498a"><div data-alb-latest="state" data-n="3" data-title="State news"></div></div></section><!--/alb-stories--><section class="blk" id="news"><div class="cols">
  <div>
-  <div class="hd"><h2>Top stories</h2><a href="media/times/">The Times →</a></div>
+  <div class="hd"><h2>Top stories</h2><!--alb-stories--><a href="stories/" style="margin-right:14px">All stories →</a><!--/alb-stories--><a href="media/times/">The Times →</a></div>
   <a class="card lead" href="media/times/"><div class="ph" role="img" aria-label="Map of SBX Airport"></div><div class="tx"><span class="sect">Transportation</span><h3>The D Line Now Ends Under the Terminal as SBX Rebuilds Its Front Door</h3><p>A new transit center, a free shuttle to every concourse and a one-way Terminal Drive change how Silverbrooks gets to its airport.</p><div class="src">The Silverbrooks Times</div></div></a>
   <div class="card list">
    <a href="media/university-news/"><div><span class="sect">Rivalry Week</span><h4>Brady the Bruin Brings the Purple and Gold to Silverbrooks</h4></div><span class="chev">›</span></a>
@@ -277,4 +277,4 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 })();
 </script>
 <script src="app/app.js"></script>
-</body></html>
+<!--alb-stories--><script src="stories/data.js"></script><script src="app/stories.js" data-root=""></script><!--/alb-stories--></body></html>

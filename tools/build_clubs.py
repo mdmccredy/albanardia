@@ -6,6 +6,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "clubs"
 E = html.escape
 
+import json as _json
+_DB = _json.loads((ROOT/"stories/stories.json").read_text())["stories"]
+_MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+def latest(site, n=3):
+    """Newest stories for a site from the shared database (tools/build_stories.py)."""
+    return sorted([x for x in _DB if x["site"] == site], key=lambda x: x["date"], reverse=True)[:n]
+def fdate(d): return "%s %d, %s" % (_MON[int(d[5:7]) - 1], int(d[8:]), d[:4])
+
 def flags():
     s = (ROOT / "map/app.js").read_text(encoding="utf-8")
     i = s.index("FLAGS="); j = s.index("{", i); d = 0
@@ -98,11 +106,12 @@ def page(c, svg):
     body = f"""
 <div class="tb"><div class="in"><a href="../../">Albanardia.gov</a><a href="../">All clubs</a><span class="sp"></span><a href="#calendar">Calendar</a><a href="#join">Join</a><a href="#contact">Contact</a></div></div>
 <header><div class="in"><div class="bg">{flag}</div><div class="nm"><b>{E(name)}</b><small>{E(short)} · {E(town)}</small></div>
-<nav><a href="#programs">Programs</a><a href="#calendar">Calendar</a><a href="#fleet">Fleet</a><a href="#join">Membership</a><a href="#contact">Contact</a></nav></div></header>
+<nav><a href="#programs">Programs</a><a href="#news">News</a><a href="#calendar">Calendar</a><a href="#fleet">Fleet</a><a href="#join">Membership</a><a href="#contact">Contact</a></nav></div></header>
 <div class="hero"><div class="in"><div><div class="k">{'Yacht club' if yc else 'Community sailing'} · {E(town)}, Albanardia</div><h1>{E(name)}</h1><p>{E(blurb)}{' An AYRC member club.' if ayrc else ''}</p>
 <a class="btn" href="#join">{'Become a member' if yc else 'Sign up for a class'}</a><a class="btn o" href="#calendar">Racing calendar</a></div><div class="flag">{flag}</div></div></div>
 <section id="programs"><div class="in"><h2>Programs</h2><p class="sub">{'Racing, juniors and the social side of the club.' if yc else 'Sailing for everyone, whatever your age or experience.'}</p><div class="g3">{''.join(f'<div class="cd"><b>{E(a)}</b><span>{E(b)}</span></div>' for a,b in progs)}</div></div></section>
 <section class="alt" id="calendar"><div class="in"><h2>2027 calendar</h2><p class="sub">Highlights of the season. Full notices of race and sailing instructions go out before each event.</p><div class="cal">{cal}</div></div></section>
+<section id="news"><div class="in"><h2>News</h2><p class="sub">From the club. <a href="stories/">All stories →</a></p><div class="g3">{''.join(f'<a class="cd" href="stories/#{n["slug"]}" style="color:inherit;text-decoration:none"><small style="color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:12px">{E(n["cat"])} · {fdate(n["date"])}</small><b>{E(n["title"])}</b><span>{E(n["dek"])}</span></a>' for n in latest("club:" + slug(c), 3))}</div></div></section>
 <section id="fleet"><div class="in"><h2>{'Fleets' if yc else 'Our boats'}</h2><p class="sub">{'One-design fleets that race at the club.' if yc else 'Boats available for classes and members.'}</p><div class="ch">{''.join(f'<span>{E(f)}</span>' for f in fleet)}</div></div></section>
 <section class="alt" id="join"><div class="in"><h2>{'Membership' if yc else 'Join'}</h2><div class="g3">{''.join(f'<div class="cd"><b>{E(a)}</b><span>{E(b)}</span></div>' for a,b in ([("Junior","Ages 8 to 18, includes the junior program."),("Young adult","Ages 19 to 30, full racing privileges."),("Family","Everyone in the household, plus a guest slip.")] if yc else [("Class pass","Pay per class or camp week."),("Sailor membership","Unlimited rentals after a checkout sail."),("Family membership","Rentals and member pricing for the household.")]))}</div></div></section>
 <section id="contact"><div class="in ct"><div><h2>Visit</h2><p>{E(addr)}</p><p><a href="../../map/">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(web)}</p><p>Office hours: Tue to Sun, 9 to 5.</p></div></div></section>
