@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-12",
  "stories": [
   {
    "site": "gov",
@@ -2970,6 +2970,103 @@
    "img": null,
    "link": null,
    "added": "2026-11-11"
+  },
+  {
+   "site": "state",
+   "slug": "winter-heating-help-applications-open",
+   "date": "2026-11-12",
+   "cat": "Assistance",
+   "title": "Winter heating help applications open",
+   "dek": "Households that need help paying heating bills this winter can apply now. Most payments go straight to the utility or fuel company.",
+   "body": [
+    "The Albanardia Department of Social Services is taking applications for winter heating assistance through March 31. Help is based on household size and income, and it covers gas, electric, oil and propane heat.",
+    "Most approved households get one payment, sent directly to their utility or fuel company. Households with a shutoff notice can ask for an emergency review, which takes about two business days.",
+    "Apply online, by phone, or in person at any county social services office. Bring a recent heating bill and proof of income for everyone in the home."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "gov",
+   "slug": "how-to-speak-at-mondays-rent-hearing",
+   "date": "2026-11-12",
+   "cat": "Council",
+   "title": "How to speak at Monday's rent hearing",
+   "dek": "The City Council takes public comment on rent rules Monday, November 16, at 6 p.m. Sign up at the door or send comments in writing.",
+   "body": [
+    "The City Council will hold its public hearing on rent rules on Monday, November 16, at 6 p.m. in the Council Chamber at City Hall. Doors open at 5:15 p.m.",
+    "Speakers sign up at the door and get two minutes each. If more than 60 people sign up, the council will open an overflow room with a live video feed. Spanish and Mandarin interpreters will be there.",
+    "Written comments count the same as spoken ones. Send them to the City Clerk by noon on November 16. The hearing will stream live on the city's website.",
+    "SBMetro buses stop on both sides of City Hall. The council garage is free after 5 p.m."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "times",
+   "slug": "voyageurs-win-streak-ends-at-four-in-road-trip-opener",
+   "date": "2026-11-12",
+   "cat": "Sports",
+   "title": "Voyageurs' win streak ends at four in road trip opener",
+   "dek": "The Voyageurs lost 4-2 on Wednesday night in the first of four road games. They still lead their division.",
+   "body": [
+    "The Voyageurs' four-game winning streak ended Wednesday night with a 4-2 loss in the first game of a four-game road trip.",
+    "The Voyageurs trailed 3-0 after two periods. They scored twice in the third, but an empty-net goal with under a minute left closed it out.",
+    "The loss leaves the Voyageurs one point ahead in their division. They play again Friday, and return to AmEx Garden on November 21."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "times",
+   "slug": "rent-hearing-monday-expected-to-fill-city-hall",
+   "date": "2026-11-12",
+   "cat": "This Week",
+   "title": "Rent hearing Monday expected to fill City Hall",
+   "dek": "Tenant groups and landlords both plan to turn out for Monday's City Council hearing on rent rules. The city has set up an overflow room.",
+   "body": [
+    "The City Council's public hearing on rent rules on Monday, November 16, is likely to be one of the biggest of the year. Tenant groups and a landlord association have both asked members to come and speak.",
+    "The council is weighing a cap on yearly rent increases and longer notice before big increases. No vote is planned Monday. Council members said they want to hear from residents first.",
+    "The hearing starts at 6 p.m. at City Hall. Each speaker gets two minutes. The city clerk will take written comments until noon that day, and the hearing will stream on the city's website."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "uninews",
+   "slug": "saint-marse-film-week-fills-its-screening-hall-every-night",
+   "date": "2026-11-12",
+   "cat": "Campus briefs",
+   "title": "Saint-Marsé film week fills its screening hall every night",
+   "dek": "All six evenings of the European Film Week sold out their free tickets, and the university added a Saturday matinee.",
+   "body": [
+    "Saint-Marsé's European Film Week drew full houses every night this week. Free tickets for each screening ran out within a day of being posted.",
+    "The university added a Saturday afternoon matinee to make room for more viewers. All films were shown in French with English subtitles, and faculty from the European Studies program led short talks after each one.",
+    "Organizers said they plan to make the film week a yearly event."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "uninews",
+   "slug": "ua-campuses-set-thanksgiving-break-hours",
+   "date": "2026-11-12",
+   "cat": "Campus briefs",
+   "title": "UA campuses set Thanksgiving break hours",
+   "dek": "Classes break from November 25 to 29 on all five UA campuses. Libraries, dining halls and gyms run shorter hours.",
+   "body": [
+    "There are no classes on any University of Albanardia campus from Wednesday, November 25, through Sunday, November 29. Classes start again Monday, November 30.",
+    "Residence halls stay open over the break. On each campus, one dining hall will stay open with shorter hours, and libraries and gyms close Thursday and Friday. The UA Medical Center clinic in Silverbrooks keeps its regular hours.",
+    "Students heading home can ride ALBExpress free with a student ID. NETA expects the Wednesday before Thanksgiving to be its busiest day of the year, so leave extra time."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
   }
  ]
 }
