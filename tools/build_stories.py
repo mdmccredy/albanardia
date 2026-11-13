@@ -177,6 +177,7 @@ p.write_text(s)
 # clubs and colleges: generators render the news sections from the database
 subprocess.run(['python3', str(ROOT/'tools/build_clubs.py')], check=True, stdout=subprocess.DEVNULL)
 subprocess.run(['python3', str(ROOT/'tools/build_colleges.py')], check=True, stdout=subprocess.DEVNULL)
+subprocess.run(['python3', str(ROOT/'tools/build_port.py')], check=True, stdout=subprocess.DEVNULL)
 subprocess.run(['python3', str(ROOT/'tools/build_sbx.py')], check=True, stdout=subprocess.DEVNULL)
 subprocess.run(['python3', str(ROOT/'tools/build_nesf.py')], check=True, stdout=subprocess.DEVNULL)
 import collections
