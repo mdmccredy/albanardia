@@ -34,7 +34,7 @@ C = [
  ("CYC","Corinthian Yacht Club of Silverbrooks","CYC","Whilliker","731 N Olweicz St, Whilliker, AB 19120","cycsb.org","yc",True,"A racing club on the north shore of the bay, home of a strong junior team."),
  ("WYC-W","Waterloo Yacht Club","WYC","Waterloo","182 Anderssen St, Waterloo, AB 19201","waterlooyc.org","yc",True,"River and bay sailing in Rochester County."),
  ("FYC","Foxford Yacht Club","FYC","Foxford","865 Richards Rd, Foxford, AB 19301","fyc.org","yc",True,"Sound sailing a short walk from the Larssen boat works."),
- ("HIS","Hamilton Island Sailing","HIS","Hamilton Island","12 Wilson St, Hamilton Island, AB 19350","sailhamilton.org","cs",True,"A community sailing club on the island, reached by ferry."),
+ ("HIS","Hamilton Island Sailing Club","HIS","Hamilton Island","12 Wilson St, Hamilton Island, AB 19350","sailhamilton.org","cs",True,"A community sailing club on the island, reached by ferry."),
  ("ACYC","Albanardia City Yacht Club","ACYC","Albanardia City","17 W Marlow St, Albanardia City, AB 19401","acyc.org","yc",True,"The state's second city's home club."),
  ("NBYC","New Brolin Yacht Club","NBYC","New Brolin","28 S Atlantic Dr, New Brolin, AB 19601","nbyc.org","yc",True,"Ocean-side sailing near the Olympic Sailing Pavilion."),
  ("WYC-Wil","Willamette Boating Center","WBC","Willamette","419 Ashton Rd, Willamette, AB 19701","wboating.org","cs",True,"Boating and sailing lessons for Coven County."),
