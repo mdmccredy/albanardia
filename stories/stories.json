@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "stories": [
   {
    "site": "gov",
@@ -3162,6 +3162,745 @@
    "img": null,
    "link": null,
    "added": "2026-11-12"
+  },
+  {
+   "site": "times",
+   "slug": "holiday-market-vendors-picked-for-elliot-square",
+   "date": "2026-11-13",
+   "cat": "This Week",
+   "title": "Holiday market vendors picked for Elliot Square",
+   "dek": "Sixty-two local makers and food stands will fill Elliot Square on weekends from Thanksgiving to New Year. The skating rink opens the same day.",
+   "body": [
+    "The city has picked 62 vendors for this year's holiday market in Elliot Square, up from 48 last year. Most are Silverbrooks makers selling crafts, prints, candles and food.",
+    "The market opens Friday, November 27, and runs every weekend through January 3. The skating rink opens the same day, with skate rentals on site.",
+    "Elliot Square station on the SBTrain is next to the market. The city asks drivers to use the garages on Commerce St because street parking fills up fast."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "times",
+   "slug": "sbtransit-asks-riders-about-2027-bus-changes",
+   "date": "2026-11-13",
+   "cat": "Metro & Transit",
+   "title": "SBTransit asks riders about 2027 bus changes",
+   "dek": "The agency wants feedback on more frequent SBMetro service on its busiest routes and fewer trips on a few quiet ones.",
+   "body": [
+    "SBTransit is asking riders to weigh in on a draft plan for SBMetro buses in 2027. The plan would run buses every 10 minutes on the busiest routes during the day, up from every 15.",
+    "To pay for it, a handful of routes with low ridership would run every 30 minutes instead of every 20. Two short routes would be merged.",
+    "Riders can take an online survey through December 11 or come to one of four open houses at library branches. The SBTransit board is expected to vote in February."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "uninews",
+   "slug": "early-action-deadline-is-sunday-on-most-ua-campuses",
+   "date": "2026-11-13",
+   "cat": "Admissions",
+   "title": "Early action deadline is Sunday on most UA campuses",
+   "dek": "High school seniors applying early to the University of Albanardia have until 11:59 p.m. on November 15.",
+   "body": [
+    "Early action applications for fall 2027 are due Sunday, November 15, at 11:59 p.m. on all five UA campuses. Aldense, McKay and Saint-Marsé use the same date.",
+    "Early action is not binding. Students who apply by Sunday will hear back by mid-January. Regular decision applications are due February 1."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "gov",
+   "slug": "thanksgiving-week-trash-and-recycling-pickup-moves-one-day",
+   "date": "2026-11-13",
+   "cat": "Streets",
+   "title": "Thanksgiving week trash and recycling pickup moves one day",
+   "dek": "There is no pickup on Thanksgiving Day. Pickup for Thursday and Friday moves to Friday and Saturday.",
+   "body": [
+    "City crews will not collect trash, recycling or yard waste on Thursday, November 26. If your normal day is Thursday, put your carts out Friday. If it is Friday, put them out Saturday.",
+    "Leaf pickup also skips Thanksgiving week and picks up again November 30. Pickup on other days of the week is not affected."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "state",
+   "slug": "state-minimum-wage-goes-up-january-1",
+   "date": "2026-11-13",
+   "cat": "Labor",
+   "title": "State minimum wage goes up January 1",
+   "dek": "The hourly minimum rises with inflation for the third year in a row. Employers must post the new rate by December 15.",
+   "body": [
+    "Albanardia's minimum wage will go up on January 1, 2027, under the state law that ties it to inflation. The Department of Labor posted the new hourly rate this week.",
+    "The tipped minimum and the rate for workers under 18 go up by the same percentage. Employers must hang the updated wage poster where workers can see it by December 15. Free posters are on the Department of Labor website."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "sbpl",
+   "slug": "gingerbread-workshop",
+   "date": "2026-11-13",
+   "cat": "Event",
+   "title": "Build a gingerbread house at the Central Library",
+   "dek": "Free family workshops on two Saturdays in December. Kits are included, and registration opens Monday.",
+   "body": [
+    "Families can build and decorate a gingerbread house at the Central Library on Saturday, December 5, and Saturday, December 12. Sessions start at 10 a.m., 12 p.m. and 2 p.m.",
+    "Every kit, frosting and candy is included. Space is limited to 20 families per session, so register online starting Monday, November 16."
+   ],
+   "img": null,
+   "link": "sbpl/#a/gingerbread-workshop",
+   "added": "2026-11-13",
+   "native": {
+    "slug": "gingerbread-workshop",
+    "date": "Nov 13",
+    "kind": "Event",
+    "title": "Build a gingerbread house at the Central Library",
+    "lede": "Free family workshops on two Saturdays in December. Kits are included, and registration opens Monday.",
+    "img": "1578593173954-d5d3ced862e1",
+    "body": [
+     "Families can build and decorate a gingerbread house at the Central Library on Saturday, December 5, and Saturday, December 12. Sessions start at 10 a.m., 12 p.m. and 2 p.m.",
+     "Every kit, frosting and candy is included. Space is limited to 20 families per session, so register online starting Monday, November 16."
+    ]
+   }
+  },
+  {
+   "site": "sbps",
+   "slug": "winter-concerts-2026",
+   "date": "2026-11-13",
+   "cat": "Arts",
+   "title": "Winter concerts at every middle and high school",
+   "dek": "Bands, orchestras and choirs perform in the first two weeks of December. Every concert is free.",
+   "body": [
+    "Every SBPS middle and high school will hold a winter concert between December 1 and December 17. Concerts start at 7 p.m. in each school's auditorium.",
+    "All concerts are free and open to the public. Each school will post its date on its own page. Most concerts will also stream on the district's video channel."
+   ],
+   "img": null,
+   "link": "sbps/#a/winter-concerts-2026",
+   "added": "2026-11-13",
+   "native": {
+    "slug": "winter-concerts-2026",
+    "date": "Nov 13",
+    "kind": "Arts",
+    "title": "Winter concerts at every middle and high school",
+    "lede": "Bands, orchestras and choirs perform in the first two weeks of December. Every concert is free.",
+    "img": "1577896851231-70ef18881754",
+    "meta": [
+     [
+      "Event",
+      "Winter concerts"
+     ],
+     [
+      "When",
+      "Dec 1 to 17, 7 PM"
+     ],
+     [
+      "Where",
+      "Every middle and high school"
+     ]
+    ],
+    "body": [
+     "Every SBPS middle and high school will hold a winter concert between December 1 and December 17. Concerts start at 7 p.m. in each school's auditorium.",
+     "All concerts are free and open to the public. Each school will post its date on its own page. Most concerts will also stream on the district's video channel."
+    ]
+   }
+  },
+  {
+   "site": "visit",
+   "slug": "thanksgiving-weekend-in-silverbrooks",
+   "date": "2026-11-13",
+   "cat": "Things to do",
+   "title": "Thanksgiving weekend in Silverbrooks",
+   "dek": "The holiday market and skating rink open Friday, the oyster bars at Pearl's End stay busy, and Lantern Night is one week away.",
+   "body": [
+    "Thanksgiving weekend is when Silverbrooks starts to feel like the holidays. The Elliot Square holiday market and skating rink open Friday, November 27.",
+    "Head to the Pearl's End waterfront for oysters and chowder, or walk along the harbor to watch the frostbite fleet race on Sunday morning.",
+    "Most museums are closed on Thanksgiving Day and open Friday. Lantern Night starts December 4, and weekend tickets go fast."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "sbx",
+   "slug": "cell-phone-lot-doubles-in-size-before-thanksgiving",
+   "date": "2026-11-13",
+   "cat": "Parking",
+   "title": "Cell phone lot doubles in size before Thanksgiving",
+   "dek": "The free waiting lot off the airport entrance road now has 400 spaces. Drivers can wait there until their traveler is at the curb.",
+   "body": [
+    "SBX has finished expanding its free cell phone lot to 400 spaces, just ahead of the Thanksgiving rush. Flight arrival screens in the lot show when each flight has landed.",
+    "Drivers cannot wait at the arrivals curb. The airport asks people picking up travelers to stay in the lot until their traveler is outside with bags. The SBTrain D Line also stops under the terminal."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "nesf",
+   "slug": "safety-boat-courses-set-for-february",
+   "date": "2026-11-13",
+   "cat": "Training",
+   "title": "Safety boat courses set for February",
+   "dek": "US Sailing Safety Powerboat courses will run in Foxford and Silverbrooks before the spring season. Club volunteers can apply for free seats.",
+   "body": [
+    "The Northeastern Sailing Foundation will host two US Sailing Safety Powerboat courses in February, one at Foxford Yacht Club and one at the Silverbrooks Community Sailing Center.",
+    "Each course is two days, in the classroom and on the water. The foundation will cover the fee for 20 volunteers from clubs and community sailing centers. Applications open December 1."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "ayrc",
+   "slug": "ayrc-awards-dinner-is-december-5",
+   "date": "2026-11-13",
+   "cat": "Awards",
+   "title": "AYRC awards dinner is December 5",
+   "dek": "Season trophies, the club team trophy and the volunteer of the year award will be handed out at Albanardia City Yacht Club.",
+   "body": [
+    "The AYRC awards dinner is Saturday, December 5, at Albanardia City Yacht Club. Doors open at 6 p.m.",
+    "Season champions in every fleet will get their trophies, and ACYC will receive the 2026 club team trophy. Tickets are on sale through each member club."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "larssen",
+   "slug": "winter-frostbite-gear",
+   "date": "2026-11-13",
+   "cat": "Product",
+   "title": "Winter gear for frostbite season",
+   "dek": "Junior drysuits, wetsuits, gloves and boat covers are in stock in Foxford for sailors racing through the winter.",
+   "body": [
+    "Frostbite season is on, and the boat works in Foxford has stocked up on the gear sailors need to stay warm and keep their boats in good shape all winter.",
+    "Junior sailors racing in the cold can choose a Junior drysuit or a Junior long john wetsuit. Most frostbite fleets require one or the other. We also have Sailing gloves in every size.",
+    "For boats that live outside between races, the Bauer flat cover and the Optimist hull cover keep rain, snow and sun off the deck.",
+    "Order online, call the boat works at (302) 555-0144, or stop by 320 SE Marlin St in Foxford."
+   ],
+   "img": null,
+   "link": "larssensailing/#/news/winter-frostbite-gear",
+   "added": "2026-11-13",
+   "native": [
+    "Product",
+    "Winter gear for frostbite season",
+    "Junior drysuits, wetsuits, gloves and boat covers are in stock in Foxford for sailors racing through the winter.",
+    "img/catalog/bauer-red.png",
+    "winter-frostbite-gear",
+    [
+     "Frostbite season is on, and the boat works in Foxford has stocked up on the gear sailors need to stay warm and keep their boats in good shape all winter.",
+     "Junior sailors racing in the cold can choose a <b>Junior drysuit</b> or a <b>Junior long john wetsuit</b>. Most frostbite fleets require one or the other. We also have <b>Sailing gloves</b> in every size.",
+     "For boats that live outside between races, the <b>Bauer flat cover</b> and the <b>Optimist hull cover</b> keep rain, snow and sun off the deck.",
+     "Order online, call the boat works at (302) 555-0144, or stop by 320 SE Marlin St in Foxford."
+    ],
+    [
+     "Junior drysuit",
+     "Junior long john wetsuit",
+     "Sailing gloves",
+     "Bauer flat cover",
+     "Optimist hull cover"
+    ],
+    "November 13, 2026"
+   ]
+  },
+  {
+   "site": "college:ua-silverbrooks",
+   "slug": "mets-win-their-first-two-at-hallstr-m-arena",
+   "date": "2026-11-13",
+   "cat": "Athletics",
+   "title": "Mets win their first two at Hallström Arena",
+   "dek": "The UA Silverbrooks basketball team is 2-0 after a pair of home wins this week.",
+   "body": [
+    "The Mets opened the basketball season with two wins at Hallström Arena. They won by 14 on Monday and by 6 on Thursday.",
+    "The Mets play their next three games on the road and return home after Thanksgiving. Students get in free with a UA ID."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:ua-albanardia-city",
+   "slug": "ravens-collect-food-for-thanksgiving",
+   "date": "2026-11-13",
+   "cat": "Campus",
+   "title": "Ravens collect food for Thanksgiving",
+   "dek": "The campus food drive runs through November 20, with drop boxes in every residence hall.",
+   "body": [
+    "UA Albanardia City is holding its yearly Thanksgiving food drive through Friday, November 20. Drop boxes are in every residence hall, the student union and Raven Center.",
+    "The most needed items are canned protein, peanut butter, rice and baby food. Everything collected goes to food banks in Albanardia City."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:ua-waterloo",
+   "slug": "library-opens-a-new-24-hour-study-room",
+   "date": "2026-11-13",
+   "cat": "Campus",
+   "title": "Library opens a new 24-hour study room",
+   "dek": "The ground floor reading room now stays open around the clock for students with a UA ID.",
+   "body": [
+    "UA Waterloo's main library has turned its ground floor reading room into a 24-hour study space, just in time for finals.",
+    "The room has 120 seats, outlets at every table and a separate quiet area. Students swipe in with their UA ID after the library closes at midnight."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:ua-foxford",
+   "slug": "eagles-rink-is-on-track-for-january",
+   "date": "2026-11-13",
+   "cat": "Athletics",
+   "title": "Eagles rink is on track for January",
+   "dek": "Ice goes in next month at UA Foxford's new hockey rink, the first on any UA campus outside Silverbrooks.",
+   "body": [
+    "Work on UA Foxford's new hockey rink is on schedule. Crews will start making ice in mid-December, and the rink opens to students in January.",
+    "Students will be able to skate free during open hours. The club hockey team will play its first home game there in late January."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:ua-moiyane",
+   "slug": "royals-basketball-opens-at-home-next-week",
+   "date": "2026-11-13",
+   "cat": "Athletics",
+   "title": "Royals basketball opens at home next week",
+   "dek": "UA Moïyane's winter teams have started practice, and the basketball season opens on Tuesday, November 17.",
+   "body": [
+    "The Royals open the basketball season at home on Tuesday, November 17. Tip-off is at 7 p.m.",
+    "Winter teams started practice this week after the fall seasons wrapped up. Students get in free with a UA ID."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:sbu",
+   "slug": "sbu-sailing-team-wraps-up-its-fall-season",
+   "date": "2026-11-13",
+   "cat": "Athletics",
+   "title": "SBU sailing team wraps up its fall season",
+   "dek": "The team finished in the top half at its last regatta of the fall and starts winter training in January.",
+   "body": [
+    "The SBU sailing team finished its fall season last weekend, placing in the top half of the fleet at its final regatta.",
+    "Sailors will train in the gym through December and get back on the water when the spring season starts in March."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:albtech",
+   "slug": "demo-night-winners-move-into-the-albtech-incubator",
+   "date": "2026-11-13",
+   "cat": "Campus",
+   "title": "Demo night winners move into the AlbTech incubator",
+   "dek": "The team building race committee timing gear gets a free year of desk space and mentoring.",
+   "body": [
+    "The student team that won the state startup finals with low-cost race committee timing gear will move into the AlbTech incubator in January.",
+    "The prize includes a year of free desk space, mentoring from local founders and help testing the gear with sailing clubs in the spring."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:aldense",
+   "slug": "law-clinic-helps-40-people-in-its-first-two-weeks",
+   "date": "2026-11-13",
+   "cat": "Academics",
+   "title": "Law Clinic helps 40 people in its first two weeks",
+   "dek": "The new clinic in New Brolin has answered questions on leases, deposits and small claims.",
+   "body": [
+    "The Aldense Law Clinic in New Brolin helped about 40 people in its first two weeks. Most questions were about leases, security deposits and small claims court.",
+    "Third-year law students staff the clinic under the supervision of faculty. Walk-in hours are Tuesday and Thursday afternoons, and the help is free."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:mckay",
+   "slug": "winter-choir-concert-is-december-6",
+   "date": "2026-11-13",
+   "cat": "Arts",
+   "title": "Winter choir concert is December 6",
+   "dek": "The McKay choirs will sing holiday and classical music in the chapel. Admission is free.",
+   "body": [
+    "The McKay University choirs will hold their winter concert on Sunday, December 6, at 4 p.m. in the campus chapel.",
+    "The program mixes holiday songs with classical works. Admission is free, and seating is first come, first served."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:smithsonian",
+   "slug": "history-archive-welcomes-its-first-visiting-researchers",
+   "date": "2026-11-13",
+   "cat": "Academics",
+   "title": "History archive welcomes its first visiting researchers",
+   "dek": "Twelve researchers used the newly opened state map and records collection in its first week.",
+   "body": [
+    "Smithsonian College's history archive had twelve visiting researchers in its first week open to the public. Most came to see the state maps and early town records.",
+    "The archive is open weekdays from 9 a.m. to 4 p.m. Visitors should book a time online and bring a photo ID."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "college:saint-marse",
+   "slug": "last-call-for-early-action",
+   "date": "2026-11-13",
+   "cat": "Admissions",
+   "title": "Last call for early action",
+   "dek": "Applications for fall 2027 early action close Sunday, November 15. The open house is the following Saturday.",
+   "body": [
+    "Students applying early to Université Saint-Marsé have until Sunday, November 15, to submit their applications. Early action is not binding.",
+    "Prospective students can visit campus at the fall open house on Saturday, November 21. Tours are given in English and French."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:sbyc",
+   "slug": "turkey-day-regatta-on-thanksgiving-morning",
+   "date": "2026-11-13",
+   "cat": "Racing",
+   "title": "Turkey Day Regatta on Thanksgiving morning",
+   "dek": "One short race on the harbor before the turkey goes in. Every boat gets a pie.",
+   "body": [
+    "The SBYC Turkey Day Regatta is Thursday, November 26. The first warning signal is at 9:30 a.m., and the club expects to be off the water by 11.",
+    "Any dinghy can race. There is one start and a handicap finish. Every boat that finishes gets a pie from the galley."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:sbcs",
+   "slug": "instructor-training-starts-in-february",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Instructor training starts in February",
+   "dek": "SBCS will run a US Sailing Level 1 Instructor course over two weekends for new summer staff.",
+   "body": [
+    "The Silverbrooks Community Sailing Center will host a US Sailing Level 1 Instructor course on two weekends in February.",
+    "Applicants must be 16 or older and able to sail a small boat on their own. Staff hired for summer 2027 take the course free."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:pesc",
+   "slug": "oyster-roast-on-the-dock-november-21",
+   "date": "2026-11-13",
+   "cat": "Events",
+   "title": "Oyster roast on the dock November 21",
+   "dek": "PESC's end-of-season oyster roast raises money for youth sailing scholarships.",
+   "body": [
+    "PESC's oyster roast is Saturday, November 21, from 1 to 5 p.m. on the center's dock at Pearl's End.",
+    "Oysters come from the boats on the waterfront. Every ticket helps pay for youth scholarships for next summer."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:neyc",
+   "slug": "nominating-committee-names-2027-slate",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Nominating committee names 2027 slate",
+   "dek": "Members will vote on the proposed flag officers and board at the December 3 annual meeting.",
+   "body": [
+    "The NEYC nominating committee has sent members its slate of flag officers and board members for 2027.",
+    "Members can add other nominees by petition until November 23. Voting happens at the annual meeting in Rutherford on December 3."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:cyc",
+   "slug": "toys-for-tots-drive-at-the-clubhouse",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Toys for Tots drive at the clubhouse",
+   "dek": "Bring a new, unwrapped toy to the clubhouse through December 12. The last drop-off is the holiday lights parade.",
+   "body": [
+    "The Corinthian Yacht Club of Silverbrooks is collecting toys for Toys for Tots. Drop boxes are in the clubhouse lobby through December 12.",
+    "Toys must be new and unwrapped. Members bringing a toy to the holiday lights parade can add it to the box on the dock."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:waterloo-yc",
+   "slug": "frostbite-registration-opens-for-january",
+   "date": "2026-11-13",
+   "cat": "Racing",
+   "title": "Frostbite registration opens for January",
+   "dek": "The Frostbite Series starts January 10. Sign up by December 31 for the early entry fee.",
+   "body": [
+    "Registration for the WYC Frostbite Series is open. The series starts January 10 and runs every other Sunday through March.",
+    "Entry is cheaper for boats that sign up by December 31. Drysuits or wetsuits are required for every sailor."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:fyc",
+   "slug": "foxford-frostbite-passes-the-halfway-point",
+   "date": "2026-11-13",
+   "cat": "Racing",
+   "title": "Foxford Frostbite passes the halfway point",
+   "dek": "The Sunday series has kept a big Bauer fleet on the line all fall. Racing continues through December 20.",
+   "body": [
+    "The Foxford Frostbite has passed the halfway mark of its fall series. The Bauer fleet has had more than 20 boats on most Sundays.",
+    "Racing continues every Sunday through December 20, with the first warning at 11 a.m. The series picks up again after the new year."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:his",
+   "slug": "winter-ferry-schedule-changes-club-hours",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Winter ferry schedule changes club hours",
+   "dek": "HIS moves its winter hours to match the island ferry, starting December 1.",
+   "body": [
+    "The Hamilton Island ferry switches to its winter schedule on December 1. The clubhouse will open and close around the first and last boats.",
+    "The clubhouse is open Saturdays and Sundays all winter. Members can still reach the boat storage yard any day with their gate code."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:acyc",
+   "slug": "annual-awards-dinner-hosts-the-ayrc-this-year",
+   "date": "2026-11-13",
+   "cat": "Events",
+   "title": "Annual awards dinner hosts the AYRC this year",
+   "dek": "ACYC hosts the AYRC awards dinner on December 5, where the club picks up the 2026 club team trophy.",
+   "body": [
+    "Albanardia City Yacht Club will host the AYRC awards dinner on Saturday, December 5. Members of every AYRC club are invited.",
+    "ACYC sailors won the 2026 club team trophy, and the club will receive it that night. Tickets are on sale at the front desk."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:nbyc",
+   "slug": "winter-speaker-series-starts-in-january",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Winter speaker series starts in January",
+   "dek": "Four Tuesday nights of talks on weather, navigation and boat care in the clubhouse.",
+   "body": [
+    "NBYC's winter speaker series starts Tuesday, January 12, and runs four weeks. Talks start at 7 p.m. in the clubhouse.",
+    "Topics include reading winter weather, coastal navigation and keeping a boat in good shape on the hard. The series is free for members and $10 a night for guests."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:willamette-bc",
+   "slug": "gift-certificates-for-spring-lessons",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Gift certificates for spring lessons",
+   "dek": "WBC gift certificates cover any lesson or boat rental in the 2027 season.",
+   "body": [
+    "Willamette Boating Center gift certificates are on sale for the holidays. They can be used for any lesson, camp or boat rental in 2027.",
+    "Certificates are sold online and at the office. They never expire."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:ccs",
+   "slug": "cold-water-safety-night-with-the-maritime-academy",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Cold-water safety night with the Maritime Academy",
+   "dek": "A free evening on what to do if you end up in cold water. Open to the public.",
+   "body": [
+    "Coven Community Sailing and the Maritime Academy next door will host a cold-water safety night on Wednesday, December 2, at 6:30 p.m.",
+    "Instructors will cover cold shock, how to self-rescue and what to wear on the water in winter. The event is free and open to anyone."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:csyc",
+   "slug": "winter-storage-yard-is-full",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Winter storage yard is full",
+   "dek": "Every winter storage spot at CSYC is taken. Members can join a waiting list for spots that open up.",
+   "body": [
+    "All winter storage spaces in the CSYC yard are full for this season. Boats that arrive without a reserved spot cannot be stored.",
+    "Members can join the waiting list at the office. The yard reopens for spring launch on April 1."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:bwyc",
+   "slug": "holiday-party-is-december-19",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Holiday party is December 19",
+   "dek": "The BWYC holiday party is in the clubhouse, with dinner, music and the junior awards.",
+   "body": [
+    "The BWYC holiday party is Saturday, December 19, at 6 p.m. in the clubhouse in Belwether.",
+    "Dinner is a buffet, and the junior program will hand out its season awards. Reservations are due December 12."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:eyc",
+   "slug": "dock-repairs-start-after-the-holidays",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Dock repairs start after the holidays",
+   "dek": "Two of EYC's docks will be rebuilt in January and February.",
+   "body": [
+    "EYC will rebuild its two oldest docks in January and February. The work replaces the floats and the decking.",
+    "Boats on those docks will move to other slips for the winter. The work should be done before spring launch."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:ebyc",
+   "slug": "elliott-bay-frostbite-starts-december-6",
+   "date": "2026-11-13",
+   "cat": "Racing",
+   "title": "Elliott Bay frostbite starts December 6",
+   "dek": "EBYC adds a winter series on Elliott Bay for dinghies, with racing on the first Sunday of each month.",
+   "body": [
+    "EBYC's new winter series starts Sunday, December 6, off the club in Marisfield. Races are on the first Sunday of each month through March.",
+    "Any dinghy can enter. Racing is short and close to shore, and the clubhouse will be open for chili afterward."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:nsc",
+   "slug": "river-docks-come-out-for-the-winter",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "River docks come out for the winter",
+   "dek": "NSC pulls its docks out of the Wellington this weekend before ice season.",
+   "body": [
+    "Members will pull the club's docks out of the Wellington on Saturday, November 14, starting at 9 a.m. Volunteers get lunch.",
+    "The docks will go back in during the spring once the river is safe. The boat shed stays open to members all winter."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:syc",
+   "slug": "farsgod-point-light-repairs-finished",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Farsgod Point light repairs finished",
+   "dek": "The club helped pay to fix the light at the end of its breakwater at the harbor mouth.",
+   "body": [
+    "Repairs to the light at the end of the SYC breakwater on Farsgod Point are finished. The club split the cost with the harbor authority.",
+    "The light marks the harbor mouth for every boat heading in and out of Silverbrooks Harbor."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:nmyc",
+   "slug": "junior-winter-training-starts-in-january",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Junior winter training starts in January",
+   "dek": "NMYC juniors will train indoors and on the water on Saturdays from January through March.",
+   "body": [
+    "The NMYC junior team starts winter training on Saturday, January 9. Mornings are in the clubhouse and afternoons are on the water when the weather allows.",
+    "Sailors need a drysuit or wetsuit for the on-the-water days. The club has a few to lend."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:styc",
+   "slug": "styc-frostbite-fleet-grows-for-2027",
+   "date": "2026-11-13",
+   "cat": "Racing",
+   "title": "STYC frostbite fleet grows for 2027",
+   "dek": "More boats have signed up early for the Frostbite Series that starts January 10.",
+   "body": [
+    "Thirty boats have already registered for the STYC Frostbite Series, ten more than at this point last year.",
+    "The series starts January 10. Early registration closes December 31."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:acsc",
+   "slug": "adult-learn-to-sail-dates-for-spring",
+   "date": "2026-11-13",
+   "cat": "Programs",
+   "title": "Adult learn-to-sail dates for spring",
+   "dek": "ACSC has posted dates for its 2027 adult classes, starting in April.",
+   "body": [
+    "Archila Community Sailing Center's adult learn-to-sail classes for 2027 start the weekend of April 17. Each class runs four sessions.",
+    "Registration opens January 4. Classes filled up fast last year, so the center added two more sessions."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
+  },
+  {
+   "site": "club:myc",
+   "slug": "holiday-potluck-on-december-13",
+   "date": "2026-11-13",
+   "cat": "Club news",
+   "title": "Holiday potluck on December 13",
+   "dek": "MYC members and families are invited to the clubhouse for the yearly holiday potluck.",
+   "body": [
+    "The MYC holiday potluck is Sunday, December 13, at 5 p.m. in the clubhouse.",
+    "Bring a dish to share. The club will provide drinks, and the juniors will decorate the tree."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-13"
   }
  ]
 }
