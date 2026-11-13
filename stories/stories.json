@@ -1634,9 +1634,9 @@
    "date": "2026-11-06",
    "cat": "Club",
    "title": "WYC sets its 2027 racing calendar",
-   "dek": "The Frostbite Series opens January 11, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
+   "dek": "The Frostbite Series opens January 10, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
    "body": [
-    "The Waterloo Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 11, and runs every Sunday through March.",
+    "The Waterloo Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 10, and runs every Sunday through March.",
     "First Water and the season's first race are on April 18. The Midsummer Regatta is June 20, and Harbor Week starts August 14 with tall ships and the tug race. Notices of race go out before each event."
    ],
    "slug": "wyc-sets-its-2027-racing-calendar",
@@ -1859,9 +1859,9 @@
    "date": "2026-11-06",
    "cat": "Club",
    "title": "BWYC sets its 2027 racing calendar",
-   "dek": "The Frostbite Series opens January 11, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
+   "dek": "The Frostbite Series opens January 10, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
    "body": [
-    "The Belwether Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 11, and runs every Sunday through March.",
+    "The Belwether Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 10, and runs every Sunday through March.",
     "First Water and the season's first race are on April 18. The Midsummer Regatta is June 20, and Harbor Week starts August 14 with tall ships and the tug race. Notices of race go out before each event."
    ],
    "slug": "bwyc-sets-its-2027-racing-calendar",
@@ -1994,9 +1994,9 @@
    "date": "2026-11-06",
    "cat": "Club",
    "title": "SYC sets its 2027 racing calendar",
-   "dek": "The Frostbite Series opens January 11, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
+   "dek": "The Frostbite Series opens January 10, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
    "body": [
-    "The Sjagette Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 11, and runs every Sunday through March.",
+    "The Sjagette Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 10, and runs every Sunday through March.",
     "First Water and the season's first race are on April 18. The Midsummer Regatta is June 20, and Harbor Week starts August 14 with tall ships and the tug race. Notices of race go out before each event."
    ],
    "slug": "syc-sets-its-2027-racing-calendar",
@@ -2039,9 +2039,9 @@
    "date": "2026-11-06",
    "cat": "Club",
    "title": "STYC sets its 2027 racing calendar",
-   "dek": "The Frostbite Series opens January 11, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
+   "dek": "The Frostbite Series opens January 10, the Midsummer Regatta is June 20, and Harbor Week starts August 14.",
    "body": [
-    "The Stepford Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 11, and runs every Sunday through March.",
+    "The Stepford Yacht Club race committee has published the 2027 calendar. The Frostbite Series opens Sunday, January 10, and runs every Sunday through March.",
     "First Water and the season's first race are on April 18. The Midsummer Regatta is June 20, and Harbor Week starts August 14 with tall ships and the tug race. Notices of race go out before each event."
    ],
    "slug": "styc-sets-its-2027-racing-calendar",
@@ -3063,6 +3063,69 @@
     "There are no classes on any University of Albanardia campus from Wednesday, November 25, through Sunday, November 29. Classes start again Monday, November 30.",
     "Residence halls stay open over the break. On each campus, one dining hall will stay open with shorter hours, and libraries and gyms close Thursday and Friday. The UA Medical Center clinic in Silverbrooks keeps its regular hours.",
     "Students heading home can ride ALBExpress free with a student ID. NETA expects the Wednesday before Thanksgiving to be its busiest day of the year, so leave extra time."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "nesf",
+   "slug": "youth-grants-2027-open-january",
+   "date": "2026-11-10",
+   "cat": "Grants",
+   "title": "2027 youth sailing grants open January 4",
+   "dek": "Clubs and community sailing centers can apply for up to $15,000 toward boats, coaches and scholarships.",
+   "body": [
+    "The Northeastern Sailing Foundation will open its 2027 youth sailing grants on January 4. Applications close February 26, and decisions go out by April 1.",
+    "Grants can pay for new or used training boats, coach salaries, safety boats and scholarships. In 2026, NESF funded 19 programs, from new SailQube fleets at small sailing centers to a C420 team at a river club.",
+    "Programs that have never applied are encouraged to. NESF staff will review drafts through February."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "nesf",
+   "slug": "race-officer-seminar-january",
+   "date": "2026-11-12",
+   "cat": "Training",
+   "title": "Club Race Officer seminar comes to Whilliker in January",
+   "dek": "Two days of US Sailing race management training at the Corinthian Yacht Club, January 23 and 24.",
+   "body": [
+    "NESF will host a US Sailing Club Race Officer seminar at the Corinthian Yacht Club on January 23 and 24. The course covers setting courses, starting sequences, scoring and protest procedures, and ends with the certification test.",
+    "Every AYRC host club sends at least one volunteer, and NESF pays the course fee for anyone running a junior regatta in 2027. Lunch is provided both days."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "ayrc",
+   "slug": "2027-schedule-announced",
+   "date": "2026-11-09",
+   "cat": "Schedule",
+   "title": "2027 AYRC schedule: 11 regattas, opening May 22 in Foxford",
+   "dek": "The circuit runs from late spring to early fall, with a road trip to Barnegat Bay and the Championship back on Hanson Bay.",
+   "body": [
+    "The 2027 Albanardia Youth Racing Circuit opens May 22 at the Foxford Yacht Club and closes September 25 with the AYRC Championship at the Silverbrooks Yacht Club.",
+    "Eleven venues host one regatta each. New this year are the Hamilton Island Ferry Regatta in July and the Pearl's End Harbor Regatta in September. The circuit also heads out of state for the first time, to Toms River Yacht Club on Barnegat Bay in New Jersey on August 14.",
+    "Sailors count their best seven regattas, and the Championship can't be dropped. Season registration opens March 1."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "ayrc",
+   "slug": "2026-club-trophy-acyc",
+   "date": "2026-11-11",
+   "cat": "Results",
+   "title": "Albanardia City wins the 2026 club team trophy",
+   "dek": "ACYC edged Silverbrooks by 24 points after a strong Championship weekend, with Corinthian third.",
+   "body": [
+    "The Albanardia City Yacht Club won the 2026 AYRC club team trophy with 1,412 points, ahead of the Silverbrooks Yacht Club at 1,388 and the Corinthian Yacht Club at 1,240.",
+    "The race came down to the Championship, where ACYC put three C420 teams and two ILCA 6 sailors in the top ten. Foxford finished fourth, led by a deep Optimist team.",
+    "Trophies were presented at the NESF Awards Dinner. Thirteen clubs and sailing centers scored points this season, the most since the circuit began."
    ],
    "img": null,
    "link": null,

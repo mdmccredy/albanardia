@@ -36,9 +36,11 @@ SITES = {
 for c in colleges():
     SITES['college:' + c['slug']] = dict(name=c['name'], home=f"colleges/{c['slug']}/", stories=f"colleges/{c['slug']}/stories/", c1=c['c1'], c2=c['c2'], group='Colleges')
 for c in clubs():
-    sl = club_slug(c); page = (ROOT/f'clubs/{sl}/index.html')
+    sl = club_slug(c); cd = c[2].lower(); page = (ROOT/f'{cd}/index.html')
     m = re.search(r'--c:(#[0-9a-fA-F]{3,6})', page.read_text()) if page.exists() else None
-    SITES['club:' + sl] = dict(name=c[1], home=f'clubs/{sl}/', stories=f'clubs/{sl}/stories/', c1=m.group(1) if m else '#22498a', c2='#0f2340', group='Sailing clubs')
+    SITES['club:' + sl] = dict(name=c[1], home=f'{cd}/', stories=f'{cd}/stories/', c1=m.group(1) if m else '#22498a', c2='#0f2340', group='Sailing clubs')
+SITES['nesf'] = dict(name='Northeastern Sailing Foundation', home='nesf/', stories='nesf/stories/', c1='#0b4f6c', c2='#0a2233', group='Sailing clubs')
+SITES['ayrc'] = dict(name='AYRC', home='nesf/ayrc/', stories='nesf/ayrc/stories/', c1='#c4552f', c2='#0a2233', group='Sailing clubs')
 for s in ST: assert s['site'] in SITES, s['site']
 
 # ---- data.js ----
@@ -174,5 +176,6 @@ p.write_text(s)
 # clubs and colleges: generators render the news sections from the database
 subprocess.run(['python3', str(ROOT/'tools/build_clubs.py')], check=True, stdout=subprocess.DEVNULL)
 subprocess.run(['python3', str(ROOT/'tools/build_colleges.py')], check=True, stdout=subprocess.DEVNULL)
+subprocess.run(['python3', str(ROOT/'tools/build_nesf.py')], check=True, stdout=subprocess.DEVNULL)
 import collections
 print(len(ST), 'stories on', len({s['site'] for s in ST}), 'sites;', collections.Counter(SITES[s['site']]['group'] for s in ST))

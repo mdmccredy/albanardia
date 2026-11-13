@@ -219,3 +219,10 @@ Rules:
 - To add stories: append them to `stories/stories.json` (site, slug, date YYYY-MM-DD, cat, title, dek, body paragraphs, optional img and link), then run `python3 tools/build_stories.py`. It rebuilds `stories/data.js`, every site's "All stories" page, the master page at `stories/`, the news boxes on each site, and re-runs the club and college generators.
 - New stories are added automatically by a daily scheduled task that follows `stories/AUTOMATION.md`; how often each site gets stories is set in `stories/cadence.json`.
 - The master "All stories" page is `stories/` (linked from the homepage). Each site has its own at `<site>/stories/`, except the Library and Schools (native `#news` pages) and Larssen Sailing (`#/news`, built from its own NEWS list).
+
+## Clubs, NESF and the AYRC
+- Each club is its own website at `/<code>/` (sbyc/, cyc/, acyc/, wyc/, wbc/ ...), built by `tools/build_clubs.py` from `tools/club_data.py`. Old `clubs/<slug>/` addresses redirect.
+- Yacht clubs get Home, Racing, Juniors, Calendar, The Club, Membership and News. Sailing centers get Home, Adult classes, Youth, Rentals, Calendar, Volunteer and News.
+- `club_data.py` holds each club's adult fleets with boat counts (FLEETS), junior program boats (JUNIOR), its custom 2027 calendar (EVENTS), the keelboat clubs (KEELBOAT: SYC, EBYC, MYC, no dinghies and no junior page) and the AYRC schedule.
+- College sailing pavilions, the Olympic Sailing Pavilion, Killalea Sailing Center and the Maldonado Boathouse are sailing venues, not clubs.
+- NESF lives at `nesf/` and the AYRC at `nesf/ayrc/`, built by `tools/build_nesf.py`. Each AYRC venue hosts at most one regatta a season.

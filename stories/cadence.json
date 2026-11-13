@@ -9,5 +9,7 @@
  "visit":   {"every_days": 7,  "per_run": 1, "why": "Tourism: weekly things to do"},
  "larssen": {"every_days": 10, "per_run": 1, "why": "Boat builder: new products, class rule changes, like West Coast Sailing's news"},
  "colleges":{"every_days": 10, "per_run": 1, "why": "Each college: about every week and a half"},
- "clubs":   {"every_days": 14, "per_run": 1, "why": "Each club or sailing center: every two weeks"}
+ "clubs":   {"every_days": 14, "per_run": 1, "why": "Each club or sailing center: every two weeks"},
+ "nesf":    {"every_days": 10, "per_run": 1, "why": "Northeastern Sailing Foundation: grants, training, programs"},
+ "ayrc":    {"every_days": 7,  "per_run": 1, "why": "AYRC: weekly in season (results, previews), registration news in the off-season"}
 }
