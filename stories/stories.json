@@ -3130,6 +3130,38 @@
    "img": null,
    "link": null,
    "added": "2026-11-12"
+  },
+  {
+   "site": "sbx",
+   "slug": "thanksgiving-2026-travel-forecast",
+   "date": "2026-11-10",
+   "cat": "Travel",
+   "title": "SBX expects its busiest Thanksgiving ever",
+   "dek": "About 2.6 million travelers are expected from November 20 to December 1. The busiest days are the Sunday after Thanksgiving and the Wednesday before.",
+   "body": [
+    "The Silverbrooks Airport Authority expects about 2.6 million passengers to pass through SBX over the 12-day Thanksgiving travel period, up about 4 percent from last year.",
+    "The busiest day should be Sunday, November 29, followed by Wednesday, November 25. On those days, arrive two and a half hours before domestic flights, and check the wait times on the screens at each check-in hall.",
+    "Garages A, B and C often fill by mid-morning over the holiday. The Economy Lot has the most space and is four minutes from the terminals on the AirLink. The SBTrain D Line and the 110 SBX Flyer skip the Airport Pkwy traffic completely."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
+  },
+  {
+   "site": "sbx",
+   "slug": "delta-athens-nonstop-2027",
+   "date": "2026-11-12",
+   "cat": "New routes",
+   "title": "Delta adds a summer nonstop to Athens",
+   "dek": "Daily flights between SBX and Athens start May 21, 2027, on an Airbus A330-900neo from Concourse X.",
+   "body": [
+    "Delta will fly daily between SBX and Athens from May 21 to October 3, 2027, its first service to Greece from Silverbrooks.",
+    "The flight leaves SBX in the evening from Concourse X and lands in Athens the next afternoon, with connections across the Greek islands on Aegean. Tickets are on sale now.",
+    "Athens joins Paris, Amsterdam, London, Rome, Dublin, Milan and Barcelona on Delta's European schedule from SBX."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-12"
   }
  ]
 }

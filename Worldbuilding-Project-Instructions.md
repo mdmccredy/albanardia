@@ -226,3 +226,4 @@ Rules:
 - `club_data.py` holds each club's adult fleets with boat counts (FLEETS), junior program boats (JUNIOR), its custom 2027 calendar (EVENTS), the keelboat clubs (KEELBOAT: SYC, EBYC, MYC, no dinghies and no junior page) and the AYRC schedule.
 - College sailing pavilions, the Olympic Sailing Pavilion, Killalea Sailing Center and the Maldonado Boathouse are sailing venues, not clubs.
 - NESF lives at `nesf/` and the AYRC at `nesf/ayrc/`, built by `tools/build_nesf.py`. Each AYRC venue hosts at most one regatta a season.
+- SBX's website (flysbx.com) lives at `flysbx/`, built by `tools/build_sbx.py`. Airlines, gates, lounges, checkpoints, garages and AirLink stations follow the SBX airport map (`airport/`). The flight board is a generated daily schedule (ROUTES in the script).
