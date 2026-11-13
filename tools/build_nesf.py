@@ -159,7 +159,7 @@ def roster(fleet):
 
 def PF(name):  # a photo from the library by file name
     return next(x for L in PHT.PH.values() for x in L if x[0] == name)
-CARD_PH = {"Optimist Championship": "permitted/opti-closeup.jpg", "Optimist Green Fleet": "permitted/opti-fleet.jpg", "ILCA 4": "max/ilca-spray.jpg", "ILCA 6": "max/ilca-hike-1.jpg",
+CARD_PH = {"Optimist Championship": "permitted/opti-closeup.jpg", "Optimist Green Fleet": "permitted/opti-fleet.jpg", "ILCA 4": "permitted/ilca4-worlds-2.jpg", "ILCA 6": "max/ilca-hike-1.jpg",
            "C420": "permitted/c420-spinnaker.jpg", "Club FJ": "permitted/fj-sail-sand-point.jpg", "RS Feva": "permitted/feva-fleet.jpg", "29er": "permitted/29er-start.jpg"}
 HERO_PH = {"Optimist Championship": "permitted/opti-closeup.jpg", "ILCA 4": "permitted/ilca4-worlds.jpg", "ILCA 6": "max/ilca-sunset-2.jpg", "C420": "permitted/c420-fleet.jpg",
            "Club FJ": "permitted/fj-team-race.jpg", "RS Feva": "permitted/feva-fleet.jpg", "29er": "permitted/29er-start.jpg"}
