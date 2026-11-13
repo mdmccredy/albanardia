@@ -350,8 +350,26 @@ def cs_pages(c, svg):
 <section class="alt"><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev if x[0].month <= 4 and x[3] in ('Clinic', 'Club'))}</div></div></section>""")
     return pages, nav
 
+def extra_photos(c):
+    """more real photos on the pages that had only a header photo"""
+    k = c[0]; adult = [f for f, n in adult_fleets(c) if n]
+    fl = [(PHT.boat(f, k + "x", 2)[0][-1], f) for f in adult[:3]]
+    if c[6] == "yc":
+        cal = fl[:2] + [(PHT.pick("sunset", k + "c2")[0], "Weeknight racing at sunset"), (PHT.pick("racing", k)[0], "Regatta weekend"), (PHT.pick("club event", k)[0], "Club events")]
+        mem = [(PHT.pick("harbor", k)[0], "Racing off the harbor"), (PHT.pick("clubhouse", k + "m2")[0], "The clubhouse"), (PHT.pick("keelboats", k + "m3")[0], "Crew for a member's boat")]
+        mem += [(PHT.pick("kids", k + "m4")[0], "Junior members"), (PHT.pick("sunset", k + "m5")[0], "Evenings on the water")] if juniors(c) else fl[:2]
+        return {"calendar/": ("The season at " + c[2], "Weeknights, regattas and the parties in between.", cal),
+                "membership/": ("Life as a member", "Racing, cruising, the bar after the race and a place for the whole family.", mem)}
+    return {"classes/": ("In class", "Small groups, a coach boat nearby and plenty of time at the helm.", [(PHT.pick("kids", k + "c1")[0], "Learn to Sail"), (PHT.boat("J/22", k)[0][0], "Keelboat classes"), (PHT.pick("camp", k + "c3")[0], "On the dock"), (PHT.pick("racing", k + "c4")[0], "Intro to Racing"), (PHT.pick("sunset", k + "c5")[0], "Evening sails")]),
+            "calendar/": ("A summer on the water", "Camps, fun races and open houses.", [(PHT.pick("camp", k + "k1")[0], "Camp week"), (PHT.pick("Optimist", k + "k2")[0], "Optis on the race course"), (PHT.pick("kids", k + "k3")[0], "First sails"), (PHT.pick("paddle", k)[0], "Paddle nights"), (PHT.pick("sunset", k + "k5")[0], "Friday fun races")]),
+            "volunteer/": ("Our volunteers", "Dock hands, safety boat drivers and instructors keep the center running.", [(PHT.pick("coach", k)[0], "Coaching from the safety boat"), (PHT.pick("camp", k + "v2")[0], "Helping at camp"), (PHT.pick("kids", k + "v3")[0], "On the dock"), (PHT.pick("club event", k)[0], "Open house"), (PHT.pick("paddle", k + "v5")[0], "Paddle night")])}
+
 def club_site(c, svg):
     pages, nav = (yc_pages if c[6] == "yc" else cs_pages)(c, svg)
+    for path, (h2, sub, items) in extra_photos(c).items():
+        if path in pages:
+            t, b = pages[path]
+            pages[path] = (t, b + f'<section class="alt"><div class="in"><h2>{E(h2)}</h2><p class="sub">{E(sub)}</p>{gallery(items)}</div></section>')
     base = ROOT / code(c)
     for path, (title, body) in pages.items():
         out = base / path / "index.html"; out.parent.mkdir(parents=True, exist_ok=True)

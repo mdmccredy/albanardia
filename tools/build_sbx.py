@@ -173,6 +173,7 @@ def home():
 
 def flights():
     return "flights/", "Flights", ph("Flight status", "Departures and arrivals", "Every flight at SBX today. Statuses update every 30 seconds.", "board") + """<section><div class="in"><div class="note">Flight times change. Check with your airline for the latest gate and status, and sign up for alerts in your airline's app.</div><div data-board="full"></div></div></section>
+<section class="alt"><div class="in"><h2>Watch them go</h2><p class="sub">The best plane spotting is from the Concourse X windows and Pearl's End Point.</p>""" + gallery([(PHT.pick("delta","f1")[0],"Departing runway 22"),(PHT.pick("aerial","f2")[0],"Final approach over the bay"),(PHT.pick("jetblue","f3")[0],"JetBlue to Boston"),(PHT.pick("intl","f4")[0],"Evening flights to Europe"),(PHT.pick("tower","f5")[0],"SBX tower")]) + """</div></section>
 <script>addEventListener('DOMContentLoaded',()=>{const m=location.hash.match(/q=([^&]*)/);if(m){const i=document.querySelector('[data-board] input');if(i){i.value=decodeURIComponent(m[1]);i.dispatchEvent(new Event('input'))}}})</script>"""
 
 def parking():
@@ -185,6 +186,7 @@ def parking():
     cards = "".join(f'<div class="cd"><b>{a}</b><span>{b}</span><span class="pr">{c}</span><p>{d}</p></div>' for a, b, c, d in G)
     return "parking/", "Parking", ph("Parking", "Park at SBX", "Six places to park, from the garages next to the concourses to the Economy Lot on the AirLink.", "garage") + f"""
 <section><div class="in"><div class="g3">{cards}</div></div></section>
+<section><div class="in"><h2>Steps from the terminals</h2><p class="sub">Garages A to D connect to every concourse by covered walkways on the departures level.</p>{gallery([(PHT.pick("garage","p1")[0],"Garages A to D"),(PHT.pick("aerial","p2")[0],"SBX from the air"),(PHT.pick("people mover","p3")[0],"The AirLink to the Economy Lot"),(PHT.pick("terminal","p4")[0],"Departures level"),(PHT.pick("delta","p5")[0],"Delta at the gate")])}</div></section>
 <section class="alt"><div class="in g2"><div><h2>Good to know</h2><ul class="sub"><li>Pay with a card or your phone at the exit. Garages A to D take E-ZPass.</li><li>Live space counts show on the signs along Terminal Drive.</li><li>EV charging in Garages C and D and the Economy Lot, at the regular parking rate.</li><li>Accessible spaces on the first floor of every garage, near the elevators.</li><li>Motorcycles park free in the marked areas of Garage D.</li></ul></div>
 <div><h2>Picking someone up?</h2><p class="sub">Wait free in the Cell Phone Lot. Terminal Drive is one-way, counterclockwise, around the garages and terminals, so if you miss your door, you'll need to circle. Arrivals pickups are on the lower level; rideshare and taxis are on the Ground Transportation level of each garage.</p></div></div></section>"""
 
@@ -218,6 +220,7 @@ def airlines():
     return "airlines/", "Airlines & gates", ph("Airlines & gates", "Airlines, concourses and lounges", f"{len(set(v[0] for v in AIR.values()))} airlines fly from SBX. Check which concourse your airline uses before you go through security.", "gate") + f"""
 <section><div class="in"><div class="tw"><table class="t"><tr><th>Concourse</th><th>Gates</th><th>Airlines</th><th>Security</th><th>Lounges</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">Concourses A, B, C and D are connected airside, so you can walk between them after security. Concourse X connects to A. International arrivals clear US Customs in Concourse X and collect bags at Claims 10 to 12.</p></div></section>
+<section><div class="in"><h2>On the ramp</h2><p class="sub">Delta mainline in Concourse C, Delta Connection and American in B, JetBlue and Southwest in A, and the world in X.</p>{gallery([(PHT.pick("gate","a1")[0],"Delta's hub in Concourse C"),(PHT.pick("delta","a2")[0],"Delta A321neo"),(PHT.pick("jetblue","a3")[0],"JetBlue in Concourse A"),(PHT.pick("intl","a4")[0],"Air France to Paris"),(PHT.pick("intl","a5")[0],"Concourse X")])}</div></section>
 <section class="alt"><div class="in"><h2>Airlines</h2><div class="g4">{''.join(f'<div class="cd"><b>Concourse {c}</b><span>{", ".join(sorted(n))}</span></div>' for c, n in sorted(byc.items()))}</div></div></section>
 <section><div class="in"><h2>Nonstop destinations</h2><p class="sub">{len(dest)} cities nonstop from SBX this winter.</p><div class="ch">{dl}</div></div></section>"""
 
@@ -229,7 +232,8 @@ def dining():
          "X": ["Starbucks", "Pret A Manger", "Wolfgang Puck Bistro", "Champagne Bar", "Dufry Duty Free", "Hermès", "Pandora"]}
     cards = "".join(f'<div class="cd"><b><span class="cc" style="width:28px;height:28px;font-size:15px;margin-right:8px">{c}</span>Concourse {c}</b><div class="ch" style="margin-top:10px">{"".join(f"<span>{E(x)}</span>" for x in xs)}</div></div>' for c, xs in D.items())
     return "dining/", "Shop & dine", ph("Shop & dine", "Shop and dine", "Coffee before the gate, a lobster roll at the Crab House, or duty free on the way to Europe.", "dining") + f"""
-<section><div class="in"><div class="g2">{cards}</div><p class="sub" style="margin-top:16px">Most places open at 4:30 a.m. and close after the last departure from that concourse. Mobile ordering with gate delivery is available in Concourses B, C and D.</p></div></section>"""
+<section><div class="in"><div class="g2">{cards}</div><p class="sub" style="margin-top:16px">Most places open at 4:30 a.m. and close after the last departure from that concourse. Mobile ordering with gate delivery is available in Concourses B, C and D.</p></div></section>
+<section class="alt"><div class="in"><h2>Take a break</h2>{gallery([(PHT.pick("dining","d1")[0],"Restaurants after security"),(PHT.pick("terminal","d2")[0],"Gate-side seating"),(PHT.pick("sunset","d3")[0],"Sunset over the bay from Concourse X"),(PHT.pick("terminal","d4")[0],"International arrivals"),(PHT.pick("dining","d5")[0],"Coffee before the gate")])}</div></section>"""
 
 def info():
     return "travel-info/", "Travel info", ph("Travel info", "Before you fly", "Security, accessibility, Wi-Fi, lost and found, and everything else.", "security") + """
@@ -244,6 +248,7 @@ def info():
 <div class="cd"><b>Customs and immigration</b><p>International arrivals clear US Customs and Border Protection in Concourse X. Global Entry and Mobile Passport Control lanes are open for every arrival.</p></div>
 <div class="cd" id="contact"><b>Contact</b><p>Silverbrooks Airport Authority<br>1 Thompson Road, Silverbrooks, AB 19010<br>Information desks at every baggage claim, open 24 hours.</p></div>
 </div></section>
+<section><div class="in"><h2>From the curb to the gate</h2>""" + gallery([(PHT.pick("checkin","t1")[0],"Check-in halls"),(PHT.pick("security","t2")[0],"TSA checkpoints"),(PHT.pick("terminal","t3")[0],"Concourse walkways"),(PHT.pick("board","t4")[0],"Departure boards"),(PHT.pick("baggage","t5")[0],"Baggage claim")]) + """</div></section>
 <section class="alt"><div class="in"><h2>About SBX</h2><p class="sub">Built on fill in the bay from 1968 to 1974, along with the D Line under the harbor. Today SBX has four runways (12/30, 8/26, 3L/21R and 3R/21L), five concourses, a Delta hub of about 40 gates, a cargo complex for FedEx, UPS and DHL, and Delta TechOps and JetBlue maintenance hangars. It is run by the Silverbrooks Airport Authority, part of the <a href="../../portofsilverbrooks/">Port of Silverbrooks</a>, which also runs McKay Field and the Samolette Container Terminal.</p></div></section>"""
 
 if __name__ == "__main__":

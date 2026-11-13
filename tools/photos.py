@@ -62,15 +62,45 @@ PH = {
  "boardwalk": [("Rehoboth Beach boardwalk at Wilmington Avenue looking north.JPG", "Dough4872", "Public domain"), ("Rehoboth Beach boardwalk at Rehoboth Avenue looking south.jpg", "Dough4872", "Public domain")],
 }
 
+
+# more photos, picked by eye from Wikimedia Commons
+PH["Farr"] += [("Farr 40 on a broad reach by Don Ramey Logan.jpg", "Don Ramey Logan", "CC BY-SA 4.0"), ("Farr 40s by Don Ramey Logan.jpg", "Don Ramey Logan", "CC BY-SA 4.0"), ("2 Farr 40's race to the the finish by Don Ramey Logan.jpg", "Don Ramey Logan", "CC BY-SA 4.0")]
+PH["sunset"] += [("GO Fleet sunset sailing start (2612357147).jpg", "Bill Blevins", "CC BY 2.0"), ("August 2012 Sailboat Avra Sailing at Sunset With Spinnaker (7891878814).jpg", "George Socka", "CC BY 2.0")]
+PH["Hobie 16"] += [("Glenans Raid Cata 2011 sur l eau 06.jpg", "Matthieu Faure", "CC BY-SA 2.0"), ("Glenans Raid Cata 2011 sur l eau 14.jpg", "Matthieu Faure", "CC BY-SA 2.0")]
+PH["Hobie Wave"] = [("Hobiecatonbuckisland.jpg", "Islanderin", "CC BY-SA 4.0")]
+PH["RS Feva"] = [("Feva Gennaker.jpg", "ChrGermany", "CC0"), ("La Mathe Ste Cat'linne, Saint Martîn, Jèrri 3.jpg", "Man vyi", "Public domain")]
+PH["Optimist"] += [("France-002516 - Follow the Leader..... (15907518665).jpg", "Dennis G. Jarvis", "CC BY-SA 2.0"), ("Optimist dinghies.jpg", "Gurthg Shae", "CC BY-SA 4.0"), ("Optimisten bei der MLA Sailing Regatta 2005 001.jpg", "Tom Purves", "CC BY 2.0")]
+PH["29er"] += [("29er start.jpg", "Villy Fink Isaksen", "CC BY-SA 4.0"), ("Groenwohldcup 2021 - nach der Wendemarke auf Gennakerkurs.jpg", "Mef.ellingen", "CC BY-SA 4.0")]
+PH["49er"] += [("49er Downwind.jpg", "Tschou12345", "CC BY-SA 4.0")]
+PH["harbor"] = [("Manhattan Yacht Club June 30th 2015-3.jpg", "Michael Vadon", "CC BY-SA 2.0"), ("Manhattan Yacht Club June 30th 2015-1.jpg", "Michael Vadon", "CC BY-SA 2.0"), ("Manhattan Yacht Club June 30th 2015-6.jpg", "Michael Vadon", "CC BY-SA 2.0"), ("Manhattan Yacht Club June 30th 2015-11.jpg", "Michael Vadon", "CC BY-SA 2.0")]
+PH["racing"] = [("Salve Regina University sailing in Newport.jpg", "miketnorton", "CC BY 2.0")] + PH["team"]
+PH["clubhouse"] += [("Balboa Yacht Club Clubhouse Photo (2) Don Ramey Logan.jpg", "Don Ramey Logan", "CC BY-SA 3.0"), ("Teign Corinthian Yacht Club clubhouse - geograph.org.uk - 7747416.jpg", "Neil Owen", "CC BY-SA 2.0")]
+PH["delta"] += [("Delta Air Lines Airbus A321neo N512DE on final approach to Boston June 2026 3.jpg", "4300streetcar", "CC BY 4.0"), ("Delta Air Lines Airbus A321neo N512DE departing Boston February 2025 2.jpg", "4300streetcar", "CC BY 4.0"), ("Delta Air Lines Airbus A321neo N531DA parked at Boston May 2026.jpg", "4300streetcar", "CC BY 4.0")]
+PH["gate"] += [("Delta - Concourse C @ MSP Airport (8486514293).jpg", "m01229", "CC BY 2.0")]
+PH["terminal"] += [("MSP Terminal 1 Concourse B Aug 2022.jpg", "Thomson200", "CC0"), ("MSP Terminal 1 Concourse B connector Aug 2022.jpg", "Thomson200", "CC0")]
+PH["aerial"] += [("Nahant, MA from flight May 2026.jpg", "4300streetcar", "CC BY 4.0"), ("Boston Logan International Airport from plane departing on 22L April 2025.jpg", "4300streetcar", "CC BY 4.0")]
+PH["intl"] = [("Air France B777-200ER.jpg", "Stevenhe1997", "CC BY-SA 4.0"), ("Paris Charles de Gaulle Airport (CDG) - View from Terminal 2E Gates K (45557789502).jpg", "Charles from Port Chester, New York", "CC BY 2.0")]
+PH["checkin"] = [("Launceston Airport check-in hall.jpg", "Ktcmatthews", "CC BY-SA 4.0"), ("Taiwan Taoyuan International Airport Terminal 2 Check-in Hall 20200815.jpg", "Cheng-en Cheng", "CC BY-SA 2.0")]
+PH["baggage"] = [("Zuerich airport-Baggage conveyor belt baggage claim-01ASD.jpg", "Asurnipal", "CC BY-SA 4.0"), ("Baggage claim area at Kashgar International Airport.jpg", "Timothytyy", "CC BY-SA 4.0")]
+PH["people mover"] += [("Dubai International Airport Automated People Mover, 2014.jpg", "Raihan S.R. Bakhsh", "CC BY-SA 2.0")]
+PH["port"] += [("Sun Setting Behind Dock Cranes.jpg", "Eric Kilby", "CC BY-SA 2.0"), ("Port Newark-Elizabeth Marine Terminal (7238101072).jpg", "Ken Lund", "CC BY-SA 2.0"), ("MAERSK HANOI Container Ship (Port Koper SIKOP, 2023).jpg", "Petar Milošević", "CC BY-SA 4.0")]
+PH["ferry"] += [("Washington State Ferries vessel MV Puyallup departing Seattle.jpg", "Quintin Soloviev", "CC BY 4.0"), ("Washington State Ferry with Port of Seattle cranes from Kerry Park, June 2026.jpg", "Guywelch2000", "CC BY 4.0")]
+PH["bus"] += [("King County Metro RapidRide H Line - NFI DE60LF - Columbia St @ 3rd Ave.jpg", "Han Zheng", "CC BY-SA 2.0"), ("King County Metro buses at Northgate Station.jpg", "SounderBruce", "CC BY-SA 4.0")]
+PH["rail"] += [("MBTA commuter rail train departing North Station September 2024 1.jpg", "4300streetcar", "CC BY 4.0"), ("SEPTA Regional Rail train arriving at 30th Street July 2026.jpg", "4300streetcar", "CC BY 4.0")]
+PH["subway"] += [("MBTA Blue Line trains at Orient Heights August 2025.jpg", "4300streetcar", "CC BY 4.0")]
+PH["paddle"] = [("Stand up paddle, Lac d'Esparron, Esparron-de-Verdon-8656.jpg", "Raimond Spekking", "CC BY-SA 4.0"), ("Stand Up Paddle.jpg", "Aloha Surf & SUP School", "CC BY-SA 4.0")]
+PH["airfield"] = [("Billy Bishop Toronto City Airport, Toronto, Ontario (30003175295).jpg", "Ken Lund", "CC BY-SA 2.0")]
+PH["tower"] = [("Beijing Capital International Airport Control Tower by Don Ramey Logan.jpg", "Don Ramey Logan", "CC BY-SA 4.0")]
+
 # which photos show a boat class: exact matches first, then close stand-ins (fictional or missing classes)
 CLASS = {
  "J/70": ("J/70", 1), "J/80": ("J/80", 1), "J/22": ("J/22", 1), "J/24": ("J/24", 1), "Etchells": ("Etchells", 1), "Star": ("Star", 1),
  "Melges 24": ("Melges 24", 1), "Melges 15": ("Melges 15", 1), "Snipe": ("Snipe", 1), "International 14": ("International 14", 1), "505": ("505", 1),
  "ILCA": ("ILCA", 1), "Optimist": ("Optimist", 1), "C420": ("C420", 1), "Club FJ": ("Club FJ", 1), "29er": ("29er", 1), "Hobie 16": ("Hobie 16", 1),
- "J/105": ("keelboats", 0), "Farr 30": ("Farr", 0), "Santa Cruz 27": ("keelboats", 0), "Melges 19": ("Melges 15", 0), "Tasar": ("Snipe", 0), "RS Aero": ("ILCA", 0),
+ "J/105": ("Farr", 0), "Farr 30": ("Farr", 0), "Santa Cruz 27": ("keelboats", 0), "Melges 19": ("Melges 15", 0), "Tasar": ("Snipe", 0), "RS Aero": ("ILCA", 0),
  "MC7": ("J/22", 2), "MC23": ("J/70", 2), "MC24": ("J/24", 2), "MC30": ("J/80", 2), "MC35": ("keelboats", 2),
  "Bauer": ("ILCA", 2), "JR300": ("C420", 2), "JR400": ("C420", 2), "JR500": ("470", 2), "SK400": ("49er", 2), "SK500": ("49er", 2),
- "Hobie Wave": ("Hobie 16", 0), "SailQube": ("kids", 2), "Larssen Club Radial": ("C420", 2), "Larssen Fyra": ("Optimist", 2), "Larssen Pulse XL": ("kids", 2), "Larssen Voyage": ("kids", 2), "Kayaks and SUPs": ("camp", 2),
+ "Hobie Wave": ("Hobie Wave", 1), "RS Feva": ("RS Feva", 1), "SailQube": ("kids", 2), "Larssen Club Radial": ("RS Feva", 2), "Larssen Fyra": ("Optimist", 2), "Larssen Pulse XL": ("kids", 2), "Larssen Voyage": ("RS Feva", 2), "Kayaks and SUPs": ("paddle", 1),
 }
 
 def h(s): return int(hashlib.md5(s.encode()).hexdigest(), 16)

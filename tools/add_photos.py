@@ -25,6 +25,10 @@ PAGES = {
      [("city hall", 0, "City Hall"), ("council", 0, "Council chambers"), ("capitol", 0, "The State House"), ("subway", 0, "Transit"), ("port", 3, "The port")]),
  "visit/index.html": ("See Silverbrooks", "On the water, on the boardwalk and around town.", r'</section>\s*<section class="pg" id="p-todo"',
      [("keelboats", 2, "Sailing on the harbor"), ("boardwalk", 0, "The boardwalk"), ("sunset", 2, "Sunset on the bay"), ("J/70", 0, "Race day"), ("ferry", 2, "Ferry rides"), ("stadium", 0, "Game day")]),
+ "index.html": ("Life in Albanardia", "The Windward State: on the water, on the train and in the air.", '<section class="blk" id="services">',
+     [("harbor", 0, "Racing off the Silverbrooks waterfront"), ("subway", 2, "SBTrain under the harbor"), ("delta", 1, "Delta at SBX"), ("kids", 1, "Summer sailing camp"), ("ferry", 3, "SBFerry across the bay"), ("port", 4, "The Port of Silverbrooks")]),
+ "clubs/index.html": ("On the water", "Twenty-two clubs and sailing centers, from Optis to big boats.", '<h2>Yacht clubs</h2>',
+     [("keelboats", 1, "Big-boat racing"), ("Optimist", 5, "Junior regattas"), ("J/70", 0, "J/70 fleets"), ("camp", 1, "Summer camp"), ("C420", 0, "High school racing"), ("sunset", 3, "Weeknight racing")]),
 }
 
 def main():
