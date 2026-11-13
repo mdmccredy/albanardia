@@ -229,7 +229,7 @@ Albanardia has about 20 named places outside Silverbrooks; the map will fix wher
 | Youngren | Thompson | 19180 | Small suburb between Evansville and SB |
 | Waterloo | Rochester | 19201 | Waterloo Yacht Club, UA Waterloo, Pennsville ferry |
 | Foxford | Sound | 19301 | Foxford Yacht Club, UA Foxford |
-| Hamilton Island | Hamilton | 19350 | Hamilton Island Sailing Club |
+| Hamilton Island | Hamilton | 19350 | Hamilton Island Sailing |
 | Albanardia City | Albanardia | 19401 | PSD airport, ACYC, UA City |
 | Ashton | Albanardia | 19420 | Small town east of Albanardia City |
 | Moïyane | Moïyane | 19520 | Aboraxas College, UA Moïyane (community college) |
@@ -570,7 +570,7 @@ Street addresses for major places. Club addresses come from the club cards; the 
 | Corinthian Yacht Club of Silverbrooks | 731 N Olweicz St, Whilliker 19120 |
 | Waterloo Yacht Club | 182 Anderssen St, Waterloo 19201 |
 | Foxford Yacht Club | 865 Richards Rd, Foxford 19301 |
-| Hamilton Island Sailing Club | 12 Wilson St, Hamilton Island 19350 |
+| Hamilton Island Sailing | 12 Wilson St, Hamilton Island 19350 |
 | Albanardia City Yacht Club | 17 W Marlow St, Albanardia City 19401 |
 | New Brolin Yacht Club | 28 S Atlantic Dr, New Brolin 19601 |
 | Willamette Boating Center | 419 Ashton Rd, Willamette 19701 |
@@ -778,7 +778,9 @@ Albanardia has 13 clubs and sailing centers and a statewide summer youth circuit
 **Albanardia Youth Racing Circuit (AYRC):** a statewide summer youth series hosted at clubs around the state, scored across the whole summer, similar to the NWYRC.
 
 - **Main classes:** ILCA, C420, Optimist, CFJ, RS Feva, 29er
-- **Guest classes:** RS Tera, J/24, J/80, Waszp, I420, 470
+- **Guest classes:** ILCA 7, RS Tera, Waszp, I420 (dinghies only: no keelboats, no 470s)
+- **2027 stops:** Foxford Shakedown (FYC, May 22), Headland Cup (NEYC, Jun 5), Battle of Waterloo (WYC, Jun 12), Albanardia JOs (NBYC, Jun 26), Whilliker Whirlwind (CYC, Jul 10), Castaway Cup (HIS, Jul 24), Statehouse Cup (ACYC, Jul 31), Turnpike Trophy (Toms River YC, NJ, Aug 14), Sturgeon Moon Regatta (CSYC, Aug 28), Pearl Diver Regatta (PESC, Sep 11), Hanson Bay Showdown = AYRC Championship (SBYC, Sep 25)
+- **ILCA powerhouse:** Silverbrooks Yacht Club (SBYC) dominates the AYRC ILCA 4 and ILCA 6 fleets; 2026 champions Elise Tran (ILCA 4) and Leo Hartmann (ILCA 6), both SBYC.
 
 | Club | Short | Location | Address | Website |
 | --- | --- | --- | --- | --- |
@@ -789,14 +791,14 @@ Albanardia has 13 clubs and sailing centers and a statewide summer youth circuit
 | Corinthian Yacht Club of Silverbrooks | CYC | Whilliker | 731 N Olweicz St, 19120 | cycsb.org |
 | Waterloo Yacht Club | WYC | Waterloo | 182 Anderssen St, 19201 | waterlooyc.org |
 | Foxford Yacht Club | FYC | Foxford | 865 Richards Rd, 19301 | fyc.org |
-| Hamilton Island Sailing Club | HIS | Hamilton Island | 12 Wilson St, 19350 | sailhamilton.org |
+| Hamilton Island Sailing | HIS | Hamilton Island | 12 Wilson St, 19350 | sailhamilton.org |
 | Albanardia City Yacht Club | ACYC | Albanardia City | 17 W Marlow St, 19401 | acyc.org |
 | New Brolin Yacht Club | NBYC | New Brolin | 28 S Atlantic Dr, 19601 | nbyc.org |
 | Willamette Boating Center | WYC | Willamette | 419 Ashton Rd, 19701 | wboating.org |
 | Coven Community Sailing | CCS | Coven | 10 Appleton Dr, 19750 | covencommsail.org |
 | Cape Sturgeon Yacht Club | CSYC | Arlington, at Cape Sturgeon | 117 Cape Rd, 19901 | csyc.org |
 
-Hamilton Island Sailing Club is a community-sailing-style club. Silverbrooks Yacht Club sits at the outer end of the giant Hanson Bay Marina on SB's north shore. Other sailing bodies: Albanardia Department of Marine.
+Hamilton Island Sailing is a community-sailing-style club. Silverbrooks Yacht Club sits at the outer end of the giant Hanson Bay Marina on SB's north shore. Other sailing bodies: Albanardia Department of Marine.
 
 **Newer clubs and sailing centers** (22 clubs and centers on the map in all):
 
@@ -882,7 +884,7 @@ This stretch of the East Coast is a Scandinavian and French melting pot, drawn m
 
 **Current map:** [State of Albanardia Map](https://claude.ai/artifact/RJmV4aTnE8kgxMyy1am9dQ), with toggleable layers for ZIP zones, counties, highways, transit, airports, clubs and towns. Open the link to zoom in and see streets, towns, clubs and places of interest.
 
-**Directions:** the map has Apple Maps-style routing (car button next to the search bar). Pick any start and destination (towns, landmarks, clubs, schools, airports, addresses) to get the fastest route highlighted in blue with step-by-step road names, distance, drive time and a live arrival time. It offers up to two alternate routes (shown in gray; tap one to switch), each noticeably different from the fastest. It routes on every street on the map (about 43,000 intersections) in one connected road network: interstates only connect at exits and interchanges, regular roads connect where they cross, and ferries (with boarding time) reach the islands. Drive times include a time-of-day traffic estimate (heaviest at weekday rush hours). There's also a round-trip option. Typical times: AmEx Garden to Hamilton Island Sailing Club \~1 hr 55 min (I-95, I-47, then the Albanardia Sound Ferry); the State Capitol to Cape Sturgeon Yacht Club \~2 hr 35 min on I-95.
+**Directions:** the map has Apple Maps-style routing (car button next to the search bar). Pick any start and destination (towns, landmarks, clubs, schools, airports, addresses) to get the fastest route highlighted in blue with step-by-step road names, distance, drive time and a live arrival time. It offers up to two alternate routes (shown in gray; tap one to switch), each noticeably different from the fastest. It routes on every street on the map (about 43,000 intersections) in one connected road network: interstates only connect at exits and interchanges, regular roads connect where they cross, and ferries (with boarding time) reach the islands. Drive times include a time-of-day traffic estimate (heaviest at weekday rush hours). There's also a round-trip option. Typical times: AmEx Garden to Hamilton Island Sailing \~1 hr 55 min (I-95, I-47, then the Albanardia Sound Ferry); the State Capitol to Cape Sturgeon Yacht Club \~2 hr 35 min on I-95.
 
 The map fixes the state's shape: Albanardia Sound on the west, Albanardia Bay in the northeast, Coven Bay in the south, and the Atlantic along the whole east coast.
 
