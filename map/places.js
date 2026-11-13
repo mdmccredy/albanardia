@@ -48,7 +48,7 @@ function openBiz(n){const p=TIPS[n]||{name:n,lines:[]};const all=p.lines.join(' 
  if(matchMedia('(max-width:640px), (max-height:500px)').matches){const pn=document.getElementById('panel');if(pn)pn.open=false;const d=document.getElementById('dir');if(d&&d.classList)d.classList.remove('on');}
  document.body.classList.add('placeon');
  el.innerHTML=`<button class="x" aria-label="Close">✕</button>
- ${pics.length?`<div class="pc-ph">${pics.map((i,k)=>`<img src="${img(i,k?500:900)}" alt="" loading="lazy" onerror="this.remove()">`).join('')}</div>`:''}
+ ${pics.length?`<div class="pc-ph">${pics.map((i,k)=>`<img src="${img(i,k?500:900)}" alt="" loading="lazy" onerror="const q=this.parentNode;this.remove();if(q&&!q.children.length)q.remove()">`).join('')}</div>`:''}
  <h2>${esc(n)}</h2><div class="sub">${esc(LBL[c]||'Place')}${town?' · '+esc(town):''}</div>
  <div class="pc-act">
   <button data-pc="dir"><span>➜</span>Directions</button>
