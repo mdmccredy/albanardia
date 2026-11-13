@@ -157,6 +157,13 @@ def roster(fleet):
     rows.sort(key=lambda x: -x[2])
     return rows
 
+def PF(name):  # a photo from the library by file name
+    return next(x for L in PHT.PH.values() for x in L if x[0] == name)
+CARD_PH = {"Optimist Championship": "permitted/opti-closeup.jpg", "Optimist Green Fleet": "permitted/opti-fleet.jpg", "ILCA 4": "max/ilca-spray.jpg", "ILCA 6": "max/ilca-hike-1.jpg",
+           "C420": "permitted/c420-spinnaker.jpg", "Club FJ": "permitted/fj-sail-sand-point.jpg", "RS Feva": "permitted/feva-fleet.jpg", "29er": "permitted/29er-start.jpg"}
+HERO_PH = {"Optimist Championship": "permitted/opti-closeup.jpg", "ILCA 4": "permitted/ilca4-worlds.jpg", "ILCA 6": "max/ilca-sunset-2.jpg", "C420": "permitted/c420-fleet.jpg",
+           "Club FJ": "permitted/fj-team-race.jpg", "RS Feva": "permitted/feva-fleet.jpg", "29er": "permitted/29er-start.jpg"}
+
 def fleet_page(fleet):
     rows = roster(fleet); r = "../../../../"; dh = "/" in rows[0][0]
     clubs = sorted({BY[c][2] for _, c, _, _ in rows})
@@ -164,7 +171,7 @@ def fleet_page(fleet):
     tr = "".join(f'<tr data-c="{E(BY[c][2])}" data-n="{E(n.lower())}"><td class="n">{i}</td><td>{E(n)}</td><td><a href="{r}{cl(c)}/">{E(BY[c][2])}</a> <small>{E(BY[c][3])}</small></td><td>{g}</td><td>{p}</td></tr>' for i, (n, c, p, g) in enumerate(rows, 1))
     others = "".join(f'<a href="../{FLEET_SLUG[f]}/">{E(f)}</a>' if f != fleet else f'<span style="background:var(--t);color:#fff;border-color:var(--t)">{E(f)}</span>' for f in FLEET_SLUG)
     note = f" SBYC sailors hold {sb} of the top 10." if fleet.startswith("ILCA") else ""
-    hp = PHT.PH["sunset"][0 if fleet == "ILCA 6" else 1] if fleet.startswith("ILCA") else PHT.pick({"Optimist": "Optimist", "ILCA": "ILCA", "C420": "C420", "Club FJ": "Club FJ", "29er": "29er"}.get(FLEET_BOAT[fleet] if fleet != "RS Feva" else "x", "kids"), "ayrc")[0]
+    hp = PF(HERO_PH[fleet])
     body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">AYRC 2026 final standings</div><h1>{E(fleet)}</h1><p>All {len(rows)} {"teams" if dh else "sailors"} who scored in 2026. Best 7 of 11 regattas, Championship at 1.5 times.{note}</p><a class="btn o" href="../">All fleets</a></div><div class="mark"><img src="../../../img/ayrc-logo-full.png" alt="AYRC"></div></div></div>
 <section><div class="in"><p class="ch" style="margin:0 0 18px">{others}</p>
 <div class="flt"><input id="q" type="search" placeholder="Search {"teams" if dh else "sailors"}" aria-label="Search"><select id="cf" aria-label="Club"><option value="">All clubs</option>{''.join(f'<option>{E(c)}</option>' for c in clubs)}</select><span id="ct"></span></div>
@@ -204,7 +211,7 @@ def ayrc():
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
 <div class="tw"><table class="sch"><tr><th>Date</th><th>Event name</th><th>Location</th><th>Boats</th><th>Event type</th><th>Event website</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">{" · ".join(f"<b>{s}</b>: " + ", ".join(datetime.date.fromisoformat(a[0]).strftime("%b %-d") for a in AYRC if seas[datetime.date.fromisoformat(a[0]).strftime("%b")] == s) for s in ("Late spring", "Summer", "Early fall"))}</p></div></section>
-<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp{" lk" if t in FLEET_SLUG else ""}">{PHT.fig(PHT.PH["ILCA"][{"ILCA 4": 2, "ILCA 6": 6}[t]] if t.startswith("ILCA") else PHT.pick({"Opt":"Optimist","C42":"C420","Clu":"Club FJ","RS ":"kids","29e":"29er"}[t[:3]], t)[0], "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span>{f'<a class="cdl" href="standings/{FLEET_SLUG[t]}/">2026 standings →</a>' if t in FLEET_SLUG else ""}</div></div>' for t, d in AYRC_CLASSES)}</div>
+<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp{" lk" if t in FLEET_SLUG else ""}">{PHT.fig(PF(CARD_PH[t]), "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span>{f'<a class="cdl" href="standings/{FLEET_SLUG[t]}/">2026 standings →</a>' if t in FLEET_SLUG else ""}</div></div>' for t, d in AYRC_CLASSES)}</div>
 <h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest dinghy fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings. The circuit is dinghies only: no keelboats.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
 <section class="alt" id="rules"><div class="in g2"><div><h2>Scoring</h2><ul class="l sub"><li>Low point scoring at each regatta, then circuit points: 100 for first, down by fleet size.</li><li>Your best 7 of 11 regattas count toward the season.</li><li>The AYRC Championship can't be dropped, and it scores 1.5 times.</li><li>Club team trophy: each club's best 12 sailor scores across all fleets.</li><li>Green Fleet isn't scored; every sailor who finishes three regattas gets a season pennant.</li></ul></div>
 <div><h2>Eligibility</h2><ul class="l sub"><li>Under 19 on December 31, 2027 (Optimist and RS Feva: 15 and under).</li><li>A US Sailing youth membership and a member club, sailing center or high school team.</li><li>Sailors from outside Albanardia are welcome at every regatta, but only Albanardia sailors score in the season standings.</li><li>A swim test and a signed parent waiver, once per season.</li></ul></div></div></section>
