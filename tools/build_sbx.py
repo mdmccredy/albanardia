@@ -4,7 +4,11 @@ Facts follow the World Bible and the SBX airport map (flysbx/map/, the old airpo
 Garages A to D, AirLink stations, Transit Center. The flight board is generated in the browser from ROUTES
 (a realistic daily schedule) and shows live-looking statuses for the current Eastern time.
 News reads stories/stories.json (site 'sbx'). Re-run by tools/build_stories.py."""
-import html, json, pathlib
+import html, json, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import photos as PHT
+def gallery(items): return '<div class="gal">' + ''.join(PHT.fig(p, c, 1000 if i else 1400) for i, (p, c) in enumerate(items)) + '</div>'
+def HB(p): return f"background:linear-gradient(110deg,rgba(2,30,72,.94) 0%,rgba(2,79,170,.78) 50%,rgba(0,120,74,.35) 100%),url('{PHT.url(p[0],1800)}') center/cover"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "flysbx"
 E = html.escape
@@ -74,11 +78,11 @@ h2{font-size:clamp(24px,3.2vw,34px);line-height:1.15;margin:0 0 6px;font-weight:
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .cd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;display:block}.cd b{display:block;font-size:17px;margin-bottom:3px}.cd p,.cd span{color:var(--mut);margin:0}.cd .pr{color:var(--ink);font-weight:800;font-size:22px;display:block;margin:6px 0 2px}
 .board{background:#0d1117;color:#f2f2f2;border-radius:14px;overflow:hidden;border:1px solid #20262f}.bh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 14px;background:#161b22;border-bottom:1px solid #2a313b}
-.tabs button{background:transparent;color:#c9d1d9;border:1px solid #39424e;border-radius:8px;font:inherit;font-weight:700;padding:7px 14px;cursor:pointer}.tabs button.on{background:var(--y);color:#0d1117;border-color:var(--y)}
-.bh input,.bh select{background:#0d1117;color:#f2f2f2;border:1px solid #39424e;border-radius:8px;font:inherit;padding:7px 10px;min-width:0}.bh .sp{flex:1}.clock{font-variant-numeric:tabular-nums;font-weight:800;color:var(--y)}
+.tabs button{background:transparent;color:#c9d1d9;border:1px solid #39424e;border-radius:8px;font:inherit;font-weight:700;padding:7px 14px;cursor:pointer}.tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.bh input,.bh select{background:#0d1117;color:#f2f2f2;border:1px solid #39424e;border-radius:8px;font:inherit;padding:7px 10px;min-width:0}.bh .sp{flex:1}.clock{font-variant-numeric:tabular-nums;font-weight:800;color:#3ddc84}
 .bt{overflow-x:auto}.bt table{width:100%;border-collapse:collapse;min-width:640px;font-variant-numeric:tabular-nums}.bt th{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#8b949e;text-align:left;padding:9px 14px;border-bottom:1px solid #2a313b}
 .bt td{padding:10px 14px;border-bottom:1px solid #1d232c;white-space:nowrap}.bt td.c{font-weight:700;color:#fff;white-space:normal}.bt .al{display:inline-flex;align-items:center;gap:8px}.bt .dot{width:10px;height:10px;border-radius:3px;flex:none}
-.st{font-weight:800}.st.ok{color:#3fb950}.st.bd{color:var(--y)}.st.dl{color:#f0883e}.st.cx{color:#f85149}.st.gn{color:#8b949e}.bt tr.gone td{opacity:.55}.more{display:block;text-align:center;padding:12px;color:var(--y);font-weight:800;text-decoration:none}
+.st{font-weight:800}.st.ok{color:#3fb950}.st.bd{color:#58a6ff}.st.dl{color:#f0883e}.st.cx{color:#f85149}.st.gn{color:#8b949e}.bt tr.gone td{opacity:.55}.more{display:block;text-align:center;padding:12px;color:#3ddc84;font-weight:800;text-decoration:none}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}table.t{width:100%;border-collapse:collapse;min-width:560px}table.t td,table.t th{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}table.t th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut)}table.t tr:last-child td{border-bottom:0}
 .cc{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--n2);color:#fff;font-weight:800;font-size:18px}
 .ch{display:flex;flex-wrap:wrap;gap:7px}.ch span,.ch a{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;font-weight:600;font-size:13.5px;text-decoration:none}
@@ -96,7 +100,7 @@ def shell(path, title, body, board=False):
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title + " | " if title else "")}SBX · Silverbrooks Thompson International Airport</title><meta name="description" content="Flights, parking, transit, dining and travel information for Silverbrooks Thompson International Airport (SBX).">
 <link rel="manifest" href="{r}manifest.json"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="#024faa"><link rel="icon" href="{r}brand/logos/sbx-logo-sm.png">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}{PHT.CSS}{XCSS}</style></head><body>
 <div class="tb"><div class="in"><a class="port" href="{r}portofsilverbrooks/"><img src="{r}brand/logos/port-mark-64.png" alt="">Port of Silverbrooks</a><a href="{r}">Albanardia.gov</a><a href="{r}transit/sbtrain.html">SBTrain</a><a href="{r}transit/sbmetro.html">SBMetro</a><span class="sp"></span><a href="{me}map/">Airport map</a><a href="{me}travel-info/#contact">Contact</a></div></div>
 <header><div class="in"><a class="lg" href="{me}"><img src="{r}brand/logos/sbx-logo-sm.png" alt="SBX"><small>Silverbrooks Thompson International Airport</small></a><nav class="mn">{links}</nav></div><div class="sub2">{links}</div></header>
 {body}
@@ -147,15 +151,19 @@ def news(n=3):
     st = sorted([s for s in DB if s["site"] == "sbx"], key=lambda s: s["date"], reverse=True)[:n]
     return "".join(f'<a class="cd" href="stories/#{s["slug"]}"><small style="color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:12px">{E(s["cat"])} · Published {fdate(s["date"])}</small><b>{E(s["title"])}</b><span>{E(s["dek"])}</span></a>' for s in st)
 
-def ph(k, t, p):
-    return f'<div class="hero" style="padding:38px 0 40px">{PLANE}<div class="in"><div class="k">{E(k)}</div><h1>{E(t)}</h1><p>{E(p)}</p></div></div>'
+XCSS = '.hero{position:relative}.hero.ph2 svg.pl{display:none}.cdp{padding:0!important;overflow:hidden}.cdp figure{border-radius:0;aspect-ratio:16/9}.cdp .tx{padding:14px 18px 18px}'
+def ph(k, t, p, cat='terminal'):
+    hp = PHT.pick(cat, t)[0]
+    return f'<div class="hero ph2" style="padding:70px 0 44px;{HB(hp)}">{PHT.credit(hp)}<div class="in"><div class="k">{E(k)}</div><h1>{E(t)}</h1><p>{E(p)}</p></div></div>'
 
 def home():
     ND = len({t[:3] for v in ROUTES.values() for t in v.split()})
-    return "", "", f"""<div class="hero">{PLANE}<div class="in"><div class="k">Silverbrooks Thompson International Airport</div><h1>Fly SBX.</h1><p>More than 70 million travelers a year, more than 100 gates across five concourses, and nonstops to {ND} cities on four continents. Delta's East Coast hub, on the water at the edge of the city.</p>
+    hp = PHT.pick("delta", "home")[0]
+    return "", "", f"""<div class="hero ph2" style="{HB(hp)}">{PHT.credit(hp)}<div class="in"><div class="k">Silverbrooks Thompson International Airport</div><h1>Fly SBX.</h1><p>More than 70 million travelers a year, more than 100 gates across five concourses, and nonstops to {ND} cities on four continents. Delta's East Coast hub, on the water at the edge of the city.</p>
 <form class="fs" action="flights/" onsubmit="location.href='flights/#q='+encodeURIComponent(this.q.value);return false"><input name="q" placeholder="Track a flight: city, airline or flight number" aria-label="Track a flight"><button>Track</button></form></div></div>
 <div class="in ql"><a href="flights/"><span>✈</span>Flight status</a><a href="parking/"><span>🅿</span>Parking</a><a href="getting-here/"><span>🚆</span>Transit</a><a href="airlines/"><span>🧭</span>Airlines & gates</a><a href="dining/"><span>☕</span>Shop & dine</a><a href="map/"><span>🗺</span>Airport map</a></div>
 <section><div class="in"><h2>Right now at SBX</h2><p class="sub">Times are scheduled times, Eastern. Check with your airline before you leave home.</p><div data-board="mini"></div></div></section>
+<section><div class="in"><h2>Your trip through SBX</h2><p class="sub">From the curb to the gate, and home again.</p>{gallery([(PHT.pick("gate","h")[0],"Delta's East Coast hub"),(PHT.pick("terminal","h")[0],"International arrivals, Concourse X"),(PHT.pick("jetblue","h")[0],"JetBlue in Concourse A"),(PHT.pick("people mover","h")[0],"AirLink people mover"),(PHT.pick("dining","h")[0],"Shop and dine"),(PHT.pick("aerial","h")[0],"Four runways on the bay")])}</div></section>
 <section class="alt"><div class="in"><h2>Getting to SBX</h2><p class="sub">The airport is on its own peninsula in the bay. Airport Parkway is the only road in, so give yourself time at rush hour, or skip the traffic on the train.</p><div class="g4">
 <a class="cd" href="getting-here/#train"><b>SBTrain D Line</b><span>Downtown to the SBX Transit Center in 18 minutes, under the harbor. Every 6 minutes.</span></a>
 <a class="cd" href="getting-here/#bus"><b>110 SBX Flyer</b><span>Express bus from Elliot Square through the I-95 Harbor Tunnel, all day.</span></a>
@@ -164,7 +172,7 @@ def home():
 <section><div class="in"><h2>News from SBX</h2><p class="sub"><a href="stories/">All airport news →</a></p><div class="g3">{news()}</div></div></section>"""
 
 def flights():
-    return "flights/", "Flights", ph("Flight status", "Departures and arrivals", "Every flight at SBX today. Statuses update every 30 seconds.") + """<section><div class="in"><div class="note">Flight times change. Check with your airline for the latest gate and status, and sign up for alerts in your airline's app.</div><div data-board="full"></div></div></section>
+    return "flights/", "Flights", ph("Flight status", "Departures and arrivals", "Every flight at SBX today. Statuses update every 30 seconds.", "board") + """<section><div class="in"><div class="note">Flight times change. Check with your airline for the latest gate and status, and sign up for alerts in your airline's app.</div><div data-board="full"></div></div></section>
 <script>addEventListener('DOMContentLoaded',()=>{const m=location.hash.match(/q=([^&]*)/);if(m){const i=document.querySelector('[data-board] input');if(i){i.value=decodeURIComponent(m[1]);i.dispatchEvent(new Event('input'))}}})</script>"""
 
 def parking():
@@ -175,17 +183,17 @@ def parking():
          ("Economy Lot", "Long-term", "$19 per day, $95 per week", "Off Thompson Blvd, with free AirLink trains to every terminal every 4 minutes."),
          ("Cell Phone Lot", "Waiting", "Free, up to 60 minutes", "On Airport Pkwy inbound. Wait here until your traveler is at the curb.")]
     cards = "".join(f'<div class="cd"><b>{a}</b><span>{b}</span><span class="pr">{c}</span><p>{d}</p></div>' for a, b, c, d in G)
-    return "parking/", "Parking", ph("Parking", "Park at SBX", "Six places to park, from the garages next to the concourses to the Economy Lot on the AirLink.") + f"""
+    return "parking/", "Parking", ph("Parking", "Park at SBX", "Six places to park, from the garages next to the concourses to the Economy Lot on the AirLink.", "garage") + f"""
 <section><div class="in"><div class="g3">{cards}</div></div></section>
 <section class="alt"><div class="in g2"><div><h2>Good to know</h2><ul class="sub"><li>Pay with a card or your phone at the exit. Garages A to D take E-ZPass.</li><li>Live space counts show on the signs along Terminal Drive.</li><li>EV charging in Garages C and D and the Economy Lot, at the regular parking rate.</li><li>Accessible spaces on the first floor of every garage, near the elevators.</li><li>Motorcycles park free in the marked areas of Garage D.</li></ul></div>
 <div><h2>Picking someone up?</h2><p class="sub">Wait free in the Cell Phone Lot. Terminal Drive is one-way, counterclockwise, around the garages and terminals, so if you miss your door, you'll need to circle. Arrivals pickups are on the lower level; rideshare and taxis are on the Ground Transportation level of each garage.</p></div></div></section>"""
 
 def getting_here():
-    return "getting-here/", "Getting here", ph("Getting here", "Getting to and from SBX", "Train, bus, regional rail, rideshare, rental cars or your own car. Everything meets at the SBX Transit Center.") + """
+    return "getting-here/", "Getting here", ph("Getting here", "Getting to and from SBX", "Train, bus, regional rail, rideshare, rental cars or your own car. Everything meets at the SBX Transit Center.", "subway") + f"""
 <section><div class="in g2">
-<div class="cd" id="train"><b>SBTrain D Line</b><p>From Nygård through downtown, under Silverbrooks Harbor to East Harbor, then under Elliott Bay to the port and SBX. About 18 minutes from downtown, every 6 minutes at rush hour. One SBCard fare plus the $3 airport station surcharge.</p></div>
-<div class="cd" id="bus"><b>SBMetro buses</b><p><b style="display:inline;font-size:inherit">R Line</b> rapid bus, <b style="display:inline;font-size:inherit">81</b> Airport–Rutherford local through Marisfield, and the <b style="display:inline;font-size:inherit">110 SBX Flyer</b> express from Elliot Square through the I-95 Harbor Tunnel, all day. At night the <b style="display:inline;font-size:inherit">N110</b> follows the D Line.</p></div>
-<div class="cd" id="rail"><b>ALBExpress X4 and NETA Regional Rail</b><p>The X4 runs Elliot Square, Marisfield, SBX, Rutherford and New Brolin every 20 minutes. NETA Regional Rail trains to Waterloo and Rutherford stop here too.</p></div>
+<div class="cd cdp" id="train">{PHT.fig(PHT.pick("subway","gh")[0],"",900)}<div class="tx"><b>SBTrain D Line</b><p>From Nygård through downtown, under Silverbrooks Harbor to East Harbor, then under Elliott Bay to the port and SBX. About 18 minutes from downtown, every 6 minutes at rush hour. One SBCard fare plus the $3 airport station surcharge.</p></div></div>
+<div class="cd cdp" id="bus">{PHT.fig(PHT.pick("bus","gh")[0],"",900)}<div class="tx"><b>SBMetro buses</b><p><b style="display:inline;font-size:inherit">R Line</b> rapid bus, <b style="display:inline;font-size:inherit">81</b> Airport–Rutherford local through Marisfield, and the <b style="display:inline;font-size:inherit">110 SBX Flyer</b> express from Elliot Square through the I-95 Harbor Tunnel, all day. At night the <b style="display:inline;font-size:inherit">N110</b> follows the D Line.</p></div></div>
+<div class="cd cdp" id="rail">{PHT.fig(PHT.pick("rail","gh")[0],"",900)}<div class="tx"><b>ALBExpress X4 and NETA Regional Rail</b><p>The X4 runs Elliot Square, Marisfield, SBX, Rutherford and New Brolin every 20 minutes. NETA Regional Rail trains to Waterloo and Rutherford stop here too.</p></div></div>
 <div class="cd"><b>AirLink people mover</b><p>Free, every 4 minutes, 24 hours. Seven stations: Terminal D, Terminal C, Terminal B, Terminals A & X, Central Garages, the Economy Lot and the Rental Car Center.</p></div>
 <div class="cd"><b>Free terminal shuttle</b><p>Run by the airport, every 5 minutes, 24 hours. Leaves the Transit Center and circles counterclockwise to Concourse X (International), A, B, C and D.</p></div>
 <div class="cd"><b>Rideshare and taxis</b><p>Uber, Lyft and taxis pick up on the Ground Transportation level of each garage. Follow the green signs from baggage claim.</p></div>
@@ -207,7 +215,7 @@ def airlines():
     for al, s in ROUTES.items():
         for tok in s.split(): dest.setdefault(tok[:3], set()).add(AIR[al][0])
     dl = "".join(f'<span>{E(CITY[a])} <b style="color:var(--mut);font-weight:600">{a}</b></span>' for a in sorted(dest, key=lambda a: CITY[a]))
-    return "airlines/", "Airlines & gates", ph("Airlines & gates", "Airlines, concourses and lounges", f"{len(set(v[0] for v in AIR.values()))} airlines fly from SBX. Check which concourse your airline uses before you go through security.") + f"""
+    return "airlines/", "Airlines & gates", ph("Airlines & gates", "Airlines, concourses and lounges", f"{len(set(v[0] for v in AIR.values()))} airlines fly from SBX. Check which concourse your airline uses before you go through security.", "gate") + f"""
 <section><div class="in"><div class="tw"><table class="t"><tr><th>Concourse</th><th>Gates</th><th>Airlines</th><th>Security</th><th>Lounges</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">Concourses A, B, C and D are connected airside, so you can walk between them after security. Concourse X connects to A. International arrivals clear US Customs in Concourse X and collect bags at Claims 10 to 12.</p></div></section>
 <section class="alt"><div class="in"><h2>Airlines</h2><div class="g4">{''.join(f'<div class="cd"><b>Concourse {c}</b><span>{", ".join(sorted(n))}</span></div>' for c, n in sorted(byc.items()))}</div></div></section>
@@ -220,11 +228,11 @@ def dining():
          "D": ["Dunkin'", "Chipotle", "Jamba", "Sbarro", "Hudson News", "Be Relax Spa"],
          "X": ["Starbucks", "Pret A Manger", "Wolfgang Puck Bistro", "Champagne Bar", "Dufry Duty Free", "Hermès", "Pandora"]}
     cards = "".join(f'<div class="cd"><b><span class="cc" style="width:28px;height:28px;font-size:15px;margin-right:8px">{c}</span>Concourse {c}</b><div class="ch" style="margin-top:10px">{"".join(f"<span>{E(x)}</span>" for x in xs)}</div></div>' for c, xs in D.items())
-    return "dining/", "Shop & dine", ph("Shop & dine", "Shop and dine", "Coffee before the gate, a lobster roll at the Crab House, or duty free on the way to Europe.") + f"""
+    return "dining/", "Shop & dine", ph("Shop & dine", "Shop and dine", "Coffee before the gate, a lobster roll at the Crab House, or duty free on the way to Europe.", "dining") + f"""
 <section><div class="in"><div class="g2">{cards}</div><p class="sub" style="margin-top:16px">Most places open at 4:30 a.m. and close after the last departure from that concourse. Mobile ordering with gate delivery is available in Concourses B, C and D.</p></div></section>"""
 
 def info():
-    return "travel-info/", "Travel info", ph("Travel info", "Before you fly", "Security, accessibility, Wi-Fi, lost and found, and everything else.") + """
+    return "travel-info/", "Travel info", ph("Travel info", "Before you fly", "Security, accessibility, Wi-Fi, lost and found, and everything else.", "security") + """
 <section><div class="in g3">
 <div class="cd"><b>When to arrive</b><p>Two hours before domestic flights and three hours before international flights. Add 20 minutes Monday mornings, Thursday and Friday afternoons, and holiday weekends.</p></div>
 <div class="cd"><b>Security</b><p>Four TSA checkpoints. TSA PreCheck at all of them, CLEAR at Checkpoints 1 and 3, and Delta Digital ID at Checkpoint 3. Wait times are on the screens at every check-in hall.</p></div>

@@ -6,6 +6,10 @@ import ast, datetime, html, json, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from club_data import AYRC, AYRC_CLASSES, AYRC_GUESTS
+import photos as PHT
+XCSS = '.cdp{padding:0!important;overflow:hidden}.cdp figure{border-radius:0;aspect-ratio:16/10}.cdp .tx{padding:14px 18px 18px}.hero{position:relative}'
+def gallery(items): return '<div class="gal">' + ''.join(PHT.fig(p, c, 1000 if i else 1400) for i, (p, c) in enumerate(items)) + '</div>'
+HB = lambda p: f" style=\"background:linear-gradient(110deg,rgba(1,42,92,.95) 0%,rgba(2,79,170,.78) 50%,rgba(2,79,170,.25) 100%),url('{PHT.url(p[0],1800)}') center/cover\""
 E = html.escape
 src = (ROOT / "tools/build_clubs.py").read_text(); i = src.index("C = ["); j = src.index("\n]\n", i)
 C = ast.literal_eval(src[i + 4:j + 2]); BY = {c[0]: c for c in C}
@@ -50,7 +54,7 @@ def shell(path, title, nav, body, desc):
     logo = f'<img src="{r}nesf/img/{"ayrc-logo-name" if ay else "nesf-logo"}.png" alt="{"Albanardia Youth Racing Circuit" if ay else "Northeastern Sailing Foundation"}">'
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="manifest" href="{r}manifest.json"><link rel="icon" href="{r}nesf/img/{'ayrc' if ay else 'nesf'}-burgee.png"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="#024faa">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet"><style>{CSS}{PHT.CSS}{XCSS}</style></head><body>
 <header><div class="in"><a class="lg" href="{r}{'nesf/ayrc/' if ay else 'nesf/'}">{logo}</a><nav>{links}</nav></div></header>
 {body}
 <footer><div class="in"><img src="{r}nesf/img/nesf-burgee.png" alt="NESF"><img src="{r}nesf/img/ayrc-burgee.png" alt="AYRC"><span>Northeastern Sailing Foundation<br>120 Spinnaker St, Silverbrooks, AB 19002 · nesf.org</span><span class="sp"></span><a href="{r}nesf/">NESF</a><a href="{r}nesf/ayrc/">AYRC</a><a href="{r}clubs/">Clubs</a><a href="{r}">Albanardia.gov</a></div></footer>
@@ -82,10 +86,12 @@ def nesf_home():
           ("Mar 13, 2027", "Safety at Sea seminar", "Olympic Sailing Pavilion, New Brolin. In-water liferaft training at the pavilion pool."),
           ("Apr 10, 2027", "AYRC coaches meeting", "Online. Schedule, sailing instructions and charter updates for the season."),
           ("Oct 23, 2027", "NESF Awards Dinner", "Foxford Yacht Club. AYRC trophies, volunteer of the year and the Harbor Cup.")]
-    body = f"""<div class="hero"><div class="in"><div><div class="k">Northeastern Sailing Foundation</div><h1>More people sailing, all over Albanardia.</h1>
+    hp = PHT.pick("kids", "nesf")[0]
+    body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">Northeastern Sailing Foundation</div><h1>More people sailing, all over Albanardia.</h1>
 <p>NESF is the state's sailing foundation. We run the Albanardia Youth Racing Circuit, fund junior programs, train race officers and coaches, and keep boats in the hands of kids who'd otherwise watch from the dock.</p>
 <a class="btn" href="ayrc/">AYRC 2027</a><a class="btn o" href="#give">Support NESF</a></div><div class="mark"><img src="img/nesf-burgee.png" alt="NESF burgee"></div></div></div>
 <section><div class="in g4 st4"><div class="cd o st"><b>11</b><span>AYRC regattas in 2027</span></div><div class="cd o st"><b>{len(C)}</b><span>Member clubs and sailing centers</span></div><div class="cd o st"><b>19</b><span>Programs funded in 2026</span></div><div class="cd o st"><b>64</b><span>Loan boats in the pool</span></div></div></section>
+<section><div class="in"><h2>Where the money goes</h2><p class="sub">Boats, coaches and camp scholarships at clubs and sailing centers across the state.</p>{gallery([(PHT.pick("camp","nesf")[0],"Summer camp scholarships"),(PHT.pick("Optimist","nesf")[0],"Loan-pool Optimists"),(PHT.pick("coach")[0],"Coach development"),(PHT.pick("team","nesf")[0],"High school team racing"),(PHT.pick("C420","nesf")[0],"AYRC C420 fleet")])}</div></section>
 <section class="alt" id="programs"><div class="in"><h2>Programs</h2><p class="sub">Everything NESF does is about getting more people on the water and keeping them there.</p><div class="g3">{''.join(f'<a class="cd" href="{h}"><b>{E(t)}</b><span>{E(d)}</span></a>' for t, d, h in prog)}</div></div></section>
 <section id="grants"><div class="in g2"><div><h2>Youth sailing grants</h2><p class="sub">Clubs and community sailing centers can apply each year for up to $15,000 toward boats, coaching and scholarships. Applications open January 4 and close February 26, 2027. Decisions by April 1.</p>
 <a class="btn" href="#contact">Ask about a grant</a></div><div><h2>Boat loan pool</h2><p class="sub">24 Optimists, 16 C420s, 14 ILCAs and 10 Larssen Club Radials, loaned for a season to new junior programs and to AYRC sailors who can't charter. Boats go out in April and come home in October.</p></div></div></section>
@@ -110,19 +116,21 @@ def ayrc():
     stand = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
              ("Northeastern Yacht Club", 954), ("Waterloo Yacht Club", 712), ("Cape Sturgeon Yacht Club", 640), ("Silverbrooks Community Sailing Center", 588), ("Pearl's End Sailing Center", 431),
              ("Hamilton Island Sailing Club", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
-    body = f"""<div class="hero"><div class="in"><div><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
+    hp = PHT.pick("C420", "ayrc")[0]
+    body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
 <p>Eleven regattas from late May to late September, from the Sound to the cape, with one road trip to Barnegat Bay. Race as many as you like; your best seven count. The Championship on Hanson Bay closes the season.</p>
 <a class="btn" href="#schedule">Schedule</a><a class="btn o" href="#register">Register</a></div><div class="mark"><img src="../img/ayrc-logo-full.png" alt="AYRC, Albanardia Youth Racing Circuit"></div></div></div>
 <section><div class="in g4 st4"><div class="cd o st"><b>11</b><span>Regattas, one per venue</span></div><div class="cd o st"><b>8</b><span>Fleets</span></div><div class="cd o st"><b>7</b><span>Best results count</span></div><div class="cd o st"><b>May 22</b><span>Opening day in Foxford</span></div></div></section>
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
 <div class="tw"><table><tr><th>#</th><th>Dates</th><th>Regatta</th><th>Host</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">{" · ".join(f"<b>{s}</b>: " + ", ".join(datetime.date.fromisoformat(a[0]).strftime("%b %-d") for a in AYRC if seas[datetime.date.fromisoformat(a[0]).strftime("%b")] == s) for s in ("Late spring", "Summer", "Early fall"))}</p></div></section>
-<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d in AYRC_CLASSES)}</div>
+<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp">{PHT.fig(PHT.pick({"Opt":"Optimist","ILC":"ILCA","C42":"C420","Clu":"Club FJ","RS ":"kids","29e":"29er"}[t[:3]], t)[0], "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span></div></div>' for t, d in AYRC_CLASSES)}</div>
 <h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
 <section class="alt" id="rules"><div class="in g2"><div><h2>Scoring</h2><ul class="l sub"><li>Low point scoring at each regatta, then circuit points: 100 for first, down by fleet size.</li><li>Your best 7 of 11 regattas count toward the season.</li><li>The AYRC Championship can't be dropped, and it scores 1.5 times.</li><li>Club team trophy: each club's best 12 sailor scores across all fleets.</li><li>Green Fleet isn't scored; every sailor who finishes three regattas gets a season pennant.</li></ul></div>
 <div><h2>Eligibility</h2><ul class="l sub"><li>Under 19 on December 31, 2027 (Optimist and RS Feva: 15 and under).</li><li>A US Sailing youth membership and a member club, sailing center or high school team.</li><li>Sailors from outside Albanardia are welcome at every regatta, but only Albanardia sailors score in the season standings.</li><li>A swim test and a signed parent waiver, once per season.</li></ul></div></div></section>
 <section id="register"><div class="in g2"><div><h2>Registration</h2><p class="sub">Season registration opens March 1, 2027: $60 per sailor, plus $55 per regatta ($35 for Green Fleet). Register by the Wednesday before each regatta; late entries pay $20 more. NESF grants cover fees for any sailor who asks, no questions.</p></div>
 <div><h2>Charters</h2><p class="sub">Host clubs charter Optimists, ILCAs, C420s and Club FJs at $90 a boat per regatta. The NESF loan pool keeps season charters for sailors without boats. The Barnegat Bay stop has charter boats arranged through the host club.</p></div></div></section>
+<section><div class="in"><h2>Race weekends</h2><p class="sub">Two days of racing, a cookout and a lot of trailers.</p>{gallery([(PHT.pick("youth","ayrc")[0],"29ers at a championship"),(PHT.pick("Optimist","ayrc",1,2)[0],"Optimist fleet"),(PHT.pick("ILCA","ayrc")[0],"ILCA 6"),(PHT.pick("Club FJ","ayrc")[0],"Club FJ"),(PHT.pick("team","ayrc")[0],"Team racing"),(PHT.pick("coach")[0],"Coach boats")])}</div></section>
 <section class="alt" id="standings"><div class="in"><h2>2026 club team standings</h2><p class="sub">Final standings for the club team trophy. Individual results are posted for each regatta by the host club.</p>
 <div class="tw"><table><tr><th>Place</th><th>Club</th><th>Points</th></tr>{''.join(f'<tr><td class="n">{i}</td><td>{E(c)}</td><td>{p:,}</td></tr>' for i, (c, p) in enumerate(stand, 1))}</table></div></div></section>
 <section><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All AYRC stories →</a></p><div class="g3">{news('ayrc', '')}</div></div></section>"""

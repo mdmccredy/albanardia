@@ -63,6 +63,7 @@ def color(svg):
 import datetime, sys
 sys.path.insert(0, str(ROOT / "tools"))
 from club_data import FLEETS, EVENTS, KEELBOAT, JUNIOR, AYRC as AYRC_STOPS, AYRC_CLASSES
+import photos as PHT
 JR_ONLY = {"Optimist", "C420", "Club FJ", "29er", "RS Feva"}
 DINGHY = {"Optimist", "C420", "Club FJ", "29er", "ILCA", "RS Aero", "RS Feva", "Snipe", "Tasar", "International 14", "505", "Melges 15", "Bauer", "JR300", "JR400", "JR500", "SK400", "SK500",
           "Larssen Club Radial", "Larssen Fyra", "Larssen Pulse XL", "Hobie Wave", "Larssen Voyage"}
@@ -175,7 +176,7 @@ def shell(c, svg, path, title, body, nav):
     links = "".join(f'<a href="{me}{p}"{" class=on" if p == path else ""}>{E(t)}</a>'.replace(" class=on", ' class="on"') for p, t in nav)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title + " | " if title else "")}{E(c[1])}</title><meta name="description" content="{E(c[8])}"><link rel="manifest" href="{r}manifest.json"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="{'#0f2340' if yc else '#12354f'}">
-{FONTS_YC if yc else FONTS_CS}<style>{(CSS_BASE + (CSS_YC if yc else CSS_CS)).replace('@C', col)}</style></head><body>
+{FONTS_YC if yc else FONTS_CS}<style>{(CSS_BASE + (CSS_YC if yc else CSS_CS)).replace('@C', col)}{PHT.CSS}{PHOTO_CSS}</style></head><body>
 <div class="tb"><div class="in"><a href="{r}">Albanardia.gov</a><a href="{r}clubs/">All clubs</a><a href="{r}nesf/">NESF</a><span class="sp"></span>{f'<a href="{r}nesf/ayrc/">AYRC</a>' if c[7] else ''}<a href="{me}#contact">Contact</a></div></div>
 <header><div class="in"><span class="bg">{flag}</span><a class="nm" href="{me}"><b>{E(c[1])}</b><small>{E(c[2])} · {E(c[3])}</small></a><nav class="mn">{links}</nav></div><div class="sub2">{links}</div></header>
 {body}
@@ -186,8 +187,28 @@ def news_cards(c, me):
     ns = latest("club:" + old_slug(c), 3)
     return "".join(f'<a class="cd" href="{me}stories/#{n["slug"]}"><small style="color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:12px">{E(n["cat"])} · Published {fdate(n["date"])}</small><b>{E(n["title"])}</b><span>{E(n["dek"])}</span></a>' for n in ns)
 
-def ph(kick, title, text):
-    return f'<div class="ph"><div class="in"><div class="k">{E(kick)}</div><h1>{E(title)}</h1><p>{E(text)}</p></div></div>'
+def ph(kick, title, text, p=None):
+    st = f' style="background:linear-gradient(rgba(8,18,36,.45),rgba(8,18,36,.78)),url(\'{PHT.url(p[0], 1600)}\') center/cover;position:relative;padding:90px 0 44px"' if p else ""
+    return f'<div class="ph"{st}><div class="in"><div class="k">{E(kick)}</div><h1>{E(title)}</h1><p>{E(text)}</p></div>{PHT.credit(p) if p else ""}</div>'
+
+PHOTO_CSS = """
+.fl div{overflow:hidden}.fl div figure{margin:-16px -16px 12px -20px;border-radius:0;aspect-ratio:16/10}
+.hero.photo{background-size:cover!important;background-position:center!important;position:relative}
+.gal{margin-top:6px}
+"""
+def fcard(c, k, n, unit="boats"):
+    ps, cap = PHT.boat(k, c[0])
+    return f'<div>{PHT.fig(ps[0], "", 700)}<small>{(str(n) + " " + unit) if n else "On the dock"}</small><b>{E(k)}</b><p>{E(CLASSDESC.get(k, ""))}</p></div>'
+def gallery(items):
+    """items: list of (photo, caption)"""
+    return '<div class="gal">' + "".join(PHT.fig(p, cap, 1000 if i else 1400) for i, (p, cap) in enumerate(items)) + "</div>"
+def fleet_gallery(c, fleets, n=6, extra=()):
+    out, seen = [], set()
+    for k, _ in fleets:
+        ps, cap = PHT.boat(k, c[0], 2)
+        for p in ps:
+            if p[0] not in seen and len(out) < n - len(extra): seen.add(p[0]); out.append((p, cap)); break
+    return gallery(out + list(extra))
 
 def tier(c):
     boats = sum(n or 0 for _, n in FLEETS[c[0]])
@@ -208,13 +229,14 @@ def yc_pages(c, svg):
     pages = {}
     # home
     pages[""] = ("", f"""
-<div class="hero"><div class="in"><div><div class="k">{'Keelboat club' if kb else 'Yacht club'} · {E(c[3])}, Albanardia</div><h1>{E(c[1])}</h1><p>{E(c[8])} Home to {", ".join(f"{n} {k}s" for k, n in big)}.</p>
+<div class="hero photo" style="background:linear-gradient(90deg,rgba(9,22,44,.92) 0%,rgba(9,22,44,.7) 45%,rgba(9,22,44,.25) 100%),url('{PHT.url(PHT.boat(big[0][0], c[0])[0][0][0], 1800)}')">{PHT.credit(PHT.boat(big[0][0], c[0])[0][0])}<div class="in"><div><div class="k">{'Keelboat club' if kb else 'Yacht club'} · {E(c[3])}, Albanardia</div><h1>{E(c[1])}</h1><p>{E(c[8])} Home to {", ".join(f"{n} {k}s" for k, n in big)}.</p>
 <a class="btn w" href="membership/">Become a member</a><a class="btn o" href="racing/">Racing at {E(c[2])}</a></div><div class="flag">{flag}</div></div></div>
 <section><div class="in"><div class="g3">
 <a class="cd" href="racing/"><b>Racing</b><span>{len(adult)} one-design fleets, {sum(1 for x in ev if x[3] == 'Weeknight')} weeknight series and {sum(1 for x in ev if x[3] in ('Regatta','Championship'))} regattas in 2027.</span></a>
 {f'<a class="cd" href="juniors/"><b>Juniors</b><span>Green Fleet to high school and AYRC racing, plus summer camps.</span></a>' if juniors(c) else '<a class="cd" href="club/"><b>Big-boat sailing</b><span>A keelboat club: crew boards, distance races and evenings on the water.</span></a>'}
 <a class="cd" href="club/"><b>The Club</b><span>Dining, moorage and {sum(1 for x in ev if x[3] in ('Social','Club','Cruising'))} club events on the calendar.</span></a>
 </div></div></section>
+<section><div class="in"><h2>On the water at {E(c[2])}</h2><p class="sub">Racing, cruising and evenings on the water.</p>{fleet_gallery(c, big + adult, 6, ((PHT.pick("kids", c[0])[0], "Junior sailing"),) if juniors(c) else ((PHT.pick("sunset", c[0])[0], "Evenings on the water"),))}</div></div></section>
 <section class="alt"><div class="in"><h2>Coming up</h2><p class="sub">Highlights from the 2027 season. <a href="calendar/">Full calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in up)}</div></div></section>
 <section><div class="in"><h2>News</h2><p class="sub">From the club. <a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
 <section class="alt"><div class="in"><h2>Fleets</h2><p class="sub">Boats racing at {E(c[2])}, with active boats in each fleet.</p><div class="ch">{fleet_chips(c)}</div></div></section>
@@ -222,9 +244,10 @@ def yc_pages(c, svg):
     # racing
     series = [x for x in ev if x[3] in ("Weeknight", "Frostbite")]
     regs = [x for x in ev if x[3] in ("Regatta", "Championship", "AYRC")]
-    pages["racing/"] = ("Racing", ph("Racing at " + c[2], "Racing", f"{len(adult)} one-design fleets race at {c[1]}. Notices of race and sailing instructions are posted 30 days before each regatta.") + f"""
-<section><div class="in"><h2>Fleets</h2><p class="sub">Active boats in each fleet for 2027.</p><div class="fl">{''.join(f'<div><small>{n} boats</small><b>{E(k)}</b><p>{E(CLASSDESC.get(k, ""))}</p></div>' for k, n in adult)}</div></div></section>
+    pages["racing/"] = ("Racing", ph("Racing at " + c[2], "Racing", f"{len(adult)} one-design fleets race at {c[1]}. Notices of race and sailing instructions are posted 30 days before each regatta.", PHT.boat(big[0][0], c[0] + "r", 2)[0][-1]) + f"""
+<section><div class="in"><h2>Fleets</h2><p class="sub">Active boats in each fleet for 2027.</p><div class="fl">{''.join(fcard(c, k, n) for k, n in adult)}</div></div></section>
 <section class="alt"><div class="in"><h2>Series</h2><p class="sub">Weeknight and winter racing. Check in on the race committee channel before the first start.</p><div class="cal">{''.join(evrow(*x) for x in series) or '<p class="sub">No weeknight series this year.</p>'}</div></div></section>
+<section><div class="in"><h2>Weeknights and regattas</h2><p class="sub">From Wednesday nights to championships.</p>{gallery([(PHT.pick("keelboats", c[0] + "w")[0], "Weeknight racing"), (PHT.pick("sunset", c[0])[0], "Sunset at the finish"), (PHT.boat(adult[-1][0], c[0])[0][0], PHT.boat(adult[-1][0], c[0])[1]), (PHT.pick("club event", c[0])[0], "Regatta awards")])}</div></div></section>
 <section><div class="in"><h2>Regattas and championships</h2><div class="cal">{''.join(evrow(*x) for x in regs)}</div></div></section>
 <section class="alt"><div class="in g2"><div class="cd"><b>Race committee</b><span>Every member races better after a day on the committee boat. Sign up for one race day a season; training is in April.</span></div><div class="cd"><b>Visiting boats</b><span>Guest moorage and dry storage are free for registered regatta entries. Charter boats can sometimes be arranged through the fleet captains.</span></div></div></section>""")
     # juniors
@@ -240,16 +263,17 @@ def yc_pages(c, svg):
               ("Catamaran Week", "Teens in Hobie " + ("16s" if "Hobie 16" in jf else "Waves") + ": speed, flying a hull and beach launches.", "Hobie 16" in jf or "Hobie Wave" in jf)]
         a = ayrc_stop(c)
         stops = "".join(f'<tr{" class=hi" if s[1] == c[0] else ""}><td>{datetime.date.fromisoformat(s[0]).strftime("%b %-d")}–{(datetime.date.fromisoformat(s[0]) + datetime.timedelta(1)).strftime("%-d")}</td><td><b>{E(s[3])}</b><br><small>{E(s[2])}</small></td></tr>' for s in AYRC_STOPS).replace("class=hi", 'class="hi"')
-        pages["juniors/"] = ("Juniors", ph("Junior sailing at " + c[2], "Juniors", f"From a first sail in an Optimist to high school and AYRC racing. Junior members sail every day of summer camp and train year-round.") + f"""
+        pages["juniors/"] = ("Juniors", ph("Junior sailing at " + c[2], "Juniors", f"From a first sail in an Optimist to high school and AYRC racing. Junior members sail every day of summer camp and train year-round.", PHT.pick("kids", c[0])[0]) + f"""
 <section><div class="in"><h2>Programs</h2><div class="g3">{''.join(f'<div class="cd"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, ok in lv if ok)}</div></div></section>
-<section class="alt"><div class="in"><h2>Junior boats</h2><p class="sub">Club-owned boats for the junior program. Juniors with their own boats are welcome in every group.</p><div class="fl">{''.join(f'<div><small>{n} boats</small><b>{E(k)}</b><p>{E(CLASSDESC.get(k, ""))}</p></div>' for k, n in JUNIOR.get(c[0], []))}</div></div></section>
+<section class="alt"><div class="in"><h2>Junior boats</h2><p class="sub">Club-owned boats for the junior program. Juniors with their own boats are welcome in every group.</p><div class="fl">{''.join(fcard(c, k, n) for k, n in JUNIOR.get(c[0], []))}</div></div></section>
+<section><div class="in"><h2>Summer at {E(c[2])}</h2><p class="sub">Camp days, practice and regatta weekends.</p>{gallery([(PHT.pick("camp", c[0])[0], "Summer camp"), (PHT.pick("kids", c[0], 1, 1)[0], "Learn to Sail"), (PHT.pick("Optimist", c[0])[0], "Opti Race Team"), (PHT.pick("team", c[0])[0], "High school team racing"), (PHT.pick("youth", c[0])[0], "AYRC regatta weekend"), (PHT.pick("coach")[0], "Coach boats on every practice")])}</div></div></section>
 <section class="alt"><div class="in g2"><div><h2>Summer camps</h2><p class="sub">Weekly camps from June 21 to August 20, 9 a.m. to 3 p.m. Beginners welcome; every camper swims a short test on the first day.</p>
 <table class="t"><tr><th>Camp</th><th>Ages</th><th>Week</th></tr><tr><td>Learn to Sail{' (SailQubes)' if 'SailQube' in jf else ''}</td><td>6 to 10</td><td>$395</td></tr><tr><td>Opti Intermediate</td><td>9 to 13</td><td>$425</td></tr>{'<tr><td>Doublehanded Racing</td><td>12 to 18</td><td>$450</td></tr>' if ('C420' in jf or 'Club FJ' in jf) else ''}{'<tr><td>Skiff Week (29ers)</td><td>13 to 18</td><td>$495</td></tr>' if '29er' in jf else ''}{'<tr><td>Catamaran Week</td><td>12 to 18</td><td>$450</td></tr>' if ('Hobie 16' in jf or 'Hobie Wave' in jf) else ''}{'<tr><td>ILCA Week</td><td>13 to 18</td><td>$425</td></tr>' if 'ILCA' in jf else ''}</table></div>
 <div><h2>Year-round training</h2><p class="sub">Spring and fall practices on weekends, winter rules and video nights in the clubhouse{', and frostbite racing for older juniors' if any(x[3] == 'Frostbite' for x in ev) else ''}. Coaches are US Sailing certified, and every practice has a safety boat.</p>
 <div class="cd"><b>Scholarships</b><span>No one misses out for money. NESF youth grants and the {E(c[2])} junior fund cover camp, charter boats and travel.</span></div></div></div></section>
 <section><div class="in"><a href="../nesf/ayrc/"><img src="../nesf/img/ayrc-logo-name.png" alt="AYRC, Albanardia Youth Racing Circuit" style="height:54px;width:auto;max-width:100%;display:block;margin-bottom:14px;background:#fff;padding:8px 12px;border-radius:10px"></a><h2>AYRC 2027</h2><p class="sub">{E(c[2])} juniors race the Albanardia Youth Racing Circuit, run by the <a href="../nesf/">Northeastern Sailing Foundation</a>.{f" {c[2]} hosts the {a[3]} on " + datetime.date.fromisoformat(a[0]).strftime('%B %-d') + "." if a else ""} <a href="../nesf/ayrc/">Circuit details →</a></p><table class="t"><tr><th>Dates</th><th>Regatta</th></tr>{stops}</table></div></section>""")
     # calendar
-    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Racing, juniors, clinics and club events for the 2027 season.") + f"""
+    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Racing, juniors, clinics and club events for the 2027 season.", PHT.pick("sunset", c[0] + "cal")[0]) + f"""
 <section><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev)}</div></div></section>""")
     # club
     t = tier(c)
@@ -258,14 +282,15 @@ def yc_pages(c, svg):
            ("Moorage", ["About 60 slips and moorings for members.", "About 140 slips and a guest dock.", "Over 300 slips, a guest dock and a fuel dock."][t-1]),
            ("Dry sail and hoist", "Dry storage for trailered keelboats" + ("" if kb else " and a dinghy park") + ", with a member-run hoist."),
            ("Reciprocal privileges", "Members are welcome at the other Albanardia clubs and at hundreds of yacht clubs around the country.")]
-    pages["club/"] = ("The Club", ph("The Club", "The Club", f"{c[1]} is a members' club on the water in {c[3]}. " + c[8]) + f"""
+    pages["club/"] = ("The Club", ph("The Club", "The Club", f"{c[1]} is a members' club on the water in {c[3]}. " + c[8], PHT.pick("clubhouse", c[0])[0]) + f"""
 <section><div class="in g2">{''.join(f'<div class="cd"><b>{E(a)}</b><span>{E(b)}</span></div>' for a, b in fac)}</div></section>
+<section><div class="in">{gallery([(PHT.pick("clubhouse", c[0], 1, 1)[0], "The clubhouse"), (PHT.pick("club event", c[0])[0], "Club nights"), (PHT.pick("sunset", c[0] + "c")[0], "Cruising"), (PHT.pick("keelboats", c[0] + "c")[0], "Moorage and racing")])}</div></section>
 <section class="alt"><div class="in"><h2>Club events</h2><p class="sub">Parties, cruises and the work days that keep the club running.</p><div class="cal">{''.join(evrow(*x) for x in soc)}</div></div></section>""")
     # membership
     fee = [(1500, 95), (3500, 160), (8000, 260)][t-1]
     rows = [("Family", f"${fee[0]:,}", f"${fee[1]*2:,}", "Two adults and children under 19.")] + ([("Junior", "None", "$45", "Ages 8 to 18, includes the junior program.")] if juniors(c) else []) + \
            [("Young adult", f"${fee[0]//4:,}", f"${fee[1]:,}", "Ages 19 to 32, full racing privileges."), ("Senior", f"${fee[0]:,}", f"${int(fee[1]*1.6):,}", "Voting member with moorage priority."), ("Crew", "None", "$30", "For sailors who race on members' boats.")]
-    pages["membership/"] = ("Membership", ph("Join " + c[2], "Membership", "Members race, cruise and help run the club. Two members sponsor each new application, and the membership committee meets monthly.") + f"""
+    pages["membership/"] = ("Membership", ph("Join " + c[2], "Membership", "Members race, cruise and help run the club. Two members sponsor each new application, and the membership committee meets monthly.", PHT.pick("keelboats", c[0] + "m")[0]) + f"""
 <section><div class="in"><table class="t"><tr><th>Membership</th><th>Initiation</th><th>Monthly dues</th><th>Who it's for</th></tr>{''.join(f'<tr><td><b>{a}</b></td><td>{b}</td><td>{d}</td><td>{e}</td></tr>' for a, b, d, e in rows)}</table>
 <p class="sub" style="margin-top:16px">Not sure? Come to a Wednesday or Thursday night race as crew; the crew board in the clubhouse matches new sailors with boats every week.</p></div></section>""")
     return pages, nav
@@ -281,13 +306,14 @@ def cs_pages(c, svg):
     wave = '<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 30 C 240 0 480 60 720 30 S 1200 0 1440 30 V60 H0Z" fill="var(--bg)"/></svg>'
     pages = {}
     pages[""] = ("", f"""
-<div class="hero"><div class="in"><div><div class="k">Community sailing · {E(c[3])}</div><h1>{E(c[1])}</h1><p>{E(c[8])} Classes for every age, boats to rent and a crew of volunteers who'll get you on the water.</p>
+<div class="hero photo" style="background:linear-gradient(160deg,color-mix(in srgb,var(--c) 88%,transparent) 0%,rgba(18,53,79,.82) 60%,rgba(18,53,79,.4) 100%),url('{PHT.url(PHT.pick("kids", c[0])[0][0], 1800)}')">{PHT.credit(PHT.pick("kids", c[0])[0])}<div class="in"><div><div class="k">Community sailing · {E(c[3])}</div><h1>{E(c[1])}</h1><p>{E(c[8])} Classes for every age, boats to rent and a crew of volunteers who'll get you on the water.</p>
 <a class="btn w" href="classes/">Learn to sail</a><a class="btn o" href="youth/">Kids and teens</a></div><div class="flag">{flag}</div></div>{wave}</div>
 <section><div class="in"><div class="g3">
 <a class="cd" href="classes/"><span class="pill">Adults</span><b>Learn to sail</b><span>Four-week courses in {E(names[0])}s{(' and ' + keel[0] + ' keelboats') if keel else ''}. No experience needed.</span></a>
 <a class="cd" href="youth/"><span class="pill">Ages 7 to 17</span><b>Camps and youth racing</b><span>Summer camps every week, then a racing team for kids who catch the bug.</span></a>
 <a class="cd" href="rentals/"><span class="pill">Members</span><b>Rent a boat</b><span>{sum(n or 0 for _, n in fl)} boats on the dock once you've passed a checkout sail.</span></a>
 </div></div></section>
+<section><div class="in"><h2>Life on the dock</h2><p class="sub">Camps, classes and summer evenings on the water.</p>{gallery([(PHT.pick("camp", c[0])[0], "Summer camp"), (PHT.pick("kids", c[0], 1, 2)[0], "Kids' classes"), (PHT.boat(names[0], c[0])[0][0], names[0]), (PHT.pick("sunset", c[0])[0], "Sunset sails"), (PHT.pick("camp", c[0], 1, 3)[0], "Paddling")])}</div></div></section>
 <section class="alt"><div class="in"><h2>What's happening</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
 <section><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
 <section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Questions?</h2><p>{E(c[5])}</p><p>Front desk: daily 9 to 6 in season, weekends in winter.</p></div></div></section>""")
@@ -295,7 +321,7 @@ def cs_pages(c, svg):
              ("Learn to Sail 2", "Sailing in more wind, crew overboard drills and your checkout sail for rentals.", "$275")] + \
             ([(f"Keelboat Basics", f"Two weekends in the {keel[0]}s, toward US Sailing Basic Keelboat certification.", "$395")] if keel else []) + \
             [("Intro to Racing", "Starts, mark roundings and the basic rules, then the Wednesday or Friday fun races.", "$195")]
-    pages["classes/"] = ("Adult classes", ph("Adults", "Adult classes", "No experience needed. Classes are small, instructors are US Sailing certified, and life jackets are included.") + f"""
+    pages["classes/"] = ("Adult classes", ph("Adults", "Adult classes", "No experience needed. Classes are small, instructors are US Sailing certified, and life jackets are included.", PHT.pick("kids", c[0], 1, 4)[0]) + f"""
 <section><div class="in"><div class="g2">{''.join(f'<div class="cd"><span class="pill">{p}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, p in adult)}</div></div></section>
 <section class="alt"><div class="in"><h2>Dates</h2><div class="cal">{''.join(evrow(*x) for x in ev if x[3] == 'Clinic')}</div></div></section>""")
     a = ayrc_stop(c)
@@ -308,17 +334,18 @@ def cs_pages(c, svg):
     if "Larssen Club Radial" in names: yp.append(("Teen Doublehanded", "Ages 12 to 17 in Club Radials with a friend.", "$325 / week"))
     if "Larssen Pulse XL" in names or "Hobie Wave" in names: yp.append(("Adventure Week", "Ages 10 to 15, island trips and beach landings in the bigger boats.", "$345 / week"))
     if c[7]: yp.append(("Youth Racing Team", "Ages 10 to 17. Spring and fall practices and the AYRC circuit, with center boats to charter.", "$650 / season"))
-    pages["youth/"] = ("Youth", ph("Kids and teens", "Youth sailing", "Summer camps from mid-June to late August, and a racing team for the kids who want more. Scholarships cover anyone who needs one.") + f"""
+    pages["youth/"] = ("Youth", ph("Kids and teens", "Youth sailing", "Summer camps from mid-June to late August, and a racing team for the kids who want more. Scholarships cover anyone who needs one.", PHT.pick("camp", c[0])[0]) + f"""
 <section><div class="in"><div class="g3">{''.join(f'<div class="cd"><span class="pill">{p}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, p in yp)}</div></div></section>
-<section class="alt"><div class="in"><h2>Youth boats</h2><div class="fl">{''.join(f'<div><small>{n} boats</small><b>{E(k)}</b><p>{E(CLASSDESC.get(k, ""))}</p></div>' for k, n in JUNIOR.get(c[0], []))}</div></div></section>
+<section class="alt"><div class="in"><h2>Youth boats</h2><div class="fl">{''.join(fcard(c, k, n) for k, n in JUNIOR.get(c[0], []))}</div></div></section>
+<section><div class="in">{gallery([(PHT.pick("camp", c[0], 1, 1)[0], "Camp week"), (PHT.pick("kids", c[0], 1, 3)[0], "Little Sailors"), (PHT.pick("Optimist", c[0])[0], "Opti Camp"), (PHT.pick("team", c[0])[0], "Teen racing")])}</div></section>
 <section><div class="in"><h2>Youth dates</h2><div class="cal">{''.join(evrow(*x) for x in ev if x[3] in ('Youth', 'AYRC'))}</div>
 {f'<p class="sub" style="margin-top:16px">Our racing team sails the <a href="../nesf/ayrc/">Albanardia Youth Racing Circuit</a>, run by the <a href="../nesf/">Northeastern Sailing Foundation</a>.' + (f' We host the {a[3]} on {datetime.date.fromisoformat(a[0]).strftime("%B %-d")}.' if a else '') + '</p>' if c[7] else ''}</div></section>""")
-    pages["rentals/"] = ("Rentals", ph("Members", "Rentals and memberships", "Pass a checkout sail, then take a boat out whenever the dock is open.") + f"""
-<section><div class="in"><h2>Our boats</h2><div class="fl">{''.join(f'<div><small>{n if n else ""}{" boats" if n else "On the dock"}</small><b>{E(k)}</b><p>{E(CLASSDESC.get(k, ""))}</p></div>' for k, n in fl)}</div></div></section>
+    pages["rentals/"] = ("Rentals", ph("Members", "Rentals and memberships", "Pass a checkout sail, then take a boat out whenever the dock is open.", PHT.boat(names[0], c[0] + "x")[0][0]) + f"""
+<section><div class="in"><h2>Our boats</h2><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
 <section class="alt"><div class="in"><table class="t"><tr><th>Membership</th><th>Price</th><th>Includes</th></tr><tr><td><b>Individual</b></td><td>$425 / year</td><td>Unlimited small-boat sailing after checkout</td></tr><tr><td><b>Family</b></td><td>$650 / year</td><td>Two adults and kids, plus member pricing on camps</td></tr>{'<tr><td><b>Keelboat add-on</b></td><td>$200 / year</td><td>' + keel[0] + ' rentals after a keelboat checkout</td></tr>' if keel else ''}<tr><td><b>Day pass</b></td><td>$45</td><td>One day of sailing for checked-out sailors</td></tr></table></div></section>""")
-    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Classes, camps, fun races and the events that bring the waterfront together.") + f"""
+    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Classes, camps, fun races and the events that bring the waterfront together.", PHT.pick("sunset", c[0])[0]) + f"""
 <section><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev)}</div></div></section>""")
-    pages["volunteer/"] = ("Volunteer", ph("Join the crew", "Volunteer", f"{c[1]} runs on volunteers. No sailing experience needed for most jobs, and volunteers sail free on open days.") + f"""
+    pages["volunteer/"] = ("Volunteer", ph("Join the crew", "Volunteer", f"{c[1]} runs on volunteers. No sailing experience needed for most jobs, and volunteers sail free on open days.", PHT.pick("coach")[0]) + f"""
 <section><div class="in"><div class="g3">{''.join(f'<div class="cd"><b>{t}</b><span>{d}</span></div>' for t, d in [("Dock hand", "Help sailors launch and land, and keep the dock tidy."), ("Safety boat driver", "Drive a chase boat during classes. Training and a boating license course provided."), ("Assistant instructor", "Help with camps and classes, a great first step toward US Sailing instructor certification."), ("Front desk", "Welcome visitors, check out boats and answer the phone."), ("Boat maintenance", "Winter work nights fixing boats, sails and trailers."), ("Events", "Open houses, fun races and fundraisers.")])}</div></div></section>
 <section class="alt"><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev if x[0].month <= 4 and x[3] in ('Clinic', 'Club'))}</div></div></section>""")
     return pages, nav

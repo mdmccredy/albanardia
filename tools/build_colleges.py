@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Generate colleges/<slug>/index.html for each Albanardia school, plus the colleges/ directory page.
 Facts come from the World Bible and Stats doc; logos are Max's (colleges/img)."""
+import sys as _sys
+_sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+import photos as PHT
 import html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "colleges"
@@ -131,13 +134,14 @@ def page(s):
 <header><div class="in"><a class="lg" href="./"><img src="../img/{s['logo']}" alt="{E(s['name'])}"></a>
 <nav id="nv"><a href="#about">About</a><a href="#academics">Academics</a><a href="#apply">Admissions</a><a href="#athletics">Athletics</a><a href="#news">News</a></nav>
 <button class="mb" onclick="document.getElementById('nv').classList.toggle('on')" aria-label="Menu">☰</button></div></header>
-<div class="hero"><div class="in"><div><div class="kick">{E(s['town'].split(',')[0])}, Albanardia</div><h1>{E(s['name'])}</h1><p>{E(s['tagline'])}</p>
+<div class="hero" style="position:relative;background:linear-gradient(110deg,{s['c1']}f2 0%,{s['c1']}c8 50%,{s['c1']}55 100%),url('{PHT.url(PHT.pick("campus", s["slug"])[0][0], 1800)}') center/cover">{PHT.credit(PHT.pick("campus", s["slug"])[0])}<div class="in"><div><div class="kick">{E(s['town'].split(',')[0])}, Albanardia</div><h1>{E(s['name'])}</h1><p>{E(s['tagline'])}</p>
 <a class="btn" href="#apply">Apply</a><a class="btn o" href="#visit">Visit campus</a></div>
 <div class="seal"><img src="../img/{seal}" alt=""></div></div></div>
 <div class="ql"><div class="in"><a href="#academics">Academics</a><a href="#apply">Admissions</a><a href="#athletics">Athletics</a><a href="#visit">Visit</a><a href="#news">News</a></div></div>
 <div class="stats">{''.join(f'<div><b>{E(a)}</b><span>{E(b)}</span></div>' for a,b in stats)}</div>
 <section id="about"><div class="in"><h2>About {E(s['short'])}</h2><p class="sub">{E(s['name'])} is a {E(s['kind'].lower())} in {E(s['town'])}{', on about '+s['acres']+' acres' if s['acres']!='—' else ''}.{' Part of the University of Albanardia system (albanardia.edu).' if s.get('system') else ''}{' Motto: '+E(s['motto'])+'.' if s.get('motto') else ''}</p></div></section>
 <section class="alt" id="academics"><div class="in"><h2>Academics</h2><p class="sub">Schools and areas of study.</p><div class="grid">{''.join(f'<div class="card"><b>{E(p)}</b><span>Undergraduate and graduate programs</span></div>' for p in s['programs'])}</div></div></section>
+<section><div class="in"><h2>Campus life</h2><p class="sub">Classes, late nights in the library and Saturdays in the stands.</p><style>{PHT.CSS}</style><div class="gal">{''.join(PHT.fig(p, c, 1000 if i else 1400) for i, (p, c) in enumerate([(PHT.pick("lecture", s["slug"])[0], "In class"), (PHT.pick("library", s["slug"])[0], "The library"), (PHT.pick("stadium")[0], "Game day"), (PHT.pick("team", s["slug"])[0], "Club and varsity sailing"), (PHT.pick("campus", s["slug"], 1, 1)[0], "On the quad")]))}</div></div></section>
 <section id="athletics"><div class="in ath"><div class="mk"><img src="../img/{mark or s['logo']}" alt=""></div><div><h2>{E(s['short'])} {E(s['mascot'] or 'Athletics')}</h2><p class="sub">{'Rivalry: '+E(s['rival'])+'.' if s.get('rival') else 'Home venues and teams.'}</p>
 <table><tr><th>Venue</th><th>Sports</th><th>Address</th></tr>{venues}</table></div></div></section>
 <section class="alt" id="news"><div class="in"><h2>News</h2><p class="sub">From around campus. <a href="stories/">All stories →</a> · <a href="../../media/university-news/">University News →</a></p><div class="news">{''.join(f'<a class="nw" href="stories/#{n["slug"]}" style="display:block;color:inherit;text-decoration:none"><small>{E(n["cat"])} · Published {fdate(n["date"])}</small><h3>{E(n["title"])}</h3><p>{E(n["dek"])}</p></a>' for n in news)}</div></div></section>
