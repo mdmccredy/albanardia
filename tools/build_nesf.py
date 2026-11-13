@@ -5,7 +5,7 @@ News sections read stories/stories.json (sites 'nesf' and 'ayrc'). Re-run by too
 import ast, datetime, html, json, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
-from club_data import AYRC, AYRC_CLASSES
+from club_data import AYRC, AYRC_CLASSES, AYRC_GUESTS
 E = html.escape
 src = (ROOT / "tools/build_clubs.py").read_text(); i = src.index("C = ["); j = src.index("\n]\n", i)
 C = ast.literal_eval(src[i + 4:j + 2]); BY = {c[0]: c for c in C}
@@ -113,7 +113,8 @@ def ayrc():
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
 <div class="tw"><table><tr><th>#</th><th>Dates</th><th>Regatta</th><th>Host</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">{" · ".join(f"<b>{s}</b>: " + ", ".join(datetime.date.fromisoformat(a[0]).strftime("%b %-d") for a in AYRC if seas[datetime.date.fromisoformat(a[0]).strftime("%b")] == s) for s in ("Late spring", "Summer", "Early fall"))}</p></div></section>
-<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d in AYRC_CLASSES)}</div></div></section>
+<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d in AYRC_CLASSES)}</div>
+<h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
 <section class="alt" id="rules"><div class="in g2"><div><h2>Scoring</h2><ul class="l sub"><li>Low point scoring at each regatta, then circuit points: 100 for first, down by fleet size.</li><li>Your best 7 of 11 regattas count toward the season.</li><li>The AYRC Championship can't be dropped, and it scores 1.5 times.</li><li>Club team trophy: each club's best 12 sailor scores across all fleets.</li><li>Green Fleet isn't scored; every sailor who finishes three regattas gets a season pennant.</li></ul></div>
 <div><h2>Eligibility</h2><ul class="l sub"><li>Under 19 on December 31, 2027 (Optimist and RS Feva: 15 and under).</li><li>A US Sailing youth membership and a member club, sailing center or high school team.</li><li>Sailors from outside Albanardia are welcome at every regatta, but only Albanardia sailors score in the season standings.</li><li>A swim test and a signed parent waiver, once per season.</li></ul></div></div></section>
 <section id="register"><div class="in g2"><div><h2>Registration</h2><p class="sub">Season registration opens March 1, 2027: $60 per sailor, plus $55 per regatta ($35 for Green Fleet). Register by the Wednesday before each regatta; late entries pay $20 more. NESF grants cover fees for any sailor who asks, no questions.</p></div>
