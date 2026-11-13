@@ -5,7 +5,7 @@ News sections read stories/stories.json (sites 'nesf' and 'ayrc'). Re-run by too
 import ast, datetime, html, json, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
-from club_data import AYRC, AYRC_CLASSES, AYRC_GUESTS
+from club_data import AYRC, AYRC_CLASSES, AYRC_GUESTS, JUNIOR
 import photos as PHT
 XCSS = '.cdp{padding:0!important;overflow:hidden}.cdp figure{border-radius:0;aspect-ratio:16/10}.cdp .tx{padding:14px 18px 18px}.hero{position:relative}'
 def gallery(items): return '<div class="gal">' + ''.join(PHT.fig(p, c, 1000 if i else 1400) for i, (p, c) in enumerate(items)) + '</div>'
@@ -43,6 +43,7 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 6px;font-weight:
 td small{color:var(--mut)}tr.fin td{background:color-mix(in srgb,var(--o) 8%,var(--card))}.n{font-weight:800;font-style:italic;color:var(--o)}
 .ch{display:flex;flex-wrap:wrap;gap:8px}.ch a,.ch span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:600;font-size:14px;text-decoration:none}
 table.sch{min-width:820px}table.sch th{background:color-mix(in srgb,var(--mut) 22%,var(--card));color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:13px;letter-spacing:.3px;border-right:1px solid var(--line)}table.sch td{border-right:1px solid var(--line)}table.sch td:first-child,table.sch td:last-child,table.sch th:last-child{white-space:nowrap}table.sch th:last-child,table.sch td:last-child{border-right:0}table.sch td a{font-weight:700}
+.sg h3 a{text-decoration:none}.cdp.lk{position:relative;cursor:pointer}.cdl{display:block;margin-top:6px;font-weight:700;font-size:14px;color:var(--t);text-decoration:none}.cdl::after{content:"";position:absolute;inset:0;z-index:1}.cdp.lk .cr{z-index:2}.cdp.lk:hover{border-color:var(--t)}.flt{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px}.flt input,.flt select{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}.flt input{flex:1;min-width:200px}#ct{color:var(--mut);font-size:14px}
 .sg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.sg .tw table{min-width:0}.sg h3{margin:0 0 10px}
 @media (max-width:900px){.sg{grid-template-columns:1fr}}
 ul.l{margin:0;padding-left:20px}ul.l li{margin:4px 0}
@@ -114,21 +115,70 @@ STAND_CLUBS = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club",
              ("Hamilton Island Sailing Club", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
 STAND_IND = {
  "Optimist Championship": [("Nora Lindqvist", "FYC", 688), ("Kai Okafor", "ACYC", 671), ("Lily Brennan", "SBYC", 655), ("Theo Park", "CYC", 640), ("Ava Delgado", "NBYC", 628)],
- "ILCA 4": [("Jonah Weiss", "ACYC", 702), ("Mia Castellano", "NEYC", 684), ("Sam Oduya", "FYC", 667), ("Elise Tran", "SBYC", 649), ("Owen Kowalski", "WYC-W", 633)],
- "ILCA 6": [("Leo Hartmann", "SBYC", 714), ("Grace Nakamura", "CYC", 698), ("Finn Gallagher", "ACYC", 681), ("Priya Raman", "NBYC", 662), ("Caleb Moore", "CSYC", 650)],
+ "ILCA 4": [("Elise Tran", "SBYC", 712), ("Marcus Bell", "SBYC", 697), ("Jonah Weiss", "ACYC", 684), ("Sadie Ortiz", "SBYC", 668), ("Mia Castellano", "NEYC", 655)],
+ "ILCA 6": [("Leo Hartmann", "SBYC", 724), ("Anya Volkova", "SBYC", 709), ("Grace Nakamura", "CYC", 691), ("Tomás Rivera", "SBYC", 678), ("Finn Gallagher", "ACYC", 662)],
  "C420": [("Ruby Sato / Henry Ames", "ACYC", 705), ("Liam O'Shea / Zoe Fontaine", "SBYC", 690), ("Isla Grant / Diego Marín", "CYC", 672), ("Ben Whitaker / Hana Kim", "NEYC", 655), ("Clara Voss / Eli Brooks", "FYC", 641)],
  "Club FJ": [("Will Tanaka / June Abara", "CYC", 680), ("Ella Fischer / Noah Reyes", "ACYC", 662), ("Jack Doyle / Maya Patel", "NEYC", 650), ("Sophie Laurent / Ty Benson", "WYC-W", 631), ("Adam Cho / Rosa Lind", "SBYC", 617)],
  "RS Feva": [("Lucy Hargrove / Sami Haddad", "HIS", 664), ("Wren Mitchell / Oscar Ng", "PESC", 650), ("Ada Novak / Felix Romero", "FYC", 637), ("Iris Cole / Jude Amari", "SBYC", 620), ("Tess Ward / Rafi Cohen", "NBYC", 604)],
  "29er": [("Hugo Bergström / Nina Alvarez", "NBYC", 711), ("Cole Jensen / Inês Duarte", "ACYC", 693), ("Luke Ferris / Amara Obi", "SBYC", 676), ("Dylan Hayes / Freya Olsen", "CYC", 659), ("Ravi Shah / Kate Morrow", "CSYC", 641)],
 }
 
+# Full 2026 fleet rosters: the top five above, then every other sailor who scored, generated once from a fixed seed
+# so the lists never change between builds. Clubs are weighted by their junior fleets; SBYC dominates the ILCAs.
+import random
+FLEET_SLUG = {"Optimist Championship": "optimist", "ILCA 4": "ilca-4", "ILCA 6": "ilca-6", "C420": "c420", "Club FJ": "club-fj", "RS Feva": "rs-feva", "29er": "29er"}
+FLEET_SIZE = {"Optimist Championship": 52, "ILCA 4": 34, "ILCA 6": 38, "C420": 26, "Club FJ": 20, "RS Feva": 18, "29er": 14}
+FLEET_BOAT = {"Optimist Championship": "Optimist", "ILCA 4": "ILCA", "ILCA 6": "ILCA", "C420": "C420", "Club FJ": "Club FJ", "RS Feva": "Optimist", "29er": "29er"}
+FIRST = "Aiden Alba Amir Anna Arjun Asher Bea Bodhi Brooke Calla Cam Carter Cece Chloe Dani Dev Eli Emma Esme Ezra Fatima Gabe Gia Hank Hazel Ian Ivy Jade James Jasper Joel Juno Kaia Kian Lena Levi Lila Lou Luca Mae Malik Maren Mateus Mei Milo Nadia Nico Nell Olive Omar Paige Pearl Quinn Rae Reid Remy Rhea Rory Rosa Ruth Sage Santi Sena Silas Sloane Tariq Tess Theo Uma Vera Wes Willa Yara Yusuf Zane Zara".split()
+LAST = "Abbott Achebe Alvarez Andersen Baker Banerjee Barros Becker Bishop Bjork Brandt Cabrera Carver Chen Collins Costa Dahl Dawson Diaz Doherty Eaton Ellison Farrow Fernandes Fox Garza Gill Goldberg Hale Hansen Haruna Ibarra Ingram Iversen Jaramillo Kane Keller Khan Lam Larsen Lowe Lund Maddox Mendez Murphy Nakamura Nielsen Novak Okoro Olsen Ortega Pace Petrov Quinlan Reyes Rossi Sandoval Schultz Sorensen Suzuki Tate Torres Underwood Vance Varga Walsh Webb Xu Yates Young Zamora Zhou".split()
+def roster(fleet):
+    rng = random.Random("ayrc2026-" + fleet)
+    top = STAND_IND[fleet]; dh = "/" in top[0][0]
+    w = {c: n for c, js in JUNIOR.items() for b, n in js if b == FLEET_BOAT[fleet] and c in BY}
+    if fleet.startswith("ILCA"): w["SBYC"] *= 4  # SBYC is the state's ILCA powerhouse
+    if fleet == "RS Feva": w = {c: n for c, n in w.items() if c in ("HIS", "PESC", "FYC", "SBYC", "NBYC", "ACYC", "CYC", "SBCS", "NEYC")}
+    used = {n for t in STAND_IND.values() for x in t for n in x[0].split(" / ")}
+    def name():
+        while True:
+            n = rng.choice(FIRST) + " " + rng.choice(LAST)
+            if n not in used: used.add(n); return n
+    rest = []
+    for _ in range(FLEET_SIZE[fleet] - len(top)):
+        c = rng.choices(list(w), weights=list(w.values()))[0]
+        q = rng.random() * (0.4 if fleet.startswith("ILCA") and c == "SBYC" else 1)  # lower q = better result
+        rest.append([name() + (" / " + name() if dh else ""), c, q])
+    rest.sort(key=lambda x: x[2])
+    rows = [(n, c, p, rng.randint(9, 11)) for n, c, p in top]
+    pts = top[-1][2]
+    for i, (n, c, q) in enumerate(rest):
+        k = len(rest); pts -= rng.randint(4, 9) + (6 if i > k * .6 else 0)
+        reg = max(1, min(11, round(11 - 9 * (i / k) + rng.uniform(-1.5, 1.5))))
+        rows.append((n, c, max(18, min(pts, reg * 92)), reg))
+    rows.sort(key=lambda x: -x[2])
+    return rows
+
+def fleet_page(fleet):
+    rows = roster(fleet); r = "../../../../"; dh = "/" in rows[0][0]
+    clubs = sorted({BY[c][2] for _, c, _, _ in rows})
+    sb = sum(1 for _, c, _, _ in rows[:10] if c == "SBYC")
+    tr = "".join(f'<tr data-c="{E(BY[c][2])}" data-n="{E(n.lower())}"><td class="n">{i}</td><td>{E(n)}</td><td><a href="{r}{cl(c)}/">{E(BY[c][2])}</a> <small>{E(BY[c][3])}</small></td><td>{g}</td><td>{p}</td></tr>' for i, (n, c, p, g) in enumerate(rows, 1))
+    others = "".join(f'<a href="../{FLEET_SLUG[f]}/">{E(f)}</a>' if f != fleet else f'<span style="background:var(--t);color:#fff;border-color:var(--t)">{E(f)}</span>' for f in FLEET_SLUG)
+    note = f" SBYC sailors hold {sb} of the top 10." if fleet.startswith("ILCA") else ""
+    hp = PHT.pick({"Optimist": "Optimist", "ILCA": "ILCA", "C420": "C420", "Club FJ": "Club FJ", "29er": "29er"}.get(FLEET_BOAT[fleet] if fleet != "RS Feva" else "x", "kids"), "ayrc")[0]
+    body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">AYRC 2026 final standings</div><h1>{E(fleet)}</h1><p>All {len(rows)} {"teams" if dh else "sailors"} who scored in 2026. Best 7 of 11 regattas, Championship at 1.5 times.{note}</p><a class="btn o" href="../">All fleets</a></div><div class="mark"><img src="../../../img/ayrc-logo-full.png" alt="AYRC"></div></div></div>
+<section><div class="in"><p class="ch" style="margin:0 0 18px">{others}</p>
+<div class="flt"><input id="q" type="search" placeholder="Search {"teams" if dh else "sailors"}" aria-label="Search"><select id="cf" aria-label="Club"><option value="">All clubs</option>{''.join(f'<option>{E(c)}</option>' for c in clubs)}</select><span id="ct"></span></div>
+<div class="tw"><table id="t"><tr><th>Place</th><th>{"Skipper / crew" if dh else "Sailor"}</th><th>Club</th><th>Regattas</th><th>Points</th></tr>{tr}</table></div></div></section>
+<script>(function(){{var q=document.getElementById('q'),f=document.getElementById('cf'),ct=document.getElementById('ct'),rs=[].slice.call(document.querySelectorAll('#t tr[data-c]'));function go(){{var s=q.value.toLowerCase().trim(),c=f.value,n=0;rs.forEach(function(r){{var ok=(!c||r.dataset.c==c)&&(!s||r.dataset.n.indexOf(s)>-1);r.style.display=ok?'':'none';if(ok)n++}});ct.textContent=n+' of '+rs.length}}q.oninput=go;f.onchange=go;go()}})();</script>"""
+    return shell(f"nesf/ayrc/standings/{FLEET_SLUG[fleet]}", f"{fleet} 2026 Standings | AYRC", ANAV, body, f"Every {fleet} sailor in the 2026 AYRC standings.")
+
 def standings():
     r = "../../../"
     def club(code): return f'<a href="{r}{cl(code)}/">{E(BY[code][2])}</a>'
-    ind = "".join(f'<div><h3>{E(f)}</h3><div class="tw"><table><tr><th>Place</th><th>Sailor{"s" if "/" in rows[0][0] else ""}</th><th>Club</th><th>Points</th></tr>' + "".join(f'<tr><td class="n">{i}</td><td>{E(n)}</td><td>{club(c)}</td><td>{p}</td></tr>' for i, (n, c, p) in enumerate(rows, 1)) + '</table></div></div>' for f, rows in STAND_IND.items())
+    ind = "".join(f'<div><h3><a href="{FLEET_SLUG[f]}/">{E(f)} →</a></h3><div class="tw"><table><tr><th>Place</th><th>Sailor{"s" if "/" in rows[0][0] else ""}</th><th>Club</th><th>Points</th></tr>' + "".join(f'<tr><td class="n">{i}</td><td>{E(n)}</td><td>{club(c)}</td><td>{p}</td></tr>' for i, (n, c, p) in enumerate(rows, 1)) + f'</table></div><p style="margin:8px 0 0"><a href="{FLEET_SLUG[f]}/"><b>All {len(roster(f))} in {E(f)} →</b></a></p></div>' for f, rows in STAND_IND.items())
     hp = PHT.pick("29er", "ayrc")[0]
     body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">AYRC 2026 season</div><h1>Final standings</h1><p>Best 7 of 11 regattas, with the Championship scored at 1.5 times. Green Fleet isn't scored. 2027 standings start after the Foxford Shakedown on May 22.</p><a class="btn" href="#individual">Individual</a><a class="btn o" href="#clubs">Club team</a></div><div class="mark"><img src="../../img/ayrc-logo-full.png" alt="AYRC"></div></div></div>
-<section id="individual"><div class="in"><h2>Individual standings by fleet</h2><p class="sub">Top five in each scored fleet. Doublehanded fleets list skipper / crew. Full results for each regatta are posted by the host club.</p><div class="sg">{ind}</div></div></section>
+<section id="individual"><div class="in"><h2>Individual standings by fleet</h2><p class="sub">Top five in each scored fleet. Tap a fleet to see every sailor in it. Doublehanded fleets list skipper / crew. Full results for each regatta are posted by the host club.</p><div class="sg">{ind}</div></div></section>
 <section class="alt" id="clubs"><div class="in"><h2>Club team standings</h2><p class="sub">Final standings for the club team trophy: each club's best 12 sailor scores across all fleets.</p>
 <div class="tw"><table><tr><th>Place</th><th>Club</th><th>Points</th></tr>{''.join(f'<tr><td class="n">{i}</td><td>{E(c)}</td><td>{p:,}</td></tr>' for i, (c, p) in enumerate(STAND_CLUBS, 1))}</table></div></div></section>"""
     return shell("nesf/ayrc/standings", "2026 Standings | AYRC", ANAV, body, "AYRC 2026 final standings: individual top five in every fleet and the club team trophy.")
@@ -154,7 +204,7 @@ def ayrc():
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
 <div class="tw"><table class="sch"><tr><th>Date</th><th>Event name</th><th>Location</th><th>Boats</th><th>Event type</th><th>Event website</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">{" · ".join(f"<b>{s}</b>: " + ", ".join(datetime.date.fromisoformat(a[0]).strftime("%b %-d") for a in AYRC if seas[datetime.date.fromisoformat(a[0]).strftime("%b")] == s) for s in ("Late spring", "Summer", "Early fall"))}</p></div></section>
-<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp">{PHT.fig(PHT.pick({"Opt":"Optimist","ILC":"ILCA","C42":"C420","Clu":"Club FJ","RS ":"kids","29e":"29er"}[t[:3]], t)[0], "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span></div></div>' for t, d in AYRC_CLASSES)}</div>
+<section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp{" lk" if t in FLEET_SLUG else ""}">{PHT.fig(PHT.pick({"Opt":"Optimist","ILC":"ILCA","C42":"C420","Clu":"Club FJ","RS ":"kids","29e":"29er"}[t[:3]], t)[0], "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span>{f'<a class="cdl" href="standings/{FLEET_SLUG[t]}/">2026 standings →</a>' if t in FLEET_SLUG else ""}</div></div>' for t, d in AYRC_CLASSES)}</div>
 <h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest dinghy fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings. The circuit is dinghies only: no keelboats.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
 <section class="alt" id="rules"><div class="in g2"><div><h2>Scoring</h2><ul class="l sub"><li>Low point scoring at each regatta, then circuit points: 100 for first, down by fleet size.</li><li>Your best 7 of 11 regattas count toward the season.</li><li>The AYRC Championship can't be dropped, and it scores 1.5 times.</li><li>Club team trophy: each club's best 12 sailor scores across all fleets.</li><li>Green Fleet isn't scored; every sailor who finishes three regattas gets a season pennant.</li></ul></div>
 <div><h2>Eligibility</h2><ul class="l sub"><li>Under 19 on December 31, 2027 (Optimist and RS Feva: 15 and under).</li><li>A US Sailing youth membership and a member club, sailing center or high school team.</li><li>Sailors from outside Albanardia are welcome at every regatta, but only Albanardia sailors score in the season standings.</li><li>A swim test and a signed parent waiver, once per season.</li></ul></div></div></section>
@@ -166,6 +216,6 @@ def ayrc():
     return shell("nesf/ayrc", "AYRC 2027 | Albanardia Youth Racing Circuit", ANAV, body, "The Albanardia Youth Racing Circuit: eleven summer youth regattas around the state, run by NESF.")
 
 if __name__ == "__main__":
-    for p, h in (("nesf", nesf_home()), ("nesf/ayrc", ayrc()), ("nesf/ayrc/standings", standings())):
+    for p, h in (("nesf", nesf_home()), ("nesf/ayrc", ayrc()), ("nesf/ayrc/standings", standings())) + tuple((f"nesf/ayrc/standings/{FLEET_SLUG[f]}", fleet_page(f)) for f in FLEET_SLUG):
         o = ROOT / p / "index.html"; o.parent.mkdir(parents=True, exist_ok=True); o.write_text(h, encoding="utf-8")
     print("built nesf/, nesf/ayrc/ and nesf/ayrc/standings/")
