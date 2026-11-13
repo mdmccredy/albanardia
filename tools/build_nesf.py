@@ -16,40 +16,44 @@ def latest(site, n=3): return sorted([s for s in DB if s["site"] == site], key=l
 def cl(code): return BY[code][2].lower()
 
 CSS = """
-:root{--o:#c4552f;--t:#0b4f6c;--n:#0a2233;--ink:#14202c;--mut:#5c6672;--line:#dfe3e6;--bg:#f6f7f5;--card:#fff}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#edf1f4;--mut:#9ca6b2;--line:#28323c;--bg:#0d1318;--card:#151d24}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Inter",system-ui,sans-serif}a{color:inherit}
+:root{--o:#d1132c;--t:#024faa;--n:#012a5c;--ink:#111827;--mut:#5b6472;--line:#e1e4ea;--bg:#f5f6f8;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#edf1f6;--mut:#a0a9b6;--line:#2a3340;--bg:#0c1118;--card:#151c26}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Montserrat,system-ui,sans-serif}a{color:inherit}
 .in{max-width:1120px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
-header{background:var(--n);color:#fff;padding-top:env(safe-area-inset-top);position:sticky;top:0;z-index:10}header .in{display:flex;align-items:center;gap:14px;min-height:66px}
-.lg{display:flex;align-items:center;gap:10px;text-decoration:none}.lg svg{width:38px;height:38px;flex:none}.lg b{font-weight:800;letter-spacing:.3px;line-height:1.1}.lg small{display:block;color:#9fb4c4;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase}
-nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto}nav a{text-decoration:none;font-weight:600;font-size:14.5px;padding:8px 11px;border-radius:8px;white-space:nowrap;color:#d6e0e8}nav a:hover,nav a.on{background:rgba(255,255,255,.1);color:#fff}
-.hero{background:linear-gradient(135deg,var(--n) 30%,var(--t));color:#fff;padding:60px 0 64px;position:relative;overflow:hidden}
-.hero .k{color:#f3b49b}.hero h1{font-size:clamp(36px,5.4vw,62px);line-height:1.04;margin:8px 0 14px;font-weight:800;letter-spacing:-1px;max-width:15ch}.hero p{font-size:18px;color:#d8e3ea;max-width:56ch;margin:0 0 22px}
-.k{font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700}
-.btn{display:inline-block;background:var(--o);color:#fff;font-weight:700;text-decoration:none;padding:12px 20px;border-radius:10px;margin:0 8px 8px 0}.btn.o{background:transparent;border:1.5px solid rgba(255,255,255,.6)}
+header{background:#fff;color:#111;padding-top:env(safe-area-inset-top);position:sticky;top:0;z-index:10;border-bottom:4px solid var(--t);box-shadow:0 1px 0 var(--o)}header .in{display:flex;align-items:center;gap:14px;min-height:70px}
+.lg{display:flex;align-items:center;text-decoration:none;flex:none}.lg img{height:42px;width:auto;display:block}
+nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto}nav a{text-decoration:none;font-weight:700;font-size:14px;padding:8px 11px;border-radius:8px;white-space:nowrap;color:#1b2330}nav a:hover{background:#eef2f8}nav a.on{background:var(--t);color:#fff}
+.hero{background:linear-gradient(120deg,var(--n) 0%,var(--t) 70%);color:#fff;padding:56px 0 60px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:linear-gradient(90deg,var(--o) 0 33%,#fff 33% 66%,var(--t) 66%)}
+.hero .in{display:grid;grid-template-columns:1.35fr .9fr;gap:30px;align-items:center}
+.hero .k{color:#ffd2d8}.hero h1{font-size:clamp(34px,5.2vw,60px);line-height:1.04;margin:8px 0 14px;font-weight:800;font-style:italic;letter-spacing:-1px;max-width:15ch}.hero p{font-size:17.5px;color:#e3ebf6;max-width:56ch;margin:0 0 22px}
+.mark{justify-self:center;background:#fff;border-radius:22px;padding:26px;box-shadow:0 20px 44px rgba(0,0,0,.3);width:min(380px,82vw)}.mark img{width:100%;height:auto;display:block}
+.k{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800}
+.btn{display:inline-block;background:var(--o);color:#fff;font-weight:800;font-style:italic;text-decoration:none;padding:12px 20px;border-radius:10px;margin:0 8px 8px 0}.btn.o{background:#fff;color:var(--t)}
 section{padding:50px 0}section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 6px;font-weight:800;letter-spacing:-.5px}.sub{color:var(--mut);margin:0 0 22px;max-width:64ch}
+h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 6px;font-weight:800;font-style:italic;letter-spacing:-.5px}h3{font-weight:800;font-style:italic}.sub{color:var(--mut);margin:0 0 22px;max-width:64ch}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;display:block;border-top:4px solid var(--t)}.cd b{display:block;font-size:18px;margin-bottom:4px}.cd span,.cd p{color:var(--mut);margin:0}
-.cd.o{border-top-color:var(--o)}.st b{font-size:34px;font-weight:800;color:var(--o);line-height:1}.st span{display:block;margin-top:4px}
-.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}table{width:100%;border-collapse:collapse;min-width:560px}td,th{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut)}tr:last-child td{border-bottom:0}
-td small{color:var(--mut)}tr.fin td{background:color-mix(in srgb,var(--o) 9%,var(--card))}tr.past td{opacity:.6}.n{font-weight:800;color:var(--o)}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;display:block;border-top:4px solid var(--t)}.cd b{display:block;font-size:17px;margin-bottom:4px}.cd span,.cd p{color:var(--mut);margin:0}
+.cd.o{border-top-color:var(--o)}.st b{font-size:34px;font-weight:800;font-style:italic;color:var(--t);line-height:1}.st span{display:block;margin-top:4px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}table{width:100%;border-collapse:collapse;min-width:560px}td,th{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut)}tr:last-child td{border-bottom:0}
+td small{color:var(--mut)}tr.fin td{background:color-mix(in srgb,var(--o) 8%,var(--card))}.n{font-weight:800;font-style:italic;color:var(--o)}
 .ch{display:flex;flex-wrap:wrap;gap:8px}.ch a,.ch span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:600;font-size:14px;text-decoration:none}
 ul.l{margin:0;padding-left:20px}ul.l li{margin:4px 0}
-footer{background:var(--n);color:#b9c7d2;padding:34px 0 calc(90px + env(safe-area-inset-bottom))}footer .in{display:flex;gap:16px;flex-wrap:wrap;align-items:center}footer a{text-decoration:none}footer .sp{flex:1}
-@media (max-width:900px){.g3,.g2,.g4{grid-template-columns:1fr}.g4.st4{grid-template-columns:1fr 1fr}header .in{flex-wrap:wrap;padding-bottom:6px}nav{margin-left:0;width:100%}}
+footer{background:#fff;color:#333;border-top:4px solid var(--o);padding:30px 0 calc(90px + env(safe-area-inset-bottom))}footer .in{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:14px}footer img{height:54px;width:auto}footer a{text-decoration:none;font-weight:700}footer .sp{flex:1}
+@media (max-width:900px){.g3,.g2,.g4{grid-template-columns:1fr}.g4.st4{grid-template-columns:1fr 1fr}.hero .in{grid-template-columns:1fr}.mark{display:none}header .in{flex-wrap:wrap;padding-bottom:6px}.lg img{height:36px}nav{margin-left:0;width:100%}}
 """
-LOGO = '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0b4f6c" stroke="#fff" stroke-width="1.5"/><path d="M20 7 L20 30 L9 30 Z" fill="#fff"/><path d="M22 11 L22 30 L31 30 Z" fill="#c4552f"/><path d="M7 32 Q13 29 20 32 T33 32" stroke="#fff" stroke-width="2" fill="none"/></svg>'
 
 def shell(path, title, nav, body, desc):
     depth = path.count("/") + 1; r = "../" * depth
+    ay = path.startswith("nesf/ayrc")
     links = "".join(f'<a href="{r}{p}"{" class=\"on\"" if p == path + "/" else ""}>{t}</a>' for p, t in nav)
+    logo = f'<img src="{r}nesf/img/{"ayrc-logo-name" if ay else "nesf-logo"}.png" alt="{"Albanardia Youth Racing Circuit" if ay else "Northeastern Sailing Foundation"}">'
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="manifest" href="{r}manifest.json"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="#0a2233">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
-<header><div class="in"><a class="lg" href="{r}nesf/">{LOGO}<span><b>{'AYRC' if path.startswith('nesf/ayrc') else 'NESF'}</b><small>{'Albanardia Youth Racing Circuit' if path.startswith('nesf/ayrc') else 'Northeastern Sailing Foundation'}</small></span></a><nav>{links}</nav></div></header>
+<title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="manifest" href="{r}manifest.json"><link rel="icon" href="{r}nesf/img/{'ayrc' if ay else 'nesf'}-burgee.png"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="#024faa">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
+<header><div class="in"><a class="lg" href="{r}{'nesf/ayrc/' if ay else 'nesf/'}">{logo}</a><nav>{links}</nav></div></header>
 {body}
-<footer><div class="in"><span>{LOGO}</span><span>Northeastern Sailing Foundation · 120 Spinnaker St, Silverbrooks, AB 19002 · nesf.org</span><span class="sp"></span><a href="{r}clubs/">Clubs</a><a href="{r}">Albanardia.gov</a></div></footer>
+<footer><div class="in"><img src="{r}nesf/img/nesf-burgee.png" alt="NESF"><img src="{r}nesf/img/ayrc-burgee.png" alt="AYRC"><span>Northeastern Sailing Foundation<br>120 Spinnaker St, Silverbrooks, AB 19002 · nesf.org</span><span class="sp"></span><a href="{r}nesf/">NESF</a><a href="{r}nesf/ayrc/">AYRC</a><a href="{r}clubs/">Clubs</a><a href="{r}">Albanardia.gov</a></div></footer>
 <script src="{r}app/app.js" data-home="float"></script></body></html>"""
 
 def news(site, me):
@@ -78,9 +82,9 @@ def nesf_home():
           ("Mar 13, 2027", "Safety at Sea seminar", "Olympic Sailing Pavilion, New Brolin. In-water liferaft training at the pavilion pool."),
           ("Apr 10, 2027", "AYRC coaches meeting", "Online. Schedule, sailing instructions and charter updates for the season."),
           ("Oct 23, 2027", "NESF Awards Dinner", "Foxford Yacht Club. AYRC trophies, volunteer of the year and the Harbor Cup.")]
-    body = f"""<div class="hero"><div class="in"><div class="k">Northeastern Sailing Foundation</div><h1>More people sailing, all over Albanardia.</h1>
+    body = f"""<div class="hero"><div class="in"><div><div class="k">Northeastern Sailing Foundation</div><h1>More people sailing, all over Albanardia.</h1>
 <p>NESF is the state's sailing foundation. We run the Albanardia Youth Racing Circuit, fund junior programs, train race officers and coaches, and keep boats in the hands of kids who'd otherwise watch from the dock.</p>
-<a class="btn" href="ayrc/">AYRC 2027</a><a class="btn o" href="#give">Support NESF</a></div></div>
+<a class="btn" href="ayrc/">AYRC 2027</a><a class="btn o" href="#give">Support NESF</a></div><div class="mark"><img src="img/nesf-burgee.png" alt="NESF burgee"></div></div></div>
 <section><div class="in g4 st4"><div class="cd o st"><b>11</b><span>AYRC regattas in 2027</span></div><div class="cd o st"><b>{len(C)}</b><span>Member clubs and sailing centers</span></div><div class="cd o st"><b>19</b><span>Programs funded in 2026</span></div><div class="cd o st"><b>64</b><span>Loan boats in the pool</span></div></div></section>
 <section class="alt" id="programs"><div class="in"><h2>Programs</h2><p class="sub">Everything NESF does is about getting more people on the water and keeping them there.</p><div class="g3">{''.join(f'<a class="cd" href="{h}"><b>{E(t)}</b><span>{E(d)}</span></a>' for t, d, h in prog)}</div></div></section>
 <section id="grants"><div class="in g2"><div><h2>Youth sailing grants</h2><p class="sub">Clubs and community sailing centers can apply each year for up to $15,000 toward boats, coaching and scholarships. Applications open January 4 and close February 26, 2027. Decisions by April 1.</p>
@@ -106,9 +110,9 @@ def ayrc():
     stand = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
              ("Northeastern Yacht Club", 954), ("Waterloo Yacht Club", 712), ("Cape Sturgeon Yacht Club", 640), ("Silverbrooks Community Sailing Center", 588), ("Pearl's End Sailing Center", 431),
              ("Hamilton Island Sailing", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
-    body = f"""<div class="hero"><div class="in"><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
+    body = f"""<div class="hero"><div class="in"><div><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
 <p>Eleven regattas from late May to late September, from the Sound to the cape, with one road trip to Barnegat Bay. Race as many as you like; your best seven count. The Championship on Hanson Bay closes the season.</p>
-<a class="btn" href="#schedule">Schedule</a><a class="btn o" href="#register">Register</a></div></div>
+<a class="btn" href="#schedule">Schedule</a><a class="btn o" href="#register">Register</a></div><div class="mark"><img src="../img/ayrc-logo-full.png" alt="AYRC, Albanardia Youth Racing Circuit"></div></div></div>
 <section><div class="in g4 st4"><div class="cd o st"><b>11</b><span>Regattas, one per venue</span></div><div class="cd o st"><b>8</b><span>Fleets</span></div><div class="cd o st"><b>7</b><span>Best results count</span></div><div class="cd o st"><b>May 22</b><span>Opening day in Foxford</span></div></div></section>
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
 <div class="tw"><table><tr><th>#</th><th>Dates</th><th>Regatta</th><th>Host</th></tr>{rows}</table></div>
