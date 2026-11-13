@@ -266,19 +266,19 @@ KEELBOAT = {'SYC', 'EBYC', 'MYC'}   # keelboat clubs: no dinghies, no junior pro
 
 # Albanardia Youth Racing Circuit 2027 (run by NESF). (start date, venue code or name, town, title, note)
 AYRC = [
- ("2027-05-22", "FYC", "Foxford", "Foxford Spring Opener", "First stop of the season on the Sound, next to the Larssen boat works."),
- ("2027-06-05", "NEYC", "Rutherford", "Rutherford Harbor Regatta", "Lower-harbor courses off the Rutherford headland."),
- ("2027-06-12", "WYC-W", "Waterloo", "Waterloo River and Bay Regatta", "River course for Green Fleet, bay course for everyone else."),
- ("2027-06-26", "NBYC", "New Brolin", "New Brolin Ocean Regatta", "Ocean courses beside the Olympic Sailing Pavilion."),
- ("2027-07-10", "CYC", "Whilliker", "Corinthian Junior Regatta", "North-shore courses on Albanardia Bay."),
- ("2027-07-24", "HIS", "Hamilton Island", "Hamilton Island Ferry Regatta", "Boats and sailors cross on the ferry Friday; camping on the island."),
- ("2027-07-31", "ACYC", "Albanardia City", "Capital Youth Regatta", "River-mouth courses off the capital waterfront."),
- ("2027-08-14", "Toms River Yacht Club", "Toms River, NJ", "AYRC Road Trip: Barnegat Bay", "The circuit's out-of-state stop, hosted by Toms River Yacht Club in New Jersey."),
- ("2027-08-28", "CSYC", "Arlington", "Cape Sturgeon Open Water Regatta", "Open-water racing at the tip of the cape."),
- ("2027-09-11", "PESC", "Silverbrooks", "Pearl's End Harbor Regatta", "Inner-harbor racing off Pearl's End Point, perfect for spectators."),
- ("2027-09-25", "SBYC", "Silverbrooks", "AYRC Championship", "The season finale on Hanson Bay. Counts for every sailor and can't be dropped."),
+ ("2027-05-22", "FYC", "Foxford", "Foxford Shakedown", "Season opener on the Sound, next to the Larssen boat works. Shake off the winter.", "All circuit fleets", "Circuit Regatta"),
+ ("2027-06-05", "NEYC", "Rutherford", "Headland Cup", "Lower-harbor courses in the lee of the Rutherford headland.", "Optis, ILCAs, C420s, FJs", "Circuit Regatta"),
+ ("2027-06-12", "WYC-W", "Waterloo", "Battle of Waterloo", "River course for Green Fleet, bay course for everyone else.", "All circuit fleets", "Circuit Regatta"),
+ ("2027-06-26", "NBYC", "New Brolin", "Albanardia JOs", "The state's Junior Olympic Sailing Festival, on the ocean courses beside the Olympic Sailing Pavilion.", "All circuit fleets", "Circuit Regatta + JOs"),
+ ("2027-07-10", "CYC", "Whilliker", "Whilliker Whirlwind", "Midsummer sea breeze on the north shore of Albanardia Bay.", "Optis, ILCAs, C420s, FJs, 29ers", "Circuit Regatta"),
+ ("2027-07-24", "HIS", "Hamilton Island", "Castaway Cup", "Boats and sailors cross on the ferry Friday; camping on the island.", "Optis, ILCAs, RS Fevas", "Circuit Regatta"),
+ ("2027-07-31", "ACYC", "Albanardia City", "Statehouse Cup", "River-mouth courses off the capital waterfront.", "All circuit fleets", "Circuit Regatta"),
+ ("2027-08-14", "Toms River Yacht Club", "Toms River, NJ", "Turnpike Trophy", "The circuit's road trip down the Turnpike to Barnegat Bay, hosted by Toms River Yacht Club in New Jersey.", "ILCAs, C420s, 29ers", "Road Trip"),
+ ("2027-08-28", "CSYC", "Arlington", "Sturgeon Moon Regatta", "Open-water racing at the tip of the cape, the weekend after August's Sturgeon Moon.", "Optis (Championship), ILCAs, C420s, 29ers", "Circuit Regatta"),
+ ("2027-09-11", "PESC", "Silverbrooks", "Pearl Diver Regatta", "Inner-harbor racing off Pearl's End Point, perfect for spectators.", "Optis, ILCAs, FJs, RS Fevas", "Circuit Regatta"),
+ ("2027-09-25", "SBYC", "Silverbrooks", "Hanson Bay Showdown", "The AYRC Championship and season finale on Hanson Bay. Counts for every sailor, can't be dropped, scores 1.5 times.", "All circuit fleets", "Championship"),
 ]
-AYRC_GUESTS = ["RS Tera", "J/24", "J/80", "WASZP", "i420", "470"]  # guest classes, from the Figma board
+AYRC_GUESTS = ["ILCA 7", "RS Tera", "WASZP", "i420"]  # guest classes: dinghies only, no keelboats or 470s
 AYRC_CLASSES = [("Optimist Championship", "Ages 15 and under"), ("Optimist Green Fleet", "First-year racers, short courses"), ("ILCA 4", "Ages 18 and under"), ("ILCA 6", "Ages 18 and under"),
                 ("C420", "Doublehanded, trapeze and spinnaker"), ("Club FJ", "Doublehanded, high school style"), ("RS Feva", "Doublehanded, ages 15 and under"), ("29er", "Doublehanded skiff")]
 

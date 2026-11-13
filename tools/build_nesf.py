@@ -42,6 +42,9 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 6px;font-weight:
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}table{width:100%;border-collapse:collapse;min-width:560px}td,th{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut)}tr:last-child td{border-bottom:0}
 td small{color:var(--mut)}tr.fin td{background:color-mix(in srgb,var(--o) 8%,var(--card))}.n{font-weight:800;font-style:italic;color:var(--o)}
 .ch{display:flex;flex-wrap:wrap;gap:8px}.ch a,.ch span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:600;font-size:14px;text-decoration:none}
+table.sch{min-width:820px}table.sch th{background:color-mix(in srgb,var(--mut) 22%,var(--card));color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:13px;letter-spacing:.3px;border-right:1px solid var(--line)}table.sch td{border-right:1px solid var(--line)}table.sch td:first-child,table.sch td:last-child,table.sch th:last-child{white-space:nowrap}table.sch th:last-child,table.sch td:last-child{border-right:0}table.sch td a{font-weight:700}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.sg .tw table{min-width:0}.sg h3{margin:0 0 10px}
+@media (max-width:900px){.sg{grid-template-columns:1fr}}
 ul.l{margin:0;padding-left:20px}ul.l li{margin:4px 0}
 footer{background:#fff;color:#333;border-top:4px solid var(--o);padding:30px 0 calc(90px + env(safe-area-inset-bottom))}footer .in{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:14px}footer img{height:54px;width:auto}footer a{text-decoration:none;font-weight:700}footer .sp{flex:1}
 @media (max-width:900px){.g3,.g2,.g4{grid-template-columns:1fr}.g4.st4{grid-template-columns:1fr 1fr}.hero .in{grid-template-columns:1fr}.mark{display:none}header .in{flex-wrap:wrap;padding-bottom:6px}.lg img{height:36px}nav{margin-left:0;width:100%}}
@@ -64,7 +67,7 @@ def news(site, me):
     return "".join(f'<a class="cd o" href="{me}stories/#{s["slug"]}"><small style="color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:12px">{E(s["cat"])} · Published {fdate(s["date"])}</small><b>{E(s["title"])}</b><span>{E(s["dek"])}</span></a>' for s in latest(site))
 
 NAV = [("nesf/", "Home"), ("nesf/#programs", "Programs"), ("nesf/ayrc/", "AYRC"), ("nesf/#clubs", "Member clubs"), ("nesf/#events", "Events"), ("nesf/stories/", "News"), ("nesf/#give", "Give")]
-ANAV = [("nesf/ayrc/", "Circuit"), ("nesf/ayrc/#schedule", "Schedule"), ("nesf/ayrc/#classes", "Classes"), ("nesf/ayrc/#rules", "Scoring"), ("nesf/ayrc/#register", "Register"), ("nesf/ayrc/#standings", "Standings"), ("nesf/ayrc/stories/", "News"), ("nesf/", "NESF")]
+ANAV = [("nesf/ayrc/", "Circuit"), ("nesf/ayrc/#schedule", "Schedule"), ("nesf/ayrc/#classes", "Classes"), ("nesf/ayrc/#rules", "Scoring"), ("nesf/ayrc/#register", "Register"), ("nesf/ayrc/standings/", "Standings"), ("nesf/ayrc/stories/", "News"), ("nesf/", "NESF")]
 
 def host_link(a, r):
     code = a[1]
@@ -105,38 +108,64 @@ def nesf_home():
 <div id="contact"><h2>Contact</h2><p class="sub">Northeastern Sailing Foundation<br>120 Spinnaker St, Silverbrooks, AB 19002<br>nesf.org · Office open weekdays 9 to 5</p></div></div></section>"""
     return shell("nesf", "Northeastern Sailing Foundation", NAV, body, "Albanardia's sailing foundation: the AYRC, youth grants, race officer and coach training.")
 
+# 2026 final individual standings (best 7 of 11, Championship x1.5). (sailor or skipper / crew, club code, points)
+STAND_CLUBS = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
+             ("Northeastern Yacht Club", 954), ("Waterloo Yacht Club", 712), ("Cape Sturgeon Yacht Club", 640), ("Silverbrooks Community Sailing Center", 588), ("Pearl's End Sailing Center", 431),
+             ("Hamilton Island Sailing Club", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
+STAND_IND = {
+ "Optimist Championship": [("Nora Lindqvist", "FYC", 688), ("Kai Okafor", "ACYC", 671), ("Lily Brennan", "SBYC", 655), ("Theo Park", "CYC", 640), ("Ava Delgado", "NBYC", 628)],
+ "ILCA 4": [("Jonah Weiss", "ACYC", 702), ("Mia Castellano", "NEYC", 684), ("Sam Oduya", "FYC", 667), ("Elise Tran", "SBYC", 649), ("Owen Kowalski", "WYC-W", 633)],
+ "ILCA 6": [("Leo Hartmann", "SBYC", 714), ("Grace Nakamura", "CYC", 698), ("Finn Gallagher", "ACYC", 681), ("Priya Raman", "NBYC", 662), ("Caleb Moore", "CSYC", 650)],
+ "C420": [("Ruby Sato / Henry Ames", "ACYC", 705), ("Liam O'Shea / Zoe Fontaine", "SBYC", 690), ("Isla Grant / Diego Marín", "CYC", 672), ("Ben Whitaker / Hana Kim", "NEYC", 655), ("Clara Voss / Eli Brooks", "FYC", 641)],
+ "Club FJ": [("Will Tanaka / June Abara", "CYC", 680), ("Ella Fischer / Noah Reyes", "ACYC", 662), ("Jack Doyle / Maya Patel", "NEYC", 650), ("Sophie Laurent / Ty Benson", "WYC-W", 631), ("Adam Cho / Rosa Lind", "SBYC", 617)],
+ "RS Feva": [("Lucy Hargrove / Sami Haddad", "HIS", 664), ("Wren Mitchell / Oscar Ng", "PESC", 650), ("Ada Novak / Felix Romero", "FYC", 637), ("Iris Cole / Jude Amari", "SBYC", 620), ("Tess Ward / Rafi Cohen", "NBYC", 604)],
+ "29er": [("Hugo Bergström / Nina Alvarez", "NBYC", 711), ("Cole Jensen / Inês Duarte", "ACYC", 693), ("Luke Ferris / Amara Obi", "SBYC", 676), ("Dylan Hayes / Freya Olsen", "CYC", 659), ("Ravi Shah / Kate Morrow", "CSYC", 641)],
+}
+
+def standings():
+    r = "../../../"
+    def club(code): return f'<a href="{r}{cl(code)}/">{E(BY[code][2])}</a>'
+    ind = "".join(f'<div><h3>{E(f)}</h3><div class="tw"><table><tr><th>Place</th><th>Sailor{"s" if "/" in rows[0][0] else ""}</th><th>Club</th><th>Points</th></tr>' + "".join(f'<tr><td class="n">{i}</td><td>{E(n)}</td><td>{club(c)}</td><td>{p}</td></tr>' for i, (n, c, p) in enumerate(rows, 1)) + '</table></div></div>' for f, rows in STAND_IND.items())
+    hp = PHT.pick("29er", "ayrc")[0]
+    body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">AYRC 2026 season</div><h1>Final standings</h1><p>Best 7 of 11 regattas, with the Championship scored at 1.5 times. Green Fleet isn't scored. 2027 standings start after the Foxford Shakedown on May 22.</p><a class="btn" href="#individual">Individual</a><a class="btn o" href="#clubs">Club team</a></div><div class="mark"><img src="../../img/ayrc-logo-full.png" alt="AYRC"></div></div></div>
+<section id="individual"><div class="in"><h2>Individual standings by fleet</h2><p class="sub">Top five in each scored fleet. Doublehanded fleets list skipper / crew. Full results for each regatta are posted by the host club.</p><div class="sg">{ind}</div></div></section>
+<section class="alt" id="clubs"><div class="in"><h2>Club team standings</h2><p class="sub">Final standings for the club team trophy: each club's best 12 sailor scores across all fleets.</p>
+<div class="tw"><table><tr><th>Place</th><th>Club</th><th>Points</th></tr>{''.join(f'<tr><td class="n">{i}</td><td>{E(c)}</td><td>{p:,}</td></tr>' for i, (c, p) in enumerate(STAND_CLUBS, 1))}</table></div></div></section>"""
+    return shell("nesf/ayrc/standings", "2026 Standings | AYRC", ANAV, body, "AYRC 2026 final standings: individual top five in every fleet and the club team trophy.")
+
 def ayrc():
     today = datetime.date(2026, 11, 12)
     rows = ""
     for n, a in enumerate(AYRC, 1):
-        d = datetime.date.fromisoformat(a[0]); d2 = d + datetime.timedelta(1)
-        fin = n == len(AYRC)
-        rows += f'<tr{" class=\"fin\"" if fin else ""}><td class="n">{n}</td><td>{d.strftime("%a %b %-d")} to {d2.strftime("%a %b %-d")}</td><td><b>{E(a[3])}</b><br><small>{E(a[4])}</small></td><td>{host_link(a, "../../")}<br><small>{E(a[2])}</small></td></tr>'
+        d = datetime.date.fromisoformat(a[0]); d2 = d + datetime.timedelta(1); nor = d - datetime.timedelta(45)
+        dt = d.strftime("%b %-d") + "–" + (d2.strftime("%-d") if d2.month == d.month else d2.strftime("%b %-d"))
+        web = (f'<a href="../../{cl(a[1])}/racing/">Notice of Race</a>' if a[1] in BY else "Notice of Race") + f'<br><small>Posts {nor.strftime("%b %-d")}</small>'
+        rows += f'<tr{" class=\"fin\"" if a[6] == "Championship" else ""}><td><b>{dt}</b></td><td><b>{E(a[3])}</b><br><small>{E(a[4])}</small></td><td>{host_link(a, "../../")}<br><small>{E(a[2])}</small></td><td>{E(a[5])}</td><td>{E(a[6])}</td><td>{web}</td></tr>'
     seas = {"May": "Late spring", "Jun": "Late spring", "Jul": "Summer", "Aug": "Summer", "Sep": "Early fall"}
-    stand = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
+    stand = STAND_CLUBS
+    _unused = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
              ("Northeastern Yacht Club", 954), ("Waterloo Yacht Club", 712), ("Cape Sturgeon Yacht Club", 640), ("Silverbrooks Community Sailing Center", 588), ("Pearl's End Sailing Center", 431),
              ("Hamilton Island Sailing Club", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
     hp = PHT.pick("C420", "ayrc")[0]
     body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
-<p>Eleven regattas from late May to late September, from the Sound to the cape, with one road trip to Barnegat Bay. Race as many as you like; your best seven count. The Championship on Hanson Bay closes the season.</p>
+<p>Eleven regattas from late May to late September, from the Foxford Shakedown to the Hanson Bay Showdown, with one road trip down the Turnpike to Barnegat Bay. Race as many as you like; your best seven count.</p>
 <a class="btn" href="#schedule">Schedule</a><a class="btn o" href="#register">Register</a></div><div class="mark"><img src="../img/ayrc-logo-full.png" alt="AYRC, Albanardia Youth Racing Circuit"></div></div></div>
 <section><div class="in g4 st4"><div class="cd o st"><b>11</b><span>Regattas, one per venue</span></div><div class="cd o st"><b>8</b><span>Fleets</span></div><div class="cd o st"><b>7</b><span>Best results count</span></div><div class="cd o st"><b>May 22</b><span>Opening day in Foxford</span></div></div></section>
 <section class="alt" id="schedule"><div class="in"><h2>2027 schedule</h2><p class="sub">Every regatta is two days, with racing from 11 a.m. Saturday and a 3 p.m. last warning signal Sunday. Notices of race post 45 days before each event. Each venue hosts once a season.</p>
-<div class="tw"><table><tr><th>#</th><th>Dates</th><th>Regatta</th><th>Host</th></tr>{rows}</table></div>
+<div class="tw"><table class="sch"><tr><th>Date</th><th>Event name</th><th>Location</th><th>Boats</th><th>Event type</th><th>Event website</th></tr>{rows}</table></div>
 <p class="sub" style="margin-top:14px">{" · ".join(f"<b>{s}</b>: " + ", ".join(datetime.date.fromisoformat(a[0]).strftime("%b %-d") for a in AYRC if seas[datetime.date.fromisoformat(a[0]).strftime("%b")] == s) for s in ("Late spring", "Summer", "Early fall"))}</p></div></section>
 <section id="classes"><div class="in"><h2>Fleets</h2><p class="sub">Sailors pick one fleet for the season and can move up once, before the July 10 regatta.</p><div class="g4">{''.join(f'<div class="cd cdp">{PHT.fig(PHT.pick({"Opt":"Optimist","ILC":"ILCA","C42":"C420","Clu":"Club FJ","RS ":"kids","29e":"29er"}[t[:3]], t)[0], "", 700)}<div class="tx"><b>{E(t)}</b><span>{E(d)}</span></div></div>' for t, d in AYRC_CLASSES)}</div>
-<h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
+<h3 style="margin-top:28px">Guest classes</h3><p class="sub">Host clubs can add guest dinghy fleets when five or more boats register. Guest classes race for regatta trophies but don't score in the season standings. The circuit is dinghies only: no keelboats.</p><div class="ch">{''.join(f'<span>{E(g)}</span>' for g in AYRC_GUESTS)}</div></div></section>
 <section class="alt" id="rules"><div class="in g2"><div><h2>Scoring</h2><ul class="l sub"><li>Low point scoring at each regatta, then circuit points: 100 for first, down by fleet size.</li><li>Your best 7 of 11 regattas count toward the season.</li><li>The AYRC Championship can't be dropped, and it scores 1.5 times.</li><li>Club team trophy: each club's best 12 sailor scores across all fleets.</li><li>Green Fleet isn't scored; every sailor who finishes three regattas gets a season pennant.</li></ul></div>
 <div><h2>Eligibility</h2><ul class="l sub"><li>Under 19 on December 31, 2027 (Optimist and RS Feva: 15 and under).</li><li>A US Sailing youth membership and a member club, sailing center or high school team.</li><li>Sailors from outside Albanardia are welcome at every regatta, but only Albanardia sailors score in the season standings.</li><li>A swim test and a signed parent waiver, once per season.</li></ul></div></div></section>
 <section id="register"><div class="in g2"><div><h2>Registration</h2><p class="sub">Season registration opens March 1, 2027: $60 per sailor, plus $55 per regatta ($35 for Green Fleet). Register by the Wednesday before each regatta; late entries pay $20 more. NESF grants cover fees for any sailor who asks, no questions.</p></div>
 <div><h2>Charters</h2><p class="sub">Host clubs charter Optimists, ILCAs, C420s and Club FJs at $90 a boat per regatta. The NESF loan pool keeps season charters for sailors without boats. The Barnegat Bay stop has charter boats arranged through the host club.</p></div></div></section>
 <section><div class="in"><h2>Race weekends</h2><p class="sub">Two days of racing, a cookout and a lot of trailers.</p>{gallery([(PHT.pick("youth","ayrc")[0],"29ers at a championship"),(PHT.pick("Optimist","ayrc",1,2)[0],"Optimist fleet"),(PHT.pick("ILCA","ayrc")[0],"ILCA 6"),(PHT.pick("Club FJ","ayrc")[0],"Club FJ"),(PHT.pick("team","ayrc")[0],"Team racing"),(PHT.pick("coach")[0],"Coach boats")])}</div></section>
-<section class="alt" id="standings"><div class="in"><h2>2026 club team standings</h2><p class="sub">Final standings for the club team trophy. Individual results are posted for each regatta by the host club.</p>
-<div class="tw"><table><tr><th>Place</th><th>Club</th><th>Points</th></tr>{''.join(f'<tr><td class="n">{i}</td><td>{E(c)}</td><td>{p:,}</td></tr>' for i, (c, p) in enumerate(stand, 1))}</table></div></div></section>
+<section class="alt" id="standings"><div class="in"><h2>Standings</h2><p class="sub">Final 2026 results: the top five in every fleet and the club team trophy. 2026 champions: {E(stand[0][0])} (club team), {E(STAND_IND["ILCA 6"][0][0])} (ILCA 6), {E(STAND_IND["Optimist Championship"][0][0])} (Optimist).</p><a class="btn" href="standings/">See the 2026 standings</a></div></section>
 <section><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All AYRC stories →</a></p><div class="g3">{news('ayrc', '')}</div></div></section>"""
     return shell("nesf/ayrc", "AYRC 2027 | Albanardia Youth Racing Circuit", ANAV, body, "The Albanardia Youth Racing Circuit: eleven summer youth regattas around the state, run by NESF.")
 
 if __name__ == "__main__":
-    for p, h in (("nesf", nesf_home()), ("nesf/ayrc", ayrc())):
+    for p, h in (("nesf", nesf_home()), ("nesf/ayrc", ayrc()), ("nesf/ayrc/standings", standings())):
         o = ROOT / p / "index.html"; o.parent.mkdir(parents=True, exist_ok=True); o.write_text(h, encoding="utf-8")
-    print("built nesf/ and nesf/ayrc/")
+    print("built nesf/, nesf/ayrc/ and nesf/ayrc/standings/")
