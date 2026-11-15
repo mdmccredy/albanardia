@@ -317,8 +317,8 @@ FLEETS.update({
 # Killalea's youth and dinghy programs moved to SBYC (Nov 2026); Killalea is keelboats only.
 JUNIOR['SBYC'] = JUNIOR['SBYC'] + [("Larssen Fyra", 14), ("Larssen Club Radial", 16)]
 EVENTS['SBYC'] = EVENTS['SBYC'] + [
-  E("Apr", 17, "SBYC Community Sailing Open House", "Free sails in Club Radials and Fyras, dock tours and summer sign-ups. Open to everyone, members or not.", "Club"),
-  E("Jun", 14, "SBYC summer camps begin", "Weekly camps for ages 7 to 15 in Optis, Fyras and Club Radials, open to the public.", "Youth"),
+  E("Apr", 17, "SBYC Junior Sailing Open House", "Free sails in Club Radials and Fyras, dock tours and summer camp sign-ups.", "Youth"),
+  E("Jun", 14, "SBYC summer camps begin", "Weekly camps for ages 7 to 15 in Optis, Fyras and Club Radials.", "Youth"),
   E("Jul", 23, "Hanson Bay Junior Splash", "A one-day regatta for SBYC campers and the youth racing team.", "Youth")]
 EVENTS.update({
  'KSC': [
