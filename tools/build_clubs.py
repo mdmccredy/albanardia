@@ -35,8 +35,8 @@ def flags_svg_unused():
 
 # id, name, short, town, address, website, kind, ayrc
 C = [
- ("SBYC","Silverbrooks Yacht Club","SBYC","Silverbrooks","231 NE Belwether St, Silverbrooks, AB 19001","silverbrooksyc.org","yc",True,"At the outer end of Hanson Bay Marina on Silverbrooks' north shore, with summer camps and junior racing. Part of the Silverbrooks Yacht Club Foundation, alongside the Silverbrooks Community Sailing Center."),
- ("SBCS","Silverbrooks Community Sailing Center","SBCS","Silverbrooks","312 SE Foundland St, Silverbrooks, AB 19002","sbcommunitysailing.org","cs",True,"Public sailing for the whole city, from first sails to racing teams. Part of the Silverbrooks Yacht Club Foundation, alongside Silverbrooks Yacht Club."),
+ ("SBYC","Silverbrooks Yacht Club","SBYC","Silverbrooks","231 NE Belwether St, Silverbrooks, AB 19001","silverbrooksyc.org","yc",True,"At the outer end of Hanson Bay Marina on Silverbrooks' north shore, with summer camps and junior racing. Part of the Silverbrooks Sailing Foundation, alongside the Silverbrooks Community Sailing Center."),
+ ("SBCS","Silverbrooks Community Sailing Center","SBCS","Silverbrooks","312 SE Foundland St, Silverbrooks, AB 19002","sbcommunitysailing.org","cs",True,"Public sailing for the whole city, from first sails to racing teams. Part of the Silverbrooks Sailing Foundation, alongside Silverbrooks Yacht Club."),
  ("PESC","Pearl's End Sailing Center","PESC","Silverbrooks","17 W Harborshore Dr, Silverbrooks, AB 19003","pearlsendsailing.org","cs",True,"On the oyster-boat waterfront at Pearl's End."),
  ("NEYC","Northeastern Yacht Club","NEYC","Rutherford","123 Krugen Blvd, Rutherford, AB 19110","neyc.org","yc",True,"Rutherford's big-boat and junior racing club."),
  ("CYC","Corinthian Yacht Club of Silverbrooks","CYC","Whilliker","731 N Olweicz St, Whilliker, AB 19120","cycsb.org","yc",True,"A racing club on the north shore of the bay, home of a strong junior team."),
