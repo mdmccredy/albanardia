@@ -153,3 +153,9 @@ body.placeon #mode{visibility:hidden}
 #route.gdim>*:not(.ghl):not(.rm){opacity:.22;transition:opacity .25s}
 #dout li.mvl{display:flex;gap:10px;align-items:flex-start}#dout li.mvl .mv{flex:none;margin-top:1px}#dout li.mvl>div span{display:block}
 .gbar .gtxt .mv{background:#fff;border-radius:6px;vertical-align:middle;margin-right:6px}.gbar .gtxt:has(.mv){display:flex;gap:8px;align-items:flex-start}
+#tip img.tb{display:block;width:84px;height:50px;margin:2px 0 6px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.flagrow img{flex:none;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.clubcard{padding:6px 4px 10px}.clubcard img.cb{display:block;width:min(260px,70%);height:auto;aspect-ratio:631/377;margin:6px 0 14px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.clubcard .kick{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.65}.clubcard h2{margin:4px 0 6px;font-size:22px}.clubcard p{margin:0 0 12px;opacity:.8}
+.clubcard .cbtns{display:flex;flex-wrap:wrap;gap:8px}.clubcard .cbtn{display:inline-block;padding:9px 14px;border-radius:999px;background:#1f6fd1;color:#fff;text-decoration:none;font:600 14px system-ui;border:0;cursor:pointer}.clubcard .cbtn.o{background:transparent;color:inherit;border:1.5px solid currentColor}
+.clubcard{padding-bottom:70px}

@@ -305,3 +305,51 @@ JUNIOR = {
  "CCS":    [("Optimist", 8), ("SailQube", 6), ("Larssen Fyra", 4), ("Hobie Wave", 3)],
  "ACSC":   [("Optimist", 8), ("SailQube", 8), ("Larssen Fyra", 6), ("Hobie Wave", 2)],
 }
+
+# ---- sailing pavilions and Killalea (added Nov 14, 2026) ----
+FLEETS.update({
+ 'KSC':   [("Larssen Club Radial", 16), ("Larssen Fyra", 14), ("Optimist", 20), ("RS Aero", 6), ("MC7", 4), ("Kayaks and SUPs", None)],
+ 'OSP':   [("49er", 10), ("49erFX", 8), ("470", 8), ("ILCA", 16)],
+ 'JLG':   [("Club FJ", 18), ("420E", 18), ("ILCA", 10)],
+ 'SBUSP': [("Club FJ", 14), ("420E", 14), ("ILCA", 6)],
+ 'ATSC':  [("Club FJ", 12), ("420E", 12), ("ILCA", 6)],
+})
+JUNIOR.update({'KSC': [("Optimist", 20), ("Larssen Fyra", 14), ("Larssen Club Radial", 16)]})
+EVENTS.update({
+ 'KSC': [
+  E("Mar", 13, "Instructor Training Weekend", "New and returning instructors get ready for the season on Hanson Bay.", "Clinic"),
+  E("Apr", 17, "Killalea Open House", "Free sails in Club Radials, dock tours and sign-ups for summer.", "Club"),
+  E("May", 4, "Adult Learn to Sail starts", "Four-week evening courses in Club Radials.", "Clinic"),
+  E("May", 13, "Thursday Fun Races", "Center boats every Thursday evening through August.", "Weeknight"),
+  E("Jun", 14, "Summer camps begin", "Weekly camps for ages 7 to 15 in Optis, Fyras and Club Radials.", "Youth"),
+  E("Jul", 23, "Hanson Bay Junior Splash", "A one-day regatta for the youth racing team and campers.", "Youth"),
+  E("Aug", 20, "Camp Family Day", "Campers take their families sailing, then a picnic on the lawn.", "Youth"),
+  E("Sep", 24, "Volunteer Thank-You Night", "Dinner and awards for the volunteers who run the dock.", "Social")],
+ 'OSP': [
+  E("Jan", 18, "Winter Training Block", "Six weeks of national team training on the Atlantic.", "Clinic"),
+  E("Mar", 19, "New Brolin Olympic Classes Regatta", "The first ranking event of the year for the 49er, 49erFX, 470 and ILCA.", "Regatta"),
+  E("May", 14, "Youth Olympic Development Camp", "A week for the country's top youth sailors with national team coaches.", "Youth"),
+  E("Jun", 25, "Atlantic Coast Olympic Classes Week", "Five days of Olympic-class racing on two courses off New Brolin.", "Championship"),
+  E("Aug", 6, "Public Open Day", "Meet the team, tour the boat park and watch a training session.", "Club"),
+  E("Oct", 15, "National Team Trials (Week 1)", "Selection racing for the next world championships.", "Championship")],
+ 'JLG': [
+  E("Feb", 27, "Spring Season Opener", "Aldense hosts the first college regatta of the spring.", "Regatta"),
+  E("Mar", 27, "Bruin Invitational", "Two days of doublehanded racing in Club FJs and 420Es.", "Regatta"),
+  E("Apr", 17, "Aldense Women's Regatta", "The pavilion's women's team hosts the conference.", "Regatta"),
+  E("Sep", 11, "Fall Tryouts", "New and returning sailors, no experience needed.", "Club"),
+  E("May", 8, "JLG Scholastic Invitational", "The pavilion's yearly regatta for ISSA high school sailors from across the Northeast.", "Youth"),
+  E("Oct", 9, "Atlantic Coast Singlehanded Qualifier", "ILCA racing on the ocean course.", "Championship"),
+  E("Nov", 6, "Alumni Regatta", "Graduates come back to race the current team.", "Social")],
+ 'SBUSP': [
+  E("Mar", 6, "River Season Opener", "SBU's first home regatta on the Wellington.", "Regatta"),
+  E("Apr", 3, "Wellington River Team Race", "Three-on-three team racing under the bridges.", "Regatta"),
+  E("Apr", 24, "SBU vs. AlbTech Rivalry Regatta", "The cross-river rivalry, settled on the water.", "Regatta"),
+  E("Sep", 10, "Fall Tryouts", "Anyone at SBU can try out, no experience needed.", "Club"),
+  E("Oct", 16, "Fall River Invitational", "Teams from around the state race on the Wellington.", "Regatta")],
+ 'ATSC': [
+  E("Mar", 13, "AlbTech Spring Invitational", "Home regatta on the Wellington River.", "Regatta"),
+  E("Apr", 24, "SBU vs. AlbTech Rivalry Regatta", "Racing for the river bragging rights.", "Regatta"),
+  E("May", 1, "Engineering the Boat Day", "Team sailors and engineering students tune the boats together.", "Club"),
+  E("Sep", 10, "Fall Tryouts", "Open to every AlbTech student, no experience needed.", "Club"),
+  E("Oct", 23, "Beaver Cup", "AlbTech's fall team race.", "Regatta")],
+})

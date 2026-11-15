@@ -14,7 +14,15 @@ def latest(site, n=3):
     return sorted([x for x in _DB if x["site"] == site], key=lambda x: x["date"], reverse=True)[:n]
 def fdate(d): return "%s %d, %s" % (_MON[int(d[5:7]) - 1], int(d[8:]), d[:4])
 
+BURGEE_COLOR = json.loads((ROOT / "brand/burgees/colors.json").read_text())
+BURGEE_FILE = json.loads((ROOT / "brand/burgees/files.json").read_text())
+def burgee(cid):
+    """Max's burgee PNG (from the Figma board, no outline) as SVG content for a 631x377 viewBox. @ROOT@ = path to site root."""
+    f = cid.lower()
+    return f'<image href="@ROOT@brand/burgees/{BURGEE_FILE[f]}" width="631" height="377" preserveAspectRatio="none"/><!--{BURGEE_COLOR.get(f, "#123a6b")}-->'
 def flags():
+    return {c[0]: burgee(c[0]) for c in C}
+def flags_svg_unused():
     s = (ROOT / "map/app.js").read_text(encoding="utf-8")
     i = s.index("FLAGS="); j = s.index("{", i); d = 0
     for k in range(j, len(s)):
@@ -37,23 +45,32 @@ C = [
  ("HIS","Hamilton Island Sailing Club","HIS","Hamilton Island","12 Wilson St, Hamilton Island, AB 19350","sailhamilton.org","cs",True,"A community sailing club on the island, reached by ferry."),
  ("ACYC","Albanardia City Yacht Club","ACYC","Albanardia City","17 W Marlow St, Albanardia City, AB 19401","acyc.org","yc",True,"The state's second city's home club."),
  ("NBYC","New Brolin Yacht Club","NBYC","New Brolin","28 S Atlantic Dr, New Brolin, AB 19601","nbyc.org","yc",True,"Ocean-side sailing near the Olympic Sailing Pavilion."),
- ("WYC-Wil","Willamette Boating Center","WBC","Willamette","419 Ashton Rd, Willamette, AB 19701","wboating.org","cs",True,"Boating and sailing lessons for Coven County."),
+ ("WYC-Wil","Willamette Boating Club","WBC","Willamette","419 Ashton Rd, Willamette, AB 19701","wboating.org","cs",True,"Boating and sailing lessons for Coven County."),
  ("CCS","Coven Community Sailing","CCS","Coven","10 Appleton Dr, Coven, AB 19750","covencommsail.org","cs",True,"Community sailing on Coven Bay, next to the Maritime Academy."),
  ("CSYC","Cape Sturgeon Yacht Club","CSYC","Arlington","117 Cape Rd, Arlington, AB 19901","csyc.org","yc",True,"Open-water sailing at the tip of Cape Sturgeon."),
- ("BWYC","Belwether Yacht Club","BWYC","Belwether","Beside the Alex Bennett Marina, Belwether, AB 19540","belwetheryc.org","yc",False,"The college town's club, beside the Alex Bennett Marina."),
- ("EYC","Everett Yacht Club","EYC","Silverbrooks","350 Garfield Ct, Silverbrooks, AB 19006","everettyc.org","yc",False,"A neighborhood club in Silverbrooks."),
- ("EBYC","Elliott Bay Yacht Club","EBYC","Marisfield","178 10th St, Marisfield, AB 19105","elliottbayyc.org","yc",False,"Marisfield's club on Elliott Bay."),
- ("NSC","Notrhabite Sailing Club","NSC","Silverbrooks","20 Riverfront Ln, Silverbrooks, AB 19005","notrhabite.org","yc",False,"A river sailing club on the Wellington."),
+ ("BWYC","Belwether Yacht Club","BWYC","Belwether","40 Bayside Ave, Belwether, AB 19540","belwetheryc.org","yc",False,"The college town's club, beside the Alex Bennett Marina."),
+ ("EYC","Everett Yacht Club","EYC","Silverbrooks","350 Garfield Ct, Silverbrooks, AB 19006","everettyachtclub.com","yc",False,"A neighborhood club in Silverbrooks."),
+ ("EBYC","Elliott Bay Yacht Club","EBYC","Marisfield","178 10th St, Marisfield, AB 19105","ebyc.org","yc",False,"Marisfield's club on Elliott Bay."),
+ ("NSC","Notrhabite Yacht Club","NSC","Silverbrooks","20 Riverfront Ln, Silverbrooks, AB 19005","notrhabiteyc.org","yc",False,"A river sailing club on the Wellington."),
  ("SYC","Sjagette Yacht Club","SYC","Silverbrooks","1 Farsgod Point Rd, Silverbrooks, AB 19009","sjagetteyc.org","yc",False,"On Farsgod Point at the harbor mouth."),
- ("NMYC","Northmark Yacht Club","NMYC","Victoria","On the river, Victoria, AB 19260","northmarkyc.org","yc",False,"Farm-country river sailing in Northmark County."),
- ("STYC","Stepford Yacht Club","STYC","Stepford","Stepford, AB 19280","stepfordyc.org","yc",False,"Archila County's yacht club."),
- ("ACSC","Archila Community Sailing Center","ACSC","Stepford","Stepford, AB 19280","archilasailing.org","cs",False,"Public sailing for Archila County."),
- ("MYC","Marianoe Yacht Club","MYC","Marianoe","Marianoe, AB 19320","marianoeyc.org","yc",False,"A small island-town club on the Sound."),
+ ("NMYC","Northmark Yacht Club","NMYC","Victoria","1 River Rd, Victoria, AB 19260","northmarkyc.org","yc",False,"Farm-country river sailing in Northmark County."),
+ ("STYC","Stepford Yacht Club","STYC","Stepford","12 Bay St, Stepford, AB 19280","stepfordyachtclub.org","yc",False,"Archila County's yacht club."),
+ ("ACSC","Sail Archila","ACSC","Stepford","40 Bay St, Stepford, AB 19280","sailarchila.org","cs",False,"Public sailing for Archila County."),
+ ("KSC","Killalea Sailing Club","KSC","Whilliker","150 Bradford Way, Whilliker, AB 19120","killaleasailingclub.org","cs",False,"Public sailing on the west shore of Hanson Bay: learn-to-sail classes, youth racing and a fleet of club dinghies."),
+ ("MYC","Marianoe Yacht Club","MYC","Marianoe","2 Harbor St, Marianoe, AB 19320","marianoeyc.org","yc",False,"A small island-town club on the Sound."),
+]
+# sailing pavilions (kind "pv"): Olympic base and college sailing centers
+C += [
+ ("OSP","Olympic Sailing Pavilion","OSP","New Brolin","1 Pavilion Rd, New Brolin, AB 19601","newbrolin.osp.org","pv",False,"The national Olympic sailing training base on the Atlantic coast at New Brolin."),
+ ("JLG","James L. Gore Sailing Pavilion","JLG","New Brolin","3 Pavilion Rd, New Brolin, AB 19601","jlg.aldensesailing.com","pv",False,"Home of the Aldense University Sailing Team, on the shared waterfront with the Olympic Sailing Pavilion."),
+ ("SBUSP","SBU Sailing Pavilion","SBUSP","Silverbrooks","12 Boathouse Ln, Silverbrooks, AB 19007","pavilion.sailsbu.org","pv",False,"Silverbrooks University's sailing team boathouse on the north bank of the Wellington River."),
+ ("ATSC","AlbTech Sailing Center","ATSC","Silverbrooks","3 Ferry Slip Rd, Silverbrooks, AB 19008","albtechsailing.org","pv",False,"The Albanardia Institute of Technology's sailing team boathouse on the south bank of the Wellington River."),
 ]
 AYRC = "ILCA, C420, Optimist, CFJ, RS Feva, 29er"
 
 def color(svg):
     cs = [c.lower() for c in re.findall(r"#[0-9a-fA-F]{6}", svg) if c.lower() not in ("#ffffff", "#fff")]
+    cs = [x for x in cs if sum(int(x[i:i+2], 16) for i in (1, 3, 5)) < 600] or cs
     return cs[0] if cs else "#123a6b"
 
 
@@ -170,17 +187,17 @@ def shell(c, svg, path, title, body, nav):
     depth = path.count("/") + 1 if path else 1
     r = "../" * depth
     me = "../" * (depth - 1) if depth > 1 else "./"
-    yc = c[6] == "yc"
+    yc = c[6] in ("yc", "pv")
     col = color(svg)
     flag = f'<svg viewBox="0 0 631 377" xmlns="http://www.w3.org/2000/svg">{svg}</svg>'
     links = "".join(f'<a href="{me}{p}"{" class=on" if p == path else ""}>{E(t)}</a>'.replace(" class=on", ' class="on"') for p, t in nav)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title + " | " if title else "")}{E(c[1])}</title><meta name="description" content="{E(c[8])}"><link rel="manifest" href="{r}manifest.json"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="{'#0f2340' if yc else '#12354f'}">
 {FONTS_YC if yc else FONTS_CS}<style>{(CSS_BASE + (CSS_YC if yc else CSS_CS)).replace('@C', col)}{PHT.CSS}{PHOTO_CSS}</style></head><body>
-<div class="tb"><div class="in"><a href="{r}">Albanardia.gov</a><a href="{r}clubs/">All clubs</a><a href="{r}nesf/">NESF</a><span class="sp"></span>{f'<a href="{r}nesf/ayrc/">AYRC</a>' if c[7] else ''}<a href="{me}#contact">Contact</a></div></div>
+<div class="tb"><div class="in"><a href="{r}">Albanardia.gov</a><a href="{r}clubs/">All clubs</a><a href="{r}nesf/">NESF</a><span class="sp"></span>{f'<a href="{r}{PV[c[0]]["parent"]}">{E(PV[c[0]]["parent_name"])}</a>' if c[0] in PV and PV[c[0]].get("parent") else ''}{f'<a href="{r}nesf/ayrc/">AYRC</a>' if c[7] else ''}<a href="{me}#contact">Contact</a></div></div>
 <header><div class="in"><span class="bg">{flag}</span><a class="nm" href="{me}"><b>{E(c[1])}</b><small>{E(c[2])} · {E(c[3])}</small></a><nav class="mn">{links}</nav></div><div class="sub2">{links}</div></header>
 {body}
-<footer><div class="in"><span class="bg">{flag}</span><span>{E(c[1])} · {E(c[4])}</span><span class="sp"></span><a href="{me}stories/">News</a><a href="{r}clubs/">All Albanardia clubs</a><a href="{r}nesf/">NESF</a><a href="{r}">Albanardia.gov</a></div></footer>
+<footer><div class="in"><span class="bg">{flag}</span><span>{E(c[1])} · {E(c[4])}</span><span class="sp"></span>{'' if c[6] == 'pv' else f'<a href="{me}stories/">News</a>'}<a href="{r}clubs/">All Albanardia clubs</a><a href="{r}nesf/">NESF</a><a href="{r}">Albanardia.gov</a></div></footer>
 <script src="{r}app/app.js" data-home="float"></script></body></html>"""
 
 def news_cards(c, me):
@@ -350,6 +367,77 @@ def cs_pages(c, svg):
 <section class="alt"><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev if x[0].month <= 4 and x[3] in ('Clinic', 'Club'))}</div></div></section>""")
     return pages, nav
 
+# ---------- sailing pavilions (Olympic base and college sailing centers) ----------
+PHT.CLASS.update({"49er": ("49er", 1), "49erFX": ("49er", 1), "470": ("470", 1), "420E": ("C420", 1)})
+CLASSDESC.update({"49er": "The Olympic men's skiff: two sailors, twin trapezes and a big asymmetric kite.",
+                  "49erFX": "The Olympic women's skiff, the 49er hull with a smaller rig.",
+                  "470": "The Olympic doublehanded dinghy, sailed as a mixed crew since 2024.",
+                  "420E": "The college 420, raced two-up in every fleet race and team race.",
+                  "Club FJ": "The college workhorse: a forgiving two-person dinghy built to be raced hard."})
+PV = {
+ "OSP": dict(kind="Olympic training base", kick="National team training center · New Brolin", parent=None, parent_name="",
+   lead="Where the country's Olympic sailors live, train and race. Squads in the 49er, 49erFX and 470 are based here year-round, with ILCA training groups through the season.",
+   team="National team", teamtext="The 49er, 49erFX and 470 squads train here full time, with ILCA groups in for training blocks. Coaches, a boat park, a gym and a sail loft are all on site.",
+   programs=[("Olympic squads", "Full-time training for the 49er, 49erFX and 470 national squads, with coaches and support staff on site.", "Year-round"),
+             ("ILCA training groups", "Training blocks for the top ILCA 6 and ILCA 7 sailors between ranking events.", "Training blocks"),
+             ("Youth development", "Camps for the country's best youth sailors with national team coaches.", "By invitation"),
+             ("Events", "Olympic classes regattas and national team trials on the Atlantic off New Brolin.", "Spring to fall")],
+   facility=[("Boat park", "Room for the full Olympic fleet, with covered storage for skiffs and foiling gear."), ("Sail loft and workshop", "Repairs and tuning on site between sessions."),
+             ("Gym and recovery", "Strength, conditioning and physio for athletes."), ("Shared marina", "A small basin behind two breakwaters, shared with the James L. Gore Sailing Pavilion."),
+             ("Coach boats", "A fleet of RIBs for coaching and race management."), ("Video room", "Debriefs from drone and coach-boat footage.")],
+   hours="Training base: not open to the public except on open days.", tags=("racing", "regatta", "coach")),
+ "JLG": dict(kind="College sailing center", kick="Aldense University Sailing · New Brolin", parent="colleges/aldense/", parent_name="Aldense University",
+   lead="Home of the Aldense University Sailing Team. The pavilion shares a waterfront and a marina with the Olympic Sailing Pavilion, so the team trains next to the national squads.",
+   team="Aldense Sailing Team", teamtext="Coed and women's fleet racing plus team racing in Club FJs and 420Es, with ILCAs for singlehanded events. Visiting college teams race here every spring and fall.",
+   programs=[("Varsity sailing", "Coed and women's fleet racing and team racing for Aldense students.", "Spring and fall"),
+             ("Singlehanded", "ILCA training and the singlehanded qualifiers on the ocean course.", "Fall"),
+             ("Scholastic regatta", "A yearly regatta for ISSA high school sailors from across the Northeast.", "Every May"),
+             ("Visiting teams", "College regattas hosted for teams from up and down the coast.", "Most weekends")],
+   facility=[("Team boathouse", "Racks for the Club FJ, 420E and ILCA fleets, with a team room upstairs."), ("Shared marina", "The basin behind two breakwaters, shared with the Olympic Sailing Pavilion."),
+             ("Coach boats", "Four coach boats for practice and race committee."), ("Race deck", "A deck over the water for watching home regattas.")],
+   hours="Team practices weekday afternoons; regattas most weekends in season.", tags=("team", "racing", "harbor")),
+ "SBUSP": dict(kind="College sailing center", kick="Silverbrooks University Sailing · Wellington River", parent="colleges/sbu/", parent_name="Silverbrooks University",
+   lead="Silverbrooks University's sailing team boathouse, a small boathouse with one dock on the north bank of the Wellington River.",
+   team="SBU Sailing Team", teamtext="Fleet racing and team racing in Club FJs and 420Es on short river courses, plus ILCAs. The rivalry with AlbTech across the river is the highlight of every season.",
+   programs=[("Varsity sailing", "Coed and women's fleet racing and team racing for SBU students.", "Spring and fall"),
+             ("Rivalry regatta", "SBU vs. AlbTech, settled on the Wellington every April.", "Every April"),
+             ("Learn to race", "No experience needed: new sailors join every fall.", "Fall tryouts")],
+   facility=[("Boathouse", "Racks for the Club FJ, 420E and ILCA fleets and a small team room."), ("One dock", "Launching straight into the river current."), ("Coach boat", "For practices and home regattas.")],
+   hours="Practices weekday afternoons in season.", tags=("team", "racing", "coach")),
+ "ATSC": dict(kind="College sailing center", kick="AlbTech Sailing · Wellington River", parent="colleges/albtech/", parent_name="AlbTech",
+   lead="The Albanardia Institute of Technology's sailing team boathouse, a small boathouse with one dock on the south bank of the Wellington River, facing SBU.",
+   team="AlbTech Sailing Team", teamtext="Fleet racing and team racing in Club FJs and 420Es, plus ILCAs. Engineering students help tune the boats, and the rivalry with SBU is the big race of the year.",
+   programs=[("Varsity sailing", "Coed and women's fleet racing and team racing for AlbTech students.", "Spring and fall"),
+             ("Rivalry regatta", "AlbTech vs. SBU on the Wellington every April.", "Every April"),
+             ("Engineering the boat", "Team sailors and engineering students tune rigs and foils together.", "Spring")],
+   facility=[("Boathouse", "Racks for the Club FJ, 420E and ILCA fleets and a workshop corner."), ("One dock", "Launching straight into the river current."), ("Coach boat", "For practices and home regattas.")],
+   hours="Practices weekday afternoons in season.", tags=("team", "racing", "coach")),
+}
+
+def pv_nav(c):
+    return [("", "Home"), ("team/", "Team" if c[0] != "OSP" else "Squads"), ("facility/", "Facility"), ("calendar/", "Calendar")]
+
+def pv_pages(c, svg):
+    p = PV[c[0]]; flag = f'<svg viewBox="0 0 631 377" xmlns="http://www.w3.org/2000/svg">{svg}</svg>'
+    ev = events(c); nav = pv_nav(c); fl = FLEETS[c[0]]; t1, t2, t3 = p["tags"]
+    pages = {}
+    pages[""] = ("", f"""
+<div class="hero photo" style="background:linear-gradient(110deg,rgba(15,35,64,.94) 0%,rgba(15,35,64,.8) 45%,rgba(15,35,64,.35) 100%),url('{PHT.url(PHT.pick(t1, c[0])[0][0], 1800)}')">{PHT.credit(PHT.pick(t1, c[0])[0])}<div class="in"><div><div class="k">{E(p["kick"])}</div><h1>{E(c[1])}</h1><p>{E(p["lead"])}</p>
+<a class="btn w" href="team/">{E(p["team"])}</a><a class="btn o" href="calendar/">2027 calendar</a></div><div class="flag">{flag}</div></div></div>
+<section><div class="in"><h2>Programs</h2><div class="g2">{''.join(f'<div class="cd"><span class="pill">{E(w)}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, w in p["programs"])}</div></div></section>
+<section class="alt"><div class="in"><h2>Boats</h2><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
+<section><div class="in"><h2>Coming up</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
+<section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(c[5])}</p><p>{E(p["hours"])}</p>{f'<p><a href="../{p["parent"]}">{E(p["parent_name"])} →</a></p>' if p["parent"] else ''}</div></div></section>""")
+    pages["team/"] = (nav[1][1], ph(p["kind"], p["team"], p["teamtext"], PHT.pick(t2, c[0])[0]) + f"""
+<section><div class="in"><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
+<section class="alt"><div class="in"><h2>On the water</h2>{fleet_gallery(c, fl, 6, [(PHT.pick(t3, c[0])[0], "Coaching")])}</div></section>""")
+    pages["facility/"] = ("Facility", ph("The pavilion", "Facility", c[8], PHT.pick("harbor", c[0])[0]) + f"""
+<section><div class="in"><div class="g3">{''.join(f'<div class="cd"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d in p["facility"])}</div></div></section>
+<section class="alt"><div class="in ct"><div><h2>Address</h2><p>{E(c[4])}</p></div><div><h2>Hours</h2><p>{E(p["hours"])}</p></div></div></section>""")
+    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Training, regattas and events at the pavilion.", PHT.pick("regatta", c[0])[0]) + f"""
+<section><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev)}</div></div></section>""")
+    return pages, nav
+
 def extra_photos(c):
     """more real photos on the pages that had only a header photo"""
     k = c[0]; adult = [f for f, n in adult_fleets(c) if n]
@@ -365,15 +453,16 @@ def extra_photos(c):
             "volunteer/": ("Our volunteers", "Dock hands, safety boat drivers and instructors keep the center running.", [(PHT.pick("coach", k)[0], "Coaching from the safety boat"), (PHT.pick("camp", k + "v2")[0], "Helping at camp"), (PHT.pick("kids", k + "v3")[0], "On the dock"), (PHT.pick("club event", k)[0], "Open house"), (PHT.pick("paddle", k + "v5")[0], "Paddle night"), (PHT.pick("Optimist", k + "v6")[0], "Race committee for the kids")])}
 
 def club_site(c, svg):
-    pages, nav = (yc_pages if c[6] == "yc" else cs_pages)(c, svg)
-    for path, (h2, sub, items) in extra_photos(c).items():
+    pages, nav = (yc_pages if c[6] == "yc" else pv_pages if c[6] == "pv" else cs_pages)(c, svg)
+    for path, (h2, sub, items) in (extra_photos(c).items() if c[6] != "pv" else []):
         if path in pages:
             t, b = pages[path]
             pages[path] = (t, b + f'<section class="alt"><div class="in"><h2>{E(h2)}</h2><p class="sub">{E(sub)}</p>{gallery(items)}</div></section>')
     base = ROOT / code(c)
     for path, (title, body) in pages.items():
         out = base / path / "index.html"; out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(shell(c, svg, path, title, body, nav), encoding="utf-8")
+        root = "../" * (path.count("/") + 1)
+        out.write_text(shell(c, svg, path, title, body, nav).replace("@ROOT@", root), encoding="utf-8")
     # old address redirects
     old = OUT / old_slug(c)
     for sub in ("", "stories/"):
@@ -383,8 +472,8 @@ def club_site(c, svg):
     return len(pages)
 
 def index(F):
-    def card(c): return f'<a class="cl" href="../{code(c)}/"><span class="bg"><svg viewBox="0 0 631 377">{F[c[0]]}</svg></span><span><b>{E(c[1])}</b><small>{E(c[3])} · {"Keelboat club" if c[0] in KEELBOAT else "Yacht club" if c[6] == "yc" else "Sailing center"}{" · AYRC" if c[7] else ""}</small></span></a>'
-    yc = "".join(card(c) for c in C if c[6] == "yc"); cs = "".join(card(c) for c in C if c[6] != "yc")
+    def card(c): return f'<a class="cl" href="../{code(c)}/"><span class="bg"><svg viewBox="0 0 631 377">{F[c[0]]}</svg></span><span><b>{E(c[1])}</b><small>{E(c[3])} · {"Keelboat club" if c[0] in KEELBOAT else "Yacht club" if c[6] == "yc" else PV[c[0]]["kind"] if c[6] == "pv" else "Sailing center"}{" · AYRC" if c[7] else ""}</small></span></a>'
+    yc = "".join(card(c) for c in C if c[6] == "yc"); cs = "".join(card(c) for c in C if c[6] == "cs"); pv = "".join(card(c) for c in C if c[6] == "pv")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Yacht Clubs & Sailing Centers | Albanardia.gov</title><link rel="manifest" href="../manifest.json"><link rel="icon" href="../icons/favicon.png"><meta name="theme-color" content="#22498a">
 <style>:root{{--bg:#f4f5f7;--card:#fff;--ink:#1b2430;--mut:#5b6573;--line:#dde1e7;--navy:#22498a}}@media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:#0f141a;--card:#18202a;--ink:#edf1f5;--mut:#9ba7b3;--line:#2a3441}}}}
@@ -392,13 +481,13 @@ def index(F):
 header{{background:var(--navy);color:#fff;padding:26px 16px}}header .in,main{{max-width:1120px;margin:0 auto}}header a{{color:#cfd8e6;font-size:14px}}header h1{{font:700 34px/1.1 Georgia,serif;margin:8px 0 4px}}main{{padding:20px 16px 90px}}
 h2{{font:700 22px Georgia,serif;margin:26px 0 10px}}.g{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}}.cl{{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--ink)}}
 .bg{{width:62px;height:37px;flex:none}}.bg svg{{width:100%;height:100%}}.cl b{{display:block}}.cl small{{color:var(--mut)}}p.n{{color:var(--mut)}}ul{{color:var(--mut);padding-left:20px}}</style></head><body>
-<div class="gov">An official website of the State of Albanardia</div><header><div class="in"><a href="../">← Albanardia.gov</a><h1>Yacht Clubs &amp; Sailing Centers</h1><div>{len(C)} clubs and centers across the Windward State. AYRC clubs race the <a href="../nesf/ayrc/" style="color:#fff">Albanardia Youth Racing Circuit</a>, run by the <a href="../nesf/" style="color:#fff">Northeastern Sailing Foundation</a>.</div></div></header>
+<div class="gov">An official website of the State of Albanardia</div><header><div class="in"><a href="../">← Albanardia.gov</a><h1>Yacht Clubs &amp; Sailing Centers</h1><div>{len(C)} clubs, centers and sailing pavilions across the Windward State. AYRC clubs race the <a href="../nesf/ayrc/" style="color:#fff">Albanardia Youth Racing Circuit</a>, run by the <a href="../nesf/" style="color:#fff">Northeastern Sailing Foundation</a>.</div></div></header>
 <main><h2>Yacht clubs</h2><div class="g">{yc}</div><h2>Community sailing centers</h2><div class="g">{cs}</div>
-<h2>Other sailing venues</h2><p class="n">These aren't clubs, but they're on the water too:</p><ul><li><b>Olympic Sailing Pavilion</b>, New Brolin: the national Olympic training base</li><li><b>James L. Gore Sailing Pavilion</b>, New Brolin: Aldense University's college sailing center</li><li><b>SBU Sailing Pavilion</b> and <b>AlbTech Sailing Center</b>: college boathouses on the Wellington River</li><li><b>Killalea Sailing Center</b> on Hanson Bay</li></ul></main>
+<h2>Sailing pavilions</h2><p class="n">The national Olympic base and the college sailing centers.</p><div class="g">{pv}</div></main>
 <script src="../app/app.js" data-home="float"></script></body></html>"""
 
 if __name__ == "__main__":
     F = flags(); n = 0
     for c in C: n += club_site(c, F[c[0]])
-    (OUT / "index.html").write_text(index(F), encoding="utf-8")
+    (OUT / "index.html").write_text(index(F).replace("@ROOT@", "../"), encoding="utf-8")
     print("built", len(C), "club websites,", n, "pages")
