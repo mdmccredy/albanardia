@@ -814,7 +814,7 @@ Hamilton Island Sailing is a community-sailing-style club. Silverbrooks Yacht Cl
 | Archila Community Sailing Center | ACSC | Stepford |
 | Marianoe Yacht Club | MYC | Marianoe |
 
-Also on the water: the **Killalea Sailing Center** on the west shore of Hanson Bay and the **Maldonado Boathouse**.
+Also on the water: the **Killalea Sailing Center** on the west shore of Hanson Bay.
 
 ### Olympic and college sailing in New Brolin
 

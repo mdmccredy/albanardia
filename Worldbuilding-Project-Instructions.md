@@ -224,6 +224,6 @@ Rules:
 - Each club is its own website at `/<code>/` (sbyc/, cyc/, acyc/, wyc/, wbc/ ...), built by `tools/build_clubs.py` from `tools/club_data.py`. Old `clubs/<slug>/` addresses redirect.
 - Yacht clubs get Home, Racing, Juniors, Calendar, The Club, Membership and News. Sailing centers get Home, Adult classes, Youth, Rentals, Calendar, Volunteer and News.
 - `club_data.py` holds each club's adult fleets with boat counts (FLEETS), junior program boats (JUNIOR), its custom 2027 calendar (EVENTS), the keelboat clubs (KEELBOAT: SYC, EBYC, MYC, no dinghies and no junior page) and the AYRC schedule.
-- College sailing pavilions, the Olympic Sailing Pavilion, Killalea Sailing Center and the Maldonado Boathouse are sailing venues, not clubs.
+- College sailing pavilions, the Olympic Sailing Pavilion and Killalea Sailing Center are sailing venues, not clubs.
 - NESF lives at `nesf/` and the AYRC at `nesf/ayrc/`, built by `tools/build_nesf.py`. Each AYRC venue hosts at most one regatta a season.
 - SBX's website (flysbx.com) lives at `flysbx/`, built by `tools/build_sbx.py`; the interactive airport map is at `flysbx/map/` (old `airport/` redirects). SBX is part of the Port of Silverbrooks (`portofsilverbrooks/`, `tools/build_port.py`). Port and SBX logos are in `brand/logos/` (port-logo, port-wordmark, port-mark, port-aviation, sbx-logo).
