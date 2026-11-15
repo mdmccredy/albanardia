@@ -183,6 +183,7 @@ h2{font-size:clamp(28px,3.6vw,38px);line-height:1.15;margin:0 0 6px}.ph{backgrou
 @media (max-width:900px){.hero .in{grid-template-columns:1fr}.flag{width:min(220px,60vw)}}
 """
 
+SBSF_CLUBS = ("SBYC", "SBCS")
 def shell(c, svg, path, title, body, nav):
     depth = path.count("/") + 1 if path else 1
     r = "../" * depth
@@ -191,13 +192,20 @@ def shell(c, svg, path, title, body, nav):
     col = color(svg)
     flag = f'<svg viewBox="0 0 631 377" xmlns="http://www.w3.org/2000/svg">{svg}</svg>'
     links = "".join(f'<a href="{me}{p}"{" class=on" if p == path else ""}>{E(t)}</a>'.replace(" class=on", ' class="on"') for p, t in nav)
+    sf = c[0] in SBSF_CLUBS  # SBYC and SBCS belong to the Silverbrooks Sailing Foundation
+    if sf: links += f'<a href="{r}sbsf/">Foundation</a>'
+    sf_band = (f'<section style="background:#faf7f0;border-top:1px solid #e4ddcc;padding:44px 0"><div class="in" style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">'
+               f'<a href="{r}sbsf/"><img src="{r}sbsf/img/sbsf-logo.png" alt="Silverbrooks Sailing Foundation" style="width:200px;height:auto;display:block"></a>'
+               f'<div style="flex:1;min-width:240px"><b style="display:block;font-size:20px;color:#0a2747;margin-bottom:6px">A member of the Silverbrooks Sailing Foundation</b>'
+               f'<span style="color:#5b6573">The Foundation owns our boats, funds scholarships and raises the money that keeps {E(c[2])} on the water.</span></div>'
+               f'<a href="{r}sbsf/give/" style="background:#0a2747;color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:4px">Support the Foundation</a></div></section>') if sf and not path else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title + " | " if title else "")}{E(c[1])}</title><meta name="description" content="{E(c[8])}"><link rel="manifest" href="{r}manifest.json"><link rel="apple-touch-icon" href="{r}icons/icon-180.png"><meta name="theme-color" content="{'#0f2340' if yc else '#12354f'}">
 {FONTS_YC if yc else FONTS_CS}<style>{(CSS_BASE + (CSS_YC if yc else CSS_CS)).replace('@C', col)}{PHT.CSS}{PHOTO_CSS}</style></head><body>
-<div class="tb"><div class="in"><a href="{r}">Albanardia.gov</a><a href="{r}clubs/">All clubs</a><a href="{r}nesf/">NESF</a><span class="sp"></span>{f'<a href="{r}{PV[c[0]]["parent"]}">{E(PV[c[0]]["parent_name"])}</a>' if c[0] in PV and PV[c[0]].get("parent") else ''}{f'<a href="{r}nesf/ayrc/">AYRC</a>' if c[7] else ''}<a href="{me}#contact">Contact</a></div></div>
+<div class="tb"><div class="in"><a href="{r}">Albanardia.gov</a><a href="{r}clubs/">All clubs</a><a href="{r}nesf/">NESF</a><span class="sp"></span>{f'<a href="{r}sbsf/">Silverbrooks Sailing Foundation</a>' if sf else ''}{f'<a href="{r}{PV[c[0]]["parent"]}">{E(PV[c[0]]["parent_name"])}</a>' if c[0] in PV and PV[c[0]].get("parent") else ''}{f'<a href="{r}nesf/ayrc/">AYRC</a>' if c[7] else ''}<a href="{me}#contact">Contact</a></div></div>
 <header><div class="in"><span class="bg">{flag}</span><a class="nm" href="{me}"><b>{E(c[1])}</b><small>{E(c[2])} · {E(c[3])}</small></a><nav class="mn">{links}</nav></div><div class="sub2">{links}</div></header>
 {body}
-<footer><div class="in"><span class="bg">{flag}</span><span>{E(c[1])} · {E(c[4])}</span><span class="sp"></span>{'' if c[6] == 'pv' else f'<a href="{me}stories/">News</a>'}<a href="{r}clubs/">All Albanardia clubs</a><a href="{r}nesf/">NESF</a><a href="{r}">Albanardia.gov</a></div></footer>
+{sf_band}<footer><div class="in"><span class="bg">{flag}</span><span>{E(c[1])} · {E(c[4])}</span><span class="sp"></span>{f'<a href="{r}sbsf/">Silverbrooks Sailing Foundation</a>' if sf else ''}{'' if c[6] == 'pv' else f'<a href="{me}stories/">News</a>'}<a href="{r}clubs/">All Albanardia clubs</a><a href="{r}nesf/">NESF</a><a href="{r}">Albanardia.gov</a></div></footer>
 <script src="{r}app/app.js" data-home="float"></script></body></html>"""
 
 def news_cards(c, me):
