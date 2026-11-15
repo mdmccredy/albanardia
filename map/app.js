@@ -589,7 +589,7 @@ function edgeMin(e,tf){const c=CLS[e[3]];if(CUR==='walk'){if(c==='i'||c==='tunne
  if(NM[e[4]]==='Ferry terminal road')m+=7.5;                // half the boarding wait at each end
  return m*(FW.has(c)?tf.f.fw:tf.f.road);}
 const LOCALMPH=22;
-function access(p){let out=[];for(let R0 of [20,45,90]){out=[];for(let i=0;i<N.length;i++){const dx=N[i][0]-p[0];if(dx>R0||dx<-R0)continue;const d=Math.hypot(dx,N[i][1]-p[1]);if(d<R0)out.push([d,i]);}if(out.length)break;}
+function access(p){let out=[];for(let R0 of [20,45,90]){out=[];for(let i=0;i<N.length;i++){const dx=N[i][0]-p[0];if(dx>R0||dx<-R0)continue;if(!adj[i].length)continue;const d=Math.hypot(dx,N[i][1]-p[1]);if(d<R0)out.push([d,i]);}if(out.length)break;}
  out.sort((a,b)=>a[0]-b[0]);const ok=[];
  for(const [d,i] of out){if(ok.length>=6)break;if(wetShare(p,N[i])<=(d<6?.25:.08))ok.push([i,d*1.2*5/(CUR==='walk'?WALKMPH:LOCALMPH),d*1.2]);}
  if(!ok.length&&out.length)ok.push([out[0][1],out[0][0]*1.3*5/(CUR==='walk'?WALKMPH:LOCALMPH),out[0][0]*1.3]);return ok;}
