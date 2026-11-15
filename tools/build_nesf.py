@@ -183,7 +183,7 @@ def standings():
     r = "../../../"
     def club(code): return f'<a href="{r}{cl(code)}/">{E(BY[code][2])}</a>'
     ind = "".join(f'<div><h3><a href="{FLEET_SLUG[f]}/">{E(f)} →</a></h3><div class="tw"><table><tr><th>Place</th><th>Sailor{"s" if "/" in rows[0][0] else ""}</th><th>Club</th><th>Points</th></tr>' + "".join(f'<tr><td class="n">{i}</td><td>{E(n)}</td><td>{club(c)}</td><td>{p}</td></tr>' for i, (n, c, p) in enumerate(rows, 1)) + f'</table></div><p style="margin:8px 0 0"><a href="{FLEET_SLUG[f]}/"><b>All {len(roster(f))} in {E(f)} →</b></a></p></div>' for f, rows in STAND_IND.items())
-    hp = PHT.PH["regatta"][1]
+    hp = PF("max/fleet-lake.jpg")
     body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">AYRC 2026 season</div><h1>Final standings</h1><p>Best 7 of 11 regattas, with the Championship scored at 1.5 times. Green Fleet isn't scored. 2027 standings start after the Foxford Shakedown on May 22.</p><a class="btn" href="#individual">Individual</a><a class="btn o" href="#clubs">Club team</a></div><div class="mark"><img src="../../img/ayrc-logo-full.png" alt="AYRC"></div></div></div>
 <section id="individual"><div class="in"><h2>Individual standings by fleet</h2><p class="sub">Top five in each scored fleet. Tap a fleet to see every sailor in it. Doublehanded fleets list skipper / crew. Full results for each regatta are posted by the host club.</p><div class="sg">{ind}</div></div></section>
 <section class="alt" id="clubs"><div class="in"><h2>Club team standings</h2><p class="sub">Final standings for the club team trophy: each club's best 12 sailor scores across all fleets.</p>
@@ -203,7 +203,7 @@ def ayrc():
     _unused = [("Albanardia City Yacht Club", 1412), ("Silverbrooks Yacht Club", 1388), ("Corinthian Yacht Club of Silverbrooks", 1240), ("Foxford Yacht Club", 1196), ("New Brolin Yacht Club", 1023),
              ("Northeastern Yacht Club", 954), ("Waterloo Yacht Club", 712), ("Cape Sturgeon Yacht Club", 640), ("Silverbrooks Community Sailing Center", 588), ("Pearl's End Sailing Center", 431),
              ("Hamilton Island Sailing Club", 377), ("Willamette Boating Center", 296), ("Coven Community Sailing", 241)]
-    hp = PHT.PH["regatta"][0]
+    hp = PF("max/wind-dsc-1196.jpg")
     body = f"""<div class="hero"{HB(hp)}>{PHT.credit(hp)}<div class="in"><div><div class="k">Northeastern Sailing Foundation presents</div><h1>Albanardia Youth Racing Circuit 2027</h1>
 <p>Eleven regattas from late May to late September, from the Foxford Shakedown to the Hanson Bay Showdown, with one road trip down the Turnpike to Barnegat Bay. Race as many as you like; your best seven count.</p>
 <a class="btn" href="#schedule">Schedule</a><a class="btn o" href="#register">Register</a></div><div class="mark"><img src="../img/ayrc-logo-full.png" alt="AYRC, Albanardia Youth Racing Circuit"></div></div></div>
