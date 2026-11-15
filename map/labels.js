@@ -17,7 +17,7 @@ function run(){t=0;
  const sl=document.getElementById('slabels');
  if(sl)sl.querySelectorAll('text').forEach((e,i)=>{const r=e.getBoundingClientRect();if(r.width&&r.right>0&&r.bottom>0&&r.left<innerWidth&&r.top<innerHeight)items.push({e,r,p:17,i:1e6+i});});
  items.sort((a,b)=>a.p-b.p||a.i-b.i);
- const kept=[],pad=2,cell=64,grid=new Map();
+ const kept=[],pad=6,cell=64,grid=new Map();
  const cells=r=>{const o=[];for(let x=Math.floor(r.left/cell);x<=Math.floor(r.right/cell);x++)for(let y=Math.floor(r.top/cell);y<=Math.floor(r.bottom/cell);y++)o.push(x+','+y);return o;};
  for(const it of items){const r=it.r,ks=cells(r);let hit=false;
   for(const k of ks){const L=grid.get(k);if(!L)continue;for(const q of L){if(r.left<q.right+pad&&r.right>q.left-pad&&r.top<q.bottom+pad&&r.bottom>q.top-pad){hit=true;break;}}if(hit)break;}

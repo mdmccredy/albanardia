@@ -281,8 +281,15 @@ for q in M['chains']:
     placed.append(affinity.translate(P, r[0], r[1]))
 
 # ---------- cut local streets inside superblocks ----------
+BUSL = []
+for grp in ('bus', 'rapid'):
+    for ln in M.get('transit', {}).get(grp, []):
+        if isinstance(ln, dict) and len(ln.get('path') or []) > 1: BUSL.append(LineString(ln['path']))
+BUSBUF = unary_union([l.buffer(0.07) for l in BUSL]) if BUSL else None
 if cuts:
-    CU = unary_union(cuts); CT = STRtree(list(getattr(CU, 'geoms', [CU])))
+    CU = unary_union(cuts)
+    if BUSBUF is not None: CU = CU.difference(BUSBUF)  # streets with bus routes stay
+    CU = CU; CT = STRtree(list(getattr(CU, 'geoms', [CU])))
     removed = 0
     for t in M['street_tiles']:
         for key in ('d', 'c'):

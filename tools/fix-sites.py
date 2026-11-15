@@ -60,7 +60,13 @@ for v in M.get('venues', []):
 for e in M['extras']:
     if e.get('kind') in ('label', 'marina', 'airstrip'): continue
     g_add(e.get('foot')); g_add(e.get('yard'))
+BUSL = []
+for grp in ('bus', 'rapid'):
+    for ln in M.get('transit', {}).get(grp, []):
+        if isinstance(ln, dict) and len(ln.get('path') or []) > 1: BUSL.append(LineString(ln['path']))
+BUSBUF = unary_union([l.buffer(0.07) for l in BUSL]) if BUSL else None
 CUT = unary_union([g.buffer(0.01) for g in grounds])
+if BUSBUF is not None: CUT = CUT.difference(BUSBUF)  # streets with bus routes stay (campus roads)
 CT = STRtree(list(getattr(CUT, 'geoms', [CUT])))
 
 trimmed = 0
@@ -182,7 +188,7 @@ for i in range(R['m']):
     if EC[i] in soft:
         pts = [node(EU[i])] + [tuple(p) for p in R['geoms'].get(str(i), [])] + [node(EV[i])]
         L = LineString(pts) if len(set(pts)) > 1 else Point(pts[0])
-        if BANT.query(L, predicate='intersects').size and L.intersects(BAN): dropped += 1; continue
+        if BANT.query(L, predicate='intersects').size and L.intersects(BAN) and not (BUSBUF is not None and BUSBUF.contains(L)): dropped += 1; continue
     keep.append(i)
 remap = {o: n for n, o in enumerate(keep)}
 R['eu'] = enc(array.array(ecode, (EU[i] for i in keep))); R['ev'] = enc(array.array(ecode, (EV[i] for i in keep)))
