@@ -4,7 +4,7 @@
 
 ## Steps for each Sunday run
 1. Work in a fresh clone of `mdmccredy/albanardia` on `main`. Read `stories/AUTOMATION.md` (writing rules) and this file.
-2. Run `python3 tools/times_edition.py archive`. It saves the current paper as a back issue. Never edit or delete back issues.
+2. Run `python3 tools/times_edition.py archive`. It saves the current paper as a back issue. Never edit or delete back issues. If it prints STOP, today's edition is already out: change nothing and end the run.
 3. Run `python3 tools/times_edition.py next`. It prints today's folio: volume, issue number and date.
 4. Read the Times stories from the past week in `stories/stories.json` (site `times`), and skim the City, SBTransit, SBX, Port and club sites for what is coming up this week.
 5. Rewrite `media/times/index.html` for today:

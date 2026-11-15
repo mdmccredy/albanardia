@@ -35,6 +35,8 @@ def long(d): return '%s, %s %d, %d' % (DAYN[d.weekday()], MONL[d.month - 1], d.d
 def archive():
     s = PAGE.read_text()
     d = edition_date(s)
+    if d >= dt.date.today():
+        sys.exit(f'STOP: the paper is already the edition of {long(d)}. Nothing to do.')
     out = ED / d.isoformat() / 'index.html'
     if out.exists():
         print('Already archived:', out.relative_to(ROOT)); return
