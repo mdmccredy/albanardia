@@ -262,7 +262,7 @@ EVENTS = {
   E("Dec", 2, "Annual Meeting", "Members elect next year's flag officers and board.", "Club")],
 }
 
-KEELBOAT = {'SYC', 'EBYC', 'MYC'}   # keelboat clubs: no dinghies, no junior program
+KEELBOAT = {'SYC', 'EBYC', 'MYC', 'KSC'}   # keelboat clubs: no dinghies, no junior program
 
 # Albanardia Youth Racing Circuit 2027 (run by NESF). (start date, venue code or name, town, title, note)
 AYRC = [
@@ -308,23 +308,30 @@ JUNIOR = {
 
 # ---- sailing pavilions and Killalea (added Nov 14, 2026) ----
 FLEETS.update({
- 'KSC':   [("Larssen Club Radial", 16), ("Larssen Fyra", 14), ("Optimist", 20), ("RS Aero", 6), ("MC7", 4), ("Kayaks and SUPs", None)],
+ 'KSC':   [("J/22", 12), ("J/24", 8), ("J/80", 6), ("J/70", 4), ("MC24", 4), ("MC30", 4), ("J/105", 2)],
  'OSP':   [("49er", 10), ("49erFX", 8), ("470", 8), ("ILCA", 16)],
  'JLG':   [("Club FJ", 18), ("420E", 18), ("ILCA", 10)],
  'SBUSP': [("Club FJ", 14), ("420E", 14), ("ILCA", 6)],
  'ATSC':  [("Club FJ", 12), ("420E", 12), ("ILCA", 6)],
 })
-JUNIOR.update({'KSC': [("Optimist", 20), ("Larssen Fyra", 14), ("Larssen Club Radial", 16)]})
+# Killalea's youth and dinghy programs moved to SBYC (Nov 2026); Killalea is keelboats only.
+JUNIOR['SBYC'] = JUNIOR['SBYC'] + [("Larssen Fyra", 14), ("Larssen Club Radial", 16)]
+EVENTS['SBYC'] = EVENTS['SBYC'] + [
+  E("Apr", 17, "SBYC Community Sailing Open House", "Free sails in Club Radials and Fyras, dock tours and summer sign-ups. Open to everyone, members or not.", "Club"),
+  E("Jun", 14, "SBYC summer camps begin", "Weekly camps for ages 7 to 15 in Optis, Fyras and Club Radials, open to the public.", "Youth"),
+  E("Jul", 23, "Hanson Bay Junior Splash", "A one-day regatta for SBYC campers and the youth racing team.", "Youth")]
 EVENTS.update({
  'KSC': [
-  E("Mar", 13, "Instructor Training Weekend", "New and returning instructors get ready for the season on Hanson Bay.", "Clinic"),
-  E("Apr", 17, "Killalea Open House", "Free sails in Club Radials, dock tours and sign-ups for summer.", "Club"),
-  E("May", 4, "Adult Learn to Sail starts", "Four-week evening courses in Club Radials.", "Clinic"),
-  E("May", 13, "Thursday Fun Races", "Center boats every Thursday evening through August.", "Weeknight"),
-  E("Jun", 14, "Summer camps begin", "Weekly camps for ages 7 to 15 in Optis, Fyras and Club Radials.", "Youth"),
-  E("Jul", 23, "Hanson Bay Junior Splash", "A one-day regatta for the youth racing team and campers.", "Youth"),
-  E("Aug", 20, "Camp Family Day", "Campers take their families sailing, then a picnic on the lawn.", "Youth"),
-  E("Sep", 24, "Volunteer Thank-You Night", "Dinner and awards for the volunteers who run the dock.", "Social")],
+  E("Jan", 16, "Winter Keelboat Series", "J/22s and J/24s every other Saturday through March, members race club boats.", "Frostbite"),
+  E("Mar", 6, "Instructor Training Weekend", "Keelboat instructors get ready for the season on Hanson Bay.", "Clinic"),
+  E("Apr", 10, "Killalea Open House", "Free 30-minute sails on the J/22s and J/80s, dock tours on Dock K and membership sign-ups.", "Club"),
+  E("Apr", 24, "Basic Keelboat courses begin", "Two weekends or four evenings in the J/22s toward US Sailing Basic Keelboat certification.", "Clinic"),
+  E("May", 6, "Thursday Member Races", "Club J/22s, J/24s and J/80s every Thursday evening through August, crews mixed at the dock.", "Weeknight"),
+  E("May", 22, "Spinnaker Clinic", "A day flying kites on the J/80s and J/24s.", "Clinic"),
+  E("Jun", 19, "Coastal Cruising course", "Three days on the MC30s, out to Hamilton Island and back.", "Cruising"),
+  E("Jul", 17, "Full Moon Sail", "Members take the MC30s and J/105s out under the full moon, then dinner on the dock.", "Social"),
+  E("Aug", 13, "Killalea Club Championship", "Two days of fleet racing in club J/22s, boats swapped every race.", "Regatta"),
+  E("Sep", 25, "Member Cruise to Hamilton Island", "A weekend flotilla of MC30s across the bay.", "Cruising")],
  'OSP': [
   E("Jan", 18, "Winter Training Block", "Six weeks of national team training on the Atlantic.", "Clinic"),
   E("Mar", 19, "New Brolin Olympic Classes Regatta", "The first ranking event of the year for the 49er, 49erFX, 470 and ILCA.", "Regatta"),

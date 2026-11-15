@@ -35,7 +35,7 @@ def flags_svg_unused():
 
 # id, name, short, town, address, website, kind, ayrc
 C = [
- ("SBYC","Silverbrooks Yacht Club","SBYC","Silverbrooks","231 NE Belwether St, Silverbrooks, AB 19001","silverbrooksyc.org","yc",True,"At the outer end of Hanson Bay Marina on Silverbrooks' north shore."),
+ ("SBYC","Silverbrooks Yacht Club","SBYC","Silverbrooks","231 NE Belwether St, Silverbrooks, AB 19001","silverbrooksyc.org","yc",True,"At the outer end of Hanson Bay Marina on Silverbrooks' north shore, home of SBYC Community Sailing: public learn-to-sail, summer camps and youth racing."),
  ("SBCS","Silverbrooks Community Sailing Center","SBCS","Silverbrooks","312 SE Foundland St, Silverbrooks, AB 19002","sbcommunitysailing.org","cs",True,"Public sailing for the whole city, from first sails to racing teams."),
  ("PESC","Pearl's End Sailing Center","PESC","Silverbrooks","17 W Harborshore Dr, Silverbrooks, AB 19003","pearlsendsailing.org","cs",True,"On the oyster-boat waterfront at Pearl's End."),
  ("NEYC","Northeastern Yacht Club","NEYC","Rutherford","123 Krugen Blvd, Rutherford, AB 19110","neyc.org","yc",True,"Rutherford's big-boat and junior racing club."),
@@ -56,7 +56,7 @@ C = [
  ("NMYC","Northmark Yacht Club","NMYC","Victoria","1 River Rd, Victoria, AB 19260","northmarkyc.org","yc",False,"Farm-country river sailing in Northmark County."),
  ("STYC","Stepford Yacht Club","STYC","Stepford","12 Bay St, Stepford, AB 19280","stepfordyachtclub.org","yc",False,"Archila County's yacht club."),
  ("ACSC","Sail Archila","ACSC","Stepford","40 Bay St, Stepford, AB 19280","sailarchila.org","cs",False,"Public sailing for Archila County."),
- ("KSC","Killalea Sailing Club","KSC","Whilliker","150 Bradford Way, Whilliker, AB 19120","killaleasailingclub.org","cs",False,"Public sailing on the west shore of Hanson Bay: learn-to-sail classes, youth racing and a fleet of club dinghies."),
+ ("KSC","Killalea Sailing Club","KSC","Silverbrooks","Dock K, 3 Hanson Bay Dr, Silverbrooks, AB 19019","killaleasailingclub.org","sc",False,"A keelboat sailing club and school on Dock K in Hanson Bay Marina: learn to sail, then sail the club's J/22s, J/24s, J/80s and MC30s whenever you like."),
  ("MYC","Marianoe Yacht Club","MYC","Marianoe","2 Harbor St, Marianoe, AB 19320","marianoeyc.org","yc",False,"A small island-town club on the Sound."),
 ]
 # sailing pavilions (kind "pv"): Olympic base and college sailing centers
@@ -187,7 +187,7 @@ def shell(c, svg, path, title, body, nav):
     depth = path.count("/") + 1 if path else 1
     r = "../" * depth
     me = "../" * (depth - 1) if depth > 1 else "./"
-    yc = c[6] in ("yc", "pv")
+    yc = c[6] in ("yc", "pv", "sc")
     col = color(svg)
     flag = f'<svg viewBox="0 0 631 377" xmlns="http://www.w3.org/2000/svg">{svg}</svg>'
     links = "".join(f'<a href="{me}{p}"{" class=on" if p == path else ""}>{E(t)}</a>'.replace(" class=on", ' class="on"') for p, t in nav)
@@ -438,6 +438,49 @@ def pv_pages(c, svg):
 <section><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev)}</div></div></section>""")
     return pages, nav
 
+# ---------- keelboat sailing club (Killalea: like Seattle Sailing Club or Boston Sailing Center) ----------
+def sc_nav(c):
+    return [("", "Home"), ("learn/", "Learn to sail"), ("fleet/", "Fleet"), ("membership/", "Membership"), ("calendar/", "Calendar"), ("stories/", "News")]
+
+def sc_pages(c, svg):
+    flag = f'<svg viewBox="0 0 631 377" xmlns="http://www.w3.org/2000/svg">{svg}</svg>'
+    ev = events(c); nav = sc_nav(c); fl = FLEETS[c[0]]
+    courses = [("Basic Keelboat", "Two weekends or four evenings on the J/22s. You leave able to skipper a small keelboat in light to moderate wind. US Sailing certification.", "$695"),
+               ("Basic Cruising", "Two days on the MC30s: docking under power, anchoring, reefing and a day sail across Hanson Bay.", "$795"),
+               ("Spinnaker", "A day flying asymmetric and symmetric kites on the J/80s and J/24s.", "$295"),
+               ("Coastal Cruising", "Three days on the MC30s with navigation, weather and an overnight at Hamilton Island.", "$1,150"),
+               ("Intro to Racing", "Starts, mark roundings and the rules, then the Thursday member races.", "$245"),
+               ("Private lessons", "One-on-one time on any club boat, at your pace.", "$120 / hour")]
+    pages = {}
+    pages[""] = ("", f"""
+<div class="hero photo" style="background:linear-gradient(110deg,rgba(15,35,64,.92) 0%,rgba(15,35,64,.75) 45%,rgba(15,35,64,.3) 100%),url('{PHT.url(PHT.pick("keelboats", c[0])[0][0], 1800)}')">{PHT.credit(PHT.pick("keelboats", c[0])[0])}<div class="in"><div><div class="k">Keelboat sailing club · Dock K, Hanson Bay Marina</div><h1>{E(c[1])}</h1><p>{E(c[8])} No boat to buy, no slip to rent and no bottom to paint.</p>
+<a class="btn w" href="learn/">Learn to sail</a><a class="btn o" href="membership/">Membership</a></div><div class="flag">{flag}</div></div></div>
+<section><div class="in"><div class="g3">
+<a class="cd" href="learn/"><span class="pill">New sailors</span><b>Learn to sail</b><span>Start with Basic Keelboat on the J/22s, then move up to spinnakers and cruising on the MC30s.</span></a>
+<a class="cd" href="fleet/"><span class="pill">{sum(n or 0 for _, n in fl)} boats</span><b>The fleet</b><span>{", ".join(k for k, _ in fl)}, all on Dock K and ready to sail.</span></a>
+<a class="cd" href="membership/"><span class="pill">Members</span><b>Sail whenever you like</b><span>Book a boat online, take friends out after work and race on Thursdays.</span></a>
+</div></div></section>
+<section class="alt"><div class="in"><h2>The fleet on Dock K</h2><p class="sub"><a href="fleet/">Every boat →</a></p><div class="fl">{''.join(fcard(c, k, n) for k, n in fl[:4])}</div></div></section>
+<section><div class="in"><h2>What's happening</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
+<section class="alt"><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
+<section id="contact"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p>Walk down the main gangway at Hanson Bay Marina and turn onto Dock K. Parking is in the marina lot.</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Kids and dinghies?</h2><p>Killalea is keelboats only and for adults. Youth camps, dinghy classes and junior racing are at <a href="../sbyc/juniors/">SBYC Community Sailing</a>, at the outer end of the same marina.</p><p>{E(c[5])}</p></div></div></section>""")
+    pages["learn/"] = ("Learn to sail", ph("Courses", "Learn to sail", "Small classes, certified instructors and real keelboats from day one. Courses run April to October.", PHT.pick("keelboats", c[0], 1, 2)[0]) + f"""
+<section><div class="in"><div class="g2">{''.join(f'<div class="cd"><span class="pill">{p}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, p in courses)}</div></div></section>
+<section class="alt"><div class="in"><h2>Course dates</h2><div class="cal">{''.join(evrow(*x) for x in ev if x[3] in ('Clinic', 'Cruising'))}</div></div></section>""")
+    pages["fleet/"] = ("Fleet", ph("Dock K", "The fleet", "Every boat is club-owned, maintained by our staff and booked online by members.", PHT.boat("J/22", c[0])[0][0]) + f"""
+<section><div class="in"><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
+<section class="alt"><div class="in"><h2>On the water</h2>{fleet_gallery(c, fl, 6, [(PHT.pick("sunset", c[0])[0], "Evening sail")])}</div></section>""")
+    pages["membership/"] = ("Membership", ph("Members", "Membership", "Pass the course for a boat, then sail it as often as you like.", PHT.pick("harbor", c[0])[0]) + f"""
+<section><div class="in"><table class="t"><tr><th>Membership</th><th>Price</th><th>Includes</th></tr>
+<tr><td><b>Small keelboat</b></td><td>$165 / month</td><td>Unlimited sailing on the J/22s and J/24s, Thursday races</td></tr>
+<tr><td><b>Performance</b></td><td>$225 / month</td><td>Adds the J/70s, J/80s and MC24s</td></tr>
+<tr><td><b>Cruising</b></td><td>$295 / month</td><td>Every boat, including the MC30s and J/105s, plus overnight bookings</td></tr>
+<tr><td><b>Learn-to-sail package</b></td><td>$1,295</td><td>Basic Keelboat plus three months of Small keelboat membership</td></tr></table>
+<p class="sub" style="margin-top:14px">Boats are booked online up to two weeks ahead. Members can bring guests at no charge.</p></div></section>""")
+    pages["calendar/"] = ("Calendar", ph(c[2] + " · 2027", "Calendar", "Courses, member races, cruises and parties on the dock.", PHT.pick("sunset", c[0] + "c")[0]) + f"""
+<section><div class="in"><div class="cal">{''.join(evrow(*x) for x in ev)}</div></div></section>""")
+    return pages, nav
+
 def extra_photos(c):
     """more real photos on the pages that had only a header photo"""
     k = c[0]; adult = [f for f, n in adult_fleets(c) if n]
@@ -453,8 +496,8 @@ def extra_photos(c):
             "volunteer/": ("Our volunteers", "Dock hands, safety boat drivers and instructors keep the center running.", [(PHT.pick("coach", k)[0], "Coaching from the safety boat"), (PHT.pick("camp", k + "v2")[0], "Helping at camp"), (PHT.pick("kids", k + "v3")[0], "On the dock"), (PHT.pick("club event", k)[0], "Open house"), (PHT.pick("paddle", k + "v5")[0], "Paddle night"), (PHT.pick("Optimist", k + "v6")[0], "Race committee for the kids")])}
 
 def club_site(c, svg):
-    pages, nav = (yc_pages if c[6] == "yc" else pv_pages if c[6] == "pv" else cs_pages)(c, svg)
-    for path, (h2, sub, items) in (extra_photos(c).items() if c[6] != "pv" else []):
+    pages, nav = (yc_pages if c[6] == "yc" else pv_pages if c[6] == "pv" else sc_pages if c[6] == "sc" else cs_pages)(c, svg)
+    for path, (h2, sub, items) in (extra_photos(c).items() if c[6] not in ("pv", "sc") else []):
         if path in pages:
             t, b = pages[path]
             pages[path] = (t, b + f'<section class="alt"><div class="in"><h2>{E(h2)}</h2><p class="sub">{E(sub)}</p>{gallery(items)}</div></section>')
@@ -472,8 +515,8 @@ def club_site(c, svg):
     return len(pages)
 
 def index(F):
-    def card(c): return f'<a class="cl" href="../{code(c)}/"><span class="bg"><svg viewBox="0 0 631 377">{F[c[0]]}</svg></span><span><b>{E(c[1])}</b><small>{E(c[3])} · {"Keelboat club" if c[0] in KEELBOAT else "Yacht club" if c[6] == "yc" else PV[c[0]]["kind"] if c[6] == "pv" else "Sailing center"}{" · AYRC" if c[7] else ""}</small></span></a>'
-    yc = "".join(card(c) for c in C if c[6] == "yc"); cs = "".join(card(c) for c in C if c[6] == "cs"); pv = "".join(card(c) for c in C if c[6] == "pv")
+    def card(c): return f'<a class="cl" href="../{code(c)}/"><span class="bg"><svg viewBox="0 0 631 377">{F[c[0]]}</svg></span><span><b>{E(c[1])}</b><small>{E(c[3])} · {"Keelboat sailing club" if c[6] == "sc" else "Keelboat club" if c[0] in KEELBOAT else "Yacht club" if c[6] == "yc" else PV[c[0]]["kind"] if c[6] == "pv" else "Sailing center"}{" · AYRC" if c[7] else ""}</small></span></a>'
+    yc = "".join(card(c) for c in C if c[6] in ("yc", "sc")); cs = "".join(card(c) for c in C if c[6] == "cs"); pv = "".join(card(c) for c in C if c[6] == "pv")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Yacht Clubs & Sailing Centers | Albanardia.gov</title><link rel="manifest" href="../manifest.json"><link rel="icon" href="../icons/favicon.png"><meta name="theme-color" content="#22498a">
 <style>:root{{--bg:#f4f5f7;--card:#fff;--ink:#1b2430;--mut:#5b6573;--line:#dde1e7;--navy:#22498a}}@media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:#0f141a;--card:#18202a;--ink:#edf1f5;--mut:#9ba7b3;--line:#2a3441}}}}
