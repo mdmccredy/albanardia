@@ -235,7 +235,7 @@ Albanardia has about 20 named places outside Silverbrooks; the map will fix wher
 | Moïyane | Moïyane | 19520 | Aboraxas College, UA Moïyane (community college) |
 | Belwether | Westminster | 19540 | French-American college town for ASU ("Alzoo") |
 | New Brolin | Ocean | 19601 | NBYC, Aldense University, the Olympic Sailing Pavilion and the JLG |
-| Willamette | Coven | 19701 | Willamette Boating Center |
+| Willamette | Coven | 19701 | Willamette Boating Club |
 | Coven | Coven | 19750 | Coven Community Sailing, Albanardia Maritime Academy |
 | Beach City | Plage | 19801 | Boardwalk, Funland, the lighthouse bluff |
 | Arlington | Plage | 19901 | Cape Sturgeon YC; reaches down to the Cape Sturgeon landmark |
@@ -261,7 +261,7 @@ Albanardia has about 20 named places outside Silverbrooks; the map will fix wher
 | Town | County | Population | ZIP | Feels like | Notes |
 | --- | --- | --- | --- | --- | --- |
 | Victoria | Northmark (seat) | \~12,000 | 19260 | Gig Harbor, WA | Split into Victoria-du-Nord and Victoria-du-Sud. Courthouse, Town Green, fairgrounds, Farm Museum, St. Anne's Church, Northmark Community Hospital, Northmark County HS, grain co-op. Northmark Yacht Club on the river |
-| Stepford | Archila (seat) | \~9,000 | 19280 | a bit smaller than Port Townsend, WA | On a Sound inlet. Archila Medical Center, Upper Sound Maritime Museum, Sound Side Crab House, Archila County HS, Delmar Poultry Processing, Archila County Airport. Stepford YC and Archila Community Sailing Center |
+| Stepford | Archila (seat) | \~9,000 | 19280 | a bit smaller than Port Townsend, WA | On a Sound inlet. Archila Medical Center, Upper Sound Maritime Museum, Sound Side Crab House, Archila County HS, Delmar Poultry Processing, Archila County Airport. Stepford YC and Sail Archila |
 | Marianoe | Sound | \~6,000 | 19320 | half of Port Townsend | Fishing and sailing town on Albanardia Sound, home of Marianoe YC |
 | Saint-Vroyeille | Westminster | \~3,500 | 19545 | a small village | French village just north of Belwether |
 
@@ -573,7 +573,7 @@ Street addresses for major places. Club addresses come from the club cards; the 
 | Hamilton Island Sailing | 12 Wilson St, Hamilton Island 19350 |
 | Albanardia City Yacht Club | 17 W Marlow St, Albanardia City 19401 |
 | New Brolin Yacht Club | 28 S Atlantic Dr, New Brolin 19601 |
-| Willamette Boating Center | 419 Ashton Rd, Willamette 19701 |
+| Willamette Boating Club | 419 Ashton Rd, Willamette 19701 |
 | Coven Community Sailing | 10 Appleton Dr, Coven 19750 |
 | Cape Sturgeon Yacht Club | 117 Cape Rd, Arlington 19901 |
 | Olympic Sailing Pavilion | 1 Pavilion Rd, New Brolin 19601 |
@@ -794,7 +794,7 @@ Albanardia has 13 clubs and sailing centers and a statewide summer youth circuit
 | Hamilton Island Sailing | HIS | Hamilton Island | 12 Wilson St, 19350 | sailhamilton.org |
 | Albanardia City Yacht Club | ACYC | Albanardia City | 17 W Marlow St, 19401 | acyc.org |
 | New Brolin Yacht Club | NBYC | New Brolin | 28 S Atlantic Dr, 19601 | nbyc.org |
-| Willamette Boating Center | WYC | Willamette | 419 Ashton Rd, 19701 | wboating.org |
+| Willamette Boating Club | WYC | Willamette | 419 Ashton Rd, 19701 | wboating.org |
 | Coven Community Sailing | CCS | Coven | 10 Appleton Dr, 19750 | covencommsail.org |
 | Cape Sturgeon Yacht Club | CSYC | Arlington, at Cape Sturgeon | 117 Cape Rd, 19901 | csyc.org |
 
@@ -807,14 +807,14 @@ Hamilton Island Sailing is a community-sailing-style club. Silverbrooks Yacht Cl
 | Belwether Yacht Club | BWYC | Belwether, beside the Alex Bennett Marina |
 | Everett Yacht Club | EYC | 350 Garfield Ct, Silverbrooks 19006 |
 | Elliott Bay Yacht Club | EBYC | 178 10th St, Marisfield 19105 |
-| Notrhabite Sailing Club | NSC | 20 Riverfront Ln, Silverbrooks 19005 (the name is meant to sound like "notre habite") |
+| Notrhabite Yacht Club | NSC | 20 Riverfront Ln, Silverbrooks 19005 (the name is meant to sound like "notre habite") |
 | Sjagette Yacht Club | SYC | 1 Farsgod Point Rd, Silverbrooks 19009 |
 | Northmark Yacht Club | NMYC | Victoria, on the river |
 | Stepford Yacht Club | STYC | Stepford |
-| Archila Community Sailing Center | ACSC | Stepford |
+| Sail Archila | ACSC | Stepford |
 | Marianoe Yacht Club | MYC | Marianoe |
 
-Also on the water: the **Killalea Sailing Center** on the west shore of Hanson Bay.
+Also on the water: the **Killalea Sailing Club**, a keelboat-only sailing club and school on Dock K in Hanson Bay Marina (Dock K, 3 Hanson Bay Dr, Silverbrooks 19019, killaleasailingclub.org), like Seattle Sailing Club or Boston Sailing Center. Members learn on and sail the club's J/22s, J/24s, J/80s, J/70s, MC24s, MC30s and J/105s. It has no youth or dinghy programs: those are SBYC Community Sailing, Silverbrooks Yacht Club's public learn-to-sail, summer camps and youth racing at the outer end of the same marina. Club and pavilion burgees come from Max's Figma board. The Olympic Sailing Pavilion (newbrolin.osp.org), James L. Gore Sailing Pavilion (jlg.aldensesailing.com), SBU Sailing Pavilion (pavilion.sailsbu.org) and AlbTech Sailing Center (albtechsailing.org) each have their own website and burgee.
 
 ### Olympic and college sailing in New Brolin
 
