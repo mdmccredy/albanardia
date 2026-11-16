@@ -273,7 +273,7 @@ a.cr,span.cr{position:absolute;right:6px;top:6px;font:600 9.5px/1.2 system-ui,sa
  document.querySelectorAll('.sbox').forEach(function(b){var i=b.querySelector('input'),r=b.querySelector('.sres');
   function run(){var q=i.value.trim().toLowerCase();if(!q){r.classList.remove('on');r.innerHTML='';return}
    var m=IDX.filter(function(x){return (x[0]+' '+x[1]).toLowerCase().indexOf(q)>-1});
-   r.innerHTML=m.length?m.map(function(x){return '<a href="'+x[2]+'">'+esc(x[0])+'<small>'+esc(x[1])+'</small></a>'}).join(''):'<a href="map/">Search the map for “'+esc(i.value)+'”<small>Places, streets, addresses</small></a>';r.classList.add('on')}
+   r.innerHTML=m.length?m.map(function(x){return '<a href="'+x[2]+'">'+esc(x[0])+'<small>'+esc(x[1])+'</small></a>'}).join(''):'<a href="map/#place='+encodeURIComponent(i.value)+'">Search the map for “'+esc(i.value)+'”<small>Places, streets, addresses</small></a>';r.classList.add('on')}
   i.addEventListener('input',run);i.addEventListener('focus',run);
   i.addEventListener('keydown',function(e){if(e.key==='Enter'){var a=r.querySelector('a');if(a)location.href=a.getAttribute('href')}if(e.key==='Escape'){i.value='';run()}});
   document.addEventListener('click',function(e){if(!b.contains(e.target))r.classList.remove('on')});});

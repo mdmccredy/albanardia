@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import urllib.parse
 """Generate colleges/<slug>/index.html for each Albanardia school, plus the colleges/ directory page.
 Facts come from the World Bible and Stats doc; logos are Max's (colleges/img)."""
 import sys as _sys
@@ -147,7 +148,7 @@ def page(s):
 <section class="alt" id="news"><div class="in"><h2>News</h2><p class="sub">From around campus. <a href="stories/">All stories →</a> · <a href="../../media/university-news/">University News →</a></p><div class="news">{''.join(f'<a class="nw" href="stories/#{n["slug"]}" style="display:block;color:inherit;text-decoration:none"><small>{E(n["cat"])} · Published {fdate(n["date"])}</small><h3>{E(n["title"])}</h3><p>{E(n["dek"])}</p></a>' for n in news)}</div></div></section>
 <section id="apply"><div class="in"><div class="visit" id="visit"><div><h2 style="color:#fff">Apply or visit</h2><p>Tours every weekday. Applications for fall 2027 are open at {E(s['domain'])}.</p></div><a class="btn" href="../../map/">Find us on the map</a></div></div></section>
 <footer><div class="in g"><div><span class="wm"><img src="../img/{s['logo']}" alt=""></span><p>{E(s['town'])}, Albanardia</p></div>
-<div><h5>Explore</h5><a href="#academics">Academics</a><a href="#athletics">Athletics</a><a href="#news">News</a><a href="stories/">All stories</a></div><div><h5>Albanardia</h5><a href="../">All colleges</a><a href="../../">Albanardia.gov</a><a href="../../map/">State map</a></div></div></footer>"""
+<div><h5>Explore</h5><a href="#academics">Academics</a><a href="#athletics">Athletics</a><a href="#news">News</a><a href="stories/">All stories</a></div><div><h5>Albanardia</h5><a href="../">All colleges</a><a href="../../">Albanardia.gov</a><a href="../../map/#place={urllib.parse.quote(s['name'])}">Campus on the map</a></div></div></footer>"""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(s['name'])}</title><link rel="manifest" href="../../manifest.json"><link rel="icon" href="../img/{s.get('ath') or s['logo']}"><link rel="apple-touch-icon" href="../../icons/icon-180.png">
 <meta name="theme-color" content="{s['c1']}"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">

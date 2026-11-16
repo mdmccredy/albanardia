@@ -82,3 +82,38 @@ const st=document.createElement('style');st.textContent=`
 #place .pc-rows b{display:block;font-size:11px;color:#8e8e93;font-weight:600;text-transform:uppercase;letter-spacing:.4px}`;
 document.head.appendChild(st);
 })();
+
+// Deep links: map/#place=<name> (or ?place=) centers the map on that place and opens its card.
+(()=>{
+const norm=s=>String(s||'').toLowerCase().replace(/[’']/g,"'").replace(/\s+/g,' ').trim();
+function want(){const a=new URLSearchParams(location.hash.slice(1)).get('place');const b=new URLSearchParams(location.search).get('place');return a||b||'';}
+function club(n){const C=window.__CLUB||{};return Object.keys(C).find(id=>norm(C[id][0])===norm(n)||norm(id)===norm(n));}
+function hitFor(n){for(const h of document.querySelectorAll('svg .hit')){if(h.dataset.place&&h.dataset.place.split('|')[1]&&norm(h.dataset.place.split('|')[1])===norm(n))return h;const p=window.__pc&&window.__pc.qualifies(h);if(p&&norm(p.name)===norm(n))return {p,h};}return null;}
+const ALIAS={'silverbrooks thompson international airport':'SBX Concourse C','sbx':'SBX Concourse C','silverbrooks sailing foundation':'Silverbrooks Yacht Club','port of silverbrooks':'Port of Silverbrooks','university of albanardia: moïyane':'Moïyane'};
+function open(q){q=ALIAS[norm(q)]||q;
+ const go=window.__go;if(typeof placeSearch!=='function'||typeof go!=='function')return false;
+ const hs=placeSearch(q)||[];const h=hs.find(x=>norm(x.n)===norm(q))||hs.find(x=>norm(x.n).startsWith(norm(q)))||hs[0];
+ if(!h)return true;
+ go(h);
+ const id=club(h.n)||club(q);
+ setTimeout(()=>{const tip=document.getElementById('tip');
+  if(id){if(tip)tip.style.opacity=0;window.__openPlace('club',id);setTimeout(()=>fit(h),60);return;}
+  if(document.body.classList.contains('placeon')){setTimeout(()=>fit(h),60);return;}
+  const f=hitFor(h.n);
+  if(f&&f.p){f.h.dataset.place='biz|'+f.p.name;f.h.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));if(tip)tip.style.opacity=0;window.__openPlace('biz',f.p.name);}
+  else if(f&&f.dataset){if(tip)tip.style.opacity=0;const [t,n]=f.dataset.place.split('|');window.__openPlace(t,n);}
+ setTimeout(()=>fit(h),60);},900);
+ return true;}
+// keep the landmark in view above the bottom card on phones (or right of the side card on desktop)
+function fit(h){const card=document.getElementById('place'),svg=document.querySelector('svg');if(!svg||!window.mapGoto)return;
+ const r=svg.getBoundingClientRect(),vbA=(svg.getAttribute('viewBox')||'').split(/[ ,]+/).map(Number);if(vbA.length<4||!vbA[2])return;
+ const u=vbA[2]/r.width;let cx=r.left+r.width/2,cy=r.top+r.height/2,tx=cx,ty=cy;
+ if(card&&document.body.classList.contains('placeon')){const c=card.getBoundingClientRect();
+  if(c.top>r.top+r.height*0.3&&c.width>r.width*0.8)ty=r.top+(c.top-r.top)/2;   // bottom sheet
+  else if(c.right<r.left+r.width*0.6){const pn=document.getElementById('panel');const pr=pn&&pn.getBoundingClientRect();const R=pr&&pr.width&&pr.left>c.right&&pr.left>r.left+r.width*0.5?pr.left:r.right;tx=c.right+(R-c.right)/2;}}          // side card
+ if(tx===cx&&ty===cy)return;
+ window.mapGoto(h.x+(cx-tx)*u,h.y+(cy-ty)*u,h.k);if(window.__pinHook)window.__pinHook();}
+function run(){const q=want();if(!q)return;let tries=0;(function t(){if(open(q)||++tries>40)return;setTimeout(t,150);})();}
+addEventListener('hashchange',run);
+if(document.readyState==='complete')setTimeout(run,200);else addEventListener('load',()=>setTimeout(run,200));
+})();

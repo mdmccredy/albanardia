@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import urllib.parse
 """Generate clubs/<slug>/index.html for every Albanardia yacht club and sailing center, plus clubs/index.html.
 Burgees come from the map (FLAGS in map/app.js); club facts from the World Bible."""
 import html, json, pathlib, re, subprocess
@@ -265,7 +266,7 @@ def yc_pages(c, svg):
 <section class="alt"><div class="in"><h2>Coming up</h2><p class="sub">Highlights from the 2027 season. <a href="calendar/">Full calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in up)}</div></div></section>
 <section><div class="in"><h2>News</h2><p class="sub">From the club. <a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
 <section class="alt"><div class="in"><h2>Fleets</h2><p class="sub">Boats racing at {E(c[2])}, with active boats in each fleet.</p><div class="ch">{fleet_chips(c)}</div></div></section>
-<section id="contact"><div class="in ct"><div><h2>Visit</h2><p>{E(c[4])}</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(c[5])}</p><p>Club office: Tuesday to Sunday, 9 to 5. Dining room hours on <a href="club/">The Club</a> page.</p></div></div></section>""")
+<section id="contact"><div class="in ct"><div><h2>Visit</h2><p>{E(c[4])}</p><p><a href="../map/#place={urllib.parse.quote(c[1])}">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(c[5])}</p><p>Club office: Tuesday to Sunday, 9 to 5. Dining room hours on <a href="club/">The Club</a> page.</p></div></div></section>""")
     # racing
     series = [x for x in ev if x[3] in ("Weeknight", "Frostbite")]
     regs = [x for x in ev if x[3] in ("Regatta", "Championship", "AYRC")]
@@ -341,7 +342,7 @@ def cs_pages(c, svg):
 <section><div class="in"><h2>Life on the dock</h2><p class="sub">Camps, classes and summer evenings on the water.</p>{gallery([(PHT.pick("camp", c[0])[0], "Summer camp"), (PHT.pick("kids", c[0], 1, 2)[0], "Kids' classes"), (PHT.boat(names[0], c[0])[0][0], names[0]), (PHT.pick("sunset", c[0])[0], "Sunset sails"), (PHT.pick("camp", c[0], 1, 3)[0], "Paddling")])}</div></div></section>
 <section class="alt"><div class="in"><h2>What's happening</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
 <section><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
-<section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Questions?</h2><p>{E(c[5])}</p><p>Front desk: daily 9 to 6 in season, weekends in winter.</p></div></div></section>""")
+<section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/#place={urllib.parse.quote(c[1])}">Open in the Albanardia map →</a></p></div><div><h2>Questions?</h2><p>{E(c[5])}</p><p>Front desk: daily 9 to 6 in season, weekends in winter.</p></div></div></section>""")
     adult = [("Learn to Sail 1", f"Four evenings or two weekends in {names[0]}s: rigging, tacking, jibing and getting back to the dock.", "$295"),
              ("Learn to Sail 2", "Sailing in more wind, crew overboard drills and your checkout sail for rentals.", "$275")] + \
             ([(f"Keelboat Basics", f"Two weekends in the {keel[0]}s, toward US Sailing Basic Keelboat certification.", "$395")] if keel else []) + \
@@ -435,7 +436,7 @@ def pv_pages(c, svg):
 <section><div class="in"><h2>Programs</h2><div class="g2">{''.join(f'<div class="cd"><span class="pill">{E(w)}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, w in p["programs"])}</div></div></section>
 <section class="alt"><div class="in"><h2>Boats</h2><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
 <section><div class="in"><h2>Coming up</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
-<section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(c[5])}</p><p>{E(p["hours"])}</p>{f'<p><a href="../{p["parent"]}">{E(p["parent_name"])} →</a></p>' if p["parent"] else ''}</div></div></section>""")
+<section id="contact" class="alt"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p><a href="../map/#place={urllib.parse.quote(c[1])}">Open in the Albanardia map →</a></p></div><div><h2>Contact</h2><p>{E(c[5])}</p><p>{E(p["hours"])}</p>{f'<p><a href="../{p["parent"]}">{E(p["parent_name"])} →</a></p>' if p["parent"] else ''}</div></div></section>""")
     pages["team/"] = (nav[1][1], ph(p["kind"], p["team"], p["teamtext"], PHT.pick(t2, c[0])[0]) + f"""
 <section><div class="in"><div class="fl">{''.join(fcard(c, k, n) for k, n in fl)}</div></div></section>
 <section class="alt"><div class="in"><h2>On the water</h2>{fleet_gallery(c, fl, 6, [(PHT.pick(t3, c[0])[0], "Coaching")])}</div></section>""")
@@ -471,7 +472,7 @@ def sc_pages(c, svg):
 <section class="alt"><div class="in"><h2>The fleet on Dock K</h2><p class="sub"><a href="fleet/">Every boat →</a></p><div class="fl">{''.join(fcard(c, k, n) for k, n in fl[:4])}</div></div></section>
 <section><div class="in"><h2>What's happening</h2><p class="sub"><a href="calendar/">Full 2027 calendar →</a></p><div class="cal">{''.join(evrow(*x) for x in ev[:4])}</div></div></section>
 <section class="alt"><div class="in"><h2>News</h2><p class="sub"><a href="stories/">All stories →</a></p><div class="g3">{news_cards(c, '')}</div></div></section>
-<section id="contact"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p>Walk down the main gangway at Hanson Bay Marina and turn onto Dock K. Parking is in the marina lot.</p><p><a href="../map/">Open in the Albanardia map →</a></p></div><div><h2>Kids and dinghies?</h2><p>Killalea is keelboats only and for adults. Youth camps, dinghy classes and junior racing are at <a href="../sbyc/juniors/">Silverbrooks Yacht Club</a>, at the outer end of the same marina, and at the <a href="../sbcs/">Silverbrooks Community Sailing Center</a>.</p><p>{E(c[5])}</p></div></div></section>""")
+<section id="contact"><div class="in ct"><div><h2>Find us</h2><p>{E(c[4])}</p><p>Walk down the main gangway at Hanson Bay Marina and turn onto Dock K. Parking is in the marina lot.</p><p><a href="../map/#place={urllib.parse.quote(c[1])}">Open in the Albanardia map →</a></p></div><div><h2>Kids and dinghies?</h2><p>Killalea is keelboats only and for adults. Youth camps, dinghy classes and junior racing are at <a href="../sbyc/juniors/">Silverbrooks Yacht Club</a>, at the outer end of the same marina, and at the <a href="../sbcs/">Silverbrooks Community Sailing Center</a>.</p><p>{E(c[5])}</p></div></div></section>""")
     pages["learn/"] = ("Learn to sail", ph("Courses", "Learn to sail", "Small classes, certified instructors and real keelboats from day one. Courses run April to October.", PHT.pick("keelboats", c[0], 1, 2)[0]) + f"""
 <section><div class="in"><div class="g2">{''.join(f'<div class="cd"><span class="pill">{p}</span><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d, p in courses)}</div></div></section>
 <section class="alt"><div class="in"><h2>Course dates</h2><div class="cal">{''.join(evrow(*x) for x in ev if x[3] in ('Clinic', 'Cruising'))}</div></div></section>""")

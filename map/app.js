@@ -561,6 +561,7 @@ function dropPin(h){if(!pinEl){pinEl=document.createElementNS('http://www.w3.org
 window.__pinHook=()=>{if(pinEl){const u=vb.w/RECT.width;pinEl.setAttribute('transform',`translate(${pinEl.dataset.x} ${pinEl.dataset.y}) scale(${u})`);}};
 function go(h){if(!h)return;mapGoto(h.x,h.y,h.k);dropPin(h);hits=[];render();qEl.blur();if(window.__openPlace&&M.stats){if(M.stats.towns[h.n]&&/^(Town in Albanardia|State capital)/.test(h.sub)){tip.style.opacity=0;window.__openPlace('town',h.n);return;}const cn=h.n.replace(/ County$/,'');if(/ County$/.test(h.n)&&M.stats.counties[cn]){window.__openPlace('county',cn);return;}}
  const r=S.getBoundingClientRect();tip.innerHTML=`<b>${esc(h.n)}</b>${esc(h.sub)}`;tip.style.opacity=1;tip.style.left=(r.left+r.width/2+14)+'px';tip.style.top=(r.top+r.height/2+14)+'px';}
+window.__go=go;
 qEl.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){sel=Math.min(hits.length-1,sel+1);render();e.preventDefault();}else if(e.key==='ArrowUp'){sel=Math.max(0,sel-1);render();e.preventDefault();}else if(e.key==='Enter'){go(hits[sel]);}else if(e.key==='Escape'){hits=[];render();}});
 rEl.addEventListener('click',e=>{const li=e.target.closest('li');if(li)go(hits[+li.dataset.i]);});
 
