@@ -43,3 +43,4 @@
 .as-eg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .as-eg .as-c{flex-direction:column;margin:0}.as-eg .as-ph{width:100%;height:150px}
 @media (max-width:760px){.as-eg{grid-template-columns:1fr}.as-ph{width:96px}.as-eg .as-ph{height:140px}.as-tools:has(.as-g){grid-template-columns:1fr}.as-t{font-size:17.5px}}
+.as-by{margin:-8px 0 18px;font-size:14px;font-weight:700;color:var(--as-mut)}

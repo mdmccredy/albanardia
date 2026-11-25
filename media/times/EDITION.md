@@ -18,5 +18,6 @@
 8. Commit only `media/times/`, `stories/` and what the build rebuilt, as Max McCredy <mdmccredy@hotmail.com>, message `Times: Sunday edition (<date>)`, and push to `main` (on rejection: `git pull --rebase`, push again).
 
 ## How the paper should read
+- Every Sunday edition carries opinion: an editorial and at least one column from the roster in `stories/AUTOMATION.md`, placed in the section it fits (A for editorials and letters, D for Rink Side, B for The Commute, C for Main Street Money, E for Brooker at Large, F for Open Water). Mix in state, national and world news with a local angle, and the hot topics from the week (see "Make it interesting" in `stories/AUTOMATION.md`).
 - A real Sunday paper: the week's biggest local story leads, follow-ups on what happened this week, and what is coming up this week. Results of events that happened (games, races, hearings, votes) should match the daily stories.
 - Same rules as the daily stories: short sentences, no em dashes, no named private people, real companies, American street names, transit lines by letter only, dates and seasons that fit the day.

@@ -8,11 +8,30 @@ A scheduled task runs once a day. Each run writes new stories for every Albanard
 3. For each due site, read that site's last 8 to 10 stories in `stories/stories.json`, and skim the site itself, so new stories continue what is already happening there (follow-ups, results of events that were announced, the next thing on the calendar). Never repeat a story.
 4. Append the new stories to `stories/stories.json` (never edit or delete existing stories). Fields:
    - `site`, `slug` (unique for that site, lowercase-with-dashes), `date` (today, YYYY-MM-DD, Pacific time), `cat`, `title`, `dek` (one or two sentences), `body` (2 to 4 short paragraphs), `img` (null unless you reuse an image already on that site), `link` (null), `added` (today's date).
+   - `by` (optional): the byline for opinion pieces, such as `"Eli Marchetti, Rink Side"` or `"The Times Editorial Board"`. It shows on the card and the article page.
    - Library (`sbpl`) and Schools (`sbps`): also set `link` to `sbpl/#a/<slug>` or `sbps/#a/<slug>` and add `native` in that site's article format (copy the shape of an existing article in its `const DATA` arts list: slug, date like "Nov 12", kind, title, lede, img (reuse an Unsplash id already used on that site), body, and meta for Schools).
    - Larssen Sailing (`larssen`): set `link` to `larssensailing/#/news/<slug>` and add `native` as `[category, title, dek, image, slug, [paragraphs], [product names that exist in the shop], "Month D, YYYY"]`. Only mention boats and products that exist on the site. Never mention sail colors.
 5. Run `python3 tools/build_stories.py`. It must finish without errors. Every story must have a `date`: the build shows it as "Published <date>" on every site (cards, article pages, the Times and University News headlines, the homepage). Open `stories/data.js` count or the build summary to confirm the new total.
 6. Commit as Max McCredy <mdmccredy@hotmail.com> with a message like `Stories: N new for <sites> (<date>)` and the session's attribution trailer, then push to `main`. If the push is rejected, `git pull --rebase` and push again.
 7. End with a short summary: which sites got stories, and their titles.
+
+## Make it interesting (Max's standing direction, Nov 25, 2026)
+Max finds plain "normal day" notices boring. Every run should have real news value:
+- **Pull from the real world.** Before writing, run a few web searches for what people are arguing about right now (national news, tech, business, sports, culture, schools, housing, energy, AI). Pick the hot or controversial topics and bring them to Silverbrooks: how the fight would play out here, with local places, institutions and stakes. Example: the national data center power-bill fight became a proposed data center on the Old Mill rail yard.
+- **Not every day is a normal day.** Let things go wrong and get messy: upsets and blown leads, disputed calls, outages, budget fights, packed hearings, angry petitions, recalls, lawsuits, delays, surprise announcements. Follow them up on later days.
+- **The Times and University News cover more than the city:** state, national and world news, business, tech, sports leagues, culture, always with a local angle or local reaction.
+- **Opinion everywhere.** Most Times runs should include at least one opinion piece (editorial, column, letters or guest op-ed), and University News, colleges and clubs should run them regularly too. Opinion pieces take a clear side and argue it. Across the paper, run the other side too over time (letters and guest op-eds that disagree), so readers see both cases on contested political questions.
+- Sharper headlines. Lead with the conflict or the surprise, not the logistics.
+- Keep the old rules: no em dashes, no named private people as story subjects, no real politicians or real private individuals, real companies only in ways that match what they really do, American street names, transit lines by letter.
+
+### Columnists and opinion roster (keep these consistent)
+Columnists are fictional bylines; they write opinions, they are never the subject of news stories.
+- **The Silverbrooks Times:** `cat` "Editorial", by "The Times Editorial Board" (the paper's official position: pro-growth, but insists projects pay their own way; pro-transit; skeptical of City Hall spending). `cat` "Column": Eli Marchetti, *Rink Side* (sports: Voyageurs, Gales, college sports; blunt, contrarian); June Okafor, *The Commute* (transit, streets, city planning; data-driven, impatient); Walt Brennan, *Main Street Money* (business, prices, the port, jobs; practical, a little grumpy); Teresa Vance, *Brooker at Large* (culture, schools, tech, national debates; provocative); Sam Ostrander, *Open Water* (sailing and the harbor). `cat` "Letters", by "Readers" (short letters signed by role and neighborhood, like "A renter in Nygård"). `cat` "Op-Ed" for guest pieces signed by role ("A Marisfield bus driver").
+- **University News:** `cat` "Opinion": *Student View* (signed by class year and campus, like "A UA Silverbrooks sophomore") and *Faculty View* (signed by role and department).
+- **Colleges:** occasional student op-eds or a "From the president's office" letter (by title only).
+- **Clubs:** "Commodore's Corner" (by "The Commodore") on club fights: dues, dock rules, race formats, fleet choices. Sailing centers: "From the Director".
+- **City and state sites:** no opinion pieces, but they can answer controversies with notices (meetings, alerts, responses to petitions).
+- **Library, Schools, Visit, Larssen:** occasional takes in their own voice (a librarian's column on a book-ban fight, the superintendent on phones or AI, a local's guide that argues for something, Larssen's view on a class rule debate).
 
 ## How the stories should read
 - Plain, specific news writing, like a real local paper or club newsletter. Short sentences. No em dashes.
