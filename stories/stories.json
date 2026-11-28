@@ -5829,6 +5829,92 @@
    "img": null,
    "link": null,
    "added": "2026-11-27"
+  },
+  {
+   "site": "state",
+   "slug": "election-results-certified",
+   "date": "2026-11-28",
+   "cat": "Elections",
+   "title": "November 3 election results are now official",
+   "dek": "The State Board of Elections certified the results of the general election at its meeting on November 24. One state house race is close enough for a recount if a candidate asks.",
+   "body": [
+    "The State Board of Elections voted to certify the results of the November 3 general election on Tuesday, November 24. The certified results are posted on the board's results page, broken down by county and district.",
+    "In one state house district, the two leading candidates finished less than half a percent apart. Under state law, either candidate may request a recount by 5 p.m. on Friday, December 4. If one is requested, the county election office will recount every ballot by machine and post the schedule in advance. Recounts are open to the public.",
+    "Newly elected state officials take office in January. Voters can check that their own ballot was counted using the ballot lookup tool on the board's website."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-28"
+  },
+  {
+   "site": "times",
+   "slug": "small-business-saturday-shops-pay-more",
+   "date": "2026-11-28",
+   "cat": "Business",
+   "title": "Small Shops Head Into Their Biggest Saturday Paying More for Everything on the Shelf",
+   "dek": "Independent stores in Nygård and Pearl's End say import costs went up this year and they could not pass all of it on. The big chains bought early and in bulk. The corner shops could not.",
+   "body": [
+    "Today is Small Business Saturday, and for the independent shops along Nygård's main street it can be the best sales day of the year. This year owners say they are going into it with thinner margins than ever.",
+    "Toy and gift shops said wholesale prices on goods made overseas rose this year, in some cases by a fifth or more, after new import tariffs. Large retailers rushed goods through the Samolette terminal early to lock in costs, which helped drive the port's record October. Small stores order in smaller batches and could not do the same. Several owners said they raised prices less than their costs went up, because they would rather keep customers than match a chain's sticker price and lose them.",
+    "The Silverbrooks Chamber of Commerce says more than 300 shops are taking part today, about the same as last year. American Express, which started Small Business Saturday in 2010, says shoppers nationally spent more at small businesses on the day last year than the year before. Local owners said the number that matters is whether people come back in December.",
+    "Shops in Elliot Square have a separate complaint. Owners on the north side said the construction fence around the holiday market blocked their storefronts for most of November. The city said the fence came down Friday morning, in time for the tree lighting Friday night. SBTrain runs normal Saturday service on all lines, and most shopping streets are a short walk from a station."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-28"
+  },
+  {
+   "site": "times",
+   "slug": "rink-side-prediction-apps",
+   "date": "2026-11-28",
+   "cat": "Column",
+   "by": "Eli Marchetti, Rink Side",
+   "title": "The State Is Right About the Betting Apps. It Is Also About Three Years Late.",
+   "dek": "Calling a sports bet an event contract does not make it something else. But Albanardia spent years refusing to set up legal mobile betting, and the apps walked right into the gap.",
+   "body": [
+    "Let us not kid ourselves. If you put $20 on the Voyageurs to win tonight and get $38 back when they do, you made a bet. You did not trade a financial product. The attorney general is right about that, and the apps know it.",
+    "Here is the part City Hall and the Capitol will not like. Albanardia lets you bet on sports only by driving to a casino. Most states around us let people do it on their phones, with licenses, age checks, limits and taxes that pay for something. We said no to all of that. So the prediction apps showed up, claimed they answer only to a federal agency, and took the money anyway. No state tax. No local problem gambling help. No rules.",
+    "Fans told this paper on Tuesday they will keep using them. Of course they will. Letters from the attorney general do not stop anyone from tapping a button. A court might, someday, after the companies spend years appealing.",
+    "If the state wants this to stop, it needs to give people a legal way to do the thing they are already doing, and then go after anyone who will not get a license. Otherwise the Voyageurs will keep playing in front of 17,000 people, half of them checking an app the state says is illegal and cannot shut off."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-28"
+  },
+  {
+   "site": "uninews",
+   "slug": "waterloo-english-turns-off-ai-detector",
+   "date": "2026-11-28",
+   "cat": "Academics",
+   "title": "UA Waterloo English Department Turns Off Its AI Detector Before Finals. Other Departments Are Turning Theirs On.",
+   "dek": "Writing instructors at UA Waterloo will stop using AI detection scores in cheating cases this semester. Two departments at UA Albanardia City are moving the other way.",
+   "body": [
+    "The English department at UA Waterloo told students this week that it will no longer use AI detection software as evidence in academic integrity cases, starting with fall final exams. Instructors may still ask a student to explain or rewrite work they suspect was written by a chatbot.",
+    "The department said in a note to students that detection scores had flagged papers that students could show they wrote, including drafts saved over several weeks. Several of the flagged students were writing in a second language. Cases already open will be reviewed again without the scores.",
+    "At UA Albanardia City, the business and computer science departments have gone the other direction. Both will run detection software on take-home finals this term and require students to submit their version history with major papers.",
+    "The UA Silverbrooks faculty senate, which heard both sides at a packed meeting before break, has put the question on its December agenda. Fall finals on all UA campuses run from December 10 to 17. Students with questions about a case can contact their campus academic integrity office."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-28"
+  },
+  {
+   "site": "uninews",
+   "slug": "faculty-view-access-codes",
+   "date": "2026-11-28",
+   "cat": "Opinion",
+   "by": "A chemistry lecturer at UA Silverbrooks",
+   "title": "Faculty View: The $180 Login Is Not the Villain. Cutting It Without a Plan Would Be.",
+   "dek": "A student column last week called homework access codes a toll. The price is too high. But for a 400-seat course with one instructor, the homework system is what makes daily practice and fast feedback possible.",
+   "body": [
+    "I teach a large intro course and I agree with the student who wrote in this space last week on one point: $180 for a login that expires in May is too much, and opt-out deadlines that nobody hears about are not fair. Fix both.",
+    "Where I disagree is the idea that we can just switch to a free textbook and be done. The book was never the expensive part. The homework system is. It grades 400 students' problem sets overnight, gives each student a different version of each problem, and tells a struggling student at midnight what they got wrong. A free textbook does not do any of that. Without it, I would assign less homework and grade it slower, and the students who need practice most would get less of it.",
+    "There are better options. Free homework platforms exist, but someone has to build and maintain the problem banks, and right now that is unpaid work done by faculty on top of teaching. If UA wants to end access codes, it should pay instructors and course teams to build free materials, the way some other public universities already do, and negotiate one campus-wide price cap with publishers in the meantime.",
+    "Students are right to be angry about the bill. Aim that anger at the price and the contracts, not at the practice that helps them pass."
+   ],
+   "img": null,
+   "link": null,
+   "added": "2026-11-28"
   }
  ]
 }
